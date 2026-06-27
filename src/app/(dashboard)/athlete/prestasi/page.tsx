@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { GlobalHeader } from "@/components/GlobalHeader"
 
 const radarData = [
   { subject: 'Speed', A: 85 }, { subject: 'Stamina', A: 70 }, { subject: 'Power', A: 80 },
@@ -101,14 +102,7 @@ export default function PrestasiPage() {
     <div className="flex flex-col min-h-[100dvh] w-full pb-20">
       
       {/* Header */}
-      <div className="bg-blue-600 px-6 pt-10 pb-6 rounded-b-3xl shadow-lg mb-4">
-        <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-          <Trophy className="h-6 w-6 text-[#ff4b4b] fill-[#ff4b4b]" /> Prestasi & Rekor
-        </h1>
-        <p className="text-slate-400 text-sm mt-1">
-          Pantau terus perkembangan rekor waktumu!
-        </p>
-      </div>
+      <GlobalHeader variant="pages" title="Prestasi & Rekor" />
 
       <div className="px-4">
         <Tabs defaultValue="program" className="w-full">

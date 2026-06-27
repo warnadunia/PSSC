@@ -105,12 +105,7 @@ export default function InputKejuaraanPage() {
     <div className="flex flex-col h-[100dvh] w-full relative">
       
       {/* Header Khusus agar bisa Back */}
-      <header className="bg-indigo-600 text-white px-4 h-16 flex items-center shrink-0 shadow-lg sticky top-0 z-10">
-        <Button variant="ghost" size="icon" onClick={() => router.back()} className="text-white hover:bg-indigo-500 hover:text-white mr-2">
-          <ArrowLeft className="h-5 w-5" />
-        </Button>
-        <h1 className="font-bold text-lg tracking-tight">Input Data Kejuaraan</h1>
-      </header>
+      <GlobalHeader variant="subpage" title="Input Data Kejuaraan" />
 
       <main className="flex-1 overflow-y-auto w-full pb-40">
         <div className="p-4 space-y-6">
