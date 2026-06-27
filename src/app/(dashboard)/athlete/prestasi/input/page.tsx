@@ -112,7 +112,7 @@ export default function InputKejuaraanPage() {
         <h1 className="font-bold text-lg tracking-tight">Input Data Kejuaraan</h1>
       </header>
 
-      <main className="flex-1 overflow-y-auto w-full pb-20">
+      <main className="flex-1 overflow-y-auto w-full pb-40">
         <div className="p-4 space-y-6">
           
           {/* Form Informasi Event */}
@@ -245,7 +245,7 @@ export default function InputKejuaraanPage() {
       </main>
 
       {/* Footer Save Button */}
-      <div className="fixed bottom-0 w-full bg-white border-t p-4 z-20 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+      <div className="fixed bottom-16 w-full bg-white border-t p-4 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
         <Button onClick={() => {
             alert('Data Kejuaraan berhasil disimpan!');
             router.back();
