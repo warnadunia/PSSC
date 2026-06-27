@@ -3,8 +3,8 @@
 import { useRouter } from "next/navigation"
 
 import { useState } from "react"
-import { 
-  ChevronLeft, ChevronRight, Calendar as CalendarIcon, 
+import {
+  ChevronLeft, ChevronRight, Calendar as CalendarIcon,
   MapPin, Flag, Briefcase, CheckCircle2, Ban
 } from "lucide-react"
 
@@ -20,7 +20,7 @@ type AgendaType = "hadir" | "dinas" | "event" | "libur" | "cuti" | "ijin"
 
 interface Agenda {
   id: string
-  date: string 
+  date: string
   type: AgendaType
   title: string
   time?: string
@@ -45,7 +45,7 @@ const TYPE_CONFIG = {
 
 export default function AthleteSchedules() {
   const router = useRouter()
-  const [currentDate, setCurrentDate] = useState(new Date(2026, 5, 26)) 
+  const [currentDate, setCurrentDate] = useState(new Date(2026, 5, 26))
   const [selectedDate, setSelectedDate] = useState<string>("2026-06-26")
 
   const year = currentDate.getFullYear()
@@ -56,8 +56,8 @@ export default function AthleteSchedules() {
 
   const daysInMonth = new Date(year, month + 1, 0).getDate()
   const firstDayOfMonth = new Date(year, month, 1).getDay()
-  const startDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1 
-  
+  const startDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1
+
   const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
   const dayNames = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"]
 
@@ -77,7 +77,7 @@ export default function AthleteSchedules() {
       <GlobalHeader variant="pages" title="Schedules" />
 
       <main className="flex-1 px-4 md:px-6 lg:px-8 space-y-5 pt-5 w-full pb-32">
-        
+
         {/* SLIDER BULAN TAHUN */}
         <div className="flex items-center justify-between bg-card p-3 rounded-2xl border border-border shadow-xl/30">
           <Button variant="ghost" size="icon" onClick={handlePrevMonth} className="h-8 w-8 hover:bg-muted">
@@ -124,11 +124,11 @@ export default function AthleteSchedules() {
                 {daysArray.map((day, idx) => {
                   const dayAgendas = day.dateString ? dummyAgendas.filter(ag => ag.date === day.dateString) : []
                   const isSelected = day.dateString === selectedDate
-                  const isToday = day.dateString === "2026-06-26" 
-                  
+                  const isToday = day.dateString === "2026-06-26"
+
                   return (
-                    <div 
-                      key={idx} 
+                    <div
+                      key={idx}
                       onClick={() => day.dateString && setSelectedDate(day.dateString)}
                       className="min-h-[50px] flex flex-col items-center justify-center cursor-pointer"
                     >
@@ -145,7 +145,7 @@ export default function AthleteSchedules() {
                           `}>
                             {day.dayNumber}
                           </span>
-                          
+
                           {/* DOT INDICATOR */}
                           {dayAgendas.length > 0 && (
                             <div className="flex gap-0.5 mt-0.5">
@@ -181,15 +181,15 @@ export default function AthleteSchedules() {
               const config = TYPE_CONFIG[agenda.type] as any
               const Icon = config.icon
               return (
-                <div 
-                  key={agenda.id} 
+                <div
+                  key={agenda.id}
                   onClick={() => router.push(`/athlete/schedules/${agenda.id}`)}
-                  className={`flex items-center p-4 rounded-3xl cursor-pointer transition-all border ${config.color}`}
+                  className={`flex items-center p-4 rounded-3xl cursor-pointer shadow-xl/30 transition-all border ${config.color}`}
                 >
                   <div className="h-10 w-10 shrink-0 bg-background/50 rounded-full flex items-center justify-center mr-4">
                     <Icon className={`h-5 w-5 ${config.textColor}`} />
                   </div>
-                  
+
                   <div className="flex-1">
                     <div className="flex justify-between items-start">
                       <h4 className={`font-black text-sm mb-0.5 ${config.textColor}`}>{agenda.title}</h4>

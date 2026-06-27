@@ -60,7 +60,7 @@ const TYPE_CONFIG = {
   hadir: { color: "bg-emerald-100 text-emerald-700", label: "Masuk/Latihan" },
   dinas: { color: "bg-blue-100 text-blue-700", label: "Dinas Luar" },
   event: { color: "bg-amber-100 text-amber-700", label: "Event Lomba" },
-  libur: { color: "bg-[#2a293d] text-slate-400", label: "Libur" },
+  libur: { color: "bg-slate-100 dark:bg-[#2a293d] text-slate-500 dark:text-slate-400", label: "Libur" },
   cuti: { color: "bg-purple-100 text-purple-700", label: "Cuti" },
   ijin: { color: "bg-rose-100 text-rose-700", label: "Ijin" },
 }
@@ -85,15 +85,15 @@ export default function ScheduleDetailPage({ params }: { params: Promise<{ id: s
     <div className="flex flex-col h-[100dvh] w-full" suppressHydrationWarning>
       
       {/* Header */}
-      <div className="h-14 px-4 flex items-center bg-[#1f1e2e] border-b border-[#2a293d] sticky top-0 z-50 shrink-0 shadow-xl/30">
-        <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-[#2a293d]">
-          <ChevronLeft className="h-5 w-5 text-slate-300" />
+      <div className="h-14 px-4 flex items-center bg-white dark:bg-[#1f1e2e] border-b border-slate-200 dark:border-[#2a293d] sticky top-0 z-50 shrink-0 shadow-xl/30">
+        <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-slate-100 dark:hover:bg-slate-100 dark:bg-[#2a293d]">
+          <ChevronLeft className="h-5 w-5 text-slate-600 dark:text-slate-300" />
         </Button>
-        <h1 className="text-lg font-bold text-white tracking-tight flex-1">Detail Agenda</h1>
+        <h1 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight flex-1">Detail Agenda</h1>
       </div>
 
       <main className="flex-1 overflow-y-auto w-full p-4 pb-12">
-        <div className="bg-[#1f1e2e] rounded-3xl p-6 border border-[#2a293d] mb-6 relative overflow-hidden shadow-xl/30">
+        <div className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-6 border border-slate-200 dark:border-[#2a293d] mb-6 relative overflow-hidden shadow-xl/30">
           
           <div className={`absolute top-0 left-0 w-1.5 h-full ${config.color.split(" ")[0]}`}></div>
 
@@ -103,46 +103,46 @@ export default function ScheduleDetailPage({ params }: { params: Promise<{ id: s
             </span>
           </div>
 
-          <h2 className="text-2xl font-black text-white leading-tight mb-6 pl-2">
+          <h2 className="text-2xl font-black text-slate-900 dark:text-white leading-tight mb-6 pl-2">
             {agenda.title}
           </h2>
 
-          <div className="flex flex-col gap-4 mb-6 pb-6 border-b border-[#2a293d] pl-2">
-            <div className="flex items-start text-slate-400">
-              <CalendarIcon className="h-5 w-5 mr-3 text-slate-400 mt-0.5" />
+          <div className="flex flex-col gap-4 mb-6 pb-6 border-b border-slate-200 dark:border-[#2a293d] pl-2">
+            <div className="flex items-start text-slate-500 dark:text-slate-400">
+              <CalendarIcon className="h-5 w-5 mr-3 text-slate-500 dark:text-slate-400 mt-0.5" />
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">Tanggal</p>
-                <p className="text-sm font-semibold text-white">{dateDisplay}</p>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-0.5">Tanggal</p>
+                <p className="text-sm font-semibold text-slate-900 dark:text-white">{dateDisplay}</p>
               </div>
             </div>
             
             {agenda.time && (
-              <div className="flex items-start text-slate-400">
-                <Clock className="h-5 w-5 mr-3 text-slate-400 mt-0.5" />
+              <div className="flex items-start text-slate-500 dark:text-slate-400">
+                <Clock className="h-5 w-5 mr-3 text-slate-500 dark:text-slate-400 mt-0.5" />
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">Waktu</p>
-                  <p className="text-sm font-semibold text-white">{agenda.time}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-0.5">Waktu</p>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white">{agenda.time}</p>
                 </div>
               </div>
             )}
 
             {agenda.location && (
-              <div className="flex items-start text-slate-400">
-                <MapPin className="h-5 w-5 mr-3 text-slate-400 mt-0.5" />
+              <div className="flex items-start text-slate-500 dark:text-slate-400">
+                <MapPin className="h-5 w-5 mr-3 text-slate-500 dark:text-slate-400 mt-0.5" />
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">Lokasi</p>
-                  <p className="text-sm font-semibold text-white">{agenda.location}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-0.5">Lokasi</p>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white">{agenda.location}</p>
                 </div>
               </div>
             )}
           </div>
 
           <div className="pl-2">
-            <div className="flex items-center text-white font-bold text-sm mb-3">
+            <div className="flex items-center text-slate-900 dark:text-white font-bold text-sm mb-3">
               <Info className="h-4 w-4 mr-2 text-blue-500" />
               Catatan / Deskripsi
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed bg-[#161622] p-4 rounded-xl border border-[#2a293d]">
+            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-[#161622] p-4 rounded-xl border border-slate-200 dark:border-[#2a293d]">
               {agenda.description || "Tidak ada catatan tambahan untuk agenda ini."}
             </p>
           </div>

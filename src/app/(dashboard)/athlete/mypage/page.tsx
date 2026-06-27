@@ -124,14 +124,14 @@ export default function CoachMyPage() {
         {/* ==========================================
             2. SLIDER CARD PENGUMUMAN
             ========================================== */}
-        <section>
-          <div className="flex items-center justify-between mb-3">
+        <section className="mb-45">
+          <div className="flex items-center justify-between mb-0">
             <h3 className="font-bold text-sm text-slate-900 dark:text-white">Pengumuman Pusat</h3>
             <Badge variant="outline" className="text-[9px] bg-amber-900/30 text-amber-400 border-amber-800/50 uppercase tracking-widest font-bold">Penting</Badge>
           </div>
           <Carousel className="w-full" opts={{ align: "start", loop: false }}>
-            <CarouselContent className="-ml-2 py-4 -my-4">
-              <CarouselItem className="pl-2 basis-[85%] md:basis-[60%] lg:basis-[40%]">
+            <CarouselContent className="absolute left-0 mx-2 py-4 my-4 z-10">
+              <CarouselItem className="-pl-5 basis-[85%] md:basis-[60%] lg:basis-[40%]">
                 <div
                   onClick={() => router?.push('/athlete/mypage/announcement/1')}
                   className="bg-white dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] rounded-xl p-4 h-full hover:bg-slate-100 dark:hover:bg-[#2a293d] transition-colors cursor-pointer shadow-xl/30"
