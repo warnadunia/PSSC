@@ -2,8 +2,8 @@
 "use client"
 
 import { useState } from "react"
-import { 
-  MapPin, ChevronDown, ChevronUp, Users, Calendar, 
+import {
+  MapPin, ChevronDown, ChevronUp, Users, Calendar,
   Activity, Trophy, FileText, ClipboardCheck, Clock, CheckCircle2,
   Power, Calendar as CalendarIcon
 } from "lucide-react"
@@ -18,7 +18,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 
 export default function CoachMyPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  
+
   // Fake state to simulate checked-in or not based on query param (can be passed back or just simulated locally)
   // We'll assume the user is checked in if they have a query param `checkedin=true` or similar, 
   // but for now let's just keep it local. 
@@ -37,12 +37,12 @@ export default function CoachMyPage() {
 
   return (
     <div className="flex flex-col h-full bg-slate-50 relative pb-6 w-full">
-      
+
       {/* GLOBAL HEADER */}
       <GlobalHeader variant="pages" title="MyPage" />
 
       <main className="flex-1 px-4 md:px-6 lg:px-8 space-y-6 pt-5 w-full">
-        
+
         {/* ==========================================
             0. WELCOME HEADER
             ========================================== */}
@@ -52,10 +52,10 @@ export default function CoachMyPage() {
             <div className="absolute bottom-0 right-1 h-[18px] w-[18px] bg-green-500 rounded-full border-[2.5px] border-slate-50"></div>
           </div>
           <div>
-            <p className="text-[13px] text-slate-600 font-medium tracking-tight mb-0.5">Salam Profesional Coach</p>
+            <p className="text-[13px] text-slate-600 font-medium tracking-tight mb-0.5">Salam Semangat Calon Juara!</p>
             <h1 className="text-2xl font-normal text-black leading-none mb-1">John Doe</h1>
             <span className="inline-block px-1.5 py-0.5 bg-[#FBDCD3] text-[#7A2E1A] text-[11px] font-medium rounded-sm">
-              Head Coach, PSSC Yogyakarta
+              Level Basic 2, PSSC Yogyakarta
             </span>
           </div>
         </section>
@@ -93,7 +93,7 @@ export default function CoachMyPage() {
                 </div>
 
                 {/* Big Power Button */}
-                <div 
+                <div
                   onClick={() => router?.push(isCheckedIn ? '/athlete/mypage/attendance?type=out' : '/athlete/mypage/attendance?type=in')}
                   className="cursor-pointer bg-[#e0e0e0] rounded-2xl p-2 shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] active:shadow-[inset_6px_6px_10px_#bebebe,inset_-6px_-6px_10px_#ffffff] transition-all"
                 >
@@ -130,7 +130,7 @@ export default function CoachMyPage() {
           <Carousel className="w-full" opts={{ align: "start", loop: false }}>
             <CarouselContent className="-ml-2">
               <CarouselItem className="pl-2 basis-[85%] md:basis-[60%] lg:basis-[40%]">
-                <div 
+                <div
                   onClick={() => router?.push('/athlete/mypage/announcement/1')}
                   className="bg-white border rounded-xl p-4 shadow-sm h-full hover:shadow-md transition-shadow cursor-pointer"
                 >
@@ -143,7 +143,7 @@ export default function CoachMyPage() {
                 </div>
               </CarouselItem>
               <CarouselItem className="pl-2 basis-[85%] md:basis-[60%] lg:basis-[40%]">
-                <div 
+                <div
                   onClick={() => router?.push('/athlete/mypage/announcement/2')}
                   className="bg-white border rounded-xl p-4 shadow-sm h-full hover:shadow-md transition-shadow cursor-pointer"
                 >
@@ -203,14 +203,13 @@ export default function CoachMyPage() {
                           <TableCell className="text-[11px] font-medium p-3 text-slate-700">{row.date}</TableCell>
                           <TableCell className="text-[11px] text-slate-500 p-3 font-mono">{row.time}</TableCell>
                           <TableCell className="text-right p-3">
-                            <Badge 
-                              variant="outline" 
-                              className={`text-[9px] px-1.5 py-0.5 border-none font-medium whitespace-nowrap ${
-                                row.status === "Hadir" ? "bg-emerald-100 text-emerald-700" : 
-                                row.status === "Terlambat" ? "bg-rose-100 text-rose-700" : 
-                                row.status === "Dinas Luar" ? "bg-blue-100 text-blue-700" : // Dinas = aktif
-                                "bg-slate-100 text-slate-600"
-                              }`}
+                            <Badge
+                              variant="outline"
+                              className={`text-[9px] px-1.5 py-0.5 border-none font-medium whitespace-nowrap ${row.status === "Hadir" ? "bg-emerald-100 text-emerald-700" :
+                                  row.status === "Terlambat" ? "bg-rose-100 text-rose-700" :
+                                    row.status === "Dinas Luar" ? "bg-blue-100 text-blue-700" : // Dinas = aktif
+                                      "bg-slate-100 text-slate-600"
+                                }`}
                             >
                               {row.status === "Dinas Luar" && <CheckCircle2 className="h-2.5 w-2.5 mr-1 inline" />}
                               {row.status}
