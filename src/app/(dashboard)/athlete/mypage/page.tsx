@@ -46,10 +46,10 @@ export default function CoachMyPage() {
         {/* ==========================================
             0. WELCOME HEADER
             ========================================== */}
-        <section className="flex items-center gap-4 mb-2">
+        <section className="flex items-center gap-4 mb-5">
           <div className="relative shrink-0">
             <div className="h-[72px] w-[72px] rounded-full bg-[#2a293d] border-[1.5px] border-slate-600 overflow-hidden">
-              <img src="https://i.pravatar.cc/150?u=johndoe" alt="Profile" className="h-full w-full object-cover" />
+              <img src="https://i.pravatar.cc/150?img=62" alt="Profile" className="h-full w-full object-cover" />
             </div>
             <div className="absolute bottom-0 right-1 h-[18px] w-[18px] bg-emerald-500 rounded-full border-[2.5px] border-[#161622]"></div>
           </div>
@@ -208,9 +208,9 @@ export default function CoachMyPage() {
                             <Badge
                               variant="outline"
                               className={`text-[9px] px-1.5 py-0.5 border-none font-bold whitespace-nowrap uppercase tracking-widest ${row.status === "Hadir" ? "bg-emerald-500/20 text-emerald-400" :
-                                  row.status === "Terlambat" ? "bg-[#ff4b4b]/20 text-[#ff4b4b]" :
-                                    row.status === "Dinas Luar" ? "bg-blue-500/20 text-blue-400" : // Dinas = aktif
-                                      "bg-[#2a293d] text-slate-400"
+                                row.status === "Terlambat" ? "bg-[#ff4b4b]/20 text-[#ff4b4b]" :
+                                  row.status === "Dinas Luar" ? "bg-blue-500/20 text-blue-400" : // Dinas = aktif
+                                    "bg-[#2a293d] text-slate-400"
                                 }`}
                             >
                               {row.status === "Dinas Luar" && <CheckCircle2 className="h-2.5 w-2.5 mr-1 inline" />}

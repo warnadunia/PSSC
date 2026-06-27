@@ -65,7 +65,7 @@ const classPerformanceData = [
 export default function TrainingPage() {
   const router = useRouter()
   const [selectedClasses, setSelectedClasses] = useState<string[]>(["Elite"])
-  
+
   // State untuk melacak atlet mana yang ditugaskan ke program mana
   const [assignedTasks, setAssignedTasks] = useState<Record<string, string[]>>({
     "pers-1": ["ath-1", "ath-2"] // Dummy: pers-1 udah di-assign ke 2 orang
@@ -111,7 +111,7 @@ export default function TrainingPage() {
       <GlobalHeader variant="pages" title="Training Center" />
 
       <main className="flex-1 px-4 md:px-6 pt-4 pb-28 space-y-5 w-full">
-        
+
         {/* ==========================================
             ANALYTICS CAROUSEL
             ========================================== */}
@@ -121,10 +121,10 @@ export default function TrainingPage() {
               <Activity className="h-4 w-4 text-primary" /> Analytics Training
             </h2>
           </div>
-          
+
           <ScrollArea className="w-full whitespace-nowrap pb-4">
             <div className="flex w-max space-x-4">
-              
+
               {/* Grafik Penyelesaian Latihan */}
               <Card className="w-[280px] shadow-sm border-border bg-card shrink-0">
                 <CardHeader className="p-4 pb-0">
@@ -216,7 +216,7 @@ export default function TrainingPage() {
         </section>
 
         <Tabs defaultValue="program" className="w-full">
-          <TabsList className="w-full grid grid-cols-3 bg-primary p-1 rounded-full mb-4 gap-1">
+          <TabsList className="w-full grid grid-cols-3 bg-primary px-1 py-0 rounded-xl mb-4 gap-1">
             <TabsTrigger value="program" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm font-bold transition-all rounded-full text-primary-foreground">
               Program
             </TabsTrigger>
@@ -281,7 +281,7 @@ export default function TrainingPage() {
 
           {/* TAB 2: TIME TRIAL */}
           <TabsContent value="time-trial" className="space-y-4">
-            <Button 
+            <Button
               onClick={() => setIsTimeTrialSheetOpen(true)}
               className="w-full bg-primary hover:bg-primary/90 h-12 text-sm font-bold shadow-md rounded-xl text-primary-foreground uppercase tracking-widest"
             >
@@ -328,12 +328,12 @@ export default function TrainingPage() {
                         </div>
                         <p className="text-xs text-muted-foreground line-clamp-2">{prog.desc}</p>
                       </div>
-                      
+
                       {/* Tombol Tugaskan & Status */}
                       <div className="pt-3 border-t border-border space-y-3">
-                        <Button 
+                        <Button
                           onClick={() => handleOpenAssign(prog.id)}
-                          variant="outline" 
+                          variant="outline"
                           className="w-full text-xs font-bold border-border text-foreground hover:bg-muted h-9 rounded-xl"
                         >
                           <CheckSquare className="mr-2 h-4 w-4 text-primary" /> Tugaskan Atlet
@@ -368,8 +368,8 @@ export default function TrainingPage() {
                   <label htmlFor={`assign-${ath.id}`} className="text-sm font-semibold cursor-pointer flex-1 text-foreground">
                     {ath.name} <span className="text-[10px] text-muted-foreground font-normal block">{ath.level}</span>
                   </label>
-                  <Checkbox 
-                    id={`assign-${ath.id}`} 
+                  <Checkbox
+                    id={`assign-${ath.id}`}
                     className="h-5 w-5 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                     checked={tempAssign.includes(ath.id)}
                     onCheckedChange={(checked) => {
@@ -401,7 +401,7 @@ export default function TrainingPage() {
               <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Gaya Renang</label>
               <div className="grid grid-cols-2 gap-2">
                 {["Bebas", "Dada", "Punggung", "Kupu"].map(gaya => (
-                  <div 
+                  <div
                     key={gaya}
                     onClick={() => setTtGaya(gaya)}
                     className={`p-3 text-center rounded-xl border text-sm font-bold cursor-pointer transition-colors ${ttGaya === gaya ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-border text-foreground hover:bg-muted'}`}
@@ -411,12 +411,12 @@ export default function TrainingPage() {
                 ))}
               </div>
             </div>
-            
+
             <div className="space-y-2">
               <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Jarak (Meter)</label>
               <div className="grid grid-cols-4 gap-2">
                 {["25M", "50M", "100M", "200M"].map(jarak => (
-                  <div 
+                  <div
                     key={jarak}
                     onClick={() => setTtJarak(jarak)}
                     className={`p-2 text-center rounded-xl border text-xs font-bold cursor-pointer transition-colors ${ttJarak === jarak ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-border text-foreground hover:bg-muted'}`}

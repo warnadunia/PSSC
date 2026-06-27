@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge"
 interface GlobalHeaderProps {
   variant: "pages" | "subpage" | "slideup"
   title: string
-  onClose?: () => void 
+  onClose?: () => void
 }
 
 export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
@@ -35,9 +35,8 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
     return (
       <>
         <div ref={observerTarget} className="absolute top-0 left-0 w-full h-1" />
-        <header className={`sticky top-0 z-40 w-full flex h-14 items-center gap-3 px-4 transition-all duration-300 ${
-          isScrolled ? "bg-[#602727] shadow-lg border-b border-[#ff4b4b]/20" : "bg-transparent"
-        }`}>
+        <header className={`sticky top-0 z-40 w-full flex h-14 items-center gap-3 px-4 transition-all duration-300 ${isScrolled ? "bg-[#602727] shadow-lg border-b border-[#ff4b4b]/20" : "bg-transparent"
+          }`}>
           <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 -ml-2 shrink-0 transition-colors" onClick={() => router.back()}>
             <ArrowLeft className="h-5 w-5" />
           </Button>
@@ -51,28 +50,27 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
   return (
     <>
       <div ref={observerTarget} className="absolute top-0 left-0 w-full h-1" />
-      <header className={`sticky top-0 z-40 w-full flex h-14 items-center justify-between px-4 transition-all duration-300 ${
-        isScrolled ? "bg-[#602727] shadow-lg border-b border-[#ff4b4b]/20" : "bg-transparent"
-      }`}>
+      <header className={`sticky top-0 z-40 w-full flex h-14 items-center justify-between px-4 transition-all duration-300 ${isScrolled ? "bg-[#602727] shadow-lg border-b border-[#ff4b4b]/20" : "bg-transparent"
+        }`}>
         <div className="flex items-center gap-3 overflow-hidden">
           <Sheet>
             <SheetTrigger className="inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-white/10 -ml-2 shrink-0 text-white transition-colors">
               <Menu className="h-5 w-5" />
             </SheetTrigger>
-            
+
             <SheetContent side="left" className="w-[280px] bg-[#1f1e2e] border-[#2a293d] text-white p-0 flex flex-col h-full border-r">
-              
+
               {/* LOGO & CLUB NAME */}
               <div className="pt-8 pb-6 px-5 border-b border-[#2a293d] flex flex-col items-start shrink-0 space-y-4 relative overflow-hidden">
                 {/* Subtle red glow behind logo */}
                 <div className="absolute top-4 -left-4 w-32 h-32 bg-[#ff4b4b]/10 blur-3xl rounded-full pointer-events-none" />
-                
+
                 <div className="w-24 h-24 bg-white rounded-3xl flex items-center justify-center shadow-xl shadow-black/40 p-2.5 relative z-10 border-4 border-[#1f1e2e] ring-2 ring-[#2a293d]">
                   <img src="/assets/images/logo-parisakti.webp" alt="PSSC Logo" className="h-full w-full object-contain" />
                 </div>
-                
+
                 <div className="text-left relative z-10 w-full">
-                  <h2 className="font-heading font-black tracking-widest uppercase text-[15px] leading-tight text-white mb-1.5">Pari Sakti<br/>Swimming Club</h2>
+                  <h2 className="font-heading font-black tracking-widest uppercase text-[15px] leading-tight text-white mb-1.5">Pari Sakti<br />Swimming Club</h2>
                   <p className="text-[10px] text-[#ff4b4b] font-bold uppercase tracking-widest">Yogyakarta</p>
                 </div>
               </div>
@@ -83,7 +81,7 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
                   <CalendarClock className="mr-3 h-5 w-5 text-[#ff4b4b]" />
                   <span className="font-bold text-sm tracking-wide">Ijin / Cuti</span>
                 </Button>
-                
+
                 <Button variant="ghost" className="w-full justify-start text-slate-300 hover:text-white hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all">
                   <LayoutDashboard className="mr-3 h-5 w-5 text-blue-400" />
                   <span className="font-bold text-sm tracking-wide">Menu A</span>
@@ -102,7 +100,7 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
 
               {/* BOTTOM SECTION */}
               <div className="p-4 border-t border-[#2a293d] space-y-4 shrink-0 bg-[#161622]">
-                
+
                 {/* THEME SWITCHER */}
                 <div className="flex items-center justify-between bg-[#1f1e2e] p-1.5 rounded-xl border border-[#2a293d]">
                   <Button variant="ghost" className="flex-1 h-8 rounded-lg text-slate-400 hover:text-white font-bold text-xs hover:bg-transparent">
@@ -132,9 +130,9 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
           </Sheet>
           <h1 className="font-bold text-white text-lg uppercase tracking-widest truncate">{title === 'MyPage' ? 'PSSC YOGYAKARTA' : title}</h1>
         </div>
-        
+
         <div className="flex items-center gap-1 shrink-0">
-          
+
           <Sheet>
             <SheetTrigger render={<Button variant="ghost" size="icon" className="text-white hover:bg-white/10 relative transition-colors" />}>
               <Search className="h-5 w-5" />
@@ -146,9 +144,9 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
               <div className="p-4 flex-1">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                  <input 
-                    type="text" 
-                    placeholder="Cari atlet, program, agenda..." 
+                  <input
+                    type="text"
+                    placeholder="Cari atlet, program, agenda..."
                     className="w-full bg-[#161622] border border-[#2a293d] rounded-xl pl-9 pr-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-[#ff4b4b] focus:ring-1 focus:ring-[#ff4b4b] transition-all"
                     autoFocus
                   />
@@ -175,7 +173,7 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
                 </SheetTitle>
                 <Badge className="bg-[#ff4b4b]/20 text-[#ff4b4b] hover:bg-[#ff4b4b]/30 shadow-none border-none mt-0">2 Baru</Badge>
               </SheetHeader>
-              
+
               <div className="flex-1 overflow-y-auto">
                 <div className="p-4 border-b border-[#2a293d] hover:bg-[#2a293d] transition-colors cursor-pointer relative overflow-hidden">
                   <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#ff4b4b]" />
@@ -185,7 +183,7 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
                     <span className="text-[10px] text-[#ff4b4b] font-bold uppercase tracking-widest">10 Menit lalu</span>
                   </div>
                 </div>
-                
+
                 <div className="p-4 border-b border-[#2a293d] hover:bg-[#2a293d] transition-colors cursor-pointer relative overflow-hidden">
                   <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#ff4b4b]" />
                   <div className="pl-3">
@@ -194,7 +192,7 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
                     <span className="text-[10px] text-[#ff4b4b] font-bold uppercase tracking-widest">2 Jam lalu</span>
                   </div>
                 </div>
-                
+
                 <div className="p-4 hover:bg-[#2a293d] transition-colors cursor-pointer">
                   <div className="pl-3">
                     <p className="text-sm font-bold text-slate-300 mb-1">Ijin Atlet: Dinda Aulia</p>
@@ -203,7 +201,7 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
                   </div>
                 </div>
               </div>
-              
+
               <div className="p-3 bg-[#161622] border-t border-[#2a293d] text-center shrink-0">
                 <button className="text-[10px] font-bold text-[#ff4b4b] uppercase tracking-widest hover:underline">
                   Lihat Semua Notifikasi
@@ -216,4 +214,4 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
       </header>
     </>
   )
-}
+}

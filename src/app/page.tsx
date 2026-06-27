@@ -24,24 +24,24 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-[100dvh] flex items-center justify-center relative overflow-hidden bg-[#161622] font-sans">
-      
+
       {/* Global Background Gradient */}
       <div className="absolute top-0 left-0 right-0 h-[60vh] bg-gradient-to-b from-[#602727] via-[#331c1c] to-transparent pointer-events-none z-0" />
 
       {/* Watermark Logo */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-        <img 
-          src="/assets/images/logo-parisakti.png" 
-          alt="Watermark" 
-          className="w-[120%] max-w-[600px] object-contain opacity-50" 
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none -top-100">
+        <img
+          src="/assets/images/logo-parisakti.png"
+          alt="Watermark"
+          className="w-[200%] max-w-[1000px] object-contain opacity-10"
         />
       </div>
-      
+
       <div className="relative z-10 w-full max-w-md px-6">
-        
+
         {/* Header Area */}
-        <div className="flex flex-col items-center mb-10 pt-10">
-          <div className="w-28 h-28 bg-white rounded-full flex items-center justify-center shadow-2xl mb-4 border-4 border-[#1f1e2e] ring-2 ring-[#2a293d] p-3 z-10">
+        <div className="flex flex-col items-center mb-10 pt-5">
+          <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-2xl mb-4 border-2 border-[#1f1e2e] z-10">
             <img src="/assets/images/logo-parisakti.png" alt="PSSC Logo" className="h-full w-full object-contain drop-shadow-md" />
           </div>
           <h1 className="text-5xl font-heading font-bold text-white tracking-widest uppercase shadow-black/50 drop-shadow-md">
@@ -54,18 +54,18 @@ export default function LoginPage() {
 
         {/* Login Form Card */}
         <div className="bg-[#1f1e2e] shadow-2xl shadow-black/50 rounded-3xl p-8 space-y-6">
-          
+
           <div className="space-y-2">
             <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-1">Email / ID</label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <User className="h-5 w-5 text-[#ff4b4b]" />
               </div>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email" 
+                placeholder="Enter your email"
                 className="w-full bg-[#161622] text-white rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-1 focus:ring-[#ff4b4b] border-none placeholder:text-slate-600 transition-all font-medium"
               />
             </div>
@@ -77,18 +77,18 @@ export default function LoginPage() {
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <Lock className="h-5 w-5 text-[#ff4b4b]" />
               </div>
-              <input 
-                type="password" 
+              <input
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••" 
+                placeholder="••••••••"
                 className="w-full bg-[#161622] text-white rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-1 focus:ring-[#ff4b4b] border-none placeholder:text-slate-600 transition-all font-medium"
               />
             </div>
           </div>
 
           <div className="pt-4 grid grid-cols-2 gap-4">
-            <button 
+            <button
               onClick={() => handleLogin("coach")}
               disabled={isLoading !== null}
               className="flex items-center justify-center gap-2 w-full bg-[#ff4b4b] hover:bg-[#e03c3c] text-white font-bold tracking-widest uppercase py-4 px-4 rounded-xl shadow-lg shadow-red-500/20 transition-all disabled:opacity-70 text-sm"
@@ -99,8 +99,8 @@ export default function LoginPage() {
                 "Coach"
               )}
             </button>
-            
-            <button 
+
+            <button
               onClick={() => handleLogin("athlete")}
               disabled={isLoading !== null}
               className="flex items-center justify-center gap-2 w-full bg-[#2a293d] hover:bg-[#34334a] text-white font-bold tracking-widest uppercase py-4 px-4 rounded-xl shadow-lg transition-all disabled:opacity-70 text-sm"
@@ -113,7 +113,7 @@ export default function LoginPage() {
             </button>
           </div>
         </div>
-        
+
         <div className="mt-8 text-center">
           <p className="text-[10px] text-slate-500 font-bold tracking-widest uppercase">
             VERSION 1.0.0 • PSSC

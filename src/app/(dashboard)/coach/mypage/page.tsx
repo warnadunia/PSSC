@@ -2,8 +2,8 @@
 "use client"
 
 import { useState } from "react"
-import { 
-  MapPin, ChevronDown, ChevronUp, Users, Calendar, 
+import {
+  MapPin, ChevronDown, ChevronUp, Users, Calendar,
   Activity, Trophy, FileText, ClipboardCheck, Clock, CheckCircle2,
   Power, Calendar as CalendarIcon
 } from "lucide-react"
@@ -18,7 +18,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 
 export default function CoachMyPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  
+
   // Fake state to simulate checked-in or not based on query param (can be passed back or just simulated locally)
   // We'll assume the user is checked in if they have a query param `checkedin=true` or similar, 
   // but for now let's just keep it local. 
@@ -38,19 +38,21 @@ export default function CoachMyPage() {
   return (
     // THEME UPDATE: Background utama transparan karena kita pakai fixed background di belakang
     <div className="flex flex-col min-h-full text-white relative pb-6 w-full z-0">
-      
+
       {/* GLOBAL HEADER */}
       <GlobalHeader variant="pages" title="MyPage" />
 
       <main className="flex-1 px-4 md:px-6 lg:px-8 space-y-6 pt-5 w-full">
-        
+
         {/* ==========================================
             0. WELCOME HEADER
             ========================================== */}
-        <section className="flex items-center gap-4 mb-2">
+        <section className="flex items-center gap-4 mb-5">
           <div className="relative shrink-0">
             {/* THEME UPDATE: Border avatar disesuaikan dengan tema gelap */}
-            <div className="h-[72px] w-[72px] rounded-full bg-[#2a293d] border-2 border-[#ff4b4b]"></div>
+            <div className="h-[72px] w-[72px] rounded-full bg-[#2a293d] border-[1.5px] border-slate-600 overflow-hidden">
+              <img src="https://i.pravatar.cc/150?img=69" alt="Profile" className="h-full w-full object-cover" />
+            </div>
             <div className="absolute bottom-0 right-1 h-[18px] w-[18px] bg-emerald-500 rounded-full border-[2.5px] border-[#602727]"></div>
           </div>
           <div>
@@ -99,7 +101,7 @@ export default function CoachMyPage() {
 
                 {/* Big Power Button */}
                 {/* THEME UPDATE: Style tombol disesuaikan untuk dark mode */}
-                <div 
+                <div
                   onClick={() => router?.push(isCheckedIn ? '/coach/mypage/attendance?type=out' : '/coach/mypage/attendance?type=in')}
                   className="cursor-pointer bg-[#2a293d] rounded-2xl p-2 shadow-inner border border-[#34334a] transition-all hover:bg-[#34334a]"
                 >
@@ -137,7 +139,7 @@ export default function CoachMyPage() {
             <CarouselContent className="-ml-2">
               <CarouselItem className="pl-2 basis-[85%] md:basis-[60%] lg:basis-[40%]">
                 {/* THEME UPDATE: Card pengumuman menggunakan dark navy */}
-                <div 
+                <div
                   onClick={() => router?.push('/coach/mypage/announcement/1')}
                   className="bg-[#1f1e2e] border border-[#2a293d] rounded-xl p-4 shadow-md h-full hover:border-[#ff4b4b]/50 transition-colors cursor-pointer"
                 >
@@ -150,7 +152,7 @@ export default function CoachMyPage() {
                 </div>
               </CarouselItem>
               <CarouselItem className="pl-2 basis-[85%] md:basis-[60%] lg:basis-[40%]">
-                <div 
+                <div
                   onClick={() => router?.push('/coach/mypage/announcement/2')}
                   className="bg-[#1f1e2e] border border-[#2a293d] rounded-xl p-4 shadow-md h-full hover:border-blue-500/50 transition-colors cursor-pointer"
                 >
@@ -192,7 +194,7 @@ export default function CoachMyPage() {
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400 text-center group-hover:text-white transition-colors">Daftar Atlet</span>
               </div>
-              
+
               <CollapsibleTrigger className="md:hidden flex flex-col items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 w-full group">
                 <div className="h-12 w-12 rounded-2xl bg-[#2a293d] flex items-center justify-center border border-[#34334a] group-hover:bg-[#34334a] transition-colors shadow-inner">
                   {isMenuOpen ? <ChevronUp className="h-5 w-5 text-slate-300" /> : <ChevronDown className="h-5 w-5 text-slate-300" />}
@@ -214,7 +216,7 @@ export default function CoachMyPage() {
                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400 text-center group-hover:text-white transition-colors">Kalender</span>
               </div>
             </div>
-            
+
             <CollapsibleContent className="grid grid-cols-4 gap-3 pt-1 pb-2 md:hidden">
               <div className="flex flex-col items-center gap-1.5 cursor-pointer group">
                 <div className="h-12 w-12 rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 group-hover:bg-amber-500/20 transition-colors shadow-inner">
@@ -275,14 +277,13 @@ export default function CoachMyPage() {
                           <TableCell className="text-[11px] font-bold p-3 text-white">{row.date}</TableCell>
                           <TableCell className="text-[11px] text-slate-400 p-3 font-mono tracking-wider">{row.time}</TableCell>
                           <TableCell className="text-right p-3">
-                            <Badge 
-                              variant="outline" 
-                              className={`text-[9px] px-2 py-0.5 font-bold uppercase tracking-widest whitespace-nowrap ${
-                                row.status === "Hadir" ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : 
-                                row.status === "Terlambat" ? "bg-rose-500/10 border-rose-500/30 text-rose-400" : 
-                                row.status === "Dinas Luar" ? "bg-blue-500/10 border-blue-500/30 text-blue-400" : // Dinas = aktif[cite: 11]
-                                "bg-slate-800 border-slate-700 text-slate-400"
-                              }`}
+                            <Badge
+                              variant="outline"
+                              className={`text-[9px] px-2 py-0.5 font-bold uppercase tracking-widest whitespace-nowrap ${row.status === "Hadir" ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400" :
+                                row.status === "Terlambat" ? "bg-rose-500/10 border-rose-500/30 text-rose-400" :
+                                  row.status === "Dinas Luar" ? "bg-blue-500/10 border-blue-500/30 text-blue-400" : // Dinas = aktif[cite: 11]
+                                    "bg-slate-800 border-slate-700 text-slate-400"
+                                }`}
                             >
                               {row.status === "Dinas Luar" && <CheckCircle2 className="h-2.5 w-2.5 mr-1 inline" />}
                               {row.status}
