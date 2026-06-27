@@ -80,6 +80,7 @@ function TrainingDetailContent() {
   const trialTimerRef = useRef<NodeJS.Timeout | null>(null)
   
   const [splits, setSplits] = useState<{ id: number, time: number, athleteId: string }[]>([])
+  const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({})
 
   const toggleTrialTimer = () => {
     if (isTrialRunning) {
