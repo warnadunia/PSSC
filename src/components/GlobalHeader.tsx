@@ -136,7 +136,12 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate tracking-wide">John Doe</p>
                     <p className="text-[10px] text-slate-500 dark:text-slate-400 font-medium truncate">Head Coach</p>
                   </div>
-                  <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-500 dark:text-slate-400 hover:text-[#ff4b4b] hover:bg-rose-50 dark:hover:bg-[#ff4b4b]/10 rounded-lg shrink-0 transition-colors">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="h-8 w-8 text-slate-500 dark:text-slate-400 hover:text-[#ff4b4b] hover:bg-rose-50 dark:hover:bg-[#ff4b4b]/10 rounded-lg shrink-0 transition-colors"
+                    onClick={() => router.push("/")}
+                  >
                     <LogOut className="h-4 w-4" />
                   </Button>
                 </div>

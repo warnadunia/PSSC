@@ -44,7 +44,7 @@ export default function AthleteSettingsPage() {
 
   const handleLogout = () => {
     // Add logout logic later
-    router.push("/login")
+    router.push("/")
   }
 
   return (
