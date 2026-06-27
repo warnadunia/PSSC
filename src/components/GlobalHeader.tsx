@@ -81,7 +81,7 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
 
               {/* MAIN MENU ITEMS */}
               <div className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
-                <SheetClose asChild>
+                <SheetClose render={
                   <Button 
                     variant="ghost" 
                     onClick={() => {
@@ -92,7 +92,7 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
                     <CalendarClock className="mr-3 h-5 w-5 text-[#ff4b4b]" />
                     <span className="font-bold text-sm tracking-wide">Ijin / Cuti</span>
                   </Button>
-                </SheetClose>
+                } />
 
                 <Button variant="ghost" className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all">
                   <LayoutDashboard className="mr-3 h-5 w-5 text-blue-500 dark:text-blue-400" />
