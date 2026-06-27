@@ -37,7 +37,7 @@ export default function HelpCenterPage() {
   }
 
   return (
-    <div className="flex flex-col min-h-[100dvh] w-full relative bg-slate-50 dark:bg-[#161622] font-sans">
+    <div className="flex flex-col min-h-[100dvh] w-full relative bg-transparent font-sans">
       <GlobalHeader variant="subpage" title="Pusat Bantuan" />
 
       <main className="flex-1 overflow-y-auto w-full pb-32">
@@ -74,7 +74,7 @@ export default function HelpCenterPage() {
                   
                   {openIndex === index && (
                     <div className="px-5 pb-5 pt-1 bg-white dark:bg-[#1f1e2e]">
-                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed p-3 bg-slate-50 dark:bg-[#161622] rounded-xl border border-slate-100 dark:border-[#2a293d]">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed p-3 bg-transparent rounded-xl border border-slate-100 dark:border-[#2a293d]">
                         {faq.answer}
                       </p>
                     </div>

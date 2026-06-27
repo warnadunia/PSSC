@@ -28,7 +28,7 @@ export default function ProfileReadPage() {
   }
 
   return (
-    <div className="flex flex-col min-h-[100dvh] w-full relative bg-slate-50 dark:bg-[#161622] font-sans">
+    <div className="flex flex-col min-h-[100dvh] w-full relative bg-transparent font-sans">
       <GlobalHeader variant="subpage" title="Profil & Info Pribadi" />
 
       <main className="flex-1 overflow-y-auto w-full pb-32">

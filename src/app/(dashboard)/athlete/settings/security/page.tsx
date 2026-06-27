@@ -62,7 +62,7 @@ export default function SecurityPage() {
   }
 
   return (
-    <div className="flex flex-col min-h-[100dvh] w-full relative bg-slate-50 dark:bg-[#161622] font-sans">
+    <div className="flex flex-col min-h-[100dvh] w-full relative bg-transparent font-sans">
       <GlobalHeader variant="subpage" title="Keamanan & Kata Sandi" />
 
       <main className="flex-1 overflow-y-auto w-full pb-32">
@@ -83,7 +83,7 @@ export default function SecurityPage() {
                   onChange={(e) => setCurrentPassword(e.target.value)}
                   required
                   placeholder="Masukkan kata sandi lama"
-                  className="w-full bg-slate-50 dark:bg-[#161622] text-slate-900 dark:text-white rounded-xl p-3.5 border border-slate-200 dark:border-[#2a293d] focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all font-medium text-sm"
+                  className="w-full bg-transparent text-slate-900 dark:text-white rounded-xl p-3.5 border border-slate-200 dark:border-[#2a293d] focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all font-medium text-sm"
                 />
               </div>
 
@@ -95,7 +95,7 @@ export default function SecurityPage() {
                   onChange={(e) => setNewPassword(e.target.value)}
                   required
                   placeholder="Minimal 8 karakter"
-                  className="w-full bg-slate-50 dark:bg-[#161622] text-slate-900 dark:text-white rounded-xl p-3.5 border border-slate-200 dark:border-[#2a293d] focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all font-medium text-sm"
+                  className="w-full bg-transparent text-slate-900 dark:text-white rounded-xl p-3.5 border border-slate-200 dark:border-[#2a293d] focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all font-medium text-sm"
                 />
               </div>
 
@@ -107,7 +107,7 @@ export default function SecurityPage() {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                   placeholder="Ulangi kata sandi baru"
-                  className="w-full bg-slate-50 dark:bg-[#161622] text-slate-900 dark:text-white rounded-xl p-3.5 border border-slate-200 dark:border-[#2a293d] focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all font-medium text-sm"
+                  className="w-full bg-transparent text-slate-900 dark:text-white rounded-xl p-3.5 border border-slate-200 dark:border-[#2a293d] focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all font-medium text-sm"
                 />
               </div>
 
@@ -147,7 +147,7 @@ export default function SecurityPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Masukkan email terdaftar"
-                      className="w-full bg-slate-50 dark:bg-[#161622] text-slate-900 dark:text-white rounded-xl p-3.5 pl-10 border border-slate-200 dark:border-[#2a293d] focus:outline-none focus:ring-2 focus:ring-[#ff4b4b]/50 focus:border-[#ff4b4b] transition-all font-medium text-sm"
+                      className="w-full bg-transparent text-slate-900 dark:text-white rounded-xl p-3.5 pl-10 border border-slate-200 dark:border-[#2a293d] focus:outline-none focus:ring-2 focus:ring-[#ff4b4b]/50 focus:border-[#ff4b4b] transition-all font-medium text-sm"
                     />
                   </div>
                 </div>
@@ -189,7 +189,7 @@ export default function SecurityPage() {
                       value={otpCode}
                       onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, ''))}
                       placeholder="e.g. 1234"
-                      className="w-full bg-slate-50 dark:bg-[#161622] text-slate-900 dark:text-white rounded-xl p-3.5 pl-10 border border-slate-200 dark:border-[#2a293d] focus:outline-none focus:ring-2 focus:ring-[#ff4b4b]/50 focus:border-[#ff4b4b] transition-all font-bold text-lg tracking-[0.5em]"
+                      className="w-full bg-transparent text-slate-900 dark:text-white rounded-xl p-3.5 pl-10 border border-slate-200 dark:border-[#2a293d] focus:outline-none focus:ring-2 focus:ring-[#ff4b4b]/50 focus:border-[#ff4b4b] transition-all font-bold text-lg tracking-[0.5em]"
                     />
                   </div>
                 </div>

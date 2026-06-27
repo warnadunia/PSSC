@@ -49,7 +49,7 @@ export default function ProfileEditPage() {
 
   // Reusable input component for styling
   const InputField = ({ label, type = "text", name, placeholder, required = false, as = "input", options = [] }: any) => {
-    const commonClass = "w-full bg-slate-50 dark:bg-[#161622] text-slate-900 dark:text-white rounded-xl p-3.5 border border-slate-200 dark:border-[#2a293d] focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all font-medium text-sm placeholder:text-slate-400 dark:placeholder:text-slate-600"
+    const commonClass = "w-full bg-transparent text-slate-900 dark:text-white rounded-xl p-3.5 border border-slate-200 dark:border-[#2a293d] focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all font-medium text-sm placeholder:text-slate-400 dark:placeholder:text-slate-600"
     
     return (
       <div className="space-y-1.5">
@@ -97,7 +97,7 @@ export default function ProfileEditPage() {
   }
 
   return (
-    <div className="flex flex-col min-h-[100dvh] w-full relative bg-slate-50 dark:bg-[#161622] font-sans">
+    <div className="flex flex-col min-h-[100dvh] w-full relative bg-transparent font-sans">
       <GlobalHeader variant="subpage" title="Edit Profil" />
 
       <main className="flex-1 overflow-y-auto w-full pb-32">
