@@ -27,6 +27,15 @@ export default function LoginPage() {
       
       {/* Global Background Gradient */}
       <div className="absolute top-0 left-0 right-0 h-[60vh] bg-gradient-to-b from-[#602727] via-[#331c1c] to-transparent pointer-events-none z-0" />
+
+      {/* Watermark Logo */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+        <img 
+          src="/assets/images/logo-parisakti.png" 
+          alt="Watermark" 
+          className="w-[120%] max-w-[600px] object-contain opacity-50" 
+        />
+      </div>
       
       <div className="relative z-10 w-full max-w-md px-6">
         
