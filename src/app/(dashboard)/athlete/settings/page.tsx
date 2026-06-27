@@ -48,7 +48,7 @@ export default function AthleteSettingsPage() {
   }
 
   return (
-    <div className="flex flex-col min-h-[100dvh] w-full bg-[#161622]">
+    <div className="flex flex-col min-h-[100dvh] w-full relative">
       <GlobalHeader variant="pages" title="Pengaturan" />
       
       <main className="flex-1 w-full pb-32">
