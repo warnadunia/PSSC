@@ -198,9 +198,9 @@ function TrainingDetailContent() {
                     <div className="flex justify-end items-center gap-3">
                       {type === 'program' ? (
                          <div className="text-[11px] font-bold uppercase tracking-wide">
-                            {item.athleteStatus === "Time" ? (
-                              <span className="text-emerald-600 bg-emerald-50 px-2 py-1 rounded border border-emerald-200">{item.athleteTime}</span>
-                            ) : item.athleteStatus === "Skip" ? (
+                            {(item as any).athleteStatus === "Time" ? (
+                              <span className="text-emerald-600 bg-emerald-50 px-2 py-1 rounded border border-emerald-200">{(item as any).athleteTime}</span>
+                            ) : (item as any).athleteStatus === "Skip" ? (
                               <span className="text-slate-400 bg-slate-50 px-2 py-1 rounded border border-slate-200">Skip</span>
                             ) : (
                               <span className="text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-200">Done</span>

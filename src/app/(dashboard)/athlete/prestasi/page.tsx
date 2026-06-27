@@ -1,9 +1,13 @@
+"use client"
+
+import { useRouter } from "next/navigation"
 import { Trophy, Plus, Medal, Activity, ChevronRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function PrestasiPage() {
+  const router = useRouter()
   const programRecords = [
     { id: 1, date: "24 Jun 2026", stroke: "Gaya Bebas", distance: "50m", time: "32.40s", status: "Personal Best 🚀" },
     { id: 2, date: "10 Jun 2026", stroke: "Gaya Dada", distance: "50m", time: "45.10s", status: "Stabil" },
@@ -66,7 +70,7 @@ export default function PrestasiPage() {
           <TabsContent value="kejuaraan" className="space-y-4 outline-none">
             
             {/* Input Manual Button */}
-            <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl h-12 shadow-sm font-bold shadow-indigo-200">
+            <Button onClick={() => router.push('/athlete/prestasi/input')} className="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl h-12 shadow-sm font-bold shadow-indigo-200">
               <Plus className="h-5 w-5 mr-2" />
               Input Manual Kejuaraan
             </Button>
