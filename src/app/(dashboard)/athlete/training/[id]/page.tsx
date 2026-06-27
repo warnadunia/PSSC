@@ -44,10 +44,7 @@ const drylandSets = [
   }
 ]
 
-const dummyAthletes = [
-  { id: "ath-1", name: "Bima Arya" },
-  { id: "ath-2", name: "Rara Kirana" },
-]
+
 
 function TrainingDetailContent() {
   const searchParams = useSearchParams()
@@ -79,8 +76,8 @@ function TrainingDetailContent() {
   const [isTrialRunning, setIsTrialRunning] = useState(false)
   const trialTimerRef = useRef<NodeJS.Timeout | null>(null)
   
-  // Data rekam waktu: { "ath-1": 15000, "ath-2": 16500 }
-  const [recordedTimes, setRecordedTimes] = useState<Record<string, number>>({})
+
+
   const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({})
 
   const toggleTrialTimer = () => {
@@ -94,17 +91,10 @@ function TrainingDetailContent() {
     }
   }
 
-  const handleRecordTime = (athId: string) => {
-    if (!recordedTimes[athId] && isTrialRunning) {
-      setRecordedTimes(prev => ({ ...prev, [athId]: trialTimeMs }))
-    }
-  }
-
   const closeTrialModal = () => {
     if (trialTimerRef.current) clearInterval(trialTimerRef.current)
     setIsTrialRunning(false)
     setTrialTimeMs(0)
-    setRecordedTimes({})
     setActiveTrialItem(null)
   }
 
@@ -264,69 +254,22 @@ function TrainingDetailContent() {
                 {isTrialRunning ? <><Square className="h-4 w-4 mr-2 fill-white" /> Pause Timer</> : <><Play className="h-4 w-4 mr-2 fill-white" /> Start Timer</>}
               </Button>
             </div>
-
-            {/* List Atlet & Tombol Finish Individu */}
-            <ScrollArea className="h-[250px] bg-white rounded-2xl border border-slate-200 p-2 shadow-inner">
-              <div className="space-y-2">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-2 py-1">Ketuk untuk merekam waktu atlet:</p>
-                {dummyAthletes.map(ath => {
-                  const hasFinished = recordedTimes[ath.id] !== undefined
-                  return (
-                    <div key={ath.id} className={`flex items-center justify-between p-3 rounded-xl border ${hasFinished ? 'bg-emerald-50 border-emerald-200' : 'bg-white border-slate-100 hover:border-slate-300'}`}>
-                      <span className="text-sm font-bold text-slate-800">{ath.name}</span>
-                      
-                      {hasFinished ? (
-                        <span className="font-mono text-emerald-700 font-bold text-sm bg-emerald-100 px-3 py-1 rounded-lg">
-                          {formatTime(recordedTimes[ath.id])}
-                        </span>
-                      ) : (
-                        <Button 
-                          disabled={!isTrialRunning}
-                          onClick={() => handleRecordTime(ath.id)}
-                          className="h-8 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-lg px-4"
-                        >
-                          Finish
-                        </Button>
-                      )}
-                    </div>
-                  )
-                })}
-              </div>
-            </ScrollArea>
           </div>
-          {/* TOMBOL SIMPAN (Baru muncul/aktif jika ada data) */}
-    <div className="p-4 bg-white border-t border-slate-100">
-      <Button 
-        className="w-full bg-red-600 hover:bg-red-700 h-12 font-bold shadow-md"
-        disabled={Object.keys(recordedTimes).length === 0}
-        onClick={() => {
-          alert(`Berhasil! ${Object.keys(recordedTimes).length} rekam waktu atlet telah disimpan.`);
-          closeTrialModal();
-        }}
-      >
-        <Save className="mr-2 h-4 w-4" /> Simpan Hasil Uji
-      </Button>
-    </div>
+          {/* TOMBOL SIMPAN */}
+          <div className="p-4 bg-white border-t border-slate-100">
+            <Button 
+              className="w-full bg-red-600 hover:bg-red-700 h-12 font-bold shadow-md"
+              disabled={trialTimeMs === 0}
+              onClick={() => {
+                alert(`Berhasil! Waktu latihan Anda telah dicatat.`);
+                closeTrialModal();
+              }}
+            >
+              <Save className="mr-2 h-4 w-4" /> Simpan Hasil Uji
+            </Button>
+          </div>
         </DialogContent>
       </Dialog>
-
-      {/* ==========================================
-          FLOATING TIMER (KHUSUS MODE PERSONAL)
-          ========================================== */}
-      {type === "personal" && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm bg-slate-900 p-2 rounded-2xl shadow-2xl border border-slate-700 flex items-center justify-between z-50">
-          <div className="pl-4">
-            <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Self Training</p>
-            <p className="text-2xl font-mono font-bold text-white tracking-tight">{formatTime(timeMs)}</p>
-          </div>
-          <Button 
-            onClick={toggleTimer} 
-            className={`h-12 w-32 rounded-xl font-bold text-sm ${isRunning ? 'bg-amber-500 hover:bg-amber-600' : 'bg-red-600 hover:bg-red-700'}`}
-          >
-            {isRunning ? <><Square className="h-4 w-4 mr-2 fill-white" /> Pause</> : <><Play className="h-4 w-4 mr-2 fill-white" /> Start</>}
-          </Button>
-        </div>
-      )}
     </div>
   )
 }
