@@ -11,24 +11,23 @@ import { Input } from "@/components/ui/input"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
-const defaultEvents = [
+const availableEvents = [
   "50 M Gaya Bebas", "100 M Gaya Bebas", "200 M Gaya Bebas", "400 M Gaya Bebas",
   "50 M Gaya Punggung", "100 M Gaya Punggung", "200 M Gaya Punggung",
   "50 M Gaya Dada", "100 M Gaya Dada", "200 M Gaya Dada",
   "50 M Gaya Kupu-kupu", "100 M Gaya Kupu-kupu", "200 M Gaya Kupu-kupu",
   "200 M Gaya Ganti Perorangan", "400 M Gaya Ganti Perorangan"
-].map((name, index) => ({
-  id: index + 1,
-  name,
-  timeRecord: "",
-  ranking: ""
-}))
+]
 
 export default function InputKejuaraanPage() {
   const router = useRouter()
   
   // Data Master
-  const [events, setEvents] = useState(defaultEvents)
+  const [events, setEvents] = useState<any[]>([])
+
+  const addEventRow = () => {
+    setEvents([...events, { id: Date.now(), name: "", timeRecord: "", ranking: "" }])
+  }
 
   // Edit Modal State
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
@@ -127,8 +126,8 @@ export default function InputKejuaraanPage() {
 
             <div className="space-y-1.5">
               <label className="text-xs font-semibold text-slate-600 block">Tingkat Kejuaraan</label>
-              <select className="w-full bg-slate-50 border border-slate-200 rounded-md text-sm p-2">
-                <option value="" disabled selected>Pilih Tingkat</option>
+              <select defaultValue="" className="w-full bg-slate-50 border border-slate-200 rounded-md text-sm p-2">
+                <option value="" disabled>Pilih Tingkat</option>
                 <option value="Klub">Antar Perkumpulan / Klub</option>
                 <option value="Kabupaten">Tingkat Kota / Kabupaten</option>
                 <option value="Provinsi">Tingkat Provinsi</option>
@@ -144,8 +143,8 @@ export default function InputKejuaraanPage() {
               </div>
               <div className="space-y-1.5">
                 <label className="text-xs font-semibold text-slate-600 block">Kelompok Usia (KU)</label>
-                <select className="w-full bg-slate-50 border border-slate-200 rounded-md text-xs p-2">
-                  <option value="" disabled selected>Pilih KU</option>
+                <select defaultValue="KU-2" className="w-full bg-slate-50 border border-slate-200 rounded-md text-xs p-2">
+                  <option value="" disabled>Pilih KU</option>
                   <option value="KU-4">KU 4 (10-11 Tahun)</option>
                   <option value="KU-3">KU 3 (12-13 Tahun)</option>
                   <option value="KU-2">KU 2 (14-15 Tahun)</option>
@@ -158,9 +157,14 @@ export default function InputKejuaraanPage() {
 
           {/* Tabel Nomor Kejuaraan */}
           <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-            <div className="p-4 bg-indigo-50 border-b border-indigo-100">
-              <h2 className="text-sm font-bold text-indigo-900">Tabel Nomor Kejuaraan</h2>
-              <p className="text-[10px] text-indigo-700 mt-0.5">Daftar nomor lomba standar Aquatic Indonesia.</p>
+            <div className="p-4 bg-indigo-50 border-b border-indigo-100 flex justify-between items-center">
+              <div>
+                <h2 className="text-sm font-bold text-indigo-900">Tabel Nomor Kejuaraan</h2>
+                <p className="text-[10px] text-indigo-700 mt-0.5">Daftar nomor lomba standar Aquatic Indonesia.</p>
+              </div>
+              <Button onClick={addEventRow} size="sm" className="h-8 bg-indigo-600 hover:bg-indigo-700 text-[10px] font-bold">
+                + Tambah Nomor
+              </Button>
             </div>
             
             <div className="overflow-x-auto">
@@ -177,7 +181,16 @@ export default function InputKejuaraanPage() {
                   {events.map((ev) => (
                     <tr key={ev.id} className="border-b border-slate-100 hover:bg-slate-50/50">
                       <td className="p-3">
-                        <span className="text-xs font-semibold text-slate-800">{ev.name}</span>
+                        <select 
+                          className="w-full bg-transparent border border-slate-200 rounded-md text-xs font-semibold text-slate-800 p-1.5 focus:ring-0"
+                          value={ev.name}
+                          onChange={(e) => setEvents(events.map(item => item.id === ev.id ? {...item, name: e.target.value} : item))}
+                        >
+                          <option value="" disabled>Pilih Nomor</option>
+                          {availableEvents.map(evt => (
+                             <option key={evt} value={evt}>{evt}</option>
+                          ))}
+                        </select>
                       </td>
                       <td className="p-3 text-center">
                         {ev.timeRecord ? (
