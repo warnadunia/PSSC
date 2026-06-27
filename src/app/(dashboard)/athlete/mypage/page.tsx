@@ -41,7 +41,7 @@ export default function CoachMyPage() {
       {/* GLOBAL HEADER */}
       <GlobalHeader variant="pages" title="MyPage" />
 
-      <main className="flex-1 px-4 md:px-6 lg:px-8 space-y-6 pt-5 w-full">
+      <main className="flex-1 px-4 md:px-6 lg:px-8 space-y-6 pt-5 pb-32 w-full">
 
         {/* ==========================================
             0. WELCOME HEADER
@@ -130,7 +130,7 @@ export default function CoachMyPage() {
             <Badge variant="outline" className="text-[9px] bg-amber-900/30 text-amber-400 border-amber-800/50 uppercase tracking-widest font-bold">Penting</Badge>
           </div>
           <Carousel className="w-full" opts={{ align: "start", loop: false }}>
-            <CarouselContent className="-ml-2">
+            <CarouselContent className="-ml-2 py-4 -my-4">
               <CarouselItem className="pl-2 basis-[85%] md:basis-[60%] lg:basis-[40%]">
                 <div
                   onClick={() => router?.push('/athlete/mypage/announcement/1')}
