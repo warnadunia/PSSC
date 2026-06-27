@@ -39,6 +39,15 @@ export default function CoachMyPage() {
     // THEME UPDATE: Background utama transparan karena kita pakai fixed background di belakang
     <div className="flex flex-col min-h-full text-white relative pb-6 w-full z-0">
 
+      {/* Watermark Logo */}
+      <div className="fixed inset-0 z-[-1] flex items-center justify-center pointer-events-none">
+        <img 
+          src="/assets/images/logo-parisakti.png" 
+          alt="Watermark" 
+          className="w-[120%] max-w-[600px] object-contain opacity-10" 
+        />
+      </div>
+
       {/* GLOBAL HEADER */}
       <GlobalHeader variant="pages" title="MyPage" />
 
