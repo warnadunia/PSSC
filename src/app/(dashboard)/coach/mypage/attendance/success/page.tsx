@@ -1,11 +1,13 @@
 "use client"
 
+import { Suspense } from "react"
+
 import { useSearchParams, useRouter } from "next/navigation"
 import { CheckCircle, Home } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
-export default function AttendanceSuccessPage() {
+function AttendanceSuccessContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const type = searchParams.get("type") || "in"
@@ -51,5 +53,13 @@ export default function AttendanceSuccessPage() {
       </Button>
 
     </div>
+  )
+}
+
+export default function AttendanceSuccessPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center h-[100dvh] bg-white text-slate-500 font-medium">Memuat...</div>}>
+      <AttendanceSuccessContent />
+    </Suspense>
   )
 }

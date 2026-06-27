@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { Suspense, useState, useEffect, useRef } from "react"
 import { useSearchParams } from "next/navigation"
 import { MapPin, Clock, Flame, Waves, Play, Square, Timer, Check, X, Save } from "lucide-react"
 
@@ -49,7 +49,7 @@ const dummyAthletes = [
   { id: "ath-2", name: "Rara Kirana" },
 ]
 
-export default function TrainingDetailPage() {
+function TrainingDetailContent() {
   const searchParams = useSearchParams()
   const type = searchParams.get("type") || "program"
   
@@ -314,5 +314,13 @@ export default function TrainingDetailPage() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function TrainingDetailPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center h-[100dvh] bg-white text-slate-500 font-medium">Memuat Detail Latihan...</div>}>
+      <TrainingDetailContent />
+    </Suspense>
   )
 }

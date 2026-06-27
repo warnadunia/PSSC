@@ -1,12 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { ChevronLeft, Camera, MapPin, Send, Crosshair, CheckCircle2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
-export default function AttendancePage() {
+function AttendanceContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const type = searchParams.get("type") || "in" // 'in' or 'out'
@@ -142,5 +142,13 @@ export default function AttendancePage() {
         </Button>
       </div>
     </div>
+  )
+}
+
+export default function AttendancePage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center h-[100dvh] bg-slate-50 text-slate-500 font-medium">Memuat...</div>}>
+      <AttendanceContent />
+    </Suspense>
   )
 }
