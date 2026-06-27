@@ -129,15 +129,6 @@ function TrainingDetailContent() {
     <div className="flex flex-col h-[100dvh] bg-white w-full relative" suppressHydrationWarning>
       <GlobalHeader variant="subpage" title="Detail Latihan" />
 
-      {/* Hero Image */}
-      <div className="h-48 w-full bg-slate-800 relative shrink-0">
-        <img 
-          src="https://images.unsplash.com/photo-1519315901367-f34fa16b63ee?q=80&w=800&auto=format&fit=crop" 
-          alt="Coral Reef" 
-          className="w-full h-full object-cover opacity-80"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
-      </div>
 
       <main className={`flex-1 overflow-y-auto w-full bg-white ${type === 'personal' ? 'pb-32' : 'pb-10'}`}>
         
@@ -254,86 +245,78 @@ function TrainingDetailContent() {
                 >
                   {isTrialRunning ? <><Square className="h-4 w-4 mr-2 fill-white" /> Pause</> : <><Play className="h-4 w-4 mr-2 fill-white" /> Start</>}
                 </Button>
-                <Button 
-                  onClick={recordTrialSplit} 
-                  disabled={!isTrialRunning}
-                  className="h-12 w-40 rounded-full font-bold text-sm bg-slate-900 hover:bg-slate-800 text-white shadow-lg disabled:opacity-50"
-                >
-                  <Timer className="h-4 w-4 mr-2" /> Catat Waktu
-                </Button>
+                {type === 'program' && (
+                  <Button 
+                    onClick={recordTrialSplit} 
+                    disabled={!isTrialRunning}
+                    className="h-12 w-40 rounded-full font-bold text-sm bg-slate-900 hover:bg-slate-800 text-white shadow-lg disabled:opacity-50"
+                  >
+                    <Timer className="h-4 w-4 mr-2" /> Catat Waktu
+                  </Button>
+                )}
               </div>
             </div>
 
-            {/* List Hasil Splis */}
-            <ScrollArea className="h-[250px] bg-slate-50 rounded-2xl border border-slate-200 p-3 shadow-inner">
-              <div className="space-y-3">
-                {splits.length === 0 ? (
-                  <div className="py-10 text-center">
-                    <p className="text-xs font-medium text-slate-400">Belum ada waktu yang tercatat.</p>
-                  </div>
-                ) : (
-                  splits.map((split, idx) => (
-                    <div key={split.id} className="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-2">
-                        <div className="h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500 shrink-0">
-                          #{idx + 1}
-                        </div>
-                        <span className="font-mono text-emerald-700 font-bold text-sm bg-emerald-50 px-2 py-1 rounded border border-emerald-100">
-                          {formatTime(split.time)}
-                        </span>
-                      </div>
-                      
-                      <select 
-                        value={split.athleteId}
-                        onChange={(e) => handleAssignTrialAthlete(split.id, e.target.value)}
-                        className="flex-1 min-w-0 bg-slate-50 border border-slate-200 rounded-lg text-[11px] p-2 text-slate-700 font-bold focus:outline-none focus:ring-1 focus:ring-red-500"
-                      >
-                        <option value="" disabled>Pilih Atlet...</option>
-                        {dummyAthletes.map(ath => (
-                          <option key={ath.id} value={ath.id} disabled={splits.some(s => s.athleteId === ath.id && s.id !== split.id)}>
-                            {ath.name}
-                          </option>
-                        ))}
-                      </select>
+            {/* Jika type program, tampilkan lap splits. Jika personal, kosongkan saja karena waktu akhir sudah diwakili oleh timer. */}
+            {type === 'program' && (
+              <ScrollArea className="h-[250px] bg-slate-50 rounded-2xl border border-slate-200 p-3 shadow-inner">
+                <div className="space-y-3">
+                  {splits.length === 0 ? (
+                    <div className="py-10 text-center">
+                      <p className="text-xs font-medium text-slate-400">Belum ada waktu yang tercatat.</p>
                     </div>
-                  ))
-                )}
-              </div>
-            </ScrollArea>
+                  ) : (
+                    splits.map((split, idx) => (
+                      <div key={split.id} className="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-2">
+                          <div className="h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500 shrink-0">
+                            #{idx + 1}
+                          </div>
+                          <span className="font-mono text-emerald-700 font-bold text-sm bg-emerald-50 px-2 py-1 rounded border border-emerald-100">
+                            {formatTime(split.time)}
+                          </span>
+                        </div>
+                        
+                        <select 
+                          value={split.athleteId}
+                          onChange={(e) => handleAssignTrialAthlete(split.id, e.target.value)}
+                          className="flex-1 min-w-0 bg-slate-50 border border-slate-200 rounded-lg text-[11px] p-2 text-slate-700 font-bold focus:outline-none focus:ring-1 focus:ring-red-500"
+                        >
+                          <option value="" disabled>Pilih Atlet...</option>
+                          {dummyAthletes.map(ath => (
+                            <option key={ath.id} value={ath.id} disabled={splits.some(s => s.athleteId === ath.id && s.id !== split.id)}>
+                              {ath.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </ScrollArea>
+            )}
           </div>
-          {/* TOMBOL SIMPAN (Baru muncul/aktif jika ada data) */}
-    <div className="p-4 bg-white border-t border-slate-100">
-      <Button 
-        className="w-full bg-red-600 hover:bg-red-700 h-12 font-bold shadow-md"
-        disabled={splits.length === 0 || splits.some(s => !s.athleteId)}
-        onClick={() => {
-          alert(`Berhasil! ${splits.length} rekam waktu atlet telah disimpan.`);
-          closeTrialModal();
-        }}
-      >
-        <Save className="mr-2 h-4 w-4" /> Simpan Hasil Uji
-      </Button>
-    </div>
+          {/* TOMBOL SIMPAN */}
+          <div className="p-4 bg-white border-t border-slate-100">
+            <Button 
+              className="w-full bg-red-600 hover:bg-red-700 h-12 font-bold shadow-md"
+              disabled={type === 'program' ? (splits.length === 0 || splits.some(s => !s.athleteId)) : (trialTimeMs === 0)}
+              onClick={() => {
+                if (type === 'program') {
+                  alert(`Berhasil! ${splits.length} rekam waktu atlet telah disimpan.`);
+                } else {
+                  alert(`Berhasil! Waktu latihan personal telah dicatat.`);
+                }
+                closeTrialModal();
+              }}
+            >
+              <Save className="mr-2 h-4 w-4" /> Simpan Hasil Uji
+            </Button>
+          </div>
         </DialogContent>
       </Dialog>
 
-      {/* ==========================================
-          FLOATING TIMER (KHUSUS MODE PERSONAL)
-          ========================================== */}
-      {type === "personal" && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm bg-slate-900 p-2 rounded-2xl shadow-2xl border border-slate-700 flex items-center justify-between z-50">
-          <div className="pl-4">
-            <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Self Training</p>
-            <p className="text-2xl font-mono font-bold text-white tracking-tight">{formatTime(timeMs)}</p>
-          </div>
-          <Button 
-            onClick={toggleTimer} 
-            className={`h-12 w-32 rounded-xl font-bold text-sm ${isRunning ? 'bg-amber-500 hover:bg-amber-600' : 'bg-red-600 hover:bg-red-700'}`}
-          >
-            {isRunning ? <><Square className="h-4 w-4 mr-2 fill-white" /> Pause</> : <><Play className="h-4 w-4 mr-2 fill-white" /> Start</>}
-          </Button>
-        </div>
-      )}
+
     </div>
   )
 }
