@@ -3,18 +3,17 @@
 import { ReactNode, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, CalendarDays, Trophy, Activity, MoreHorizontal } from "lucide-react"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Home, CalendarDays, Trophy, Activity, Settings } from "lucide-react"
 
 export default function AthleteLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
-  const [isMoreOpen, setIsMoreOpen] = useState(false)
 
   const navItems = [
     { name: "MyPage", href: "/athlete/mypage", icon: Home },
     { name: "Schedules", href: "/athlete/schedules", icon: CalendarDays },
     { name: "Prestasi", href: "/athlete/prestasi", icon: Trophy },
     { name: "Training", href: "/athlete/training", icon: Activity },
+    { name: "Setting", href: "/athlete/setting", icon: Settings },
   ]
 
   return (
@@ -43,30 +42,6 @@ export default function AthleteLayout({ children }: { children: ReactNode }) {
             </Link>
           )
         })}
-
-        {/* MORE (SLIDE UP) */}
-        <Sheet open={isMoreOpen} onOpenChange={setIsMoreOpen}>
-          <SheetTrigger className="flex flex-col items-center justify-center w-[20%] gap-1 cursor-pointer text-slate-400 hover:text-red-600 transition-colors bg-transparent border-none">
-            <MoreHorizontal className="h-5 w-5" />
-            <span className="text-[9px] font-semibold">More</span>
-          </SheetTrigger>
-
-          <SheetContent side="bottom" className="rounded-t-2xl px-4 pb-8 pt-4 w-full">
-            <SheetHeader className="flex flex-row items-center justify-between border-b pb-3 mb-4">
-              <SheetTitle className="text-lg font-bold text-slate-800">Menu Lainnya</SheetTitle>
-            </SheetHeader>
-            <div className="grid grid-cols-4 gap-4 md:grid-cols-6 lg:grid-cols-8">
-              <div className="flex flex-col items-center gap-2 cursor-pointer">
-                <div className="h-12 w-12 bg-slate-100 rounded-2xl hover:bg-slate-200 transition-colors flex items-center justify-center font-bold text-slate-600">P</div>
-                <span className="text-[10px] font-medium text-slate-600">Profile</span>
-              </div>
-              <div className="flex flex-col items-center gap-2 cursor-pointer">
-                <div className="h-12 w-12 bg-slate-100 rounded-2xl hover:bg-slate-200 transition-colors flex items-center justify-center font-bold text-slate-600">S</div>
-                <span className="text-[10px] font-medium text-slate-600">Settings</span>
-              </div>
-            </div>
-          </SheetContent>
-        </Sheet>
       </nav>
 
     </div>

@@ -60,32 +60,8 @@ const classPerformanceData = [
 export default function TrainingPage() {
   const router = useRouter()
   const [selectedClasses, setSelectedClasses] = useState<string[]>(["Elite"])
-  
-  // State untuk melacak atlet mana yang ditugaskan ke program mana
-  const [assignedTasks, setAssignedTasks] = useState<Record<string, string[]>>({
-    "pers-1": ["ath-1", "ath-2"] // Dummy: pers-1 udah di-assign ke 2 orang
-  })
-
-  // State untuk form assign di dalam Sheet
-  const [tempAssign, setTempAssign] = useState<string[]>([])
-  const [activeAssignProg, setActiveAssignProg] = useState<string | null>(null)
-  const [isAssignSheetOpen, setIsAssignSheetOpen] = useState(false)
-
   const toggleClass = (c: string) => {
     setSelectedClasses(prev => prev.includes(c) ? prev.filter(item => item !== c) : [...prev, c])
-  }
-
-  const handleOpenAssign = (progId: string) => {
-    setActiveAssignProg(progId)
-    setTempAssign(assignedTasks[progId] || [])
-    setIsAssignSheetOpen(true)
-  }
-
-  const handleSaveAssign = () => {
-    if (activeAssignProg) {
-      setAssignedTasks(prev => ({ ...prev, [activeAssignProg]: tempAssign }))
-      setIsAssignSheetOpen(false)
-    }
   }
 
   const filteredPrograms = programs.filter(p => selectedClasses.includes(p.class) || selectedClasses.length === 0)
@@ -264,7 +240,6 @@ export default function TrainingPage() {
           <TabsContent value="personal" className="space-y-4">
             <div className="space-y-4">
               {personals.map(prog => {
-                const assignedCount = assignedTasks[prog.id]?.length || 0
                 return (
                   <Card key={prog.id} className="shadow-sm border-none bg-white">
                     <CardContent className="p-4">
@@ -277,21 +252,14 @@ export default function TrainingPage() {
                         <p className="text-xs text-slate-500 line-clamp-2">{prog.desc}</p>
                       </div>
                       
-                      {/* Tombol Tugaskan & Status */}
-                      <div className="pt-3 border-t border-slate-100 space-y-3">
+                      {/* Tombol Latihan Sekarang */}
+                      <div className="pt-3 border-t border-slate-100">
                         <Button 
-                          onClick={() => handleOpenAssign(prog.id)}
-                          variant="outline" 
-                          className="w-full text-xs font-bold border-slate-200 text-slate-700 hover:bg-slate-50 h-9"
+                          onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)}
+                          className="w-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold h-9 shadow-sm"
                         >
-                          <CheckSquare className="mr-2 h-4 w-4 text-red-600" /> Tugaskan Atlet
+                          <Play className="mr-2 h-4 w-4 fill-white" /> Latihan Sekarang
                         </Button>
-                        <div className="flex items-center gap-2 bg-slate-50 p-2 rounded-lg">
-                          <Users className="h-4 w-4 text-slate-400" />
-                          <p className="text-[10px] font-semibold text-slate-600">
-                            Latihan ini ditugaskan untuk <span className="text-red-600 font-bold">{assignedCount} Atlet</span>.
-                          </p>
-                        </div>
                       </div>
                     </CardContent>
                   </Card>
@@ -302,40 +270,7 @@ export default function TrainingPage() {
         </Tabs>
       </main>
 
-      {/* SHEET ASSIGN ATLET */}
-      <Sheet open={isAssignSheetOpen} onOpenChange={setIsAssignSheetOpen}>
-        <SheetContent side="bottom" className="rounded-t-3xl px-4 pb-6 pt-4 h-[75vh] flex flex-col bg-white">
-          <SheetHeader className="border-b pb-4 text-left shrink-0">
-            <SheetTitle className="text-lg font-bold text-slate-900">Pilih Atlet</SheetTitle>
-            <p className="text-xs text-slate-500">Tugaskan latihan mandiri ke daftar anak didik.</p>
-          </SheetHeader>
-          <ScrollArea className="flex-1 py-4">
-            <div className="space-y-3 px-1">
-              {dummyAthletes.map(ath => (
-                <div key={ath.id} className="flex items-center justify-between p-3 rounded-xl border border-slate-100 bg-slate-50">
-                  <label htmlFor={`assign-${ath.id}`} className="text-sm font-semibold cursor-pointer flex-1 text-slate-800">
-                    {ath.name} <span className="text-[10px] text-slate-400 font-normal block">{ath.level}</span>
-                  </label>
-                  <Checkbox 
-                    id={`assign-${ath.id}`} 
-                    className="h-5 w-5 data-[state=checked]:bg-red-600 data-[state=checked]:border-red-600"
-                    checked={tempAssign.includes(ath.id)}
-                    onCheckedChange={(checked) => {
-                      if (checked) setTempAssign([...tempAssign, ath.id])
-                      else setTempAssign(tempAssign.filter(id => id !== ath.id))
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </ScrollArea>
-          <div className="pt-4 border-t shrink-0">
-            <Button onClick={handleSaveAssign} className="w-full bg-red-600 hover:bg-red-700 h-12 text-sm font-bold shadow-md">
-              <Save className="mr-2 h-4 w-4" /> Simpan Tugas ({tempAssign.length} Atlet)
-            </Button>
-          </div>
-        </SheetContent>
-      </Sheet>
+
     </div>
   )
 }

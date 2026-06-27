@@ -14,15 +14,15 @@ const trainingSets = [
   {
     groupName: "WARM UP",
     items: [
-      { id: 1, label: "1 × 300 Free", target: "@ 6:00", color: "bg-emerald-400" },
-      { id: 2, label: "1 × 200 IM", target: "@ 4:00", color: "bg-emerald-400" }
+      { id: 1, label: "1 × 300 Free", target: "@ 6:00", color: "bg-emerald-400", athleteStatus: "Done", athleteTime: null },
+      { id: 2, label: "1 × 200 IM", target: "@ 4:00", color: "bg-emerald-400", athleteStatus: "Done", athleteTime: null }
     ]
   },
   {
     groupName: "MAIN SET",
     items: [
-      { id: 3, label: "4 × 100 Free", target: "@ 1:50", color: "bg-red-600" },
-      { id: 4, label: "4 × 50 Stroke", target: "@ 1:00", color: "bg-pink-400" }
+      { id: 3, label: "4 × 100 Free", target: "@ 1:50", color: "bg-red-600", athleteStatus: "Time", athleteTime: "01:45" },
+      { id: 4, label: "4 × 50 Stroke", target: "@ 1:00", color: "bg-pink-400", athleteStatus: "Skip", athleteTime: null }
     ]
   }
 ]
@@ -194,25 +194,39 @@ function TrainingDetailContent() {
                       {item.target}
                     </div>
                     
-                    {/* Kolom 3: Aksi (Stopwatch & Checkbox) */}
+                    {/* Kolom 3: Aksi (Stopwatch & Checkbox) / READONLY (Athlete) */}
                     <div className="flex justify-end items-center gap-3">
-                      <Button 
-                        onClick={() => setActiveTrialItem(item)}
-                        variant="outline" 
-                        size="icon" 
-                        className="h-8 w-8 rounded-full border-red-200 text-red-600 hover:bg-red-50 shadow-sm disabled:opacity-50"
-                        disabled={isChecked} // Disable stopwatch jika sudah diceklis manual
-                      >
-                        <Timer className="h-4 w-4" />
-                      </Button>
-                      
-                      <div className="bg-slate-100 p-1.5 rounded-lg">
-                        <Checkbox 
-                          checked={isChecked}
-                          onCheckedChange={(c) => setCheckedItems(prev => ({...prev, [item.id]: !!c}))}
-                          className="h-5 w-5 data-[state=checked]:bg-emerald-500 data-[state=checked]:border-emerald-500" 
-                        />
-                      </div>
+                      {type === 'program' ? (
+                         <div className="text-[11px] font-bold uppercase tracking-wide">
+                            {item.athleteStatus === "Time" ? (
+                              <span className="text-emerald-600 bg-emerald-50 px-2 py-1 rounded border border-emerald-200">{item.athleteTime}</span>
+                            ) : item.athleteStatus === "Skip" ? (
+                              <span className="text-slate-400 bg-slate-50 px-2 py-1 rounded border border-slate-200">Skip</span>
+                            ) : (
+                              <span className="text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-200">Done</span>
+                            )}
+                         </div>
+                      ) : (
+                        <>
+                          <Button 
+                            onClick={() => setActiveTrialItem(item)}
+                            variant="outline" 
+                            size="icon" 
+                            className="h-8 w-8 rounded-full border-red-200 text-red-600 hover:bg-red-50 shadow-sm disabled:opacity-50"
+                            disabled={isChecked} // Disable stopwatch jika sudah diceklis manual
+                          >
+                            <Timer className="h-4 w-4" />
+                          </Button>
+                          
+                          <div className="bg-slate-100 p-1.5 rounded-lg">
+                            <Checkbox 
+                              checked={isChecked}
+                              onCheckedChange={(c) => setCheckedItems(prev => ({...prev, [item.id]: !!c}))}
+                              className="h-5 w-5 data-[state=checked]:bg-emerald-500 data-[state=checked]:border-emerald-500" 
+                            />
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 )

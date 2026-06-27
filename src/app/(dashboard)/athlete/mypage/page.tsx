@@ -159,71 +159,7 @@ export default function CoachMyPage() {
           </Carousel>
         </section>
 
-        {/* ==========================================
-            3. QUICK MENU (Expandable)
-            ========================================== */}
-        <section>
-          <h3 className="font-bold text-sm text-slate-800 mb-3">Menu Cepat</h3>
-          <Collapsible open={isMenuOpen} onOpenChange={setIsMenuOpen} className="space-y-3">
-  <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
-              <div className="flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center border border-blue-100 group-hover:bg-blue-100 transition-colors">
-                  <Activity className="h-5 w-5 text-blue-600" />
-                </div>
-                <span className="text-[10px] font-medium text-slate-600 text-center">Input TT</span>
-              </div>
-              <div className="flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-emerald-50 flex items-center justify-center border border-emerald-100 group-hover:bg-emerald-100 transition-colors">
-                  <FileText className="h-5 w-5 text-emerald-600" />
-                </div>
-                <span className="text-[10px] font-medium text-slate-600 text-center">Beri Latihan</span>
-              </div>
-              <div className="flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-purple-50 flex items-center justify-center border border-purple-100 group-hover:bg-purple-100 transition-colors">
-                  <Users className="h-5 w-5 text-purple-600" />
-                </div>
-                <span className="text-[10px] font-medium text-slate-600 text-center">Daftar Atlet</span>
-              </div>
-              
-              {/* REVISI: Hapus asChild dan gunakan button langsung */}
-    <CollapsibleTrigger className="md:hidden flex flex-col items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 w-full">
-      <div className="h-12 w-12 rounded-2xl bg-slate-100 flex items-center justify-center border border-slate-200 hover:bg-slate-200 transition-colors">
-        {isMenuOpen ? <ChevronUp className="h-5 w-5 text-slate-600" /> : <ChevronDown className="h-5 w-5 text-slate-600" />}
-      </div>
-      <span className="text-[10px] font-medium text-slate-600 text-center">{isMenuOpen ? "Tutup" : "Lainnya"}</span>
-    </CollapsibleTrigger>
 
-              {/* Menu ekstra yang selalu tampil di tablet/desktop */}
-              <div className="hidden md:flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-amber-50 flex items-center justify-center border border-amber-100 group-hover:bg-amber-100 transition-colors">
-                  <Trophy className="h-5 w-5 text-amber-600" />
-                </div>
-                <span className="text-[10px] font-medium text-slate-600 text-center">Papan Skor</span>
-              </div>
-              <div className="hidden md:flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-rose-50 flex items-center justify-center border border-rose-100 group-hover:bg-rose-100 transition-colors">
-                  <Calendar className="h-5 w-5 text-rose-600" />
-                </div>
-                <span className="text-[10px] font-medium text-slate-600 text-center">Kalender</span>
-              </div>
-            </div>
-            
-            <CollapsibleContent className="grid grid-cols-4 gap-3 pt-1 pb-2 md:hidden">
-              <div className="flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-amber-50 flex items-center justify-center border border-amber-100 group-hover:bg-amber-100 transition-colors">
-                  <Trophy className="h-5 w-5 text-amber-600" />
-                </div>
-                <span className="text-[10px] font-medium text-slate-600 text-center">Papan Skor</span>
-              </div>
-              <div className="flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-rose-50 flex items-center justify-center border border-rose-100 group-hover:bg-rose-100 transition-colors">
-                  <Calendar className="h-5 w-5 text-rose-600" />
-                </div>
-                <span className="text-[10px] font-medium text-slate-600 text-center">Kalender</span>
-              </div>
-            </CollapsibleContent>
-          </Collapsible>
-        </section>
 
         {/* ==========================================
             4. KARTU STATISTIK ABSENSI & TABEL MINGGUAN
