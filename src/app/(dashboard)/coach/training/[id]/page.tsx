@@ -27,6 +27,23 @@ const trainingSets = [
   }
 ]
 
+const drylandSets = [
+  {
+    groupName: "Hand Drill",
+    items: [
+      { id: 11, label: "3 x 30 Push Up", target: "2:00", color: "bg-orange-400" },
+      { id: 12, label: "3 x 15 Pull Up", target: "2:30", color: "bg-amber-500" }
+    ]
+  },
+  {
+    groupName: "Core Training",
+    items: [
+      { id: 13, label: "3 x 60s Plank", target: "1:00", color: "bg-red-500" },
+      { id: 14, label: "3 x 20 Sit Up", target: "1:30", color: "bg-rose-500" }
+    ]
+  }
+]
+
 const dummyAthletes = [
   { id: "ath-1", name: "Bima Arya" },
   { id: "ath-2", name: "Rara Kirana" },
@@ -141,7 +158,7 @@ export default function TrainingDetailPage() {
             STRUKTUR TABEL (GROUP NAME | TARGET | TIME)
             ========================================== */}
         <div className="w-full">
-          {trainingSets.map((group, gIdx) => (
+          {(type === 'personal' ? drylandSets : trainingSets).map((group, gIdx) => (
             <div key={gIdx} className="mb-4">
               
               {/* Header Kolom */}
@@ -160,7 +177,14 @@ export default function TrainingDetailPage() {
                     
                     {/* Kolom 1: Nama Set */}
                     <div className="flex items-center pl-2">
-                      <span className={`text-[14px] font-bold ${isChecked ? 'text-slate-400 line-through' : 'text-slate-800'}`}>
+                      <span 
+                        onClick={() => {
+                          if (type === 'personal') {
+                            window.location.href = `${window.location.pathname}/movement/${item.id}`;
+                          }
+                        }}
+                        className={`text-[14px] font-bold ${type === 'personal' ? 'cursor-pointer hover:text-red-500 hover:underline' : ''} ${isChecked ? 'text-slate-400 line-through' : 'text-slate-800'}`}
+                      >
                         {item.label}
                       </span>
                     </div>

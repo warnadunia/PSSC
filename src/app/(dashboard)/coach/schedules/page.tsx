@@ -1,5 +1,7 @@
 "use client"
 
+import { useRouter } from "next/navigation"
+
 import { useState } from "react"
 import { 
   ChevronLeft, ChevronRight, Calendar as CalendarIcon, 
@@ -42,6 +44,7 @@ const TYPE_CONFIG = {
 }
 
 export default function CoachSchedules() {
+  const router = useRouter()
   const [currentDate, setCurrentDate] = useState(new Date(2026, 5, 26)) 
   const [selectedDate, setSelectedDate] = useState<string>("2026-06-26")
 
@@ -73,7 +76,7 @@ export default function CoachSchedules() {
     <div className="flex flex-col h-full bg-slate-50 relative pb-6 w-full">
       <GlobalHeader variant="pages" title="Schedules" />
 
-      <main className="flex-1 px-4 md:px-6 lg:px-8 space-y-5 pt-5 w-full">
+      <main className="flex-1 px-4 md:px-6 lg:px-8 space-y-5 pt-5 w-full pb-32">
         
         {/* SLIDER BULAN TAHUN */}
         <div className="flex items-center justify-between bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
@@ -173,7 +176,11 @@ export default function CoachSchedules() {
             selectedAgendas.map(agenda => {
               const Icon = TYPE_CONFIG[agenda.type].icon
               return (
-                <Card key={agenda.id} className="shadow-sm border-slate-100 relative overflow-hidden">
+                <Card 
+                  key={agenda.id} 
+                  onClick={() => router.push(`/coach/schedules/${agenda.id}`)}
+                  className="shadow-sm border-slate-100 relative overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
+                >
                   <div className={`absolute left-0 top-0 w-1 h-full ${TYPE_CONFIG[agenda.type].color.split(" ")[0]}`} />
                   <CardContent className="p-4 pl-5">
                     <div className="flex justify-between items-start mb-2">

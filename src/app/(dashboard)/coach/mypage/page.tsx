@@ -4,7 +4,8 @@
 import { useState } from "react"
 import { 
   MapPin, ChevronDown, ChevronUp, Users, Calendar, 
-  Activity, Trophy, FileText, ClipboardCheck, Clock, CheckCircle2
+  Activity, Trophy, FileText, ClipboardCheck, Clock, CheckCircle2,
+  Power, Calendar as CalendarIcon
 } from "lucide-react"
 
 import { GlobalHeader } from "@/components/GlobalHeader" // Sesuaikan path jika berbeda
@@ -17,7 +18,13 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 
 export default function CoachMyPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  
+  // Fake state to simulate checked-in or not based on query param (can be passed back or just simulated locally)
+  // We'll assume the user is checked in if they have a query param `checkedin=true` or similar, 
+  // but for now let's just keep it local. 
+  // In a real app this comes from DB/Context.
   const [isCheckedIn, setIsCheckedIn] = useState(false)
+  const router = typeof window !== 'undefined' ? require('next/navigation').useRouter() : null;
 
   // Dummy Data Rekap Absensi Mingguan (Sesuai tanggal berjalan)
   const weeklyAttendance = [
@@ -37,49 +44,77 @@ export default function CoachMyPage() {
       <main className="flex-1 px-4 md:px-6 lg:px-8 space-y-6 pt-5 w-full">
         
         {/* ==========================================
+            0. WELCOME HEADER
+            ========================================== */}
+        <section className="flex items-center gap-4 mb-2">
+          <div className="relative shrink-0">
+            <div className="h-[72px] w-[72px] rounded-full bg-[#EAEAEA] border-[1.5px] border-slate-400"></div>
+            <div className="absolute bottom-0 right-1 h-[18px] w-[18px] bg-green-500 rounded-full border-[2.5px] border-slate-50"></div>
+          </div>
+          <div>
+            <p className="text-[13px] text-slate-600 font-medium tracking-tight mb-0.5">Salam Profesional Coach</p>
+            <h1 className="text-2xl font-normal text-black leading-none mb-1">John Doe</h1>
+            <span className="inline-block px-1.5 py-0.5 bg-[#FBDCD3] text-[#7A2E1A] text-[11px] font-medium rounded-sm">
+              Head Coach, PSSC Yogyakarta
+            </span>
+          </div>
+        </section>
+
+        {/* ==========================================
             1. CARD ABSENSI COACH (Location Locked)
             ========================================== */}
         <section>
-          <Card className="bg-gradient-to-br from-blue-600 to-blue-800 text-white shadow-md border-none overflow-hidden relative">
-            {/* Ornamen Background */}
-            <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/10 blur-2xl"></div>
-            
-            <CardContent className="p-5">
-              <div className="flex justify-between items-start mb-4">
+          <Card className="bg-[#F0F0F0] text-slate-800 shadow-[8px_8px_16px_#d1d1d1,-8px_-8px_16px_#ffffff] border-none overflow-hidden relative rounded-3xl">
+            <CardContent className="p-5 pb-4">
+              <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h2 className="font-semibold text-lg">Absensi Kehadiran</h2>
-                  <p className="text-blue-100 text-xs font-medium mt-0.5">Sesi Latihan Sore</p>
+                  <h2 className="font-semibold text-lg tracking-tight mb-1">JADWAL HARI INI</h2>
+                  <div className="flex items-center text-slate-500 text-[10px] mb-4">
+                    <CalendarIcon className="h-3 w-3 mr-1" />
+                    <span>Jumat, 26 Juni 2026 (15:30 - 17:30 WIB)</span>
+                  </div>
+
+                  <div className="flex gap-6 mt-2">
+                    <div>
+                      <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-1">Masuk</p>
+                      <p className="text-2xl font-black">{isCheckedIn ? "15:21" : "--:--"}</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-1">Pulang</p>
+                      {isCheckedIn ? (
+                        <div className="bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded-sm mt-1 inline-block">
+                          {">"} On Training
+                        </div>
+                      ) : (
+                        <p className="text-2xl font-black">--:--</p>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                {isCheckedIn && (
-                  <Badge className="bg-emerald-500 hover:bg-emerald-600 text-white border-none text-[10px]">
-                    <ClipboardCheck className="h-3 w-3 mr-1" /> Hadir
-                  </Badge>
-                )}
+
+                {/* Big Power Button */}
+                <div 
+                  onClick={() => router?.push(isCheckedIn ? '/coach/mypage/attendance?type=out' : '/coach/mypage/attendance?type=in')}
+                  className="cursor-pointer bg-[#e0e0e0] rounded-2xl p-2 shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] active:shadow-[inset_6px_6px_10px_#bebebe,inset_-6px_-6px_10px_#ffffff] transition-all"
+                >
+                  <div className={`flex flex-col items-center justify-center w-20 h-20 rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.2)] ${isCheckedIn ? 'bg-gradient-to-b from-red-500 to-red-700' : 'bg-gradient-to-b from-emerald-400 to-emerald-600'}`}>
+                    <Power className="h-8 w-8 text-white mb-1" strokeWidth={2.5} />
+                    <span className="text-[10px] font-bold text-white tracking-widest">
+                      {isCheckedIn ? 'PULANG' : 'MASUK'}
+                    </span>
+                  </div>
+                </div>
               </div>
 
-              <div className="bg-white/10 rounded-lg p-3 mb-4 flex items-center gap-3 border border-white/20">
-                <div className={`p-2 rounded-full ${isCheckedIn ? 'bg-emerald-500/20 text-emerald-300' : 'bg-blue-900/50 text-blue-200'}`}>
-                  <MapPin className="h-4 w-4" />
+              <div className="border-t border-slate-300/50 pt-4 flex justify-between items-center">
+                <div className="flex items-center text-slate-600 text-[10px]">
+                  <MapPin className="h-3.5 w-3.5 mr-1.5" />
+                  <span className="truncate max-w-[200px]">Kolam Renang Depok Sport Center, Yogyakarta</span>
                 </div>
-                <div className="flex-1">
-                  <p className="text-[10px] text-blue-200 uppercase tracking-wider font-semibold">Status Lokasi</p>
-                  <p className="text-xs font-medium truncate">
-                    {isCheckedIn ? "Terkunci: Depok, DI Yogyakarta (Akurasi 4m)" : "Menunggu Koordinat GPS..."}
-                  </p>
-                </div>
+                <span className={`text-[10px] font-bold tracking-widest ${isCheckedIn ? 'text-emerald-600' : 'text-slate-400'}`}>
+                  {isCheckedIn ? 'ON DUTY' : 'PENDING'}
+                </span>
               </div>
-
-              <Button 
-                onClick={() => setIsCheckedIn(true)}
-                disabled={isCheckedIn}
-                className={`w-full font-bold h-11 transition-all ${
-                  isCheckedIn 
-                  ? "bg-emerald-500 text-white opacity-90 cursor-not-allowed" 
-                  : "bg-white text-blue-700 hover:bg-blue-50 shadow-sm"
-                }`}
-              >
-                {isCheckedIn ? "Anda Sudah Check-in" : "Check-in Lokasi Sekarang"}
-              </Button>
             </CardContent>
           </Card>
         </section>
@@ -95,7 +130,10 @@ export default function CoachMyPage() {
           <Carousel className="w-full" opts={{ align: "start", loop: false }}>
             <CarouselContent className="-ml-2">
               <CarouselItem className="pl-2 basis-[85%] md:basis-[60%] lg:basis-[40%]">
-                <div className="bg-white border rounded-xl p-4 shadow-sm h-full hover:shadow-md transition-shadow cursor-pointer">
+                <div 
+                  onClick={() => router?.push('/coach/mypage/announcement/1')}
+                  className="bg-white border rounded-xl p-4 shadow-sm h-full hover:shadow-md transition-shadow cursor-pointer"
+                >
                   <div className="flex items-center gap-2 mb-2">
                     <span className="flex h-2 w-2 rounded-full bg-red-500"></span>
                     <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Event Mendatang</p>
@@ -105,7 +143,10 @@ export default function CoachMyPage() {
                 </div>
               </CarouselItem>
               <CarouselItem className="pl-2 basis-[85%] md:basis-[60%] lg:basis-[40%]">
-                <div className="bg-white border rounded-xl p-4 shadow-sm h-full hover:shadow-md transition-shadow cursor-pointer">
+                <div 
+                  onClick={() => router?.push('/coach/mypage/announcement/2')}
+                  className="bg-white border rounded-xl p-4 shadow-sm h-full hover:shadow-md transition-shadow cursor-pointer"
+                >
                   <div className="flex items-center gap-2 mb-2">
                     <span className="flex h-2 w-2 rounded-full bg-blue-500"></span>
                     <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Update Kurikulum</p>

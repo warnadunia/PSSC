@@ -2,14 +2,15 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Play, Square, Flag, CheckSquare, Dumbbell, Save, Filter, ChevronRight, Users } from "lucide-react"
+import { Play, Square, Flag, CheckSquare, Dumbbell, Save, Filter, ChevronRight, Users, TrendingUp, Target, Activity } from "lucide-react"
+import { ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts"
 
 import { GlobalHeader } from "@/components/GlobalHeader"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetFooter } from "@/components/ui/sheet"
 
@@ -30,6 +31,30 @@ const programs = [
 const personals = [
   { id: "pers-1", title: "Dryland Core (30 Menit)", desc: "Plank 3x1 menit, Sit-up 3x20, Push-up 3x15", type: "personal" },
   { id: "pers-2", title: "Hypoxic Stretching", desc: "Latihan kapasitas paru di darat.", type: "personal" }
+]
+
+// ==========================================
+// DUMMY DATA ANALYTICS
+// ==========================================
+const completionData = [
+  { name: 'Selesai', value: 78, color: '#10b981' }, // emerald-500
+  { name: 'Belum Selesai', value: 22, color: '#f1f5f9' }, // slate-100
+]
+
+const promotionData = [
+  { name: 'Bima A.', current: 95, limit: 100 },
+  { name: 'Sakti M.', current: 88, limit: 100 },
+  { name: 'Rara K.', current: 82, limit: 100 },
+  { name: 'Dinda A.', current: 75, limit: 100 },
+]
+
+const classPerformanceData = [
+  { subject: 'Elite', A: 90, fullMark: 100 },
+  { subject: 'RJ', A: 85, fullMark: 100 },
+  { subject: 'RS', A: 78, fullMark: 100 },
+  { subject: 'LTHS', A: 72, fullMark: 100 },
+  { subject: 'Basic 2', A: 65, fullMark: 100 },
+  { subject: 'Basic 1', A: 50, fullMark: 100 },
 ]
 
 export default function TrainingPage() {
@@ -70,6 +95,110 @@ export default function TrainingPage() {
       <GlobalHeader variant="pages" title="Training Center" />
 
       <main className="flex-1 overflow-y-auto px-4 md:px-6 pt-4 pb-28 space-y-5 w-full">
+        
+        {/* ==========================================
+            ANALYTICS CAROUSEL
+            ========================================== */}
+        <section className="mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-sm font-bold text-slate-800 tracking-tight flex items-center gap-2">
+              <Activity className="h-4 w-4 text-red-600" /> Analytics Training
+            </h2>
+          </div>
+          
+          <ScrollArea className="w-full whitespace-nowrap pb-4">
+            <div className="flex w-max space-x-4">
+              
+              {/* Grafik Penyelesaian Latihan */}
+              <Card className="w-[280px] shadow-sm border-slate-100 bg-white shrink-0">
+                <CardHeader className="p-4 pb-0">
+                  <CardTitle className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                    <CheckSquare className="h-3.5 w-3.5 text-emerald-500" />
+                    Penyelesaian Latihan
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-4 flex items-center justify-center gap-4">
+                  <div className="h-24 w-24 relative">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Pie
+                          data={completionData}
+                          cx="50%"
+                          cy="50%"
+                          innerRadius={30}
+                          outerRadius={45}
+                          dataKey="value"
+                          stroke="none"
+                        >
+                          {completionData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          ))}
+                        </Pie>
+                      </PieChart>
+                    </ResponsiveContainer>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-lg font-black text-slate-800">78%</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+                      <span className="text-[10px] font-semibold text-slate-600">Selesai (78%)</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2 h-2 rounded-full bg-slate-200"></div>
+                      <span className="text-[10px] font-semibold text-slate-600">Belum (22%)</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Grafik Batas Promosi */}
+              <Card className="w-[300px] shadow-sm border-slate-100 bg-white shrink-0">
+                <CardHeader className="p-4 pb-0">
+                  <CardTitle className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                    <TrendingUp className="h-3.5 w-3.5 text-blue-500" />
+                    Batas Promosi Atlet
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-4 h-[120px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={promotionData} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
+                      <XAxis dataKey="name" tick={{ fontSize: 9, fill: '#64748b', fontWeight: 600 }} axisLine={false} tickLine={false} />
+                      <YAxis tick={{ fontSize: 9, fill: '#64748b' }} axisLine={false} tickLine={false} domain={[0, 100]} />
+                      <RechartsTooltip cursor={{ fill: '#f1f5f9' }} contentStyle={{ borderRadius: '8px', fontSize: '10px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                      <Bar dataKey="current" fill="#3b82f6" radius={[4, 4, 0, 0]} barSize={12} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+
+              {/* Grafik Performa Kelas */}
+              <Card className="w-[280px] shadow-sm border-slate-100 bg-white shrink-0">
+                <CardHeader className="p-4 pb-0">
+                  <CardTitle className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                    <Target className="h-3.5 w-3.5 text-purple-500" />
+                    Performa per Kelas
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-2 h-[120px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <RadarChart cx="50%" cy="50%" outerRadius="70%" data={classPerformanceData}>
+                      <PolarGrid stroke="#e2e8f0" />
+                      <PolarAngleAxis dataKey="subject" tick={{ fill: '#475569', fontSize: 9, fontWeight: 600 }} />
+                      <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                      <Radar name="Skor" dataKey="A" stroke="#a855f7" fill="#a855f7" fillOpacity={0.4} />
+                      <RechartsTooltip contentStyle={{ borderRadius: '8px', fontSize: '10px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                    </RadarChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+
+            </div>
+            <ScrollBar orientation="horizontal" className="hidden" />
+          </ScrollArea>
+        </section>
+
         <Tabs defaultValue="program" className="w-full">
           <TabsList className="w-full grid grid-cols-2 bg-slate-200/50 p-1 rounded-xl mb-4">
             <TabsTrigger value="program" className="text-xs py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
