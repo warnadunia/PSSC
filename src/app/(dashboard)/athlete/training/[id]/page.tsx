@@ -112,7 +112,7 @@ function TrainingDetailContent() {
   }
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-white w-full relative" suppressHydrationWarning>
+    <div className="flex flex-col h-[100dvh] w-full relative" suppressHydrationWarning>
       <GlobalHeader variant="subpage" title="Detail Latihan" />
 
 

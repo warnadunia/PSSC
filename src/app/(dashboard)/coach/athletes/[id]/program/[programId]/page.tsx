@@ -27,7 +27,7 @@ const getProgramDetails = (programId: string) => {
         {
           name: "MAIN SET",
           drills: [
-            { id: 103, label: "4 × 100 Free", target: "@ 1:50", isDone: false, color: "bg-red-600" },
+            { id: 103, label: "4 × 100 Free", target: "@ 1:50", isDone: false, color: "bg-primary" },
             { id: 104, label: "4 × 50 Stroke", target: "@ 1:00", isDone: false, color: "bg-pink-500" },
           ]
         }
@@ -44,7 +44,7 @@ const getProgramDetails = (programId: string) => {
         {
           name: "MAIN SET",
           drills: [
-            { id: 201, label: "8 × 100 Freestyle", target: "@ 1:15", isDone: true, color: "bg-red-600" }
+            { id: 201, label: "8 × 100 Freestyle", target: "@ 1:15", isDone: true, color: "bg-primary" }
           ]
         }
       ]
@@ -72,31 +72,26 @@ export default function AthleteProgramDetailPage({ params }: { params: Promise<{
   }, [program.id])
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-white w-full relative" suppressHydrationWarning>
+    <div className="flex flex-col min-h-full w-full relative" suppressHydrationWarning>
       
       {/* Header */}
-      <div className="h-14 px-4 flex items-center bg-white border-b border-slate-200 sticky top-0 z-50 shrink-0 shadow-sm">
-        <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-slate-100">
-          <ChevronLeft className="h-5 w-5 text-slate-700" />
-        </Button>
-        <h1 className="text-lg font-bold text-slate-800 tracking-tight flex-1">Detail Program Latihan</h1>
-      </div>
+      <GlobalHeader variant="subpage" title="Detail Program Latihan" />
 
-      <main className="flex-1 overflow-y-auto w-full bg-white pb-10">
+      <main className="flex-1 w-full pb-10">
         
         {/* Info Grid */}
-        <div className="px-5 pt-5 pb-6 border-b border-slate-100">
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">{program.session}</h1>
-          <p className="text-xs font-medium text-slate-500 mt-1 mb-5">{program.timeAgo}</p>
+        <div className="px-5 pt-5 pb-6 border-b border-border">
+          <h1 className="text-2xl font-black text-foreground uppercase tracking-widest leading-tight">{program.session}</h1>
+          <p className="text-xs font-medium text-muted-foreground mt-1 mb-5">{program.timeAgo}</p>
 
           <div className="grid grid-cols-2 gap-y-5 gap-x-4">
             <div className="flex items-center gap-3">
-              <MapPin className="h-5 w-5 text-slate-400" />
-              <div><p className="text-[9px] uppercase tracking-wider text-slate-400 font-bold">Distance</p><p className="text-sm font-semibold text-slate-800">{program.distance}</p></div>
+              <MapPin className="h-5 w-5 text-muted-foreground/50" />
+              <div><p className="text-[9px] uppercase tracking-widest text-muted-foreground font-bold">Distance</p><p className="text-sm font-black text-foreground">{program.distance}</p></div>
             </div>
             <div className="flex items-center gap-3">
-              <Clock className="h-5 w-5 text-slate-400" />
-              <div><p className="text-[9px] uppercase tracking-wider text-slate-400 font-bold">Duration</p><p className="text-sm font-semibold text-slate-800">{program.duration}</p></div>
+              <Clock className="h-5 w-5 text-muted-foreground/50" />
+              <div><p className="text-[9px] uppercase tracking-widest text-muted-foreground font-bold">Duration</p><p className="text-sm font-black text-foreground">{program.duration}</p></div>
             </div>
           </div>
         </div>
@@ -104,33 +99,33 @@ export default function AthleteProgramDetailPage({ params }: { params: Promise<{
         {/* ==========================================
             STRUKTUR TABEL (GROUP NAME | TARGET | TIME)
             ========================================== */}
-        <div className="w-full bg-slate-50">
+        <div className="w-full">
           {program.groups.map((group, gIdx) => (
-            <div key={gIdx} className="mb-4 bg-white border-b border-slate-100">
+            <div key={gIdx} className="mb-4 bg-card border-y border-border">
               
               {/* Header Kolom */}
-              <div className="grid grid-cols-[10fr_4fr_5fr] bg-slate-100/70 px-4 py-2 border-y border-slate-200 sticky top-14 z-10 shadow-sm">
-                <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest">{group.name}</span>
-                <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest text-center">Target</span>
-                <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest text-center pr-2">Waktu / Status</span>
+              <div className="grid grid-cols-[10fr_4fr_5fr] bg-muted/50 px-4 py-2 border-b border-border sticky top-14 z-10 shadow-sm">
+                <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{group.name}</span>
+                <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest text-center">Target</span>
+                <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest text-center pr-2">Waktu / Status</span>
               </div>
               
               {/* Baris Latihan */}
               {group.drills.map((drill, iIdx) => {
                 const isChecked = checkedItems[drill.id] || false
                 return (
-                  <div key={iIdx} className={`grid grid-cols-[10fr_4fr_5fr] items-center py-4 pl-4 pr-3 border-b border-slate-100 relative transition-colors ${isChecked ? 'bg-slate-50' : 'bg-white'}`}>
+                  <div key={iIdx} className={`grid grid-cols-[10fr_4fr_5fr] items-center py-4 pl-4 pr-3 border-b border-border relative transition-colors ${isChecked ? 'bg-muted/30' : 'bg-card'}`}>
                     <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${drill.color}`}></div>
                     
                     {/* Kolom 1: Nama Set */}
                     <div className="flex items-center pl-2">
-                      <span className={`text-[14px] font-bold ${isChecked ? 'text-slate-400 line-through' : 'text-slate-800'}`}>
+                      <span className={`text-[14px] font-bold uppercase tracking-widest ${isChecked ? 'text-muted-foreground line-through' : 'text-foreground'}`}>
                         {drill.label}
                       </span>
                     </div>
                     
                     {/* Kolom 2: Target */}
-                    <div className="text-center text-[13px] font-bold text-slate-500">
+                    <div className="text-center text-[13px] font-bold text-muted-foreground">
                       {drill.target}
                     </div>
                     
@@ -138,11 +133,11 @@ export default function AthleteProgramDetailPage({ params }: { params: Promise<{
                     <div className="flex justify-end items-center gap-3">
                       <div className="text-[11px] font-bold uppercase tracking-wide">
                         {drill.isDone ? (
-                          <span className="text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-200">Done</span>
+                          <span className="text-blue-400 bg-blue-500/20 px-2 py-1 rounded border border-blue-500/30">Done</span>
                         ) : drill.label.includes("104") ? (
-                          <span className="text-slate-400 bg-slate-50 px-2 py-1 rounded border border-slate-200">Skip</span>
+                          <span className="text-muted-foreground bg-muted/30 px-2 py-1 rounded border border-border">Skip</span>
                         ) : (
-                          <span className="text-emerald-600 bg-emerald-50 px-2 py-1 rounded border border-emerald-200">01:45</span>
+                          <span className="text-emerald-400 bg-emerald-500/20 px-2 py-1 rounded border border-emerald-500/30">01:45</span>
                         )}
                       </div>
                     </div>

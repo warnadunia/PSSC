@@ -73,7 +73,7 @@ export default function CoachSchedules() {
   const selectedAgendas = dummyAgendas.filter(ag => ag.date === selectedDate)
 
   return (
-    <div className="flex flex-col h-full bg-slate-50 relative pb-6 w-full">
+    <div className="flex flex-col h-full relative pb-6 w-full">
       <GlobalHeader variant="pages" title="Schedules" />
 
       <main className="flex-1 px-4 md:px-6 lg:px-8 space-y-5 pt-5 w-full pb-32">

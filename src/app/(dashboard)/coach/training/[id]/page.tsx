@@ -126,25 +126,25 @@ function TrainingDetailContent() {
   }
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-white w-full relative" suppressHydrationWarning>
+    <div className="flex flex-col min-h-full w-full relative" suppressHydrationWarning>
       <GlobalHeader variant="subpage" title="Detail Latihan" />
 
 
-      <main className={`flex-1 overflow-y-auto w-full bg-white ${type === 'personal' ? 'pb-32' : 'pb-10'}`}>
+      <main className={`flex-1 w-full ${type === 'personal' ? 'pb-32' : 'pb-10'}`}>
         
         {/* Info Grid */}
-        <div className="px-5 pt-2 pb-6 border-b border-slate-100">
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">The Blue Mile 🐟</h1>
-          <p className="text-xs font-medium text-slate-500 mt-1 mb-5">3 minutes ago</p>
+        <div className="px-5 pt-2 pb-6 border-b border-border bg-card">
+          <h1 className="text-2xl font-bold text-foreground tracking-widest uppercase">The Blue Mile 🐟</h1>
+          <p className="text-xs font-medium text-muted-foreground mt-1 mb-5">3 minutes ago</p>
 
           <div className="grid grid-cols-2 gap-y-5 gap-x-4">
             <div className="flex items-center gap-3">
-              <MapPin className="h-5 w-5 text-slate-400" />
-              <div><p className="text-[9px] uppercase tracking-wider text-slate-400 font-bold">Distance</p><p className="text-sm font-semibold text-slate-800">1,500 m</p></div>
+              <MapPin className="h-5 w-5 text-muted-foreground" />
+              <div><p className="text-[9px] uppercase tracking-widest text-muted-foreground font-bold">Distance</p><p className="text-sm font-semibold text-foreground">1,500 m</p></div>
             </div>
             <div className="flex items-center gap-3">
-              <Clock className="h-5 w-5 text-slate-400" />
-              <div><p className="text-[9px] uppercase tracking-wider text-slate-400 font-bold">Duration</p><p className="text-sm font-semibold text-slate-800">42 min</p></div>
+              <Clock className="h-5 w-5 text-muted-foreground" />
+              <div><p className="text-[9px] uppercase tracking-widest text-muted-foreground font-bold">Duration</p><p className="text-sm font-semibold text-foreground">42 min</p></div>
             </div>
           </div>
         </div>
@@ -157,17 +157,17 @@ function TrainingDetailContent() {
             <div key={gIdx} className="mb-4">
               
               {/* Header Kolom */}
-              <div className="grid grid-cols-[10fr_4fr_5fr] bg-slate-100/70 px-4 py-2 border-y border-slate-200 sticky top-0 z-10 shadow-sm">
-                <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest">{group.groupName}</span>
-                <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest text-center">Target</span>
-                <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest text-center pr-2">Waktu / Status</span>
+              <div className="grid grid-cols-[10fr_4fr_5fr] bg-muted/50 px-4 py-2 border-y border-border sticky top-0 z-10 shadow-sm">
+                <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{group.groupName}</span>
+                <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest text-center">Target</span>
+                <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest text-center pr-2">Waktu / Status</span>
               </div>
               
               {/* Baris Latihan */}
               {group.items.map((item, iIdx) => {
                 const isChecked = checkedItems[item.id]
                 return (
-                  <div key={iIdx} className={`grid grid-cols-[10fr_4fr_5fr] items-center py-4 pl-4 pr-3 border-b border-slate-100 relative transition-colors ${isChecked ? 'bg-slate-50' : 'bg-white'}`}>
+                  <div key={iIdx} className={`grid grid-cols-[10fr_4fr_5fr] items-center py-4 pl-4 pr-3 border-b border-border relative transition-colors ${isChecked ? 'bg-muted/30' : 'bg-card'}`}>
                     <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${item.color}`}></div>
                     
                     {/* Kolom 1: Nama Set */}
@@ -178,14 +178,14 @@ function TrainingDetailContent() {
                             window.location.href = `${window.location.pathname}/movement/${item.id}`;
                           }
                         }}
-                        className={`text-[14px] font-bold ${type === 'personal' ? 'cursor-pointer hover:text-red-500 hover:underline' : ''} ${isChecked ? 'text-slate-400 line-through' : 'text-slate-800'}`}
+                        className={`text-[14px] font-bold ${type === 'personal' ? 'cursor-pointer hover:text-primary hover:underline' : ''} ${isChecked ? 'text-muted-foreground line-through' : 'text-foreground'}`}
                       >
                         {item.label}
                       </span>
                     </div>
                     
                     {/* Kolom 2: Target */}
-                    <div className="text-center text-[13px] font-bold text-slate-500">
+                    <div className="text-center text-[13px] font-bold text-muted-foreground">
                       {item.target}
                     </div>
                     
@@ -195,17 +195,17 @@ function TrainingDetailContent() {
                         onClick={() => setActiveTrialItem(item)}
                         variant="outline" 
                         size="icon" 
-                        className="h-8 w-8 rounded-full border-red-200 text-red-600 hover:bg-red-50 shadow-sm disabled:opacity-50"
+                        className="h-8 w-8 rounded-full border-primary/20 text-primary hover:bg-primary/10 shadow-sm disabled:opacity-50"
                         disabled={isChecked} // Disable stopwatch jika sudah diceklis manual
                       >
                         <Timer className="h-4 w-4" />
                       </Button>
                       
-                      <div className="bg-slate-100 p-1.5 rounded-lg">
+                      <div className="bg-background p-1.5 rounded-lg border border-border">
                         <Checkbox 
                           checked={isChecked}
                           onCheckedChange={(c) => setCheckedItems(prev => ({...prev, [item.id]: !!c}))}
-                          className="h-5 w-5 data-[state=checked]:bg-emerald-500 data-[state=checked]:border-emerald-500" 
+                          className="h-5 w-5 data-[state=checked]:bg-primary data-[state=checked]:border-primary" 
                         />
                       </div>
                     </div>
@@ -221,27 +221,27 @@ function TrainingDetailContent() {
           MODAL STOPWATCH (DIBUKA DARI TOMBOL ROW)
           ========================================== */}
       <Dialog open={activeTrialItem !== null} onOpenChange={(open) => !open && closeTrialModal()}>
-        <DialogContent className="max-w-md w-[95%] rounded-3xl bg-slate-50 p-0 overflow-hidden">
-          <DialogHeader className="p-4 bg-white border-b relative">
-            <Button variant="ghost" size="icon" onClick={closeTrialModal} className="absolute right-2 top-2 h-8 w-8 rounded-full">
-              <X className="h-4 w-4 text-slate-500" />
+        <DialogContent className="max-w-md w-[95%] rounded-3xl bg-background p-0 overflow-hidden border border-border">
+          <DialogHeader className="p-4 bg-card border-b border-border relative">
+            <Button variant="ghost" size="icon" onClick={closeTrialModal} className="absolute right-2 top-2 h-8 w-8 rounded-full hover:bg-muted text-foreground">
+              <X className="h-4 w-4 text-muted-foreground" />
             </Button>
-            <DialogTitle className="text-left text-sm font-bold text-slate-500 uppercase tracking-widest">
+            <DialogTitle className="text-left text-sm font-bold text-muted-foreground uppercase tracking-widest">
               Live Time Trial
             </DialogTitle>
-            <p className="text-left text-xl font-black text-slate-900 mt-1">{activeTrialItem?.label}</p>
+            <p className="text-left text-xl font-black text-foreground mt-1 uppercase tracking-widest">{activeTrialItem?.label}</p>
           </DialogHeader>
 
-          <div className="p-4">
+          <div className="p-4 bg-background">
             {/* Display Timer Raksasa */}
             <div className="text-center mb-6">
-              <div className="text-6xl font-mono font-black text-slate-900 tracking-tighter">
+              <div className="text-6xl font-mono font-black text-foreground tracking-tighter">
                 {formatTime(trialTimeMs)}
               </div>
               <div className="flex gap-3 mt-4 justify-center">
                 <Button 
                   onClick={toggleTrialTimer} 
-                  className={`h-12 w-32 rounded-full font-bold text-sm shadow-lg ${isTrialRunning ? 'bg-amber-500 hover:bg-amber-600' : 'bg-red-600 hover:bg-red-700'}`}
+                  className={`h-12 w-32 rounded-full font-bold text-sm shadow-lg uppercase tracking-widest ${isTrialRunning ? 'bg-amber-500 hover:bg-amber-600 text-white' : 'bg-primary hover:bg-primary/90 text-primary-foreground'}`}
                 >
                   {isTrialRunning ? <><Square className="h-4 w-4 mr-2 fill-white" /> Pause</> : <><Play className="h-4 w-4 mr-2 fill-white" /> Start</>}
                 </Button>
@@ -249,7 +249,7 @@ function TrainingDetailContent() {
                   <Button 
                     onClick={recordTrialSplit} 
                     disabled={!isTrialRunning}
-                    className="h-12 w-40 rounded-full font-bold text-sm bg-slate-900 hover:bg-slate-800 text-white shadow-lg disabled:opacity-50"
+                    className="h-12 w-40 rounded-full font-bold text-sm bg-muted hover:bg-muted/80 text-foreground shadow-lg disabled:opacity-50 uppercase tracking-widest"
                   >
                     <Timer className="h-4 w-4 mr-2" /> Catat Waktu
                   </Button>
@@ -259,20 +259,20 @@ function TrainingDetailContent() {
 
             {/* Jika type program, tampilkan lap splits. Jika personal, kosongkan saja karena waktu akhir sudah diwakili oleh timer. */}
             {type === 'program' && (
-              <ScrollArea className="h-[250px] bg-slate-50 rounded-2xl border border-slate-200 p-3 shadow-inner">
+              <ScrollArea className="h-[250px] bg-card rounded-2xl border border-border p-3 shadow-inner">
                 <div className="space-y-3">
                   {splits.length === 0 ? (
                     <div className="py-10 text-center">
-                      <p className="text-xs font-medium text-slate-400">Belum ada waktu yang tercatat.</p>
+                      <p className="text-xs font-medium text-muted-foreground">Belum ada waktu yang tercatat.</p>
                     </div>
                   ) : (
                     splits.map((split, idx) => (
-                      <div key={split.id} className="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
+                      <div key={split.id} className="bg-background p-3 rounded-2xl border border-border shadow-sm flex items-center justify-between gap-3">
                         <div className="flex items-center gap-2">
-                          <div className="h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500 shrink-0">
+                          <div className="h-7 w-7 rounded-full bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground shrink-0">
                             #{idx + 1}
                           </div>
-                          <span className="font-mono text-emerald-700 font-bold text-sm bg-emerald-50 px-2 py-1 rounded border border-emerald-100">
+                          <span className="font-mono text-primary font-bold text-sm bg-primary/10 px-2 py-1 rounded border border-primary/20">
                             {formatTime(split.time)}
                           </span>
                         </div>
@@ -280,7 +280,7 @@ function TrainingDetailContent() {
                         <select 
                           value={split.athleteId}
                           onChange={(e) => handleAssignTrialAthlete(split.id, e.target.value)}
-                          className="flex-1 min-w-0 bg-slate-50 border border-slate-200 rounded-lg text-[11px] p-2 text-slate-700 font-bold focus:outline-none focus:ring-1 focus:ring-red-500"
+                          className="flex-1 min-w-0 bg-card border border-border rounded-lg text-[11px] p-2 text-foreground font-bold focus:outline-none focus:ring-1 focus:ring-primary"
                         >
                           <option value="" disabled>Pilih Atlet...</option>
                           {dummyAthletes.map(ath => (
@@ -297,9 +297,9 @@ function TrainingDetailContent() {
             )}
           </div>
           {/* TOMBOL SIMPAN */}
-          <div className="p-4 bg-white border-t border-slate-100">
+          <div className="p-4 bg-card border-t border-border">
             <Button 
-              className="w-full bg-red-600 hover:bg-red-700 h-12 font-bold shadow-md"
+              className="w-full bg-primary hover:bg-primary/90 h-12 font-bold shadow-md uppercase tracking-widest text-primary-foreground rounded-xl"
               disabled={type === 'program' ? (splits.length === 0 || splits.some(s => !s.athleteId)) : (trialTimeMs === 0)}
               onClick={() => {
                 if (type === 'program') {
@@ -323,7 +323,7 @@ function TrainingDetailContent() {
 
 export default function TrainingDetailPage() {
   return (
-    <Suspense fallback={<div className="flex items-center justify-center h-[100dvh] bg-white text-slate-500 font-medium">Memuat Detail Latihan...</div>}>
+    <Suspense fallback={<div className="flex items-center justify-center h-[100dvh] bg-background text-muted-foreground uppercase tracking-widest font-medium">Memuat Detail Latihan...</div>}>
       <TrainingDetailContent />
     </Suspense>
   )

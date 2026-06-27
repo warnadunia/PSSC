@@ -36,7 +36,7 @@ export default function CoachMyPage() {
   ]
 
   return (
-    <div className="flex flex-col h-full bg-slate-50 relative pb-6 w-full">
+    <div className="flex flex-col h-full relative pb-6 w-full">
 
       {/* GLOBAL HEADER */}
       <GlobalHeader variant="pages" title="MyPage" />

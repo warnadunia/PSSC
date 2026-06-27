@@ -98,7 +98,7 @@ export default function PrestasiPage() {
   )
 
   return (
-    <div className="flex flex-col min-h-[100dvh] bg-slate-50 w-full pb-20">
+    <div className="flex flex-col min-h-[100dvh] w-full pb-20">
       
       {/* Header */}
       <div className="bg-blue-600 px-6 pt-10 pb-6 rounded-b-3xl shadow-sm mb-4">

@@ -102,7 +102,7 @@ export default function InputKejuaraanPage() {
   }
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-slate-50 w-full relative">
+    <div className="flex flex-col h-[100dvh] w-full relative">
       
       {/* Header Khusus agar bisa Back */}
       <header className="bg-indigo-600 text-white px-4 h-16 flex items-center shrink-0 shadow-sm sticky top-0 z-10">

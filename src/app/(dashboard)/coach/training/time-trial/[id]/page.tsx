@@ -64,37 +64,32 @@ function TimeTrialContent() {
   }
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-slate-50 w-full relative" suppressHydrationWarning>
-      <div className="h-14 px-4 flex items-center bg-white border-b border-slate-200 sticky top-0 z-50 shrink-0 shadow-sm">
-        <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-slate-100">
-          <ChevronLeft className="h-5 w-5 text-slate-700" />
-        </Button>
-        <h1 className="text-lg font-bold text-slate-800 tracking-tight flex-1">Live Time Trial</h1>
-      </div>
+    <div className="flex flex-col min-h-full w-full relative" suppressHydrationWarning>
+      <GlobalHeader variant="subpage" title="Live Time Trial" />
 
-      <main className="flex-1 overflow-y-auto w-full pb-24">
+      <main className="flex-1 w-full pb-40">
         
         {/* Detail Gaya & Jarak */}
-        <div className="bg-white p-5 border-b border-slate-100 flex justify-between items-center">
+        <div className="bg-card p-5 border-b border-border flex justify-between items-center">
           <div>
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Kategori Lomba</p>
-            <h2 className="text-xl font-black text-slate-800">{jarak} Gaya {gaya}</h2>
+            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Kategori Lomba</p>
+            <h2 className="text-xl font-black text-foreground uppercase tracking-widest">{jarak} Gaya {gaya}</h2>
           </div>
-          <div className="h-12 w-12 bg-red-50 rounded-xl flex items-center justify-center border border-red-100">
-            <Flag className="h-6 w-6 text-red-600" />
+          <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
+            <Flag className="h-6 w-6 text-primary" />
           </div>
         </div>
 
         {/* Big Timer */}
-        <div className="p-6 flex flex-col items-center bg-white shadow-sm mb-4">
-          <div className="text-7xl font-mono font-black text-slate-900 tracking-tighter mb-6">
+        <div className="p-6 flex flex-col items-center bg-card shadow-sm mb-4 border-b border-border">
+          <div className="text-7xl font-mono font-black text-foreground tracking-tighter mb-6">
             {formatTime(timeMs)}
           </div>
 
           <div className="flex gap-4 w-full max-w-sm">
             <Button 
               onClick={toggleTimer} 
-              className={`flex-1 h-14 rounded-2xl font-bold text-sm shadow-lg ${isRunning ? 'bg-amber-500 hover:bg-amber-600' : 'bg-red-600 hover:bg-red-700'}`}
+              className={`flex-1 h-14 rounded-2xl font-bold text-sm shadow-lg uppercase tracking-widest ${isRunning ? 'bg-amber-500 hover:bg-amber-600 text-white' : 'bg-primary hover:bg-primary/90 text-primary-foreground'}`}
             >
               {isRunning ? <><Square className="h-5 w-5 mr-2 fill-white" /> Pause</> : <><Play className="h-5 w-5 mr-2 fill-white" /> Start</>}
             </Button>
@@ -102,7 +97,7 @@ function TimeTrialContent() {
             <Button 
               onClick={recordSplit} 
               disabled={!isRunning}
-              className="flex-1 h-14 rounded-2xl font-bold text-sm bg-slate-900 hover:bg-slate-800 text-white shadow-lg disabled:opacity-50"
+              className="flex-1 h-14 rounded-2xl font-bold text-sm bg-muted hover:bg-muted/80 text-foreground shadow-lg disabled:opacity-50 uppercase tracking-widest"
             >
               <Timer className="h-5 w-5 mr-2" /> Catat Waktu
             </Button>
@@ -111,21 +106,21 @@ function TimeTrialContent() {
 
         {/* List Hasil Splis */}
         <div className="px-4">
-          <h3 className="font-bold text-sm text-slate-800 mb-3">Waktu Tercatat ({splits.length})</h3>
+          <h3 className="font-bold text-sm text-foreground uppercase tracking-widest mb-3">Waktu Tercatat ({splits.length})</h3>
           
           <div className="space-y-3">
             {splits.length === 0 ? (
-              <div className="p-8 text-center bg-white rounded-2xl border-dashed border-2 border-slate-200">
-                <p className="text-xs font-medium text-slate-400">Belum ada waktu yang tercatat.</p>
+              <div className="p-8 text-center bg-card rounded-2xl border-dashed border-2 border-border">
+                <p className="text-xs font-medium text-muted-foreground">Belum ada waktu yang tercatat.</p>
               </div>
             ) : (
               splits.map((split, idx) => (
-                <div key={split.id} className="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-4">
+                <div key={split.id} className="bg-card p-3 rounded-2xl border border-border shadow-sm flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                    <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground">
                       #{idx + 1}
                     </div>
-                    <span className="font-mono text-emerald-700 font-bold text-base bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-100">
+                    <span className="font-mono text-primary font-bold text-base bg-primary/10 px-3 py-1 rounded-lg border border-primary/20">
                       {formatTime(split.time)}
                     </span>
                   </div>
@@ -133,7 +128,7 @@ function TimeTrialContent() {
                   <select 
                     value={split.athleteId}
                     onChange={(e) => handleAssignAthlete(split.id, e.target.value)}
-                    className="flex-1 bg-slate-50 border border-slate-200 rounded-lg text-xs p-2.5 text-slate-700 font-bold focus:outline-none focus:ring-1 focus:ring-red-500"
+                    className="flex-1 bg-background border border-border rounded-lg text-xs p-2.5 text-foreground font-bold focus:outline-none focus:ring-1 focus:ring-primary"
                   >
                     <option value="" disabled>Pilih Atlet...</option>
                     {dummyAthletes.map(ath => (
@@ -151,9 +146,9 @@ function TimeTrialContent() {
       </main>
 
       {/* FOOTER ACTION */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-100 shadow-[0_-4px_10px_rgba(0,0,0,0.02)] z-40">
+      <div className="fixed bottom-16 left-0 right-0 p-4 bg-card border-t border-border shadow-[0_-4px_10px_rgba(0,0,0,0.2)] z-30">
         <Button 
-          className="w-full bg-red-600 hover:bg-red-700 h-14 font-bold shadow-md rounded-xl text-base"
+          className="w-full bg-primary hover:bg-primary/90 h-14 font-bold shadow-md rounded-xl text-base uppercase tracking-widest text-primary-foreground"
           disabled={splits.length === 0 || splits.some(s => !s.athleteId)}
           onClick={() => {
             alert(`Berhasil! ${splits.length} rekam waktu atlet telah disimpan.`);
@@ -169,7 +164,7 @@ function TimeTrialContent() {
 
 export default function TimeTrialActivePage() {
   return (
-    <Suspense fallback={<div className="flex items-center justify-center h-[100dvh] bg-white text-slate-500 font-medium">Memuat Time Trial...</div>}>
+    <Suspense fallback={<div className="flex items-center justify-center h-[100dvh] bg-background text-muted-foreground font-medium uppercase tracking-widest">Memuat Time Trial...</div>}>
       <TimeTrialContent />
     </Suspense>
   )

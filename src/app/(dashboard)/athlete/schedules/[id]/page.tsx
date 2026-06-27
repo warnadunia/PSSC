@@ -82,7 +82,7 @@ export default function ScheduleDetailPage({ params }: { params: Promise<{ id: s
   })
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-slate-50 w-full" suppressHydrationWarning>
+    <div className="flex flex-col h-[100dvh] w-full" suppressHydrationWarning>
       
       {/* Header */}
       <div className="h-14 px-4 flex items-center bg-white border-b border-slate-200 sticky top-0 z-50 shrink-0 shadow-sm">

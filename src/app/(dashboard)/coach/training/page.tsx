@@ -43,7 +43,7 @@ const timeTrials = [
 // ==========================================
 const completionData = [
   { name: 'Selesai', value: 78, color: '#10b981' }, // emerald-500
-  { name: 'Belum Selesai', value: 22, color: '#f1f5f9' }, // slate-100
+  { name: 'Belum Selesai', value: 22, color: '#2a293b' }, // muted
 ]
 
 const promotionData = [
@@ -107,18 +107,18 @@ export default function TrainingPage() {
   const filteredPrograms = programs.filter(p => selectedClasses.includes(p.class) || selectedClasses.length === 0)
 
   return (
-    <div className="flex flex-col h-full bg-slate-50 w-full" suppressHydrationWarning>
+    <div className="flex flex-col min-h-full w-full relative" suppressHydrationWarning>
       <GlobalHeader variant="pages" title="Training Center" />
 
-      <main className="flex-1 overflow-y-auto px-4 md:px-6 pt-4 pb-28 space-y-5 w-full">
+      <main className="flex-1 px-4 md:px-6 pt-4 pb-28 space-y-5 w-full">
         
         {/* ==========================================
             ANALYTICS CAROUSEL
             ========================================== */}
         <section className="mb-6">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-sm font-bold text-slate-800 tracking-tight flex items-center gap-2">
-              <Activity className="h-4 w-4 text-red-600" /> Analytics Training
+            <h2 className="text-sm font-bold text-foreground tracking-widest uppercase flex items-center gap-2">
+              <Activity className="h-4 w-4 text-primary" /> Analytics Training
             </h2>
           </div>
           
@@ -126,9 +126,9 @@ export default function TrainingPage() {
             <div className="flex w-max space-x-4">
               
               {/* Grafik Penyelesaian Latihan */}
-              <Card className="w-[280px] shadow-sm border-slate-100 bg-white shrink-0">
+              <Card className="w-[280px] shadow-sm border-border bg-card shrink-0">
                 <CardHeader className="p-4 pb-0">
-                  <CardTitle className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                  <CardTitle className="text-xs font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
                     <CheckSquare className="h-3.5 w-3.5 text-emerald-500" />
                     Penyelesaian Latihan
                   </CardTitle>
@@ -153,26 +153,26 @@ export default function TrainingPage() {
                       </PieChart>
                     </ResponsiveContainer>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-lg font-black text-slate-800">78%</span>
+                      <span className="text-lg font-black text-foreground">78%</span>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-1.5">
                       <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                      <span className="text-[10px] font-semibold text-slate-600">Selesai (78%)</span>
+                      <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">Selesai (78%)</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <div className="w-2 h-2 rounded-full bg-slate-200"></div>
-                      <span className="text-[10px] font-semibold text-slate-600">Belum (22%)</span>
+                      <div className="w-2 h-2 rounded-full bg-muted"></div>
+                      <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">Belum (22%)</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
               {/* Grafik Batas Promosi */}
-              <Card className="w-[300px] shadow-sm border-slate-100 bg-white shrink-0">
+              <Card className="w-[300px] shadow-sm border-border bg-card shrink-0">
                 <CardHeader className="p-4 pb-0">
-                  <CardTitle className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                  <CardTitle className="text-xs font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
                     <TrendingUp className="h-3.5 w-3.5 text-blue-500" />
                     Batas Promosi Atlet
                   </CardTitle>
@@ -180,9 +180,9 @@ export default function TrainingPage() {
                 <CardContent className="p-4 h-[120px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={promotionData} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
-                      <XAxis dataKey="name" tick={{ fontSize: 9, fill: '#64748b', fontWeight: 600 }} axisLine={false} tickLine={false} />
-                      <YAxis tick={{ fontSize: 9, fill: '#64748b' }} axisLine={false} tickLine={false} domain={[0, 100]} />
-                      <RechartsTooltip cursor={{ fill: '#f1f5f9' }} contentStyle={{ borderRadius: '8px', fontSize: '10px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                      <XAxis dataKey="name" tick={{ fontSize: 9, fill: '#a1a1aa', fontWeight: 600 }} axisLine={false} tickLine={false} />
+                      <YAxis tick={{ fontSize: 9, fill: '#a1a1aa' }} axisLine={false} tickLine={false} domain={[0, 100]} />
+                      <RechartsTooltip cursor={{ fill: '#2a293b' }} contentStyle={{ borderRadius: '8px', fontSize: '10px', backgroundColor: '#1f1e2e', color: '#fff', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                       <Bar dataKey="current" fill="#3b82f6" radius={[4, 4, 0, 0]} barSize={12} />
                     </BarChart>
                   </ResponsiveContainer>
@@ -190,9 +190,9 @@ export default function TrainingPage() {
               </Card>
 
               {/* Grafik Performa Kelas */}
-              <Card className="w-[280px] shadow-sm border-slate-100 bg-white shrink-0">
+              <Card className="w-[280px] shadow-sm border-border bg-card shrink-0">
                 <CardHeader className="p-4 pb-0">
-                  <CardTitle className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                  <CardTitle className="text-xs font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
                     <Target className="h-3.5 w-3.5 text-purple-500" />
                     Performa per Kelas
                   </CardTitle>
@@ -200,11 +200,11 @@ export default function TrainingPage() {
                 <CardContent className="p-2 h-[120px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart cx="50%" cy="50%" outerRadius="70%" data={classPerformanceData}>
-                      <PolarGrid stroke="#e2e8f0" />
-                      <PolarAngleAxis dataKey="subject" tick={{ fill: '#475569', fontSize: 9, fontWeight: 600 }} />
+                      <PolarGrid stroke="#2a293b" />
+                      <PolarAngleAxis dataKey="subject" tick={{ fill: '#a1a1aa', fontSize: 9, fontWeight: 600 }} />
                       <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
                       <Radar name="Skor" dataKey="A" stroke="#a855f7" fill="#a855f7" fillOpacity={0.4} />
-                      <RechartsTooltip contentStyle={{ borderRadius: '8px', fontSize: '10px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                      <RechartsTooltip contentStyle={{ borderRadius: '8px', fontSize: '10px', backgroundColor: '#1f1e2e', color: '#fff', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                     </RadarChart>
                   </ResponsiveContainer>
                 </CardContent>
@@ -216,14 +216,14 @@ export default function TrainingPage() {
         </section>
 
         <Tabs defaultValue="program" className="w-full">
-          <TabsList className="w-full grid grid-cols-3 bg-slate-200/50 p-1 rounded-xl mb-4">
-            <TabsTrigger value="program" className="text-[11px] py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+          <TabsList className="w-full grid grid-cols-3 bg-primary p-1 rounded-full mb-4 gap-1">
+            <TabsTrigger value="program" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm font-bold transition-all rounded-full text-primary-foreground">
               Program
             </TabsTrigger>
-            <TabsTrigger value="time-trial" className="text-[11px] py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+            <TabsTrigger value="time-trial" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm font-bold transition-all rounded-full text-primary-foreground">
               Time Trial
             </TabsTrigger>
-            <TabsTrigger value="personal" className="text-[11px] py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+            <TabsTrigger value="personal" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm font-bold transition-all rounded-full text-primary-foreground">
               Personal
             </TabsTrigger>
           </TabsList>
@@ -231,18 +231,18 @@ export default function TrainingPage() {
           {/* TAB 1: PROGRAM (Tetap sama) */}
           <TabsContent value="program" className="space-y-4">
             <Sheet>
-              <SheetTrigger className="inline-flex items-center justify-center rounded-lg text-xs font-bold transition-colors w-full bg-white border border-slate-200 text-slate-700 h-10 px-4 shadow-sm hover:bg-slate-50">
-                <Filter className="mr-2 h-4 w-4 text-red-600" /> Filter Kelas ({selectedClasses.length === 0 ? 'Semua' : selectedClasses.length})
+              <SheetTrigger className="inline-flex items-center justify-center rounded-xl text-xs font-bold transition-colors w-full bg-card border border-border text-foreground h-10 px-4 shadow-sm hover:bg-muted">
+                <Filter className="mr-2 h-4 w-4 text-primary" /> Filter Kelas ({selectedClasses.length === 0 ? 'Semua' : selectedClasses.length})
               </SheetTrigger>
-              <SheetContent side="bottom" className="rounded-t-2xl px-4 pb-8 pt-4">
-                <SheetHeader className="border-b pb-3 mb-4 text-left">
-                  <SheetTitle className="text-lg font-bold text-slate-800">Filter Group Latihan</SheetTitle>
+              <SheetContent side="bottom" className="rounded-t-2xl px-4 pb-8 pt-4 bg-card border-t border-border">
+                <SheetHeader className="border-b border-border pb-3 mb-4 text-left">
+                  <SheetTitle className="text-lg font-bold text-foreground uppercase tracking-widest">Filter Group Latihan</SheetTitle>
                 </SheetHeader>
                 <div className="grid grid-cols-2 gap-3">
                   {classes.map((c) => (
-                    <div key={c} className="flex items-center space-x-2 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                      <Checkbox id={`filter-${c}`} checked={selectedClasses.includes(c)} onCheckedChange={() => toggleClass(c)} />
-                      <label htmlFor={`filter-${c}`} className="text-sm font-semibold cursor-pointer w-full text-slate-700">Kelas {c}</label>
+                    <div key={c} className="flex items-center space-x-2 bg-background p-3 rounded-xl border border-border">
+                      <Checkbox id={`filter-${c}`} checked={selectedClasses.includes(c)} onCheckedChange={() => toggleClass(c)} className="data-[state=checked]:bg-primary data-[state=checked]:border-primary" />
+                      <label htmlFor={`filter-${c}`} className="text-sm font-semibold cursor-pointer w-full text-foreground">{c}</label>
                     </div>
                   ))}
                 </div>
@@ -251,29 +251,29 @@ export default function TrainingPage() {
 
             <div className="space-y-3">
               {filteredPrograms.length > 0 ? filteredPrograms.map((prog) => (
-                <Card key={prog.id} onClick={() => router.push(`/coach/training/${prog.id}?type=${prog.type}`)} className="border-none shadow-sm cursor-pointer hover:ring-2 hover:ring-red-100 bg-white">
+                <Card key={prog.id} onClick={() => router.push(`/coach/training/${prog.id}?type=${prog.type}`)} className="border border-border shadow-sm cursor-pointer hover:border-primary/50 bg-card rounded-2xl">
                   <CardHeader className="p-4 pb-2">
                     <div className="flex justify-between items-start mb-2">
-                      <Badge variant="outline" className="text-[10px] bg-red-50 text-red-700 border-red-200">{prog.class} • {prog.time}</Badge>
-                      <ChevronRight className="h-4 w-4 text-slate-400" />
+                      <Badge variant="outline" className="text-[10px] bg-primary/10 text-primary border-primary/20">{prog.class} • {prog.time}</Badge>
+                      <ChevronRight className="h-4 w-4 text-muted-foreground" />
                     </div>
-                    <CardTitle className="text-sm font-bold text-slate-800">{prog.title}</CardTitle>
+                    <CardTitle className="text-sm font-bold text-foreground uppercase tracking-widest">{prog.title}</CardTitle>
                   </CardHeader>
                   <CardContent className="p-4 pt-0">
                     <div className="mt-2 space-y-1.5">
-                      <div className="flex justify-between text-[9px] font-bold text-slate-500 uppercase">
+                      <div className="flex justify-between text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
                         <span>Progress Sesi</span>
-                        <span className={prog.progress === 100 ? 'text-emerald-600' : 'text-slate-600'}>{prog.progress}%</span>
+                        <span className={prog.progress === 100 ? 'text-emerald-500' : 'text-primary'}>{prog.progress}%</span>
                       </div>
-                      <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                        <div className={`h-full transition-all ${prog.progress === 100 ? 'bg-emerald-500' : 'bg-red-600'}`} style={{ width: `${prog.progress}%` }} />
+                      <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
+                        <div className={`h-full transition-all ${prog.progress === 100 ? 'bg-emerald-500' : 'bg-primary'}`} style={{ width: `${prog.progress}%` }} />
                       </div>
                     </div>
                   </CardContent>
                 </Card>
               )) : (
-                <div className="p-8 text-center bg-white rounded-2xl border-dashed border-2 border-slate-200">
-                  <p className="text-xs font-medium text-slate-400">Silakan pilih kelas pada filter.</p>
+                <div className="p-8 text-center bg-card rounded-2xl border-dashed border-2 border-border">
+                  <p className="text-xs font-medium text-muted-foreground">Silakan pilih kelas pada filter.</p>
                 </div>
               )}
             </div>
@@ -283,27 +283,27 @@ export default function TrainingPage() {
           <TabsContent value="time-trial" className="space-y-4">
             <Button 
               onClick={() => setIsTimeTrialSheetOpen(true)}
-              className="w-full bg-red-600 hover:bg-red-700 h-12 text-sm font-bold shadow-md rounded-xl"
+              className="w-full bg-primary hover:bg-primary/90 h-12 text-sm font-bold shadow-md rounded-xl text-primary-foreground uppercase tracking-widest"
             >
               + Buat Time Trial Baru
             </Button>
 
             <div className="space-y-3">
-              <h3 className="font-bold text-sm text-slate-800 mt-2 mb-1">Riwayat Time Trial</h3>
+              <h3 className="font-bold text-sm text-foreground mt-2 mb-1 uppercase tracking-widest">Riwayat Time Trial</h3>
               {timeTrials.map(tt => (
-                <Card key={tt.id} onClick={() => router.push(`/coach/training/time-trial/${tt.id}`)} className="border-none shadow-sm cursor-pointer hover:ring-2 hover:ring-red-100 bg-white">
+                <Card key={tt.id} onClick={() => router.push(`/coach/training/time-trial/${tt.id}`)} className="border border-border shadow-sm cursor-pointer hover:border-primary/50 bg-card rounded-2xl">
                   <CardHeader className="p-4 pb-2 flex flex-row items-center justify-between">
                     <div>
-                      <CardTitle className="text-sm font-bold text-slate-800">{tt.title}</CardTitle>
-                      <p className="text-[10px] text-slate-500 font-medium mt-1">{tt.date}</p>
+                      <CardTitle className="text-sm font-bold text-foreground uppercase tracking-widest">{tt.title}</CardTitle>
+                      <p className="text-[10px] text-muted-foreground font-medium mt-1">{tt.date}</p>
                     </div>
-                    <ChevronRight className="h-4 w-4 text-slate-400" />
+                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
                   </CardHeader>
                   <CardContent className="p-4 pt-0">
-                    <div className="flex items-center gap-2 bg-slate-50 p-2 rounded-lg mt-2">
-                      <Users className="h-4 w-4 text-slate-400" />
-                      <p className="text-[10px] font-semibold text-slate-600">
-                        Total Partisipan: <span className="text-red-600 font-bold">{tt.participants} Atlet</span>
+                    <div className="flex items-center gap-2 bg-background p-2 rounded-xl mt-2 border border-border">
+                      <Users className="h-4 w-4 text-muted-foreground" />
+                      <p className="text-[10px] font-semibold text-muted-foreground">
+                        Total Partisipan: <span className="text-primary font-bold">{tt.participants} Atlet</span>
                       </p>
                     </div>
                   </CardContent>
@@ -312,36 +312,36 @@ export default function TrainingPage() {
             </div>
           </TabsContent>
 
-          {/* TAB 2: PERSONAL */}
+          {/* TAB 3: PERSONAL */}
           <TabsContent value="personal" className="space-y-4">
             <div className="space-y-4">
               {personals.map(prog => {
                 const assignedCount = assignedTasks[prog.id]?.length || 0
                 return (
-                  <Card key={prog.id} className="shadow-sm border-none bg-white">
+                  <Card key={prog.id} className="shadow-sm border border-border bg-card rounded-2xl">
                     <CardContent className="p-4">
                       {/* Klik Header = Buka SubPage */}
                       <div className="cursor-pointer group mb-3" onClick={() => router.push(`/coach/training/${prog.id}?type=${prog.type}`)}>
                         <div className="flex justify-between items-start mb-1">
-                          <h4 className="font-bold text-sm text-slate-900 group-hover:text-red-600 transition-colors">{prog.title}</h4>
-                          <ChevronRight className="h-4 w-4 text-slate-400" />
+                          <h4 className="font-bold text-sm text-foreground uppercase tracking-widest group-hover:text-primary transition-colors">{prog.title}</h4>
+                          <ChevronRight className="h-4 w-4 text-muted-foreground" />
                         </div>
-                        <p className="text-xs text-slate-500 line-clamp-2">{prog.desc}</p>
+                        <p className="text-xs text-muted-foreground line-clamp-2">{prog.desc}</p>
                       </div>
                       
                       {/* Tombol Tugaskan & Status */}
-                      <div className="pt-3 border-t border-slate-100 space-y-3">
+                      <div className="pt-3 border-t border-border space-y-3">
                         <Button 
                           onClick={() => handleOpenAssign(prog.id)}
                           variant="outline" 
-                          className="w-full text-xs font-bold border-slate-200 text-slate-700 hover:bg-slate-50 h-9"
+                          className="w-full text-xs font-bold border-border text-foreground hover:bg-muted h-9 rounded-xl"
                         >
-                          <CheckSquare className="mr-2 h-4 w-4 text-red-600" /> Tugaskan Atlet
+                          <CheckSquare className="mr-2 h-4 w-4 text-primary" /> Tugaskan Atlet
                         </Button>
-                        <div className="flex items-center gap-2 bg-slate-50 p-2 rounded-lg">
-                          <Users className="h-4 w-4 text-slate-400" />
-                          <p className="text-[10px] font-semibold text-slate-600">
-                            Latihan ini ditugaskan untuk <span className="text-red-600 font-bold">{assignedCount} Atlet</span>.
+                        <div className="flex items-center gap-2 bg-background p-2 rounded-xl border border-border">
+                          <Users className="h-4 w-4 text-muted-foreground" />
+                          <p className="text-[10px] font-semibold text-muted-foreground">
+                            Latihan ini ditugaskan untuk <span className="text-primary font-bold">{assignedCount} Atlet</span>.
                           </p>
                         </div>
                       </div>
@@ -356,21 +356,21 @@ export default function TrainingPage() {
 
       {/* SHEET ASSIGN ATLET */}
       <Sheet open={isAssignSheetOpen} onOpenChange={setIsAssignSheetOpen}>
-        <SheetContent side="bottom" className="rounded-t-3xl px-4 pb-6 pt-4 h-[75vh] flex flex-col bg-white">
-          <SheetHeader className="border-b pb-4 text-left shrink-0">
-            <SheetTitle className="text-lg font-bold text-slate-900">Pilih Atlet</SheetTitle>
-            <p className="text-xs text-slate-500">Tugaskan latihan mandiri ke daftar anak didik.</p>
+        <SheetContent side="bottom" className="rounded-t-3xl px-4 pb-6 pt-4 h-[75vh] flex flex-col bg-card border-t border-border">
+          <SheetHeader className="border-b border-border pb-4 text-left shrink-0">
+            <SheetTitle className="text-lg font-bold text-foreground uppercase tracking-widest">Pilih Atlet</SheetTitle>
+            <p className="text-xs text-muted-foreground">Tugaskan latihan mandiri ke daftar anak didik.</p>
           </SheetHeader>
           <ScrollArea className="flex-1 py-4">
             <div className="space-y-3 px-1">
               {dummyAthletes.map(ath => (
-                <div key={ath.id} className="flex items-center justify-between p-3 rounded-xl border border-slate-100 bg-slate-50">
-                  <label htmlFor={`assign-${ath.id}`} className="text-sm font-semibold cursor-pointer flex-1 text-slate-800">
-                    {ath.name} <span className="text-[10px] text-slate-400 font-normal block">{ath.level}</span>
+                <div key={ath.id} className="flex items-center justify-between p-3 rounded-2xl border border-border bg-background">
+                  <label htmlFor={`assign-${ath.id}`} className="text-sm font-semibold cursor-pointer flex-1 text-foreground">
+                    {ath.name} <span className="text-[10px] text-muted-foreground font-normal block">{ath.level}</span>
                   </label>
                   <Checkbox 
                     id={`assign-${ath.id}`} 
-                    className="h-5 w-5 data-[state=checked]:bg-red-600 data-[state=checked]:border-red-600"
+                    className="h-5 w-5 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                     checked={tempAssign.includes(ath.id)}
                     onCheckedChange={(checked) => {
                       if (checked) setTempAssign([...tempAssign, ath.id])
@@ -381,8 +381,8 @@ export default function TrainingPage() {
               ))}
             </div>
           </ScrollArea>
-          <div className="pt-4 border-t shrink-0">
-            <Button onClick={handleSaveAssign} className="w-full bg-red-600 hover:bg-red-700 h-12 text-sm font-bold shadow-md">
+          <div className="pt-4 border-t border-border shrink-0">
+            <Button onClick={handleSaveAssign} className="w-full bg-primary hover:bg-primary/90 h-12 text-sm font-bold shadow-md rounded-xl uppercase tracking-widest text-primary-foreground">
               <Save className="mr-2 h-4 w-4" /> Simpan Tugas ({tempAssign.length} Atlet)
             </Button>
           </div>
@@ -391,20 +391,20 @@ export default function TrainingPage() {
 
       {/* SHEET BUAT TIME TRIAL */}
       <Sheet open={isTimeTrialSheetOpen} onOpenChange={setIsTimeTrialSheetOpen}>
-        <SheetContent side="bottom" className="rounded-t-3xl px-4 pb-6 pt-4 h-auto flex flex-col bg-white">
-          <SheetHeader className="border-b pb-4 text-left shrink-0">
-            <SheetTitle className="text-lg font-bold text-slate-900">Buat Time Trial</SheetTitle>
-            <p className="text-xs text-slate-500">Pilih gaya dan jarak untuk sesi time trial ini.</p>
+        <SheetContent side="bottom" className="rounded-t-3xl px-4 pb-6 pt-4 h-auto flex flex-col bg-card border-t border-border">
+          <SheetHeader className="border-b border-border pb-4 text-left shrink-0">
+            <SheetTitle className="text-lg font-bold text-foreground uppercase tracking-widest">Buat Time Trial</SheetTitle>
+            <p className="text-xs text-muted-foreground">Pilih gaya dan jarak untuk sesi time trial ini.</p>
           </SheetHeader>
           <div className="py-4 space-y-4">
             <div className="space-y-2">
-              <label className="text-xs font-bold text-slate-700">Gaya Renang</label>
+              <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Gaya Renang</label>
               <div className="grid grid-cols-2 gap-2">
                 {["Bebas", "Dada", "Punggung", "Kupu"].map(gaya => (
                   <div 
                     key={gaya}
                     onClick={() => setTtGaya(gaya)}
-                    className={`p-3 text-center rounded-xl border text-sm font-bold cursor-pointer transition-colors ${ttGaya === gaya ? 'bg-red-50 border-red-200 text-red-600' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                    className={`p-3 text-center rounded-xl border text-sm font-bold cursor-pointer transition-colors ${ttGaya === gaya ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-border text-foreground hover:bg-muted'}`}
                   >
                     {gaya}
                   </div>
@@ -413,13 +413,13 @@ export default function TrainingPage() {
             </div>
             
             <div className="space-y-2">
-              <label className="text-xs font-bold text-slate-700">Jarak (Meter)</label>
+              <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Jarak (Meter)</label>
               <div className="grid grid-cols-4 gap-2">
                 {["25M", "50M", "100M", "200M"].map(jarak => (
                   <div 
                     key={jarak}
                     onClick={() => setTtJarak(jarak)}
-                    className={`p-2 text-center rounded-lg border text-xs font-bold cursor-pointer transition-colors ${ttJarak === jarak ? 'bg-red-50 border-red-200 text-red-600' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                    className={`p-2 text-center rounded-xl border text-xs font-bold cursor-pointer transition-colors ${ttJarak === jarak ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-border text-foreground hover:bg-muted'}`}
                   >
                     {jarak}
                   </div>
@@ -427,8 +427,8 @@ export default function TrainingPage() {
               </div>
             </div>
           </div>
-          <div className="pt-4 border-t mt-4 shrink-0">
-            <Button onClick={handleCreateTimeTrial} className="w-full bg-red-600 hover:bg-red-700 h-12 text-sm font-bold shadow-md">
+          <div className="pt-4 border-t border-border mt-4 shrink-0">
+            <Button onClick={handleCreateTimeTrial} className="w-full bg-primary hover:bg-primary/90 h-12 text-sm font-bold shadow-md rounded-xl uppercase tracking-widest text-primary-foreground">
               <Play className="mr-2 h-4 w-4 fill-white" /> Mulai Time Trial
             </Button>
           </div>

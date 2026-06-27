@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { ChevronLeft, Calendar as CalendarIcon, MapPin, Clock, Info } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { GlobalHeader } from "@/components/GlobalHeader"
 
 type AgendaType = "hadir" | "dinas" | "event" | "libur" | "cuti" | "ijin"
 
@@ -57,12 +58,12 @@ const dummyAgendas: Agenda[] = [
 ]
 
 const TYPE_CONFIG = {
-  hadir: { color: "bg-emerald-100 text-emerald-700", label: "Masuk/Latihan" },
-  dinas: { color: "bg-blue-100 text-blue-700", label: "Dinas Luar" },
-  event: { color: "bg-amber-100 text-amber-700", label: "Event Lomba" },
-  libur: { color: "bg-slate-100 text-slate-600", label: "Libur" },
-  cuti: { color: "bg-purple-100 text-purple-700", label: "Cuti" },
-  ijin: { color: "bg-rose-100 text-rose-700", label: "Ijin" },
+  hadir: { color: "bg-emerald-500/20 text-emerald-400", label: "Masuk/Latihan" },
+  dinas: { color: "bg-blue-500/20 text-blue-400", label: "Dinas Luar" },
+  event: { color: "bg-amber-500/20 text-amber-400", label: "Event Lomba" },
+  libur: { color: "bg-slate-500/20 text-slate-400", label: "Libur" },
+  cuti: { color: "bg-purple-500/20 text-purple-400", label: "Cuti" },
+  ijin: { color: "bg-rose-500/20 text-rose-400", label: "Ijin" },
 }
 
 export default function ScheduleDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -82,18 +83,13 @@ export default function ScheduleDetailPage({ params }: { params: Promise<{ id: s
   })
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-slate-50 w-full" suppressHydrationWarning>
+    <div className="flex flex-col min-h-full w-full relative" suppressHydrationWarning>
       
       {/* Header */}
-      <div className="h-14 px-4 flex items-center bg-white border-b border-slate-200 sticky top-0 z-50 shrink-0 shadow-sm">
-        <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-slate-100">
-          <ChevronLeft className="h-5 w-5 text-slate-700" />
-        </Button>
-        <h1 className="text-lg font-bold text-slate-800 tracking-tight flex-1">Detail Agenda</h1>
-      </div>
+      <GlobalHeader variant="subpage" title="Detail Agenda" />
 
       <main className="flex-1 overflow-y-auto w-full p-4 pb-12">
-        <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 mb-6 relative overflow-hidden">
+        <div className="bg-card rounded-3xl p-6 shadow-sm border border-border mb-6 relative overflow-hidden">
           
           <div className={`absolute top-0 left-0 w-1.5 h-full ${config.color.split(" ")[0]}`}></div>
 
@@ -103,46 +99,46 @@ export default function ScheduleDetailPage({ params }: { params: Promise<{ id: s
             </span>
           </div>
 
-          <h2 className="text-2xl font-black text-slate-900 leading-tight mb-6 pl-2">
+          <h2 className="text-2xl font-black text-foreground uppercase tracking-widest leading-tight mb-6 pl-2">
             {agenda.title}
           </h2>
 
-          <div className="flex flex-col gap-4 mb-6 pb-6 border-b border-slate-100 pl-2">
-            <div className="flex items-start text-slate-600">
-              <CalendarIcon className="h-5 w-5 mr-3 text-slate-400 mt-0.5" />
+          <div className="flex flex-col gap-4 mb-6 pb-6 border-b border-border pl-2">
+            <div className="flex items-start text-muted-foreground">
+              <CalendarIcon className="h-5 w-5 mr-3 text-muted-foreground mt-0.5" />
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">Tanggal</p>
-                <p className="text-sm font-semibold text-slate-800">{dateDisplay}</p>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-0.5">Tanggal</p>
+                <p className="text-sm font-semibold text-foreground">{dateDisplay}</p>
               </div>
             </div>
             
             {agenda.time && (
-              <div className="flex items-start text-slate-600">
-                <Clock className="h-5 w-5 mr-3 text-slate-400 mt-0.5" />
+              <div className="flex items-start text-muted-foreground">
+                <Clock className="h-5 w-5 mr-3 text-muted-foreground mt-0.5" />
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">Waktu</p>
-                  <p className="text-sm font-semibold text-slate-800">{agenda.time}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-0.5">Waktu</p>
+                  <p className="text-sm font-semibold text-foreground">{agenda.time}</p>
                 </div>
               </div>
             )}
 
             {agenda.location && (
-              <div className="flex items-start text-slate-600">
-                <MapPin className="h-5 w-5 mr-3 text-slate-400 mt-0.5" />
+              <div className="flex items-start text-muted-foreground">
+                <MapPin className="h-5 w-5 mr-3 text-muted-foreground mt-0.5" />
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">Lokasi</p>
-                  <p className="text-sm font-semibold text-slate-800">{agenda.location}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-0.5">Lokasi</p>
+                  <p className="text-sm font-semibold text-foreground">{agenda.location}</p>
                 </div>
               </div>
             )}
           </div>
 
           <div className="pl-2">
-            <div className="flex items-center text-slate-800 font-bold text-sm mb-3">
-              <Info className="h-4 w-4 mr-2 text-blue-500" />
+            <div className="flex items-center text-foreground font-bold text-sm mb-3 tracking-widest uppercase">
+              <Info className="h-4 w-4 mr-2 text-primary" />
               Catatan / Deskripsi
             </div>
-            <p className="text-sm text-slate-600 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-100">
+            <p className="text-sm text-muted-foreground leading-relaxed bg-muted/30 p-4 rounded-xl border border-border">
               {agenda.description || "Tidak ada catatan tambahan untuk agenda ini."}
             </p>
           </div>

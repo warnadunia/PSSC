@@ -150,32 +150,32 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
   )
 
   return (
-    <div className="flex flex-col h-full bg-slate-50 w-full" suppressHydrationWarning>
+    <div className="flex flex-col min-h-full w-full relative" suppressHydrationWarning>
       
       <GlobalHeader variant="subpage" title="Detail Atlet" />
 
-      <main className="flex-1 overflow-y-auto px-4 md:px-6 pt-5 pb-28 space-y-6 w-full">
+      <main className="flex-1 px-4 md:px-6 pt-5 pb-28 space-y-6 w-full">
         
         {/* ==========================================
             1. HEADER PROFIL & BIODATA LINK
             ========================================== */}
-        <section className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
-          <Avatar className="h-20 w-20 ring-4 ring-red-50 shadow-md">
+        <section className="flex items-center gap-4 bg-card p-4 rounded-2xl shadow-sm border border-border">
+          <Avatar className="h-20 w-20 ring-4 ring-primary/20 shadow-md">
             <AvatarImage src={athlete.photo} alt={athlete.name} className="object-cover" />
-            <AvatarFallback className="bg-red-600 text-white font-black text-2xl">
+            <AvatarFallback className="bg-primary text-primary-foreground font-black text-2xl">
               {athlete.name.charAt(0)}
             </AvatarFallback>
           </Avatar>
           <div className="flex-1 min-w-0">
-            <h1 className="font-bold text-lg text-slate-900 leading-tight truncate">{athlete.name}</h1>
+            <h1 className="font-bold text-lg text-foreground leading-tight truncate uppercase tracking-widest">{athlete.name}</h1>
             <div className="flex flex-wrap gap-1.5 mt-1.5 mb-3">
-              <Badge className="bg-red-600 hover:bg-red-700">{athlete.level}</Badge>
-              <Badge variant="outline" className="border-slate-300 text-slate-600">{athlete.ku}</Badge>
+              <Badge className="bg-primary hover:bg-primary/90 text-primary-foreground">{athlete.level}</Badge>
+              <Badge variant="outline" className="border-border text-muted-foreground">{athlete.ku}</Badge>
             </div>
             <Button 
               variant="outline" 
               size="sm" 
-              className="h-7 text-[10px] w-full border-red-200 text-red-600 hover:bg-red-50"
+              className="h-7 text-[10px] w-full border-primary/20 text-primary hover:bg-primary/10 hover:text-primary"
               onClick={() => router.push(`/coach/athletes/${resolvedParams.id}/biodata`)}
             >
               <UserCircle className="mr-1.5 h-3.5 w-3.5" /> Lihat Biodata Lengkap
@@ -187,14 +187,14 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
             TABS: SLIDER PROGRAM & KEJUARAAN
             ========================================== */}
         <Tabs defaultValue="program" className="w-full">
-          <TabsList className="w-full grid grid-cols-3 bg-slate-200/50 p-1 rounded-xl mb-2">
-            <TabsTrigger value="program" className="text-[11px] py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+          <TabsList className="w-full grid grid-cols-3 bg-primary p-1 rounded-full mb-2">
+            <TabsTrigger value="program" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm font-bold transition-all rounded-full text-primary-foreground">
               Program
             </TabsTrigger>
-            <TabsTrigger value="time-trial" className="text-[11px] py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+            <TabsTrigger value="time-trial" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm font-bold transition-all rounded-full text-primary-foreground">
               Time Trial
             </TabsTrigger>
-            <TabsTrigger value="kejuaraan" className="text-[11px] py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+            <TabsTrigger value="kejuaraan" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm font-bold transition-all rounded-full text-primary-foreground">
               Kejuaraan
             </TabsTrigger>
           </TabsList>
@@ -205,20 +205,20 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
           <TabsContent value="program" className="space-y-6 outline-none">
             
             {/* 2. RADAR CHART (OVERALL FM STYLE) */}
-            <Card className="shadow-sm border-none bg-white">
+            <Card className="shadow-sm border-border bg-card">
           <CardHeader className="p-4 pb-0">
-            <CardTitle className="text-sm font-bold text-slate-800 flex items-center gap-2">
-              <Target className="h-4 w-4 text-red-600" /> Atribut Kemampuan Atlet
+            <CardTitle className="text-sm font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
+              <Target className="h-4 w-4 text-primary" /> Atribut Kemampuan Atlet
             </CardTitle>
           </CardHeader>
           <CardContent className="p-2">
             <div className="h-[240px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart cx="50%" cy="50%" outerRadius="75%" data={radarData}>
-                  <PolarGrid stroke="#e2e8f0" />
-                  <PolarAngleAxis dataKey="subject" tick={{ fill: '#475569', fontSize: 11, fontWeight: 600 }} />
+                  <PolarGrid stroke="#2a293b" />
+                  <PolarAngleAxis dataKey="subject" tick={{ fill: '#a1a1aa', fontSize: 11, fontWeight: 600 }} />
                   <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                  <Radar name="Ability" dataKey="A" stroke="#dc2626" fill="#dc2626" fillOpacity={0.4} />
+                  <Radar name="Ability" dataKey="A" stroke="#ff4b4b" fill="#ff4b4b" fillOpacity={0.4} />
                 </RadarChart>
               </ResponsiveContainer>
             </div>
@@ -230,13 +230,13 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
             ========================================== */}
         <section className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="font-bold text-sm text-slate-800 flex items-center gap-2">
-              <Activity className="h-4 w-4 text-red-600" /> Analisis Teknik per Gaya
+            <h3 className="font-bold text-sm text-foreground uppercase tracking-widest flex items-center gap-2">
+              <Activity className="h-4 w-4 text-primary" /> Analisis Teknik per Gaya
             </h3>
           </div>
-          <div className="bg-red-50 p-2.5 rounded-lg flex gap-2 items-start border border-red-100 mb-2">
-            <Settings2 className="h-4 w-4 text-red-600 shrink-0 mt-0.5" />
-            <p className="text-[10px] text-red-800 font-medium leading-relaxed">
+          <div className="bg-primary/10 p-2.5 rounded-lg flex gap-2 items-start border border-primary/20 mb-2">
+            <Settings2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+            <p className="text-[10px] text-primary/90 font-medium leading-relaxed">
               *Komponen penilaian disinkronisasi dinamis dari target kurikulum Pusat.
             </p>
           </div>
@@ -244,12 +244,12 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
           {/* Menggunakan Tabs dengan ScrollArea agar muat di layar HP */}
           <Tabs defaultValue={styleBreakdown[0].short} className="w-full">
             <ScrollArea className="w-full whitespace-nowrap mb-3">
-              <TabsList className="w-max flex bg-slate-200/50 p-1 rounded-xl">
+              <TabsList className="w-full grid grid-cols-4 bg-muted/30 p-1 rounded-full border border-border gap-1">
                 {styleBreakdown.map((style, idx) => (
                   <TabsTrigger 
                     key={idx} 
                     value={style.short}
-                    className="text-[11px] py-1.5 px-4 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold transition-all"
+                    className="text-[11px] py-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm font-bold transition-all rounded-full w-full text-muted-foreground"
                   >
                     {style.short}
                   </TabsTrigger>
@@ -259,18 +259,18 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
             </ScrollArea>
 
             {styleBreakdown.map((style, idx) => (
-              <TabsContent key={idx} value={style.short} className="bg-white p-4 rounded-xl shadow-sm border border-slate-100 mt-0 space-y-3">
-                <h4 className="font-bold text-xs text-slate-800 mb-2 border-b border-slate-50 pb-2">{style.name}</h4>
+              <TabsContent key={idx} value={style.short} className="bg-card p-4 rounded-xl shadow-sm border border-border mt-0 space-y-3">
+                <h4 className="font-bold text-xs text-foreground uppercase tracking-widest mb-2 border-b border-border pb-2">{style.name}</h4>
                 {style.metrics.map((metric, mIdx) => (
                   <div key={mIdx} className="space-y-1.5">
                     <div className="flex justify-between items-center text-[10px] font-bold">
-                      <span className="text-slate-600">{metric.label}</span>
-                      <span className={metric.value >= 90 ? 'text-red-600' : 'text-slate-800'}>{metric.value}%</span>
+                      <span className="text-muted-foreground">{metric.label}</span>
+                      <span className={metric.value >= 90 ? 'text-primary' : 'text-foreground'}>{metric.value}%</span>
                     </div>
                     {/* Manual Progress Bar biar nggak kena Hydration Error */}
-                    <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                    <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
                       <div 
-                        className={`h-full transition-all duration-700 ${metric.value >= 90 ? 'bg-red-600' : 'bg-slate-400'}`}
+                        className={`h-full transition-all duration-700 ${metric.value >= 90 ? 'bg-primary' : 'bg-muted-foreground'}`}
                         style={{ width: `${metric.value}%` }} 
                       />
                     </div>
@@ -282,9 +282,9 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
         </section>
 
           {/* 4. DAFTAR PROGRAM LATIHAN */}
-          <section className="space-y-4 pt-4 border-t border-slate-100">
-            <h3 className="font-bold text-sm text-slate-800 flex items-center gap-2">
-              <Activity className="h-4 w-4 text-blue-600" /> Histori Program Latihan
+          <section className="space-y-4 pt-4 border-t border-border">
+            <h3 className="font-bold text-sm text-foreground uppercase tracking-widest flex items-center gap-2">
+              <Activity className="h-4 w-4 text-blue-500" /> Histori Program Latihan
             </h3>
             {historyProgramDetailed.map((session) => {
                 // Hitung Completion Rate
@@ -300,37 +300,37 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
                 const isTuntas = completionRate === 100;
 
                 return (
-                  <Card key={session.id} className="border border-slate-200 shadow-sm bg-white overflow-hidden relative">
+                  <Card key={session.id} className="border border-border shadow-sm bg-card overflow-hidden relative">
                     <div className={`absolute left-0 top-0 w-1.5 h-full ${isTuntas ? 'bg-emerald-500' : 'bg-red-500'}`} />
                     <CardContent className="p-0">
                       
                       {/* Header Info */}
                       <div className="p-4 pl-5">
-                        <p className="text-[10px] font-bold text-slate-500 mb-1">Latihan : {session.timeAgo}</p>
-                        <h3 className="text-lg font-black text-slate-900 leading-tight mb-3">{session.session}</h3>
+                        <p className="text-[10px] font-bold text-muted-foreground mb-1">Latihan : {session.timeAgo}</p>
+                        <h3 className="text-lg font-black text-foreground uppercase tracking-widest leading-tight mb-3">{session.session}</h3>
                         
                         <div className="flex gap-6 mb-4">
                           <div className="flex items-center gap-2">
-                            <MapPin className="h-4 w-4 text-slate-400" />
-                            <span className="text-xs font-bold text-slate-700">{session.distance}</span>
+                            <MapPin className="h-4 w-4 text-muted-foreground/50" />
+                            <span className="text-xs font-bold text-foreground">{session.distance}</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <Clock className="h-4 w-4 text-slate-400" />
-                            <span className="text-xs font-bold text-slate-700">{session.duration}</span>
+                            <Clock className="h-4 w-4 text-muted-foreground/50" />
+                            <span className="text-xs font-bold text-foreground">{session.duration}</span>
                           </div>
                         </div>
 
                         {/* Progress Status */}
-                        <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <div className="bg-muted/30 p-3 rounded-xl border border-border">
                           <div className="flex justify-between items-center mb-1.5">
-                            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-                              Status: {isTuntas ? <span className="text-emerald-600">Tuntas</span> : <span className="text-red-600">Belum Tuntas</span>}
+                            <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
+                              Status: {isTuntas ? <span className="text-emerald-500">Tuntas</span> : <span className="text-red-500">Belum Tuntas</span>}
                             </span>
-                            <span className={`text-[10px] font-black ${isTuntas ? 'text-emerald-600' : 'text-slate-700'}`}>
+                            <span className={`text-[10px] font-black ${isTuntas ? 'text-emerald-500' : 'text-foreground'}`}>
                               {completionRate}%
                             </span>
                           </div>
-                          <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
+                          <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
                             <div 
                               className={`h-full transition-all duration-700 ${isTuntas ? 'bg-emerald-500' : 'bg-red-500'}`}
                               style={{ width: `${completionRate}%` }} 
@@ -342,9 +342,9 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
                       {/* Footer Action */}
                       <div 
                         onClick={() => router.push(`/coach/athletes/${resolvedParams.id}/program/${session.id}`)}
-                        className="bg-slate-50 border-t border-slate-100 p-3 flex justify-center items-center cursor-pointer hover:bg-slate-100 transition-colors group"
+                        className="bg-muted/30 border-t border-border p-3 flex justify-center items-center cursor-pointer hover:bg-muted/50 transition-colors group"
                       >
-                        <span className="text-xs font-bold text-red-600 group-hover:text-red-700 flex items-center">
+                        <span className="text-xs font-bold text-primary group-hover:text-primary/80 flex items-center uppercase tracking-widest">
                           Lihat Detail <ChevronRight className="h-3.5 w-3.5 ml-1" />
                         </span>
                       </div>
@@ -359,15 +359,15 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
               {/* Filter Gaya: Tabbed */}
               <div className="mb-3">
                 <ScrollArea className="w-full whitespace-nowrap">
-                  <div className="flex gap-2 p-1">
+                  <div className="w-full grid grid-cols-4 gap-1 bg-muted/30 p-1 rounded-full border border-border">
                     {["Bebas", "Dada", "Punggung", "Kupu"].map(gaya => (
                       <Button 
                         key={gaya}
-                        variant={selectedStroke === gaya ? "default" : "outline"}
-                        className={`rounded-full h-8 px-4 text-[11px] font-bold ${selectedStroke === gaya ? 'bg-red-600 text-white' : 'bg-white text-slate-500 border-slate-200'}`}
+                        variant="ghost"
+                        className={`rounded-full h-8 w-full text-[11px] font-bold transition-all ${selectedStroke === gaya ? 'bg-primary text-primary-foreground shadow-sm hover:bg-primary/90' : 'text-muted-foreground hover:bg-muted/50'}`}
                         onClick={() => setSelectedStroke(gaya)}
                       >
-                        Gaya {gaya}
+                        {gaya}
                       </Button>
                     ))}
                   </div>
@@ -376,13 +376,13 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
               </div>
 
               {/* Chart */}
-              <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+              <div className="bg-card p-4 rounded-2xl shadow-sm border border-border">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xs font-bold text-slate-800">Tren Waktu Time Trial (Detik)</h3>
+                  <h3 className="text-xs font-bold text-foreground uppercase tracking-widest">Tren Waktu Time Trial (Detik)</h3>
                   <select 
                     value={selectedYear} 
                     onChange={(e) => setSelectedYear(e.target.value)}
-                    className="bg-slate-50 border border-slate-200 rounded-lg text-[10px] py-1 px-2 text-slate-700 font-bold focus:outline-none focus:ring-1 focus:ring-red-500 shadow-sm"
+                    className="bg-muted/30 border border-border rounded-lg text-[10px] py-1 px-2 text-foreground font-bold focus:outline-none focus:ring-1 focus:ring-primary shadow-sm"
                   >
                     <option value="2026">2026</option>
                     <option value="2025">2025</option>
@@ -391,48 +391,48 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
                 <div className="h-48 w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={chartData} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                      <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#94a3b8' }} />
-                      <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#94a3b8' }} domain={['auto', 'auto']} />
-                      <RechartsTooltip contentStyle={{ fontSize: '10px', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#2a293b" />
+                      <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#a1a1aa' }} />
+                      <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#a1a1aa' }} domain={['auto', 'auto']} />
+                      <RechartsTooltip contentStyle={{ backgroundColor: '#1f1e2e', color: '#fff', fontSize: '10px', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                       <Legend iconType="circle" wrapperStyle={{ fontSize: '10px', paddingTop: '10px' }} />
-                      <Line type="monotone" name="Tahun Berjalan" dataKey="thisYear" stroke="#dc2626" strokeWidth={3} dot={{ r: 3, fill: "#dc2626", strokeWidth: 0 }} activeDot={{ r: 5 }} />
-                      <Line type="monotone" name="Tahun Lalu" dataKey="lastYear" stroke="#cbd5e1" strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
+                      <Line type="monotone" name="Tahun Berjalan" dataKey="thisYear" stroke="#ff4b4b" strokeWidth={3} dot={{ r: 3, fill: "#ff4b4b", strokeWidth: 0 }} activeDot={{ r: 5 }} />
+                      <Line type="monotone" name="Tahun Lalu" dataKey="lastYear" stroke="#a1a1aa" strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
               </div>
 
               {/* Tabel Hasil Time Trial */}
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                <div className="p-3 bg-slate-50 border-b border-slate-100">
-                  <h3 className="text-xs font-bold text-slate-800">Semua Hasil Time Trial</h3>
+              <div className="bg-card rounded-2xl shadow-sm border border-border overflow-hidden">
+                <div className="p-3 bg-muted/30 border-b border-border">
+                  <h3 className="text-xs font-bold text-foreground uppercase tracking-widest">Semua Hasil Time Trial</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-white border-b border-slate-100">
+                    <thead className="bg-card border-b border-border">
                       <tr>
-                        <th className="px-3 py-2.5 font-bold text-slate-600">Nomor Jarak</th>
-                        <th className="px-3 py-2.5 font-bold text-slate-600 text-center">Time Record</th>
-                        <th className="px-3 py-2.5 font-bold text-slate-600">Nama Event</th>
+                        <th className="px-3 py-2.5 font-bold text-muted-foreground uppercase tracking-widest">Nomor Jarak</th>
+                        <th className="px-3 py-2.5 font-bold text-muted-foreground text-center uppercase tracking-widest">Time Record</th>
+                        <th className="px-3 py-2.5 font-bold text-muted-foreground uppercase tracking-widest">Nama Event</th>
                       </tr>
                     </thead>
                     <tbody>
                       {filteredResults.length > 0 ? (
                         filteredResults.map((record) => (
-                          <tr key={record.id} className="border-b border-slate-50 hover:bg-slate-50/50">
-                            <td className="px-3 py-3 font-semibold text-slate-800">{record.distance} {record.stroke}</td>
+                          <tr key={record.id} className="border-b border-border hover:bg-muted/50">
+                            <td className="px-3 py-3 font-semibold text-foreground">{record.distance} {record.stroke}</td>
                             <td className="px-3 py-3 text-center">
-                              <span className="font-bold text-red-600 bg-red-50 px-2 py-1 rounded border border-red-100">
+                              <span className="font-bold text-primary bg-primary/10 px-2 py-1 rounded border border-primary/20">
                                 {record.time}
                               </span>
                             </td>
-                            <td className="px-3 py-3 text-slate-600">Time Trial Rutin</td>
+                            <td className="px-3 py-3 text-muted-foreground">Time Trial Rutin</td>
                           </tr>
                         ))
                       ) : (
                         <tr>
-                          <td colSpan={3} className="px-3 py-6 text-center text-slate-400 font-medium">
+                          <td colSpan={3} className="px-3 py-6 text-center text-muted-foreground font-medium">
                             Tidak ada data untuk filter ini.
                           </td>
                         </tr>
@@ -448,15 +448,15 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
               {/* Filter Gaya: Tabbed */}
               <div className="mb-3">
                 <ScrollArea className="w-full whitespace-nowrap">
-                  <div className="flex gap-2 p-1">
+                  <div className="w-full grid grid-cols-4 gap-1 bg-muted/30 p-1 rounded-full border border-border">
                     {["Bebas", "Dada", "Punggung", "Kupu"].map(gaya => (
                       <Button 
                         key={gaya}
-                        variant={selectedStroke === gaya ? "default" : "outline"}
-                        className={`rounded-full h-8 px-4 text-[11px] font-bold ${selectedStroke === gaya ? 'bg-indigo-600 text-white' : 'bg-white text-slate-500 border-slate-200'}`}
+                        variant="ghost"
+                        className={`rounded-full h-8 w-full text-[11px] font-bold transition-all ${selectedStroke === gaya ? 'bg-primary text-primary-foreground shadow-sm hover:bg-primary/90' : 'text-muted-foreground hover:bg-muted/50'}`}
                         onClick={() => setSelectedStroke(gaya)}
                       >
-                        Gaya {gaya}
+                        {gaya}
                       </Button>
                     ))}
                   </div>
@@ -465,13 +465,13 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
               </div>
 
               {/* Chart */}
-              <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+              <div className="bg-card p-4 rounded-2xl shadow-sm border border-border">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xs font-bold text-slate-800">Tren Waktu (Detik)</h3>
+                  <h3 className="text-xs font-bold text-foreground uppercase tracking-widest">Tren Waktu (Detik)</h3>
                   <select 
                     value={selectedYear} 
                     onChange={(e) => setSelectedYear(e.target.value)}
-                    className="bg-slate-50 border border-slate-200 rounded-lg text-[10px] py-1 px-2 text-slate-700 font-bold focus:outline-none focus:ring-1 focus:ring-indigo-500 shadow-sm"
+                    className="bg-muted/30 border border-border rounded-lg text-[10px] py-1 px-2 text-foreground font-bold focus:outline-none focus:ring-1 focus:ring-primary shadow-sm"
                   >
                     <option value="2026">2026</option>
                     <option value="2025">2025</option>
@@ -480,48 +480,48 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
                 <div className="h-48 w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={chartData} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                      <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#94a3b8' }} />
-                      <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#94a3b8' }} domain={['auto', 'auto']} />
-                      <RechartsTooltip contentStyle={{ fontSize: '10px', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#2a293b" />
+                      <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#a1a1aa' }} />
+                      <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#a1a1aa' }} domain={['auto', 'auto']} />
+                      <RechartsTooltip contentStyle={{ backgroundColor: '#1f1e2e', color: '#fff', fontSize: '10px', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                       <Legend iconType="circle" wrapperStyle={{ fontSize: '10px', paddingTop: '10px' }} />
-                      <Line type="monotone" name="Tahun Berjalan" dataKey="thisYear" stroke="#4f46e5" strokeWidth={3} dot={{ r: 3, fill: "#4f46e5", strokeWidth: 0 }} activeDot={{ r: 5 }} />
-                      <Line type="monotone" name="Tahun Lalu" dataKey="lastYear" stroke="#cbd5e1" strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
+                      <Line type="monotone" name="Tahun Berjalan" dataKey="thisYear" stroke="#ff4b4b" strokeWidth={3} dot={{ r: 3, fill: "#ff4b4b", strokeWidth: 0 }} activeDot={{ r: 5 }} />
+                      <Line type="monotone" name="Tahun Lalu" dataKey="lastYear" stroke="#a1a1aa" strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
               </div>
 
               {/* Tabel Hasil Perlombaan */}
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                <div className="p-3 bg-slate-50 border-b border-slate-100">
-                  <h3 className="text-xs font-bold text-slate-800">Semua Hasil Perlombaan</h3>
+              <div className="bg-card rounded-2xl shadow-sm border border-border overflow-hidden">
+                <div className="p-3 bg-muted/30 border-b border-border">
+                  <h3 className="text-xs font-bold text-foreground uppercase tracking-widest">Semua Hasil Perlombaan</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-white border-b border-slate-100">
+                    <thead className="bg-card border-b border-border">
                       <tr>
-                        <th className="px-3 py-2.5 font-bold text-slate-600">Nomor Kejuaraan</th>
-                        <th className="px-3 py-2.5 font-bold text-slate-600 text-center">Time Record</th>
-                        <th className="px-3 py-2.5 font-bold text-slate-600">Nama Event</th>
+                        <th className="px-3 py-2.5 font-bold text-muted-foreground uppercase tracking-widest">Nomor Kejuaraan</th>
+                        <th className="px-3 py-2.5 font-bold text-muted-foreground text-center uppercase tracking-widest">Time Record</th>
+                        <th className="px-3 py-2.5 font-bold text-muted-foreground uppercase tracking-widest">Nama Event</th>
                       </tr>
                     </thead>
                     <tbody>
                       {filteredResults.length > 0 ? (
                         filteredResults.map((record) => (
-                          <tr key={record.id} className="border-b border-slate-50 hover:bg-slate-50/50">
-                            <td className="px-3 py-3 font-semibold text-slate-800">{record.distance} {record.stroke}</td>
+                          <tr key={record.id} className="border-b border-border hover:bg-muted/50">
+                            <td className="px-3 py-3 font-semibold text-foreground">{record.distance} {record.stroke}</td>
                             <td className="px-3 py-3 text-center">
-                              <span className="font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded border border-indigo-100">
+                              <span className="font-bold text-primary bg-primary/10 px-2 py-1 rounded border border-primary/20">
                                 {record.time}
                               </span>
                             </td>
-                            <td className="px-3 py-3 text-slate-600">{record.event}</td>
+                            <td className="px-3 py-3 text-muted-foreground">{record.event}</td>
                           </tr>
                         ))
                       ) : (
                         <tr>
-                          <td colSpan={3} className="px-3 py-6 text-center text-slate-400 font-medium">
+                          <td colSpan={3} className="px-3 py-6 text-center text-muted-foreground font-medium">
                             Tidak ada data untuk filter ini.
                           </td>
                         </tr>

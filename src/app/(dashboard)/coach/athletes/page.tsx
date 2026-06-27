@@ -85,46 +85,46 @@ export default function AthletesPage() {
   const pctFemale = (totalFemale / totalAthletes) * 100
 
   return (
-    <div className="flex flex-col h-full bg-white relative w-full">
+    <div className="flex flex-col min-h-full w-full relative" suppressHydrationWarning>
       <GlobalHeader variant="pages" title="Athletes" />
 
-      <main className="flex-1 overflow-y-auto px-4 md:px-6 lg:px-8 pt-5 pb-28 space-y-6 w-full">
+      <main className="flex-1 px-4 md:px-6 lg:px-8 pt-5 pb-28 space-y-6 w-full">
         
         {/* STATISTIK ATLET (OVERVIEW) */}
         <section className="space-y-3">
-          <h2 className="text-sm font-bold text-slate-800 tracking-tight">Statistik Binaan Parisakti</h2>
+          <h2 className="text-sm font-bold text-foreground uppercase tracking-widest">Statistik Binaan Parisakti</h2>
           
           <div className="grid grid-cols-2 gap-3">
-            <Card className="bg-red-600 text-white border-none shadow-md">
+            <Card className="bg-primary text-primary-foreground border-none shadow-md">
               <CardContent className="p-4 flex flex-col justify-center">
                 <div className="flex items-center gap-2 mb-1">
-                  <Users className="h-4 w-4 text-red-200" />
-                  <p className="text-[10px] font-semibold text-red-100 uppercase tracking-wider">Total Atlet</p>
+                  <Users className="h-4 w-4 text-primary-foreground/80" />
+                  <p className="text-[10px] font-semibold text-primary-foreground uppercase tracking-wider">Total Atlet</p>
                 </div>
-                <p className="text-3xl font-black tracking-tighter">{totalAthletes} <span className="text-xs font-normal text-red-200">Orang</span></p>
+                <p className="text-3xl font-black tracking-tighter">{totalAthletes} <span className="text-xs font-normal text-primary-foreground/80">Orang</span></p>
               </CardContent>
             </Card>
 
-            <Card className="border-slate-100 shadow-sm bg-slate-50/50">
+            <Card className="border-border shadow-sm bg-card">
               <CardContent className="p-4 space-y-3">
                 {/* Custom Progress Bar Laki-laki */}
                 <div>
-                    <div className="flex justify-between text-[10px] font-bold text-slate-600 mb-1.5">
+                    <div className="flex justify-between text-[10px] font-bold text-muted-foreground mb-1.5">
                         <span>Laki-laki (L)</span>
                         <span>{totalMale}</span>
                     </div>
-                    <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
+                    <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
                         <div className="h-full bg-blue-500 transition-all" style={{ width: `${pctMale}%` }} />
                     </div>
                 </div>
 
                 {/* Custom Progress Bar Perempuan */}
                 <div>
-  <div className="flex justify-between text-[10px] font-bold text-slate-600 mb-1.5">
+  <div className="flex justify-between text-[10px] font-bold text-muted-foreground mb-1.5">
     <span>Perempuan (P)</span>
     <span>{totalFemale}</span>
   </div>
-  <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
+  <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
     <div className="h-full bg-pink-500 transition-all" style={{ width: `${pctFemale}%` }} />
   </div>
 </div>
@@ -138,7 +138,7 @@ export default function AthletesPage() {
             ========================================== */}
         <section className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold text-slate-800 tracking-tight flex items-center gap-2">
+            <h2 className="text-sm font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-amber-500" /> Insight & Rekomendasi
             </h2>
           </div>
@@ -147,9 +147,9 @@ export default function AthletesPage() {
             <div className="flex w-max space-x-4">
               
               {/* Grafik Tingkat Kehadiran */}
-              <Card className="w-[300px] shadow-sm border-slate-100 bg-white shrink-0">
+              <Card className="w-[300px] shadow-sm border-border bg-card shrink-0">
                 <CardHeader className="p-4 pb-0">
-                  <CardTitle className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                  <CardTitle className="text-xs font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
                     <ChartIcon className="h-3.5 w-3.5 text-blue-500" />
                     Kehadiran Latihan (5 Minggu)
                   </CardTitle>
@@ -163,9 +163,9 @@ export default function AthletesPage() {
                           <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
                         </linearGradient>
                       </defs>
-                      <XAxis dataKey="name" tick={{ fontSize: 9, fill: '#64748b' }} axisLine={false} tickLine={false} />
-                      <YAxis tick={{ fontSize: 9, fill: '#64748b' }} axisLine={false} tickLine={false} domain={[0, 100]} />
-                      <RechartsTooltip contentStyle={{ borderRadius: '8px', fontSize: '10px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                      <XAxis dataKey="name" tick={{ fontSize: 9, fill: '#a1a1aa' }} axisLine={false} tickLine={false} />
+                      <YAxis tick={{ fontSize: 9, fill: '#a1a1aa' }} axisLine={false} tickLine={false} domain={[0, 100]} />
+                      <RechartsTooltip contentStyle={{ backgroundColor: '#1f1e2e', color: '#fff', borderRadius: '8px', fontSize: '10px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                       <Area type="monotone" dataKey="present" stroke="#3b82f6" strokeWidth={2} fillOpacity={1} fill="url(#colorPresent)" />
                     </AreaChart>
                   </ResponsiveContainer>
@@ -173,9 +173,9 @@ export default function AthletesPage() {
               </Card>
 
               {/* Grafik Jenis Gaya */}
-              <Card className="w-[280px] shadow-sm border-slate-100 bg-white shrink-0">
+              <Card className="w-[280px] shadow-sm border-border bg-card shrink-0">
                 <CardHeader className="p-4 pb-0">
-                  <CardTitle className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                  <CardTitle className="text-xs font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
                     <PieChartIcon className="h-3.5 w-3.5 text-purple-500" />
                     Distribusi Spesialisasi Gaya
                   </CardTitle>
@@ -204,7 +204,7 @@ export default function AthletesPage() {
                     {specialtyData.slice(0,4).map((spec, i) => (
                       <div key={i} className="flex items-center gap-1.5">
                         <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: spec.color }}></div>
-                        <span className="text-[9px] font-semibold text-slate-600 truncate">{spec.name}</span>
+                        <span className="text-[9px] font-semibold text-muted-foreground truncate">{spec.name}</span>
                       </div>
                     ))}
                   </div>
@@ -212,25 +212,25 @@ export default function AthletesPage() {
               </Card>
 
               {/* Rekomendasi Promosi */}
-              <Card className="w-[300px] shadow-sm border-slate-100 bg-white shrink-0">
+              <Card className="w-[300px] shadow-sm border-border bg-card shrink-0">
                 <CardHeader className="p-4 pb-2">
-                  <CardTitle className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                  <CardTitle className="text-xs font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
                     <Sparkles className="h-3.5 w-3.5 text-amber-500" />
                     Saran Promosi Kelas
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="px-4 pb-4 space-y-2">
                   {recommendations.map(rec => (
-                    <div key={rec.id} className="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-100 rounded-xl">
+                    <div key={rec.id} className="flex items-center justify-between p-2.5 bg-muted/30 border border-border rounded-xl">
                       <div>
-                        <p className="text-[11px] font-bold text-slate-800">{rec.name}</p>
+                        <p className="text-[11px] font-bold text-foreground">{rec.name}</p>
                         <div className="flex items-center gap-1 mt-0.5">
-                          <span className="text-[9px] font-semibold text-slate-500">{rec.currentLevel}</span>
-                          <ChevronRight className="h-2.5 w-2.5 text-slate-300" />
+                          <span className="text-[9px] font-semibold text-muted-foreground">{rec.currentLevel}</span>
+                          <ChevronRight className="h-2.5 w-2.5 text-muted-foreground/50" />
                           <span className="text-[9px] font-bold text-amber-600">{rec.targetLevel}</span>
                         </div>
                       </div>
-                      <Badge className="bg-amber-100 text-amber-700 hover:bg-amber-200 border-amber-200 shadow-none text-[10px]">
+                      <Badge className="bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 border-amber-500/30 shadow-none text-[10px]">
                         Review
                       </Badge>
                     </div>
@@ -246,17 +246,17 @@ export default function AthletesPage() {
         {/* PENCARIAN & SLIDER FILTER KELAS/LEVEL */}
         <section className="space-y-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input 
               placeholder="Cari nama atlet..." 
-              className="pl-9 h-10 bg-slate-50 border-slate-200 text-xs focus-visible:ring-red-500"
+              className="pl-9 h-10 bg-muted/30 border-border text-xs focus-visible:ring-primary"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
 
           <div className="flex items-center gap-2">
-            <Filter className="h-4 w-4 text-slate-400 shrink-0" />
+            <Filter className="h-4 w-4 text-muted-foreground shrink-0" />
             <ScrollArea className="w-full whitespace-nowrap">
               <div className="flex w-max space-x-2 p-1">
                 {filterLevels.map((lvl) => (
@@ -265,8 +265,8 @@ export default function AthletesPage() {
                     variant="outline"
                     className={`cursor-pointer px-4 py-1.5 text-[11px] font-semibold transition-all border-none ${
                       activeFilter === lvl 
-                      ? "bg-red-600 text-white shadow-md hover:bg-red-700" 
-                      : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                      ? "bg-primary text-primary-foreground shadow-md hover:bg-primary/90" 
+                      : "bg-card text-muted-foreground border border-border hover:bg-accent"
                     }`}
                     onClick={() => setActiveFilter(lvl)}
                   >
@@ -282,8 +282,8 @@ export default function AthletesPage() {
         {/* LISTING ATLET (CLICKABLE) */}
         <section className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold text-slate-800 tracking-tight">Daftar Atlet ({filteredAthletes.length})</h3>
-            <span className="text-[10px] font-medium text-slate-400">Ketuk untuk detail</span>
+            <h3 className="text-sm font-bold text-foreground uppercase tracking-widest">Daftar Atlet ({filteredAthletes.length})</h3>
+            <span className="text-[10px] font-medium text-muted-foreground">Ketuk untuk detail</span>
           </div>
 
           <div className="grid gap-3">
@@ -292,43 +292,43 @@ export default function AthletesPage() {
                 <div 
                   key={ath.id}
                   onClick={() => router.push(`/coach/athletes/${ath.id}`)}
-                  className="flex items-center gap-3 p-3 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md hover:border-red-100 transition-all cursor-pointer group"
+                  className="flex items-center gap-3 p-3 bg-card border border-border rounded-2xl shadow-sm hover:shadow-md hover:border-primary/50 transition-all cursor-pointer group"
                 >
-                  <Avatar className="h-12 w-12 ring-2 ring-slate-50 group-hover:ring-red-100 transition-all">
-                    <AvatarFallback className={`font-bold text-sm ${ath.gender === 'L' ? 'bg-blue-50 text-blue-600' : 'bg-pink-50 text-pink-600'}`}>
+                  <Avatar className="h-12 w-12 ring-2 ring-background group-hover:ring-primary/20 transition-all">
+                    <AvatarFallback className={`font-bold text-sm ${ath.gender === 'L' ? 'bg-blue-500/20 text-blue-400' : 'bg-pink-500/20 text-pink-400'}`}>
                       {ath.name.charAt(0)}
                     </AvatarFallback>
                   </Avatar>
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
-                      <h4 className="font-bold text-slate-900 text-sm truncate group-hover:text-red-600 transition-colors">{ath.name}</h4>
+                      <h4 className="font-bold text-foreground text-sm truncate group-hover:text-primary transition-colors">{ath.name}</h4>
                       {ath.status === "Cuti" && (
-                        <Badge variant="secondary" className="bg-slate-100 text-slate-500 text-[8px] px-1 py-0 border-none h-4">Cuti</Badge>
+                        <Badge variant="secondary" className="bg-muted text-muted-foreground text-[8px] px-1 py-0 border-none h-4">Cuti</Badge>
                       )}
                     </div>
                     
-                    <div className="flex items-center gap-1.5 text-[11px] text-slate-500 font-medium">
+                    <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground font-medium">
                       <span>{ath.age} Thn</span>
-                      <span className="h-1 w-1 rounded-full bg-slate-300"></span>
-                      <span className="text-slate-700 font-bold">{ath.ku}</span>
-                      <span className="h-1 w-1 rounded-full bg-slate-300"></span>
+                      <span className="h-1 w-1 rounded-full bg-muted-foreground/30"></span>
+                      <span className="text-foreground font-bold">{ath.ku}</span>
+                      <span className="h-1 w-1 rounded-full bg-muted-foreground/30"></span>
                       <span>{ath.gender}</span>
                     </div>
                   </div>
 
                   <div className="flex flex-col items-end gap-1.5 shrink-0 pl-2">
-                    <Badge className={`text-[9px] px-2 py-0.5 shadow-none border-none ${ath.level === 'Elite' ? 'bg-amber-500 text-white hover:bg-amber-600' : 'bg-slate-800 text-white hover:bg-slate-900'}`}>
+                    <Badge className={`text-[9px] px-2 py-0.5 shadow-none border-none ${ath.level === 'Elite' ? 'bg-amber-500 text-white hover:bg-amber-600' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}>
                       {ath.level}
                     </Badge>
-                    <ChevronRight className="h-4 w-4 text-slate-300 group-hover:text-red-500 transition-colors" />
+                    <ChevronRight className="h-4 w-4 text-muted-foreground/50 group-hover:text-primary transition-colors" />
                   </div>
                 </div>
               ))
             ) : (
-              <div className="py-10 text-center flex flex-col items-center justify-center bg-slate-50 rounded-2xl border border-slate-100 border-dashed">
-                <Users className="h-8 w-8 text-slate-300 mb-2" />
-                <p className="text-xs text-slate-500 font-medium">Tidak ada atlet di kelas ini.</p>
+              <div className="py-10 text-center flex flex-col items-center justify-center bg-muted/30 rounded-2xl border border-border border-dashed">
+                <Users className="h-8 w-8 text-muted-foreground/30 mb-2" />
+                <p className="text-xs text-muted-foreground font-medium">Tidak ada atlet di kelas ini.</p>
               </div>
             )}
           </div>
@@ -337,4 +337,4 @@ export default function AthletesPage() {
       </main>
     </div>
   )
-}
+}

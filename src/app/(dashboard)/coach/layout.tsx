@@ -19,16 +19,20 @@ export default function CoachLayout({ children }: { children: ReactNode }) {
   ]
 
   return (
-    // REVISI: Dibuat w-full, tidak ada lagi pembatasan max-w-md
-    <div className="flex h-[100dvh] w-full flex-col bg-slate-50 relative overflow-hidden">
+    // THEME UPDATE: Background utama jadi Dark Navy dengan Gradien Marun di Atas
+    <div className="flex h-[100dvh] w-full flex-col bg-[#161622] text-white font-sans relative overflow-hidden z-0">
       
+      {/* GLOBAL FIXED BACKGROUND GRADIENT */}
+      <div className="absolute top-0 left-0 right-0 h-[50vh] bg-gradient-to-b from-[#602727] via-[#331c1c] to-transparent -z-10 pointer-events-none"></div>
+
       {/* KONTEN HALAMAN */}
       <main className="flex-1 overflow-y-auto pb-16 w-full">
         {children}
       </main>
 
       {/* BOTTOM NAVIGATION BAR */}
-      <nav className="absolute bottom-0 w-full flex h-16 items-center justify-between px-2 border-t bg-white pb-safe z-40 shadow-[0_-4px_6px_-1px_rgb(0,0,0,0.05)]">
+      {/* THEME UPDATE: bg-white jadi Navy solid, border digelapin, shadow dibikin lebih dramatis */}
+      <nav className="absolute bottom-0 w-full flex h-16 items-center justify-between px-2 border-t border-[#2a293d] bg-[#1f1e2e] pb-safe z-40 shadow-[0_-10px_30px_rgba(0,0,0,0.3)]">
         {navItems.map((item) => {
           const isActive = pathname.includes(item.href)
           const Icon = item.icon
@@ -36,32 +40,33 @@ export default function CoachLayout({ children }: { children: ReactNode }) {
             <Link 
               key={item.name} 
               href={item.href} 
+              // THEME UPDATE: Warna aktif merah Coral, non-aktif abu-abu redup
               className={`flex flex-col items-center justify-center w-[20%] gap-1 transition-colors ${
-                isActive ? "text-blue-600" : "text-slate-400 hover:text-blue-500"
+                isActive ? "text-[#ff4b4b]" : "text-slate-500 hover:text-slate-300"
               }`}
             >
-              <Icon className={`h-5 w-5 ${isActive ? "fill-blue-50" : ""}`} />
-              <span className="text-[9px] font-semibold">{item.name}</span>
+              <Icon className={`h-5 w-5 ${isActive ? "fill-[#ff4b4b]/20" : ""}`} />
+              <span className="text-[9px] font-bold uppercase tracking-widest">{item.name}</span>
             </Link>
           )
         })}
 
         {/* MORE (SLIDE UP) */}
-<Sheet open={isMoreOpen} onOpenChange={setIsMoreOpen}>
-  {/* Hapus asChild dan div, styling langsung di SheetTrigger */}
-  <SheetTrigger className="flex flex-col items-center justify-center w-[20%] gap-1 cursor-pointer text-slate-400 hover:text-red-600 transition-colors bg-transparent border-none">
-    <MoreHorizontal className="h-5 w-5" />
-    <span className="text-[9px] font-semibold">More</span>
-  </SheetTrigger>
+        <Sheet open={isMoreOpen} onOpenChange={setIsMoreOpen}>
+          <SheetTrigger className="flex flex-col items-center justify-center w-[20%] gap-1 cursor-pointer text-slate-500 hover:text-[#ff4b4b] transition-colors bg-transparent border-none">
+            <MoreHorizontal className="h-5 w-5" />
+            <span className="text-[9px] font-bold uppercase tracking-widest">More</span>
+          </SheetTrigger>
 
-  <SheetContent side="bottom" className="rounded-t-2xl px-4 pb-8 pt-4 w-full">
-            <SheetHeader className="flex flex-row items-center justify-between border-b pb-3 mb-4">
-              <SheetTitle className="text-lg font-bold text-slate-800">Menu Lainnya</SheetTitle>
+          {/* THEME UPDATE: Modal menu diganti tema gelap, border disesuaikan */}
+          <SheetContent side="bottom" className="rounded-t-3xl px-4 pb-8 pt-4 w-full bg-[#1f1e2e] border-t border-[#2a293d] text-white">
+            <SheetHeader className="flex flex-row items-center justify-between border-b border-[#2a293d] pb-3 mb-4">
+              <SheetTitle className="text-lg font-heading font-bold text-white uppercase tracking-widest">Menu Lainnya</SheetTitle>
             </SheetHeader>
             <div className="grid grid-cols-4 gap-4 md:grid-cols-6 lg:grid-cols-8">
-              <div className="flex flex-col items-center gap-2 cursor-pointer">
-                <div className="h-12 w-12 bg-slate-100 rounded-2xl hover:bg-slate-200 transition-colors flex items-center justify-center font-bold text-slate-600">A</div>
-                <span className="text-[10px] font-medium text-slate-600">Page A</span>
+              <div className="flex flex-col items-center gap-2 cursor-pointer group">
+                <div className="h-12 w-12 bg-[#2a293d] rounded-2xl group-hover:bg-[#ff4b4b] transition-colors flex items-center justify-center font-bold text-white shadow-inner">A</div>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest group-hover:text-white transition-colors">Page A</span>
               </div>
             </div>
           </SheetContent>

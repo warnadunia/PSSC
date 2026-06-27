@@ -67,7 +67,7 @@ export default function TrainingPage() {
   const filteredPrograms = programs.filter(p => selectedClasses.includes(p.class) || selectedClasses.length === 0)
 
   return (
-    <div className="flex flex-col h-full bg-slate-50 w-full" suppressHydrationWarning>
+    <div className="flex flex-col h-full w-full" suppressHydrationWarning>
       <GlobalHeader variant="pages" title="Training Center" />
 
       <main className="flex-1 overflow-y-auto px-4 md:px-6 pt-4 pb-28 space-y-5 w-full">

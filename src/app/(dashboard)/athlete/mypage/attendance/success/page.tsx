@@ -22,31 +22,31 @@ function AttendanceSuccessContent() {
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-white w-full items-center justify-center p-6 text-center">
+    <div className="flex flex-col h-[100dvh] w-full items-center justify-center p-6 text-center">
       
       <div className="mb-8 relative">
         <div className="absolute inset-0 bg-emerald-500 blur-3xl opacity-20 rounded-full"></div>
         <CheckCircle className="h-32 w-32 text-emerald-500 relative z-10 mx-auto" />
       </div>
 
-      <h1 className="text-2xl font-black text-slate-800 mb-2 tracking-tight">
+      <h1 className="text-2xl font-black text-foreground mb-2 tracking-widest uppercase">
         {type === 'in' ? 'Check-in Berhasil!' : 'Check-out Berhasil!'}
       </h1>
       
-      <p className="text-sm font-medium text-slate-500 mb-8">
+      <p className="text-sm font-medium text-muted-foreground mb-8">
         Data absensi Anda telah tersimpan di sistem.
       </p>
 
-      <div className="bg-slate-50 border border-slate-100 p-6 rounded-3xl w-full max-w-sm mb-10 shadow-sm relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-1.5 h-full bg-blue-500"></div>
-        <p className="italic text-slate-700 font-medium text-sm leading-relaxed">
+      <div className="bg-card border border-border p-6 rounded-3xl w-full max-w-sm mb-10 shadow-sm relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-1.5 h-full bg-primary"></div>
+        <p className="italic text-foreground font-medium text-sm leading-relaxed tracking-wide">
           "{randomQuote}"
         </p>
       </div>
 
       <Button 
         onClick={() => router.push('/athlete/mypage')}
-        className="w-full max-w-sm h-14 rounded-2xl font-bold text-lg bg-blue-600 hover:bg-blue-700 text-white shadow-blue-600/25 shadow-lg"
+        className="w-full max-w-sm h-14 rounded-2xl font-bold text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-primary/25 shadow-lg uppercase tracking-widest"
       >
         <Home className="h-5 w-5 mr-2" />
         Kembali ke MyPage
@@ -58,7 +58,7 @@ function AttendanceSuccessContent() {
 
 export default function AttendanceSuccessPage() {
   return (
-    <Suspense fallback={<div className="flex items-center justify-center h-[100dvh] bg-white text-slate-500 font-medium">Memuat...</div>}>
+    <Suspense fallback={<div className="flex items-center justify-center h-[100dvh] bg-background text-muted-foreground font-medium uppercase tracking-widest">Memuat...</div>}>
       <AttendanceSuccessContent />
     </Suspense>
   )
