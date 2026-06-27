@@ -30,14 +30,14 @@ export default function AthleteSettingsPage() {
         { icon: Bell, label: "Notifikasi Push", isToggle: true, state: pushNotif, setter: setPushNotif, color: "text-amber-400" },
         { icon: Bell, label: "Notifikasi Email", isToggle: true, state: emailNotif, setter: setEmailNotif, color: "text-amber-400" },
         { icon: Fingerprint, label: "Login Biometrik / Face ID", isToggle: true, state: biometricLogin, setter: setBiometricLogin, color: "text-purple-400" },
-        { icon: Moon, label: "Tema Gelap (Default)", isToggle: false, color: "text-slate-400", href: "#" },
+        { icon: Moon, label: "Tema Gelap (Default)", isToggle: false, color: "text-slate-500 dark:text-slate-400", href: "#" },
       ]
     },
     {
       title: "Bantuan & Lainnya",
       items: [
         { icon: HelpCircle, label: "Pusat Bantuan & FAQ", href: "#", color: "text-[#ff4b4b]" },
-        { icon: Smartphone, label: "Tentang PSSC App", href: "#", color: "text-slate-400" },
+        { icon: Smartphone, label: "Tentang PSSC App", href: "#", color: "text-slate-500 dark:text-slate-400" },
       ]
     }
   ]
@@ -55,15 +55,15 @@ export default function AthleteSettingsPage() {
         <div className="p-4 md:p-6 lg:p-8 space-y-6">
           
           {/* USER CARD COMPACT */}
-          <div className="bg-[#1f1e2e] p-4 rounded-2xl border border-[#2a293d] flex items-center gap-4 shadow-xl/30">
-            <div className="w-14 h-14 bg-[#2a293d] rounded-full flex items-center justify-center shrink-0 border-2 border-[#ff4b4b]">
-              <User className="h-6 w-6 text-slate-300" />
+          <div className="bg-white dark:bg-[#1f1e2e] p-4 rounded-2xl border border-slate-200 dark:border-[#2a293d] flex items-center gap-4 shadow-xl/30">
+            <div className="w-14 h-14 bg-slate-100 dark:bg-[#2a293d] rounded-full flex items-center justify-center shrink-0 border-2 border-[#ff4b4b]">
+              <User className="h-6 w-6 text-slate-600 dark:text-slate-300" />
             </div>
             <div className="flex-1">
-              <h2 className="text-white font-bold text-lg leading-tight uppercase tracking-wide">Bima Arya</h2>
-              <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">Atlet • KU-2</p>
+              <h2 className="text-slate-900 dark:text-white font-bold text-lg leading-tight uppercase tracking-wide">Bima Arya</h2>
+              <p className="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">Atlet • KU-2</p>
             </div>
-            <Button variant="outline" size="sm" className="h-8 border-[#2a293d] text-slate-300 hover:bg-[#2a293d] hover:text-white">
+            <Button variant="outline" size="sm" className="h-8 border-slate-200 dark:border-[#2a293d] text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:bg-[#2a293d] hover:text-slate-900 dark:text-white">
               Edit
             </Button>
           </div>
@@ -72,10 +72,10 @@ export default function AthleteSettingsPage() {
           <div className="space-y-6">
             {settingsGroups.map((group, gIdx) => (
               <div key={gIdx} className="space-y-2">
-                <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest px-2">
+                <h3 className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest px-2">
                   {group.title}
                 </h3>
-                <div className="bg-[#1f1e2e] rounded-2xl border border-[#2a293d] overflow-hidden shadow-xl/30">
+                <div className="bg-white dark:bg-[#1f1e2e] rounded-2xl border border-slate-200 dark:border-[#2a293d] overflow-hidden shadow-xl/30">
                   {group.items.map((item: any, iIdx: number) => {
                     const Icon = item.icon
                     const isLast = iIdx === group.items.length - 1
@@ -84,16 +84,16 @@ export default function AthleteSettingsPage() {
                         key={iIdx} 
                         onClick={() => item.href ? router.push(item.href) : null}
                         className={`
-                          flex items-center justify-between p-4 bg-[#1f1e2e] transition-colors
-                          ${!isLast ? 'border-b border-[#2a293d]' : ''}
-                          ${item.href ? 'cursor-pointer hover:bg-[#2a293d]' : ''}
+                          flex items-center justify-between p-4 bg-white dark:bg-[#1f1e2e] transition-colors
+                          ${!isLast ? 'border-b border-slate-200 dark:border-[#2a293d]' : ''}
+                          ${item.href ? 'cursor-pointer hover:bg-slate-50 dark:hover:bg-[#2a293d]' : ''}
                         `}
                       >
                         <div className="flex items-center gap-3">
-                          <div className={`p-2 rounded-xl bg-[#161622] ${item.color}`}>
+                          <div className={`p-2 rounded-xl bg-slate-50 dark:bg-[#161622] ${item.color}`}>
                             <Icon className="h-4 w-4" />
                           </div>
-                          <span className="text-sm font-bold text-white tracking-wide">{item.label}</span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-white tracking-wide">{item.label}</span>
                         </div>
                         
                         {item.isToggle ? (
@@ -102,7 +102,7 @@ export default function AthleteSettingsPage() {
                               e.stopPropagation();
                               item.setter(!item.state);
                             }}
-                            className={`w-11 h-6 rounded-full flex items-center p-1 cursor-pointer transition-colors ${item.state ? 'bg-[#ff4b4b]' : 'bg-[#2a293d]'}`}
+                            className={`w-11 h-6 rounded-full flex items-center p-1 cursor-pointer transition-colors ${item.state ? 'bg-[#ff4b4b]' : 'bg-slate-300 dark:bg-[#2a293d]'}`}
                           >
                             <div className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform ${item.state ? 'translate-x-5' : 'translate-x-0'}`} />
                           </div>
