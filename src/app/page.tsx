@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Lock, User, Waves } from "lucide-react"
+import { Lock, User } from "lucide-react"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -25,15 +25,15 @@ export default function LoginPage() {
   return (
     <div className="min-h-[100dvh] flex items-center justify-center relative overflow-hidden bg-[#161622] font-sans">
       
-      {/* Sweeping Red Curve (Niru gambar referensi) */}
-      <div className="absolute top-[-25%] left-[-15%] w-[130%] h-[60%] rounded-[100%] bg-gradient-to-br from-[#ff6b6b] to-[#ff4b4b] -rotate-6 origin-top-left shadow-[0_20px_50px_rgba(255,75,75,0.2)]" />
+      {/* Global Background Gradient */}
+      <div className="absolute top-0 left-0 right-0 h-[60vh] bg-gradient-to-b from-[#602727] via-[#331c1c] to-transparent pointer-events-none z-0" />
       
       <div className="relative z-10 w-full max-w-md px-6">
         
         {/* Header Area */}
         <div className="flex flex-col items-center mb-10 pt-10">
-          <div className="h-20 w-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg mb-4 border border-white/30">
-            <Waves className="h-10 w-10 text-white" />
+          <div className="w-28 h-28 bg-white rounded-full flex items-center justify-center shadow-2xl mb-4 border-4 border-[#1f1e2e] ring-2 ring-[#2a293d] p-3 z-10">
+            <img src="/assets/images/logo-parisakti.png" alt="PSSC Logo" className="h-full w-full object-contain drop-shadow-md" />
           </div>
           <h1 className="text-5xl font-heading font-bold text-white tracking-widest uppercase shadow-black/50 drop-shadow-md">
             PSSC
