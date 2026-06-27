@@ -13,7 +13,7 @@ export default function AthleteLayout({ children }: { children: ReactNode }) {
     { name: "Schedules", href: "/athlete/schedules", icon: CalendarDays },
     { name: "Prestasi", href: "/athlete/prestasi", icon: Trophy },
     { name: "Training", href: "/athlete/training", icon: Activity },
-    { name: "Setting", href: "/athlete/setting", icon: Settings },
+    { name: "Settings", href: "/athlete/settings", icon: Settings },
   ]
 
   return (
