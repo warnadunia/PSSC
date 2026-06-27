@@ -14,10 +14,8 @@ export default function AboutPage() {
           
           {/* APP LOGO & VERSION */}
           <div className="flex flex-col items-center mt-8 mb-4">
-            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-[2rem] flex items-center justify-center shadow-xl shadow-blue-500/20 mb-6 rotate-3">
-              <div className="w-20 h-20 bg-white dark:bg-[#1f1e2e] rounded-[1.5rem] flex flex-col items-center justify-center -rotate-3 transition-transform hover:rotate-0">
-                <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-indigo-600">PSSC</span>
-              </div>
+            <div className="w-24 h-24 rounded-[2rem] flex items-center justify-center mb-6">
+              <img src="/assets/images/logo-parisakti.png" alt="PSSC Logo" className="w-full h-full object-contain" />
             </div>
             
             <h1 className="text-xl font-black text-slate-900 dark:text-white tracking-tight mb-1">

@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Save, User as UserIcon, GraduationCap, Users } from "lucide-react"
+import { Save, User as UserIcon, GraduationCap, Users, Camera, Image as ImageIcon } from "lucide-react"
 
 import { GlobalHeader } from "@/components/GlobalHeader"
 import { Button } from "@/components/ui/button"
@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 export default function ProfileEditPage() {
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showPhotoOptions, setShowPhotoOptions] = useState(false)
 
   // Default values based on the read-only page
   const [formData, setFormData] = useState({
@@ -103,6 +104,35 @@ export default function ProfileEditPage() {
       <main className="flex-1 overflow-y-auto w-full pb-32">
         <form onSubmit={handleSubmit} className="p-4 md:p-6 lg:p-8 space-y-6">
           
+          {/* FOTO PROFIL */}
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-6 border border-slate-200 dark:border-[#2a293d] shadow-xl/30 flex flex-col items-center relative">
+            <div className="relative mb-4">
+              <div className="w-24 h-24 rounded-full bg-slate-100 dark:bg-[#2a293d] border-[3px] border-slate-200 dark:border-slate-600 overflow-hidden">
+                <img src="https://i.pravatar.cc/150?img=62" alt="Profile" className="w-full h-full object-cover" />
+              </div>
+              <button 
+                type="button"
+                onClick={() => setShowPhotoOptions(!showPhotoOptions)}
+                className="absolute bottom-0 right-0 p-2 bg-[#ff4b4b] text-white rounded-full border-[3px] border-white dark:border-[#1f1e2e] shadow-lg hover:bg-red-600 transition-colors"
+              >
+                <Camera className="h-4 w-4" />
+              </button>
+            </div>
+            
+            {showPhotoOptions && (
+              <div className="absolute top-32 z-10 bg-white dark:bg-[#2a293d] rounded-xl shadow-2xl border border-slate-200 dark:border-[#161622] p-2 flex flex-col gap-1 min-w-[160px] animate-in fade-in zoom-in duration-200">
+                <button type="button" className="flex items-center gap-3 px-3 py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#1f1e2e] rounded-lg transition-colors text-left" onClick={() => { alert('Membuka Kamera...'); setShowPhotoOptions(false) }}>
+                  <Camera className="h-4 w-4 text-blue-500" /> Ambil Foto
+                </button>
+                <button type="button" className="flex items-center gap-3 px-3 py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#1f1e2e] rounded-lg transition-colors text-left" onClick={() => { alert('Membuka Galeri...'); setShowPhotoOptions(false) }}>
+                  <ImageIcon className="h-4 w-4 text-emerald-500" /> Unggah dari Galeri
+                </button>
+              </div>
+            )}
+            
+            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">Ketuk ikon kamera untuk mengubah</p>
+          </section>
+
           {/* BAGIAN 1: PROFIL DASAR */}
           <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white tracking-wide mb-5 flex items-center gap-2">
