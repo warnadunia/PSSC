@@ -105,7 +105,7 @@ export default function InputKejuaraanPage() {
     <div className="flex flex-col h-[100dvh] w-full relative">
       
       {/* Header Khusus agar bisa Back */}
-      <header className="bg-indigo-600 text-white px-4 h-16 flex items-center shrink-0 shadow-sm sticky top-0 z-10">
+      <header className="bg-indigo-600 text-white px-4 h-16 flex items-center shrink-0 shadow-lg sticky top-0 z-10">
         <Button variant="ghost" size="icon" onClick={() => router.back()} className="text-white hover:bg-indigo-500 hover:text-white mr-2">
           <ArrowLeft className="h-5 w-5" />
         </Button>
@@ -116,17 +116,17 @@ export default function InputKejuaraanPage() {
         <div className="p-4 space-y-6">
           
           {/* Form Informasi Event */}
-          <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-            <h2 className="text-sm font-bold text-slate-800 border-b border-slate-100 pb-2 mb-3">Informasi Umum</h2>
+          <div className="bg-[#1f1e2e] p-5 rounded-2xl shadow-lg border border-[#2a293d] space-y-4">
+            <h2 className="text-sm font-bold text-white border-b border-[#2a293d] pb-2 mb-3">Informasi Umum</h2>
             
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-600 block">Nama Event</label>
-              <Input placeholder="Contoh: KRAPSI 2026" className="bg-slate-50 border-slate-200" />
+              <label className="text-xs font-semibold text-slate-400 block">Nama Event</label>
+              <Input placeholder="Contoh: KRAPSI 2026" className="bg-[#161622] border-[#2a293d]" />
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-600 block">Tingkat Kejuaraan</label>
-              <select defaultValue="" className="w-full bg-slate-50 border border-slate-200 rounded-md text-sm p-2">
+              <label className="text-xs font-semibold text-slate-400 block">Tingkat Kejuaraan</label>
+              <select defaultValue="" className="w-full bg-[#161622] border border-[#2a293d] rounded-md text-sm p-2">
                 <option value="" disabled>Pilih Tingkat</option>
                 <option value="Klub">Antar Perkumpulan / Klub</option>
                 <option value="Kabupaten">Tingkat Kota / Kabupaten</option>
@@ -138,12 +138,12 @@ export default function InputKejuaraanPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-600 block">Tanggal Event</label>
-                <Input type="date" className="bg-slate-50 border-slate-200 text-xs" />
+                <label className="text-xs font-semibold text-slate-400 block">Tanggal Event</label>
+                <Input type="date" className="bg-[#161622] border-[#2a293d] text-xs" />
               </div>
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-600 block">Kelompok Usia (KU)</label>
-                <select defaultValue="KU-2" className="w-full bg-slate-50 border border-slate-200 rounded-md text-xs p-2">
+                <label className="text-xs font-semibold text-slate-400 block">Kelompok Usia (KU)</label>
+                <select defaultValue="KU-2" className="w-full bg-[#161622] border border-[#2a293d] rounded-md text-xs p-2">
                   <option value="" disabled>Pilih KU</option>
                   <option value="KU-4">KU 4 (10-11 Tahun)</option>
                   <option value="KU-3">KU 3 (12-13 Tahun)</option>
@@ -156,7 +156,7 @@ export default function InputKejuaraanPage() {
           </div>
 
           {/* Tabel Nomor Kejuaraan */}
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+          <div className="bg-[#1f1e2e] rounded-2xl shadow-lg border border-[#2a293d] overflow-hidden">
             <div className="p-4 bg-indigo-50 border-b border-indigo-100 flex justify-between items-center">
               <div>
                 <h2 className="text-sm font-bold text-indigo-900">Tabel Nomor Kejuaraan</h2>
@@ -170,19 +170,19 @@ export default function InputKejuaraanPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse min-w-[500px]">
                 <thead>
-                  <tr className="bg-slate-50 border-b border-slate-200">
-                    <th className="p-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider w-[40%]">Nomor Kejuaraan</th>
-                    <th className="p-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider text-center w-[25%]">Time Record</th>
-                    <th className="p-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider text-center w-[15%]">Rangking</th>
-                    <th className="p-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider text-center w-[20%]">Aksi</th>
+                  <tr className="bg-[#161622] border-b border-[#2a293d]">
+                    <th className="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider w-[40%]">Nomor Kejuaraan</th>
+                    <th className="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center w-[25%]">Time Record</th>
+                    <th className="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center w-[15%]">Rangking</th>
+                    <th className="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center w-[20%]">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   {events.map((ev) => (
-                    <tr key={ev.id} className="border-b border-slate-100 hover:bg-slate-50/50">
+                    <tr key={ev.id} className="border-b border-[#2a293d] hover:bg-[#161622]/50">
                       <td className="p-3">
                         <select 
-                          className="w-full bg-transparent border border-slate-200 rounded-md text-xs font-semibold text-slate-800 p-1.5 focus:ring-0"
+                          className="w-full bg-transparent border border-[#2a293d] rounded-md text-xs font-semibold text-white p-1.5 focus:ring-0"
                           value={ev.name}
                           onChange={(e) => setEvents(events.map(item => item.id === ev.id ? {...item, name: e.target.value} : item))}
                         >
@@ -227,7 +227,7 @@ export default function InputKejuaraanPage() {
                             variant="outline" 
                             size="icon" 
                             onClick={() => openEditModal(ev)}
-                            className="h-7 w-7 rounded-full text-slate-600 border-slate-200 hover:bg-slate-100"
+                            className="h-7 w-7 rounded-full text-slate-400 border-[#2a293d] hover:bg-[#2a293d]"
                             title="Input Manual / Edit"
                           >
                             <Edit3 className="h-3.5 w-3.5" />
@@ -245,7 +245,7 @@ export default function InputKejuaraanPage() {
       </main>
 
       {/* Footer Save Button */}
-      <div className="fixed bottom-16 w-full bg-white border-t p-4 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+      <div className="fixed bottom-16 w-full bg-[#1f1e2e] border-t p-4 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
         <Button onClick={() => {
             alert('Data Kejuaraan berhasil disimpan!');
             router.back();
@@ -258,32 +258,32 @@ export default function InputKejuaraanPage() {
       {/* MODAL EDIT MANUAL */}
       {/* ===================================== */}
       <Dialog open={isEditModalOpen} onOpenChange={setIsEditModalOpen}>
-        <DialogContent className="max-w-[340px] rounded-2xl p-0 overflow-hidden bg-white">
-          <DialogHeader className="p-4 bg-slate-50 border-b">
-            <DialogTitle className="text-sm font-bold text-slate-800">
+        <DialogContent className="max-w-[340px] rounded-2xl p-0 overflow-hidden bg-[#1f1e2e]">
+          <DialogHeader className="p-4 bg-[#161622] border-b">
+            <DialogTitle className="text-sm font-bold text-white">
               Input Manual & Edit
             </DialogTitle>
-            <p className="text-xs text-slate-500 mt-1">{activeEditItem?.name}</p>
+            <p className="text-xs text-slate-400 mt-1">{activeEditItem?.name}</p>
           </DialogHeader>
           <div className="p-4 space-y-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-600 block">Time Record</label>
+              <label className="text-xs font-semibold text-slate-400 block">Time Record</label>
               <Input 
                 value={tempTime} 
                 onChange={(e) => setTempTime(e.target.value)} 
                 placeholder="Contoh: 01:22.45" 
-                className="font-mono text-sm bg-slate-50"
+                className="font-mono text-sm bg-[#161622]"
               />
               <p className="text-[10px] text-slate-400">Format yang disarankan: MM:SS.ms (01:22.45)</p>
             </div>
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-600 block">Rangking Lomba</label>
+              <label className="text-xs font-semibold text-slate-400 block">Rangking Lomba</label>
               <Input 
                 type="number"
                 value={tempRank} 
                 onChange={(e) => setTempRank(e.target.value)} 
                 placeholder="Contoh: 17" 
-                className="bg-slate-50"
+                className="bg-[#161622]"
               />
             </div>
             <Button onClick={saveEdit} className="w-full bg-indigo-600 hover:bg-indigo-700 h-10 mt-2 font-bold">
@@ -309,7 +309,7 @@ export default function InputKejuaraanPage() {
           </div>
           
           <div className="p-6 text-center">
-            <div className="text-6xl font-mono font-black text-white tracking-tighter mb-8 shadow-sm">
+            <div className="text-6xl font-mono font-black text-white tracking-tighter mb-8 shadow-lg">
               {formatTime(timeMs)}
             </div>
             

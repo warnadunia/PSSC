@@ -53,37 +53,37 @@ Tetap semangat dalam mencetak juara!`
     <div className="flex flex-col h-[100dvh] w-full" suppressHydrationWarning>
       
       {/* Header */}
-      <div className="h-14 px-4 flex items-center bg-white border-b border-slate-200 sticky top-0 z-50 shrink-0 shadow-sm">
-        <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-slate-100">
-          <ChevronLeft className="h-5 w-5 text-slate-700" />
+      <div className="h-14 px-4 flex items-center bg-[#1f1e2e] border-b border-[#2a293d] sticky top-0 z-50 shrink-0 shadow-lg">
+        <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-[#2a293d]">
+          <ChevronLeft className="h-5 w-5 text-slate-300" />
         </Button>
-        <h1 className="text-lg font-bold text-slate-800 tracking-tight flex-1">Detail Pengumuman</h1>
+        <h1 className="text-lg font-bold text-white tracking-tight flex-1">Detail Pengumuman</h1>
       </div>
 
       <main className="flex-1 overflow-y-auto w-full p-4 pb-12">
-        <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 mb-6">
+        <div className="bg-[#1f1e2e] rounded-3xl p-6 shadow-lg border border-[#2a293d] mb-6">
           <div className="flex items-center gap-2 mb-4">
             <span className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-md ${announcement.tagColor}`}>
               {announcement.tag}
             </span>
           </div>
 
-          <h2 className="text-2xl font-black text-slate-900 leading-tight mb-4">
+          <h2 className="text-2xl font-black text-white leading-tight mb-4">
             {announcement.title}
           </h2>
 
-          <div className="flex flex-col gap-2 mb-6 pb-6 border-b border-slate-100">
-            <div className="flex items-center text-slate-500">
+          <div className="flex flex-col gap-2 mb-6 pb-6 border-b border-[#2a293d]">
+            <div className="flex items-center text-slate-400">
               <Calendar className="h-4 w-4 mr-2" />
               <span className="text-xs font-medium">{announcement.date}</span>
             </div>
-            <div className="flex items-center text-slate-500">
+            <div className="flex items-center text-slate-400">
               <User className="h-4 w-4 mr-2" />
-              <span className="text-xs font-medium">Oleh: <span className="text-slate-800 font-semibold">{announcement.sender}</span></span>
+              <span className="text-xs font-medium">Oleh: <span className="text-white font-semibold">{announcement.sender}</span></span>
             </div>
           </div>
 
-          <div className="prose prose-sm max-w-none text-slate-700 leading-relaxed whitespace-pre-wrap">
+          <div className="prose prose-sm max-w-none text-slate-300 leading-relaxed whitespace-pre-wrap">
             {announcement.content}
           </div>
         </div>

@@ -35,12 +35,12 @@ const dummyAgendas: Agenda[] = [
 ]
 
 const TYPE_CONFIG = {
-  hadir: { color: "bg-emerald-100 text-emerald-700 border-emerald-200", icon: CheckCircle2, label: "Masuk/Latihan" },
-  dinas: { color: "bg-blue-100 text-blue-700 border-blue-200", icon: Briefcase, label: "Dinas Luar" },
-  event: { color: "bg-amber-100 text-amber-700 border-amber-200", icon: Flag, label: "Event Lomba" },
-  libur: { color: "bg-slate-100 text-slate-600 border-slate-200", icon: Ban, label: "Libur" },
-  cuti: { color: "bg-purple-100 text-purple-700 border-purple-200", icon: CalendarIcon, label: "Cuti" },
-  ijin: { color: "bg-rose-100 text-rose-700 border-rose-200", icon: CalendarIcon, label: "Ijin" },
+  hadir: { color: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30", icon: CheckCircle2, label: "Masuk/Latihan" },
+  dinas: { color: "bg-blue-500/20 text-blue-400 border-blue-500/30", icon: Briefcase, label: "Dinas Luar" },
+  event: { color: "bg-amber-500/20 text-amber-400 border-amber-500/30", icon: Flag, label: "Event Lomba" },
+  libur: { color: "bg-slate-500/20 text-slate-400 border-slate-500/30", icon: Ban, label: "Libur" },
+  cuti: { color: "bg-purple-500/20 text-purple-400 border-purple-500/30", icon: CalendarIcon, label: "Cuti" },
+  ijin: { color: "bg-rose-500/20 text-rose-400 border-rose-500/30", icon: CalendarIcon, label: "Ijin" },
 }
 
 export default function CoachSchedules() {
@@ -79,29 +79,29 @@ export default function CoachSchedules() {
       <main className="flex-1 px-4 md:px-6 lg:px-8 space-y-5 pt-5 w-full pb-32">
         
         {/* SLIDER BULAN TAHUN */}
-        <div className="flex items-center justify-between bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
-          <Button variant="ghost" size="icon" onClick={handlePrevMonth} className="h-8 w-8 hover:bg-slate-100">
-            <ChevronLeft className="h-5 w-5 text-slate-600" />
+        <div className="flex items-center justify-between bg-[#1f1e2e] p-3 rounded-2xl shadow-lg border border-[#2a293d]">
+          <Button variant="ghost" size="icon" onClick={handlePrevMonth} className="h-8 w-8 hover:bg-[#2a293d]">
+            <ChevronLeft className="h-5 w-5 text-white" />
           </Button>
           <div className="flex flex-col items-center">
-            <h2 className="text-sm font-bold text-blue-700 tracking-wide">
+            <h2 className="text-sm font-bold text-white tracking-wide uppercase">
               {monthNames[month]} {year}
             </h2>
-            <p className="text-[10px] text-slate-400 font-medium">Kalender Pelatih</p>
+            <p className="text-[10px] text-[#ff4b4b] font-bold uppercase tracking-widest">Kalender Pelatih</p>
           </div>
-          <Button variant="ghost" size="icon" onClick={handleNextMonth} className="h-8 w-8 hover:bg-slate-100">
-            <ChevronRight className="h-5 w-5 text-slate-600" />
+          <Button variant="ghost" size="icon" onClick={handleNextMonth} className="h-8 w-8 hover:bg-[#2a293d]">
+            <ChevronRight className="h-5 w-5 text-white" />
           </Button>
         </div>
 
         {/* SECTION KALENDER & LEGENDA */}
         <div className="space-y-3">
           {/* CARD KALENDER CUSTOM (GRID) */}
-          <Card className="shadow-sm border-slate-100 overflow-hidden">
+          <Card className="bg-[#1f1e2e] border-[#2a293d] shadow-xl overflow-hidden">
             <CardContent className="p-0">
-              <div className="grid grid-cols-7 border-b border-slate-100 bg-slate-50/50">
+              <div className="grid grid-cols-7 border-b border-[#2a293d] bg-[#161622]">
                 {dayNames.map(day => (
-                  <div key={day} className="py-2 text-center text-[10px] font-bold text-slate-500 uppercase">
+                  <div key={day} className="py-2 text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                     {day}
                   </div>
                 ))}
@@ -118,17 +118,17 @@ export default function CoachSchedules() {
                       key={idx} 
                       onClick={() => day.dateString && setSelectedDate(day.dateString)}
                       className={`
-                        min-h-[70px] md:min-h-[90px] border-b border-r border-slate-100 p-1 cursor-pointer transition-colors
-                        ${!day.isCurrentMonth ? 'bg-slate-50/50' : 'bg-white hover:bg-blue-50/30'}
-                        ${isSelected ? 'ring-2 ring-inset ring-blue-500 bg-blue-50/20' : ''}
+                        min-h-[70px] md:min-h-[90px] border-b border-r border-[#2a293d] p-1 cursor-pointer transition-colors
+                        ${!day.isCurrentMonth ? 'bg-[#161622]/50' : 'bg-[#1f1e2e] hover:bg-[#2a293d]'}
+                        ${isSelected ? 'ring-2 ring-inset ring-[#ff4b4b] bg-[#ff4b4b]/10' : ''}
                       `}
                     >
                       {day.dayNumber && (
                         <div className="flex flex-col h-full">
                           <div className="flex justify-between items-start">
                             <span className={`
-                              text-[11px] font-semibold flex items-center justify-center h-5 w-5 rounded-full
-                              ${isToday ? 'bg-blue-600 text-white' : 'text-slate-700'}
+                              text-[11px] font-bold flex items-center justify-center h-5 w-5 rounded-full
+                              ${isToday ? 'bg-[#ff4b4b] text-white shadow-[0_0_8px_#ff4b4b]' : 'text-slate-300'}
                             `}>
                               {day.dayNumber}
                             </span>
@@ -154,12 +154,12 @@ export default function CoachSchedules() {
           </Card>
 
           {/* LEGENDA BADGE (Dipindah persis ke bawah kalender) */}
-          <div className="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex flex-wrap gap-2 items-center justify-center">
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-1 w-full text-center md:w-auto md:text-left">Legenda:</span>
+          <div className="bg-[#1f1e2e] p-3 rounded-xl border border-[#2a293d] shadow-lg flex flex-wrap gap-2 items-center justify-center">
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mr-1 w-full text-center md:w-auto md:text-left">Legenda:</span>
             {Object.values(TYPE_CONFIG).map((conf, idx) => (
-              <div key={idx} className={`flex items-center gap-1 px-2 py-1 rounded border ${conf.color} bg-opacity-40`}>
+              <div key={idx} className={`flex items-center gap-1 px-2 py-1 rounded border ${conf.color}`}>
                 <conf.icon className="h-3 w-3" />
-                <span className="text-[9px] font-bold">{conf.label}</span>
+                <span className="text-[9px] font-bold uppercase tracking-widest">{conf.label}</span>
               </div>
             ))}
           </div>
@@ -167,8 +167,8 @@ export default function CoachSchedules() {
 
         {/* CARD KETERANGAN AKTIVITAS HARIAN */}
         <div className="space-y-3 pt-2">
-          <h3 className="font-bold text-sm text-slate-800 flex items-center gap-1 px-1">
-            <CalendarIcon className="h-4 w-4 text-blue-500" />
+          <h3 className="font-bold text-sm text-white flex items-center gap-1 px-1 uppercase tracking-widest">
+            <CalendarIcon className="h-4 w-4 text-[#ff4b4b]" />
             Agenda Tanggal {selectedDate ? selectedDate.split("-")[2] : ""} {monthNames[month]}
           </h3>
 
@@ -179,22 +179,22 @@ export default function CoachSchedules() {
                 <Card 
                   key={agenda.id} 
                   onClick={() => router.push(`/athlete/schedules/${agenda.id}`)}
-                  className="shadow-sm border-slate-100 relative overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
+                  className="bg-[#1f1e2e] border-[#2a293d] shadow-lg relative overflow-hidden cursor-pointer hover:bg-[#2a293d] transition-colors"
                 >
                   <div className={`absolute left-0 top-0 w-1 h-full ${TYPE_CONFIG[agenda.type].color.split(" ")[0]}`} />
                   <CardContent className="p-4 pl-5">
                     <div className="flex justify-between items-start mb-2">
-                      <Badge variant="outline" className={`text-[9px] px-1.5 py-0 border-transparent ${TYPE_CONFIG[agenda.type].color}`}>
+                      <Badge variant="outline" className={`text-[9px] px-1.5 py-0 border-transparent ${TYPE_CONFIG[agenda.type].color} uppercase tracking-widest`}>
                         {TYPE_CONFIG[agenda.type].label}
                       </Badge>
                       {agenda.time && (
-                        <span className="text-[10px] font-bold text-slate-500">{agenda.time}</span>
+                        <span className="text-[10px] font-bold text-slate-400">{agenda.time}</span>
                       )}
                     </div>
-                    <h4 className="font-bold text-slate-900 text-sm mb-1">{agenda.title}</h4>
+                    <h4 className="font-bold text-white text-sm mb-1">{agenda.title}</h4>
                     {agenda.location && (
-                      <p className="text-[11px] font-medium text-slate-500 flex items-center gap-1">
-                        <MapPin className="h-3 w-3" /> {agenda.location}
+                      <p className="text-[11px] font-bold text-slate-500 flex items-center gap-1 uppercase tracking-widest">
+                        <MapPin className="h-3 w-3 text-[#ff4b4b]" /> {agenda.location}
                       </p>
                     )}
                   </CardContent>
@@ -202,8 +202,8 @@ export default function CoachSchedules() {
               )
             })
           ) : (
-            <div className="bg-white rounded-xl border border-slate-100 border-dashed p-6 text-center">
-              <p className="text-xs text-slate-400 font-medium">Tidak ada agenda pada tanggal ini.</p>
+            <div className="bg-[#1f1e2e] rounded-xl border border-[#2a293d] border-dashed p-6 text-center">
+              <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">Tidak ada agenda pada tanggal ini.</p>
             </div>
           )}
         </div>

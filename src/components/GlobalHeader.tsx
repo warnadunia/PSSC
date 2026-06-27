@@ -136,10 +136,8 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
         <div className="flex items-center gap-1 shrink-0">
           
           <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 relative transition-colors">
-                <Search className="h-5 w-5" />
-              </Button>
+            <SheetTrigger render={<Button variant="ghost" size="icon" className="text-white hover:bg-white/10 relative transition-colors" />}>
+              <Search className="h-5 w-5" />
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-[#1f1e2e] border-[#2a293d] p-0 flex flex-col h-full border-l text-white">
               <SheetHeader className="p-4 border-b border-[#2a293d] bg-[#161622] text-left">
@@ -165,11 +163,9 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
           </Sheet>
 
           <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 relative transition-colors">
-                <Bell className="h-5 w-5" />
-                <span className={`absolute top-2 right-2 h-2.5 w-2.5 rounded-full bg-[#ff4b4b] border-[1.5px] ${isScrolled ? 'border-[#602727]' : 'border-transparent'} animate-pulse`}></span>
-              </Button>
+            <SheetTrigger render={<Button variant="ghost" size="icon" className="text-white hover:bg-white/10 relative transition-colors" />}>
+              <Bell className="h-5 w-5" />
+              <span className={`absolute top-2 right-2 h-2.5 w-2.5 rounded-full bg-[#ff4b4b] border-[1.5px] ${isScrolled ? 'border-[#602727]' : 'border-transparent'} animate-pulse`}></span>
             </SheetTrigger>
             <SheetContent side="right" className="w-[320px] sm:w-[350px] bg-[#1f1e2e] border-[#2a293d] p-0 flex flex-col h-full border-l text-white">
               <SheetHeader className="p-4 border-b border-[#2a293d] bg-[#161622] text-left flex flex-row items-center justify-between">

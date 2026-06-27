@@ -38,7 +38,7 @@ const personals = [
 // ==========================================
 const completionData = [
   { name: 'Selesai', value: 78, color: '#10b981' }, // emerald-500
-  { name: 'Belum Selesai', value: 22, color: '#f1f5f9' }, // slate-100
+  { name: 'Belum Selesai', value: 22, color: '#2a293d' }, // darker background
 ]
 
 const promotionData = [
@@ -77,8 +77,8 @@ export default function TrainingPage() {
             ========================================== */}
         <section className="mb-6">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-sm font-bold text-slate-800 tracking-tight flex items-center gap-2">
-              <Activity className="h-4 w-4 text-red-600" /> Analytics Training
+            <h2 className="text-sm font-bold text-white tracking-tight flex items-center gap-2 uppercase">
+              <Activity className="h-4 w-4 text-[#ff4b4b]" /> Analytics Training
             </h2>
           </div>
           
@@ -86,9 +86,9 @@ export default function TrainingPage() {
             <div className="flex w-max space-x-4">
               
               {/* Grafik Penyelesaian Latihan */}
-              <Card className="w-[280px] shadow-sm border-slate-100 bg-white shrink-0">
+              <Card className="w-[280px] shadow-lg border-[#2a293d] bg-[#1f1e2e] shrink-0">
                 <CardHeader className="p-4 pb-0">
-                  <CardTitle className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                  <CardTitle className="text-xs font-bold text-white flex items-center gap-2 uppercase tracking-widest">
                     <CheckSquare className="h-3.5 w-3.5 text-emerald-500" />
                     Penyelesaian Latihan
                   </CardTitle>
@@ -113,26 +113,26 @@ export default function TrainingPage() {
                       </PieChart>
                     </ResponsiveContainer>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-lg font-black text-slate-800">78%</span>
+                      <span className="text-lg font-black text-white">78%</span>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-1.5">
                       <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                      <span className="text-[10px] font-semibold text-slate-600">Selesai (78%)</span>
+                      <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Selesai (78%)</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <div className="w-2 h-2 rounded-full bg-slate-200"></div>
-                      <span className="text-[10px] font-semibold text-slate-600">Belum (22%)</span>
+                      <div className="w-2 h-2 rounded-full bg-[#2a293d]"></div>
+                      <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Belum (22%)</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
               {/* Grafik Batas Promosi */}
-              <Card className="w-[300px] shadow-sm border-slate-100 bg-white shrink-0">
+              <Card className="w-[300px] shadow-lg border-[#2a293d] bg-[#1f1e2e] shrink-0">
                 <CardHeader className="p-4 pb-0">
-                  <CardTitle className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                  <CardTitle className="text-xs font-bold text-white flex items-center gap-2 uppercase tracking-widest">
                     <TrendingUp className="h-3.5 w-3.5 text-blue-500" />
                     Batas Promosi Atlet
                   </CardTitle>
@@ -140,9 +140,9 @@ export default function TrainingPage() {
                 <CardContent className="p-4 h-[120px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={promotionData} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
-                      <XAxis dataKey="name" tick={{ fontSize: 9, fill: '#64748b', fontWeight: 600 }} axisLine={false} tickLine={false} />
-                      <YAxis tick={{ fontSize: 9, fill: '#64748b' }} axisLine={false} tickLine={false} domain={[0, 100]} />
-                      <RechartsTooltip cursor={{ fill: '#f1f5f9' }} contentStyle={{ borderRadius: '8px', fontSize: '10px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                      <XAxis dataKey="name" tick={{ fontSize: 9, fill: '#94a3b8', fontWeight: 600 }} axisLine={false} tickLine={false} />
+                      <YAxis tick={{ fontSize: 9, fill: '#94a3b8' }} axisLine={false} tickLine={false} domain={[0, 100]} />
+                      <RechartsTooltip cursor={{ fill: '#2a293d' }} contentStyle={{ backgroundColor: '#1f1e2e', color: '#fff', borderColor: '#2a293d', borderRadius: '8px', fontSize: '10px' }} />
                       <Bar dataKey="current" fill="#3b82f6" radius={[4, 4, 0, 0]} barSize={12} />
                     </BarChart>
                   </ResponsiveContainer>
@@ -150,9 +150,9 @@ export default function TrainingPage() {
               </Card>
 
               {/* Grafik Performa Kelas */}
-              <Card className="w-[280px] shadow-sm border-slate-100 bg-white shrink-0">
+              <Card className="w-[280px] shadow-lg border-[#2a293d] bg-[#1f1e2e] shrink-0">
                 <CardHeader className="p-4 pb-0">
-                  <CardTitle className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                  <CardTitle className="text-xs font-bold text-white flex items-center gap-2 uppercase tracking-widest">
                     <Target className="h-3.5 w-3.5 text-purple-500" />
                     Performa per Kelas
                   </CardTitle>
@@ -160,11 +160,11 @@ export default function TrainingPage() {
                 <CardContent className="p-2 h-[120px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart cx="50%" cy="50%" outerRadius="70%" data={classPerformanceData}>
-                      <PolarGrid stroke="#e2e8f0" />
-                      <PolarAngleAxis dataKey="subject" tick={{ fill: '#475569', fontSize: 9, fontWeight: 600 }} />
+                      <PolarGrid stroke="#2a293d" />
+                      <PolarAngleAxis dataKey="subject" tick={{ fill: '#94a3b8', fontSize: 9, fontWeight: 600 }} />
                       <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
                       <Radar name="Skor" dataKey="A" stroke="#a855f7" fill="#a855f7" fillOpacity={0.4} />
-                      <RechartsTooltip contentStyle={{ borderRadius: '8px', fontSize: '10px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                      <RechartsTooltip contentStyle={{ backgroundColor: '#1f1e2e', color: '#fff', borderColor: '#2a293d', borderRadius: '8px', fontSize: '10px' }} />
                     </RadarChart>
                   </ResponsiveContainer>
                 </CardContent>
@@ -176,11 +176,11 @@ export default function TrainingPage() {
         </section>
 
         <Tabs defaultValue="program" className="w-full">
-          <TabsList className="w-full grid grid-cols-2 bg-slate-200/50 p-1 rounded-xl mb-4">
-            <TabsTrigger value="program" className="text-xs py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+          <TabsList className="w-full grid grid-cols-2 bg-[#161622] p-1 rounded-xl mb-4 border border-[#2a293d]">
+            <TabsTrigger value="program" className="text-xs py-2 data-[state=active]:bg-[#1f1e2e] text-slate-400 data-[state=active]:text-[#ff4b4b] data-[state=active]:shadow-lg font-bold uppercase tracking-widest">
               Program
             </TabsTrigger>
-            <TabsTrigger value="personal" className="text-xs py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+            <TabsTrigger value="personal" className="text-xs py-2 data-[state=active]:bg-[#1f1e2e] text-slate-400 data-[state=active]:text-[#ff4b4b] data-[state=active]:shadow-lg font-bold uppercase tracking-widest">
               Personal
             </TabsTrigger>
           </TabsList>
@@ -188,18 +188,18 @@ export default function TrainingPage() {
           {/* TAB 1: PROGRAM (Tetap sama) */}
           <TabsContent value="program" className="space-y-4">
             <Sheet>
-              <SheetTrigger className="inline-flex items-center justify-center rounded-lg text-xs font-bold transition-colors w-full bg-white border border-slate-200 text-slate-700 h-10 px-4 shadow-sm hover:bg-slate-50">
-                <Filter className="mr-2 h-4 w-4 text-red-600" /> Filter Kelas ({selectedClasses.length === 0 ? 'Semua' : selectedClasses.length})
+              <SheetTrigger className="inline-flex items-center justify-center rounded-lg text-xs font-bold transition-colors w-full bg-[#1f1e2e] border border-[#2a293d] text-white h-10 px-4 shadow-lg hover:bg-[#2a293d] uppercase tracking-widest">
+                <Filter className="mr-2 h-4 w-4 text-[#ff4b4b]" /> Filter Kelas ({selectedClasses.length === 0 ? 'Semua' : selectedClasses.length})
               </SheetTrigger>
-              <SheetContent side="bottom" className="rounded-t-2xl px-4 pb-8 pt-4">
-                <SheetHeader className="border-b pb-3 mb-4 text-left">
-                  <SheetTitle className="text-lg font-bold text-slate-800">Filter Group Latihan</SheetTitle>
+              <SheetContent side="bottom" className="rounded-t-2xl px-4 pb-8 pt-4 bg-[#1f1e2e] border-t border-[#2a293d]">
+                <SheetHeader className="border-b border-[#2a293d] pb-3 mb-4 text-left">
+                  <SheetTitle className="text-lg font-bold text-white uppercase tracking-widest">Filter Group Latihan</SheetTitle>
                 </SheetHeader>
                 <div className="grid grid-cols-2 gap-3">
                   {classes.map((c) => (
-                    <div key={c} className="flex items-center space-x-2 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                      <Checkbox id={`filter-${c}`} checked={selectedClasses.includes(c)} onCheckedChange={() => toggleClass(c)} />
-                      <label htmlFor={`filter-${c}`} className="text-sm font-semibold cursor-pointer w-full text-slate-700">Kelas {c}</label>
+                    <div key={c} className="flex items-center space-x-2 bg-[#161622] p-3 rounded-lg border border-[#2a293d]">
+                      <Checkbox id={`filter-${c}`} checked={selectedClasses.includes(c)} onCheckedChange={() => toggleClass(c)} className="border-slate-500 data-[state=checked]:bg-[#ff4b4b] data-[state=checked]:border-[#ff4b4b] data-[state=checked]:text-white" />
+                      <label htmlFor={`filter-${c}`} className="text-sm font-bold cursor-pointer w-full text-slate-300 uppercase tracking-wider">Kelas {c}</label>
                     </div>
                   ))}
                 </div>
@@ -208,29 +208,29 @@ export default function TrainingPage() {
 
             <div className="space-y-3">
               {filteredPrograms.length > 0 ? filteredPrograms.map((prog) => (
-                <Card key={prog.id} onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)} className="border-none shadow-sm cursor-pointer hover:ring-2 hover:ring-red-100 bg-white">
+                <Card key={prog.id} onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)} className="bg-[#1f1e2e] border border-[#2a293d] shadow-lg cursor-pointer hover:ring-2 hover:ring-[#ff4b4b]/50 transition-all">
                   <CardHeader className="p-4 pb-2">
                     <div className="flex justify-between items-start mb-2">
-                      <Badge variant="outline" className="text-[10px] bg-red-50 text-red-700 border-red-200">{prog.class} • {prog.time}</Badge>
+                      <Badge variant="outline" className="text-[10px] bg-[#ff4b4b]/10 text-[#ff4b4b] border-[#ff4b4b]/30 uppercase tracking-widest">{prog.class} • {prog.time}</Badge>
                       <ChevronRight className="h-4 w-4 text-slate-400" />
                     </div>
-                    <CardTitle className="text-sm font-bold text-slate-800">{prog.title}</CardTitle>
+                    <CardTitle className="text-sm font-bold text-white">{prog.title}</CardTitle>
                   </CardHeader>
                   <CardContent className="p-4 pt-0">
                     <div className="mt-2 space-y-1.5">
-                      <div className="flex justify-between text-[9px] font-bold text-slate-500 uppercase">
+                      <div className="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-widest">
                         <span>Progress Sesi</span>
-                        <span className={prog.progress === 100 ? 'text-emerald-600' : 'text-slate-600'}>{prog.progress}%</span>
+                        <span className={prog.progress === 100 ? 'text-emerald-500' : 'text-slate-400'}>{prog.progress}%</span>
                       </div>
-                      <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                        <div className={`h-full transition-all ${prog.progress === 100 ? 'bg-emerald-500' : 'bg-red-600'}`} style={{ width: `${prog.progress}%` }} />
+                      <div className="h-1.5 w-full bg-[#161622] rounded-full overflow-hidden">
+                        <div className={`h-full transition-all ${prog.progress === 100 ? 'bg-emerald-500' : 'bg-[#ff4b4b]'}`} style={{ width: `${prog.progress}%` }} />
                       </div>
                     </div>
                   </CardContent>
                 </Card>
               )) : (
-                <div className="p-8 text-center bg-white rounded-2xl border-dashed border-2 border-slate-200">
-                  <p className="text-xs font-medium text-slate-400">Silakan pilih kelas pada filter.</p>
+                <div className="p-8 text-center bg-[#1f1e2e] rounded-2xl border-dashed border-2 border-[#2a293d]">
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Silakan pilih kelas pada filter.</p>
                 </div>
               )}
             </div>
@@ -241,22 +241,22 @@ export default function TrainingPage() {
             <div className="space-y-4">
               {personals.map(prog => {
                 return (
-                  <Card key={prog.id} className="shadow-sm border-none bg-white">
+                  <Card key={prog.id} className="shadow-lg border-[#2a293d] bg-[#1f1e2e]">
                     <CardContent className="p-4">
                       {/* Klik Header = Buka SubPage */}
                       <div className="cursor-pointer group mb-3" onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)}>
                         <div className="flex justify-between items-start mb-1">
-                          <h4 className="font-bold text-sm text-slate-900 group-hover:text-red-600 transition-colors">{prog.title}</h4>
+                          <h4 className="font-bold text-sm text-white group-hover:text-[#ff4b4b] transition-colors">{prog.title}</h4>
                           <ChevronRight className="h-4 w-4 text-slate-400" />
                         </div>
-                        <p className="text-xs text-slate-500 line-clamp-2">{prog.desc}</p>
+                        <p className="text-xs text-slate-400 line-clamp-2">{prog.desc}</p>
                       </div>
                       
                       {/* Tombol Latihan Sekarang */}
-                      <div className="pt-3 border-t border-slate-100">
+                      <div className="pt-3 border-t border-[#2a293d]">
                         <Button 
                           onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)}
-                          className="w-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold h-9 shadow-sm"
+                          className="w-full bg-[#ff4b4b] hover:bg-[#ff4b4b]/90 text-white text-xs font-bold h-9 shadow-lg uppercase tracking-widest"
                         >
                           <Play className="mr-2 h-4 w-4 fill-white" /> Latihan Sekarang
                         </Button>
