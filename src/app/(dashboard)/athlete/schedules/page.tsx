@@ -35,15 +35,15 @@ const dummyAgendas: Agenda[] = [
 ]
 
 const TYPE_CONFIG = {
-  hadir: { color: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30", icon: CheckCircle2, label: "Masuk/Latihan" },
-  dinas: { color: "bg-blue-500/20 text-blue-400 border-blue-500/30", icon: Briefcase, label: "Dinas Luar" },
-  event: { color: "bg-amber-500/20 text-amber-400 border-amber-500/30", icon: Flag, label: "Event Lomba" },
-  libur: { color: "bg-slate-500/20 text-slate-400 border-slate-500/30", icon: Ban, label: "Libur" },
-  cuti: { color: "bg-purple-500/20 text-purple-400 border-purple-500/30", icon: CalendarIcon, label: "Cuti" },
-  ijin: { color: "bg-rose-500/20 text-rose-400 border-rose-500/30", icon: CalendarIcon, label: "Ijin" },
+  hadir: { color: "bg-emerald-500/10 text-emerald-500 border-emerald-500/30", dotColor: "bg-emerald-500", textColor: "text-emerald-500", icon: CheckCircle2, label: "Masuk/Latihan" },
+  dinas: { color: "bg-blue-500/10 text-blue-500 border-blue-500/30", dotColor: "bg-blue-500", textColor: "text-blue-500", icon: Briefcase, label: "Dinas Luar" },
+  event: { color: "bg-amber-500/10 text-amber-500 border-amber-500/30", dotColor: "bg-amber-500", textColor: "text-amber-500", icon: Flag, label: "Event Lomba" },
+  libur: { color: "bg-slate-500/10 text-slate-400 border-slate-500/30", dotColor: "bg-slate-500", textColor: "text-slate-400", icon: Ban, label: "Libur" },
+  cuti: { color: "bg-purple-500/10 text-purple-500 border-purple-500/30", dotColor: "bg-purple-500", textColor: "text-purple-500", icon: CalendarIcon, label: "Cuti" },
+  ijin: { color: "bg-rose-500/10 text-rose-500 border-rose-500/30", dotColor: "bg-rose-500", textColor: "text-rose-500", icon: CalendarIcon, label: "Ijin" },
 }
 
-export default function CoachSchedules() {
+export default function AthleteSchedules() {
   const router = useRouter()
   const [currentDate, setCurrentDate] = useState(new Date(2026, 5, 26)) 
   const [selectedDate, setSelectedDate] = useState<string>("2026-06-26")
@@ -79,35 +79,48 @@ export default function CoachSchedules() {
       <main className="flex-1 px-4 md:px-6 lg:px-8 space-y-5 pt-5 w-full pb-32">
         
         {/* SLIDER BULAN TAHUN */}
-        <div className="flex items-center justify-between bg-[#1f1e2e] p-3 rounded-2xl shadow-lg border border-[#2a293d]">
-          <Button variant="ghost" size="icon" onClick={handlePrevMonth} className="h-8 w-8 hover:bg-[#2a293d]">
-            <ChevronLeft className="h-5 w-5 text-white" />
+        <div className="flex items-center justify-between bg-card p-3 rounded-2xl shadow-sm border border-border">
+          <Button variant="ghost" size="icon" onClick={handlePrevMonth} className="h-8 w-8 hover:bg-muted">
+            <ChevronLeft className="h-5 w-5 text-muted-foreground" />
           </Button>
           <div className="flex flex-col items-center">
-            <h2 className="text-sm font-bold text-white tracking-wide uppercase">
+            <h2 className="text-sm font-bold text-primary tracking-widest uppercase">
               {monthNames[month]} {year}
             </h2>
-            <p className="text-[10px] text-[#ff4b4b] font-bold uppercase tracking-widest">Kalender Pelatih</p>
+            <p className="text-[10px] text-muted-foreground font-medium tracking-widest uppercase">Kalender Atlet</p>
           </div>
-          <Button variant="ghost" size="icon" onClick={handleNextMonth} className="h-8 w-8 hover:bg-[#2a293d]">
-            <ChevronRight className="h-5 w-5 text-white" />
+          <Button variant="ghost" size="icon" onClick={handleNextMonth} className="h-8 w-8 hover:bg-muted">
+            <ChevronRight className="h-5 w-5 text-muted-foreground" />
           </Button>
         </div>
 
         {/* SECTION KALENDER & LEGENDA */}
         <div className="space-y-3">
           {/* CARD KALENDER CUSTOM (GRID) */}
-          <Card className="bg-[#1f1e2e] border-[#2a293d] shadow-xl overflow-hidden">
+          <Card className="shadow-sm border-border overflow-hidden bg-card p-4 rounded-3xl">
             <CardContent className="p-0">
-              <div className="grid grid-cols-7 border-b border-[#2a293d] bg-[#161622]">
-                {dayNames.map(day => (
-                  <div key={day} className="py-2 text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                    {day}
+              {/* LEGENDA BADGE (Di atas kalender) */}
+              <div className="flex flex-wrap gap-x-4 gap-y-3 items-center justify-center pb-6 border-b border-border/50 mb-4">
+                {Object.values(TYPE_CONFIG).map((conf, idx) => (
+                  <div key={idx} className="flex items-center gap-1.5">
+                    <div className={`w-2 h-2 rounded-full ${(conf as { dotColor: string }).dotColor}`} />
+                    <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{conf.label}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="grid grid-cols-7">
+              <div className="grid grid-cols-7 mb-2">
+                {dayNames.map((day, idx) => {
+                  const isWeekend = idx >= 5; // Sab (5) and Min (6)
+                  return (
+                    <div key={day} className={`py-2 text-center text-[11px] font-black uppercase tracking-widest ${isWeekend ? 'text-primary' : 'text-muted-foreground'}`}>
+                      {day}
+                    </div>
+                  )
+                })}
+              </div>
+
+              <div className="grid grid-cols-7 gap-0">
                 {daysArray.map((day, idx) => {
                   const dayAgendas = day.dateString ? dummyAgendas.filter(ag => ag.date === day.dateString) : []
                   const isSelected = day.dateString === selectedDate
@@ -117,33 +130,33 @@ export default function CoachSchedules() {
                     <div 
                       key={idx} 
                       onClick={() => day.dateString && setSelectedDate(day.dateString)}
-                      className={`
-                        min-h-[70px] md:min-h-[90px] border-b border-r border-[#2a293d] p-1 cursor-pointer transition-colors
-                        ${!day.isCurrentMonth ? 'bg-[#161622]/50' : 'bg-[#1f1e2e] hover:bg-[#2a293d]'}
-                        ${isSelected ? 'ring-2 ring-inset ring-[#ff4b4b] bg-[#ff4b4b]/10' : ''}
-                      `}
+                      className="min-h-[50px] flex flex-col items-center justify-center cursor-pointer"
                     >
                       {day.dayNumber && (
-                        <div className="flex flex-col h-full">
-                          <div className="flex justify-between items-start">
-                            <span className={`
-                              text-[11px] font-bold flex items-center justify-center h-5 w-5 rounded-full
-                              ${isToday ? 'bg-[#ff4b4b] text-white shadow-[0_0_8px_#ff4b4b]' : 'text-slate-300'}
-                            `}>
-                              {day.dayNumber}
-                            </span>
-                          </div>
+                        <div className={`
+                          w-10 h-10 flex flex-col items-center justify-center rounded-2xl transition-all
+                          ${isSelected ? 'bg-primary shadow-lg shadow-primary/20' : ''}
+                          ${!isSelected && isToday ? 'border-2 border-primary bg-primary/5' : ''}
+                          ${!day.isCurrentMonth ? 'opacity-30' : ''}
+                        `}>
+                          <span className={`
+                            text-[13px] font-bold 
+                            ${isSelected ? 'text-primary-foreground' : (isToday ? 'text-primary' : 'text-foreground')}
+                          `}>
+                            {day.dayNumber}
+                          </span>
                           
-                          <div className="mt-1 flex flex-col gap-0.5">
-                            {dayAgendas.map(ag => {
-                              const config = TYPE_CONFIG[ag.type]
-                              return (
-                                <div key={ag.id} className={`w-full truncate rounded px-1 py-0.5 text-[8px] font-bold border ${config.color}`}>
-                                  {ag.title}
-                                </div>
-                              )
-                            })}
-                          </div>
+                          {/* DOT INDICATOR */}
+                          {dayAgendas.length > 0 && (
+                            <div className="flex gap-0.5 mt-0.5">
+                              {dayAgendas.map(ag => {
+                                const config = TYPE_CONFIG[ag.type] as { dotColor: string }
+                                return (
+                                  <div key={ag.id} className={`w-1.5 h-1.5 rounded-full ${config.dotColor}`} title={ag.title} />
+                                )
+                              })}
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
@@ -152,58 +165,50 @@ export default function CoachSchedules() {
               </div>
             </CardContent>
           </Card>
-
-          {/* LEGENDA BADGE (Dipindah persis ke bawah kalender) */}
-          <div className="bg-[#1f1e2e] p-3 rounded-xl border border-[#2a293d] shadow-lg flex flex-wrap gap-2 items-center justify-center">
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mr-1 w-full text-center md:w-auto md:text-left">Legenda:</span>
-            {Object.values(TYPE_CONFIG).map((conf, idx) => (
-              <div key={idx} className={`flex items-center gap-1 px-2 py-1 rounded border ${conf.color}`}>
-                <conf.icon className="h-3 w-3" />
-                <span className="text-[9px] font-bold uppercase tracking-widest">{conf.label}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* CARD KETERANGAN AKTIVITAS HARIAN */}
         <div className="space-y-3 pt-2">
-          <h3 className="font-bold text-sm text-white flex items-center gap-1 px-1 uppercase tracking-widest">
-            <CalendarIcon className="h-4 w-4 text-[#ff4b4b]" />
-            Agenda Tanggal {selectedDate ? selectedDate.split("-")[2] : ""} {monthNames[month]}
+          <h3 className="font-bold text-sm text-foreground flex items-center gap-2 px-1 tracking-wider uppercase mb-4">
+            <div className="bg-primary/20 p-1.5 rounded-lg text-primary">
+              <CalendarIcon className="h-4 w-4" />
+            </div>
+            <span>Aktivitas Tanggal <span className="text-primary">{selectedDate ? selectedDate.split("-")[2] : ""} {monthNames[month]} {year}</span></span>
           </h3>
 
           {selectedAgendas.length > 0 ? (
             selectedAgendas.map(agenda => {
-              const Icon = TYPE_CONFIG[agenda.type].icon
+              const config = TYPE_CONFIG[agenda.type] as any
+              const Icon = config.icon
               return (
-                <Card 
+                <div 
                   key={agenda.id} 
                   onClick={() => router.push(`/athlete/schedules/${agenda.id}`)}
-                  className="bg-[#1f1e2e] border-[#2a293d] shadow-lg relative overflow-hidden cursor-pointer hover:bg-[#2a293d] transition-colors"
+                  className={`flex items-center p-4 rounded-3xl cursor-pointer transition-all border ${config.color}`}
                 >
-                  <div className={`absolute left-0 top-0 w-1 h-full ${TYPE_CONFIG[agenda.type].color.split(" ")[0]}`} />
-                  <CardContent className="p-4 pl-5">
-                    <div className="flex justify-between items-start mb-2">
-                      <Badge variant="outline" className={`text-[9px] px-1.5 py-0 border-transparent ${TYPE_CONFIG[agenda.type].color} uppercase tracking-widest`}>
-                        {TYPE_CONFIG[agenda.type].label}
-                      </Badge>
+                  <div className="h-10 w-10 shrink-0 bg-background/50 rounded-full flex items-center justify-center mr-4">
+                    <Icon className={`h-5 w-5 ${config.textColor}`} />
+                  </div>
+                  
+                  <div className="flex-1">
+                    <div className="flex justify-between items-start">
+                      <h4 className={`font-black text-sm mb-0.5 ${config.textColor}`}>{agenda.title}</h4>
                       {agenda.time && (
-                        <span className="text-[10px] font-bold text-slate-400">{agenda.time}</span>
+                        <span className={`text-[10px] font-bold ${config.textColor} opacity-80`}>{agenda.time}</span>
                       )}
                     </div>
-                    <h4 className="font-bold text-white text-sm mb-1">{agenda.title}</h4>
                     {agenda.location && (
-                      <p className="text-[11px] font-bold text-slate-500 flex items-center gap-1 uppercase tracking-widest">
-                        <MapPin className="h-3 w-3 text-[#ff4b4b]" /> {agenda.location}
+                      <p className={`text-[11px] font-medium opacity-80 ${config.textColor}`}>
+                        {agenda.location}
                       </p>
                     )}
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               )
             })
           ) : (
-            <div className="bg-[#1f1e2e] rounded-xl border border-[#2a293d] border-dashed p-6 text-center">
-              <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">Tidak ada agenda pada tanggal ini.</p>
+            <div className="bg-card rounded-3xl border border-border border-dashed p-6 text-center">
+              <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest">Tidak ada agenda pada tanggal ini.</p>
             </div>
           )}
         </div>
