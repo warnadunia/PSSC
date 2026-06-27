@@ -115,15 +115,6 @@ function TrainingDetailContent() {
     <div className="flex flex-col h-[100dvh] bg-white w-full relative" suppressHydrationWarning>
       <GlobalHeader variant="subpage" title="Detail Latihan" />
 
-      {/* Hero Image */}
-      <div className="h-48 w-full bg-slate-800 relative shrink-0">
-        <img 
-          src="https://images.unsplash.com/photo-1519315901367-f34fa16b63ee?q=80&w=800&auto=format&fit=crop" 
-          alt="Coral Reef" 
-          className="w-full h-full object-cover opacity-80"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
-      </div>
 
       <main className={`flex-1 overflow-y-auto w-full bg-white ${type === 'personal' ? 'pb-32' : 'pb-10'}`}>
         
