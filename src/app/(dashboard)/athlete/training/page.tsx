@@ -77,7 +77,7 @@ export default function TrainingPage() {
             ========================================== */}
         <section className="mb-6">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-sm font-bold text-white tracking-tight flex items-center gap-2 uppercase">
+            <h2 className="text-sm font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 uppercase">
               <Activity className="h-4 w-4 text-[#ff4b4b]" /> Analytics Training
             </h2>
           </div>
@@ -86,9 +86,9 @@ export default function TrainingPage() {
             <div className="flex w-max space-x-4">
               
               {/* Grafik Penyelesaian Latihan */}
-              <Card className="w-[280px] shadow-lg border-[#2a293d] bg-[#1f1e2e] shrink-0">
+              <Card className="w-[280px] border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shrink-0 shadow-xl/30">
                 <CardHeader className="p-4 pb-0">
-                  <CardTitle className="text-xs font-bold text-white flex items-center gap-2 uppercase tracking-widest">
+                  <CardTitle className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-2 uppercase tracking-widest">
                     <CheckSquare className="h-3.5 w-3.5 text-emerald-500" />
                     Penyelesaian Latihan
                   </CardTitle>
@@ -113,26 +113,26 @@ export default function TrainingPage() {
                       </PieChart>
                     </ResponsiveContainer>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-lg font-black text-white">78%</span>
+                      <span className="text-lg font-black text-slate-900 dark:text-white">78%</span>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-1.5">
                       <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                      <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Selesai (78%)</span>
+                      <span className="text-[10px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-widest">Selesai (78%)</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <div className="w-2 h-2 rounded-full bg-[#2a293d]"></div>
-                      <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Belum (22%)</span>
+                      <div className="w-2 h-2 rounded-full bg-slate-100 dark:bg-[#2a293d]"></div>
+                      <span className="text-[10px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-widest">Belum (22%)</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
               {/* Grafik Batas Promosi */}
-              <Card className="w-[300px] shadow-lg border-[#2a293d] bg-[#1f1e2e] shrink-0">
+              <Card className="w-[300px] border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shrink-0 shadow-xl/30">
                 <CardHeader className="p-4 pb-0">
-                  <CardTitle className="text-xs font-bold text-white flex items-center gap-2 uppercase tracking-widest">
+                  <CardTitle className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-2 uppercase tracking-widest">
                     <TrendingUp className="h-3.5 w-3.5 text-blue-500" />
                     Batas Promosi Atlet
                   </CardTitle>
@@ -150,9 +150,9 @@ export default function TrainingPage() {
               </Card>
 
               {/* Grafik Performa Kelas */}
-              <Card className="w-[280px] shadow-lg border-[#2a293d] bg-[#1f1e2e] shrink-0">
+              <Card className="w-[280px] border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shrink-0 shadow-xl/30">
                 <CardHeader className="p-4 pb-0">
-                  <CardTitle className="text-xs font-bold text-white flex items-center gap-2 uppercase tracking-widest">
+                  <CardTitle className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-2 uppercase tracking-widest">
                     <Target className="h-3.5 w-3.5 text-purple-500" />
                     Performa per Kelas
                   </CardTitle>
@@ -176,11 +176,11 @@ export default function TrainingPage() {
         </section>
 
         <Tabs defaultValue="program" className="w-full">
-          <TabsList className="w-full grid grid-cols-2 bg-[#161622] p-1 rounded-xl mb-4 border border-[#2a293d]">
-            <TabsTrigger value="program" className="text-xs py-2 data-[state=active]:bg-[#1f1e2e] text-slate-400 data-[state=active]:text-[#ff4b4b] data-[state=active]:shadow-lg font-bold uppercase tracking-widest">
+          <TabsList className="w-full grid grid-cols-2 bg-slate-50 dark:bg-[#161622] p-1 rounded-xl mb-4 border border-slate-200 dark:border-[#2a293d]">
+            <TabsTrigger value="program" className="text-xs py-2 data-[state=active]:bg-white dark:bg-[#1f1e2e] text-slate-500 dark:text-slate-400 data-[state=active]:text-[#ff4b4b] data-[state=active]: font-bold uppercase tracking-widest shadow-xl/30">
               Program
             </TabsTrigger>
-            <TabsTrigger value="personal" className="text-xs py-2 data-[state=active]:bg-[#1f1e2e] text-slate-400 data-[state=active]:text-[#ff4b4b] data-[state=active]:shadow-lg font-bold uppercase tracking-widest">
+            <TabsTrigger value="personal" className="text-xs py-2 data-[state=active]:bg-white dark:bg-[#1f1e2e] text-slate-500 dark:text-slate-400 data-[state=active]:text-[#ff4b4b] data-[state=active]: font-bold uppercase tracking-widest shadow-xl/30">
               Personal
             </TabsTrigger>
           </TabsList>
@@ -188,18 +188,18 @@ export default function TrainingPage() {
           {/* TAB 1: PROGRAM (Tetap sama) */}
           <TabsContent value="program" className="space-y-4">
             <Sheet>
-              <SheetTrigger className="inline-flex items-center justify-center rounded-lg text-xs font-bold transition-colors w-full bg-[#1f1e2e] border border-[#2a293d] text-white h-10 px-4 shadow-lg hover:bg-[#2a293d] uppercase tracking-widest">
+              <SheetTrigger className="inline-flex items-center justify-center rounded-lg text-xs font-bold transition-colors w-full bg-white dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] text-slate-900 dark:text-white h-10 px-4 hover:bg-slate-100 dark:bg-[#2a293d] uppercase tracking-widest shadow-xl/30">
                 <Filter className="mr-2 h-4 w-4 text-[#ff4b4b]" /> Filter Kelas ({selectedClasses.length === 0 ? 'Semua' : selectedClasses.length})
               </SheetTrigger>
-              <SheetContent side="bottom" className="rounded-t-2xl px-4 pb-8 pt-4 bg-[#1f1e2e] border-t border-[#2a293d]">
-                <SheetHeader className="border-b border-[#2a293d] pb-3 mb-4 text-left">
-                  <SheetTitle className="text-lg font-bold text-white uppercase tracking-widest">Filter Group Latihan</SheetTitle>
+              <SheetContent side="bottom" className="rounded-t-2xl px-4 pb-8 pt-4 bg-white dark:bg-[#1f1e2e] border-t border-slate-200 dark:border-[#2a293d]">
+                <SheetHeader className="border-b border-slate-200 dark:border-[#2a293d] pb-3 mb-4 text-left">
+                  <SheetTitle className="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-widest">Filter Group Latihan</SheetTitle>
                 </SheetHeader>
                 <div className="grid grid-cols-2 gap-3">
                   {classes.map((c) => (
-                    <div key={c} className="flex items-center space-x-2 bg-[#161622] p-3 rounded-lg border border-[#2a293d]">
-                      <Checkbox id={`filter-${c}`} checked={selectedClasses.includes(c)} onCheckedChange={() => toggleClass(c)} className="border-slate-500 data-[state=checked]:bg-[#ff4b4b] data-[state=checked]:border-[#ff4b4b] data-[state=checked]:text-white" />
-                      <label htmlFor={`filter-${c}`} className="text-sm font-bold cursor-pointer w-full text-slate-300 uppercase tracking-wider">Kelas {c}</label>
+                    <div key={c} className="flex items-center space-x-2 bg-slate-50 dark:bg-[#161622] p-3 rounded-lg border border-slate-200 dark:border-[#2a293d]">
+                      <Checkbox id={`filter-${c}`} checked={selectedClasses.includes(c)} onCheckedChange={() => toggleClass(c)} className="border-slate-500 data-[state=checked]:bg-[#ff4b4b] data-[state=checked]:border-[#ff4b4b] data-[state=checked]:text-slate-900 dark:text-white" />
+                      <label htmlFor={`filter-${c}`} className="text-sm font-bold cursor-pointer w-full text-slate-600 dark:text-slate-300 uppercase tracking-wider">Kelas {c}</label>
                     </div>
                   ))}
                 </div>
@@ -208,29 +208,29 @@ export default function TrainingPage() {
 
             <div className="space-y-3">
               {filteredPrograms.length > 0 ? filteredPrograms.map((prog) => (
-                <Card key={prog.id} onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)} className="bg-[#1f1e2e] border border-[#2a293d] shadow-lg cursor-pointer hover:ring-2 hover:ring-[#ff4b4b]/50 transition-all">
+                <Card key={prog.id} onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)} className="bg-white dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] cursor-pointer hover:ring-2 hover:ring-[#ff4b4b]/50 transition-all shadow-xl/30">
                   <CardHeader className="p-4 pb-2">
                     <div className="flex justify-between items-start mb-2">
                       <Badge variant="outline" className="text-[10px] bg-[#ff4b4b]/10 text-[#ff4b4b] border-[#ff4b4b]/30 uppercase tracking-widest">{prog.class} • {prog.time}</Badge>
-                      <ChevronRight className="h-4 w-4 text-slate-400" />
+                      <ChevronRight className="h-4 w-4 text-slate-500 dark:text-slate-400" />
                     </div>
-                    <CardTitle className="text-sm font-bold text-white">{prog.title}</CardTitle>
+                    <CardTitle className="text-sm font-bold text-slate-900 dark:text-white">{prog.title}</CardTitle>
                   </CardHeader>
                   <CardContent className="p-4 pt-0">
                     <div className="mt-2 space-y-1.5">
                       <div className="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-widest">
                         <span>Progress Sesi</span>
-                        <span className={prog.progress === 100 ? 'text-emerald-500' : 'text-slate-400'}>{prog.progress}%</span>
+                        <span className={prog.progress === 100 ? 'text-emerald-500' : 'text-slate-500 dark:text-slate-400'}>{prog.progress}%</span>
                       </div>
-                      <div className="h-1.5 w-full bg-[#161622] rounded-full overflow-hidden">
+                      <div className="h-1.5 w-full bg-slate-50 dark:bg-[#161622] rounded-full overflow-hidden">
                         <div className={`h-full transition-all ${prog.progress === 100 ? 'bg-emerald-500' : 'bg-[#ff4b4b]'}`} style={{ width: `${prog.progress}%` }} />
                       </div>
                     </div>
                   </CardContent>
                 </Card>
               )) : (
-                <div className="p-8 text-center bg-[#1f1e2e] rounded-2xl border-dashed border-2 border-[#2a293d]">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Silakan pilih kelas pada filter.</p>
+                <div className="p-8 text-center bg-white dark:bg-[#1f1e2e] rounded-2xl border-dashed border-2 border-slate-200 dark:border-[#2a293d]">
+                  <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Silakan pilih kelas pada filter.</p>
                 </div>
               )}
             </div>
@@ -241,22 +241,22 @@ export default function TrainingPage() {
             <div className="space-y-4">
               {personals.map(prog => {
                 return (
-                  <Card key={prog.id} className="shadow-lg border-[#2a293d] bg-[#1f1e2e]">
+                  <Card key={prog.id} className="border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shadow-xl/30">
                     <CardContent className="p-4">
                       {/* Klik Header = Buka SubPage */}
                       <div className="cursor-pointer group mb-3" onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)}>
                         <div className="flex justify-between items-start mb-1">
-                          <h4 className="font-bold text-sm text-white group-hover:text-[#ff4b4b] transition-colors">{prog.title}</h4>
-                          <ChevronRight className="h-4 w-4 text-slate-400" />
+                          <h4 className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-[#ff4b4b] transition-colors">{prog.title}</h4>
+                          <ChevronRight className="h-4 w-4 text-slate-500 dark:text-slate-400" />
                         </div>
-                        <p className="text-xs text-slate-400 line-clamp-2">{prog.desc}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{prog.desc}</p>
                       </div>
                       
                       {/* Tombol Latihan Sekarang */}
-                      <div className="pt-3 border-t border-[#2a293d]">
+                      <div className="pt-3 border-t border-slate-200 dark:border-[#2a293d]">
                         <Button 
                           onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)}
-                          className="w-full bg-[#ff4b4b] hover:bg-[#ff4b4b]/90 text-white text-xs font-bold h-9 shadow-lg uppercase tracking-widest"
+                          className="w-full bg-[#ff4b4b] hover:bg-[#ff4b4b]/90 text-slate-900 dark:text-white text-xs font-bold h-9 uppercase tracking-widest shadow-xl/30"
                         >
                           <Play className="mr-2 h-4 w-4 fill-white" /> Latihan Sekarang
                         </Button>

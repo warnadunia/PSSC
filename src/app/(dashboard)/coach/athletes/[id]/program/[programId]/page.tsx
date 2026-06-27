@@ -101,10 +101,10 @@ export default function AthleteProgramDetailPage({ params }: { params: Promise<{
             ========================================== */}
         <div className="w-full">
           {program.groups.map((group, gIdx) => (
-            <div key={gIdx} className="mb-4 bg-card border-y border-border">
+            <div key={gIdx} className="mb-4 bg-card border-y border-border shadow-xl/30">
               
               {/* Header Kolom */}
-              <div className="grid grid-cols-[10fr_4fr_5fr] bg-muted/50 px-4 py-2 border-b border-border sticky top-14 z-10 shadow-sm">
+              <div className="grid grid-cols-[10fr_4fr_5fr] bg-muted/50 px-4 py-2 border-b border-border sticky top-14 z-10 shadow-xl/30">
                 <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{group.name}</span>
                 <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest text-center">Target</span>
                 <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest text-center pr-2">Waktu / Status</span>

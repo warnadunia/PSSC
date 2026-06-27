@@ -37,7 +37,7 @@ function AttendanceSuccessContent() {
         Data absensi Anda telah tersimpan di sistem.
       </p>
 
-      <div className="bg-card border border-border p-6 rounded-3xl w-full max-w-sm mb-10 shadow-sm relative overflow-hidden">
+      <div className="bg-card border border-border p-6 rounded-3xl w-full max-w-sm mb-10 relative overflow-hidden shadow-xl/30">
         <div className="absolute top-0 left-0 w-1.5 h-full bg-primary"></div>
         <p className="italic text-foreground font-medium text-sm leading-relaxed tracking-wide">
           "{randomQuote}"
@@ -46,7 +46,7 @@ function AttendanceSuccessContent() {
 
       <Button 
         onClick={() => router.push('/coach/mypage')}
-        className="w-full max-w-sm h-14 rounded-2xl font-bold text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-primary/25 shadow-lg uppercase tracking-widest"
+        className="w-full max-w-sm h-14 rounded-2xl font-bold text-lg bg-primary hover:bg-primary/90 text-primary-foreground -primary/25 uppercase tracking-widest shadow-xl/30"
       >
         <Home className="h-5 w-5 mr-2" />
         Kembali ke MyPage

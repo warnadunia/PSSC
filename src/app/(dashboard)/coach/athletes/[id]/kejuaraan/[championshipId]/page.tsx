@@ -49,7 +49,7 @@ export default function ChampionshipDetailPage({ params }: { params: Promise<{ i
     <div className="flex flex-col h-[100dvh] w-full" suppressHydrationWarning>
       
       {/* Header */}
-      <div className="h-14 px-4 flex items-center bg-card border-b border-border sticky top-0 z-50 shrink-0 shadow-sm">
+      <div className="h-14 px-4 flex items-center bg-card border-b border-border sticky top-0 z-50 shrink-0 shadow-xl/30">
         <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-muted text-muted-foreground hover:text-foreground">
           <ChevronLeft className="h-5 w-5" />
         </Button>
@@ -59,7 +59,7 @@ export default function ChampionshipDetailPage({ params }: { params: Promise<{ i
       <main className="flex-1 overflow-y-auto w-full p-4 pb-12 space-y-4">
         
         {/* Championship Header Card */}
-        <div className="bg-card rounded-3xl p-6 shadow-sm border border-border relative overflow-hidden">
+        <div className="bg-card rounded-3xl p-6 border border-border relative overflow-hidden shadow-xl/30">
           <div className="absolute top-0 left-0 w-full h-1.5 bg-amber-500"></div>
           
           <div className="flex items-center gap-2 mb-4">
@@ -110,7 +110,7 @@ export default function ChampionshipDetailPage({ params }: { params: Promise<{ i
           
           <div className="space-y-3">
             {championship.records.map((record) => (
-              <Card key={record.id} className="border-border shadow-sm bg-card overflow-hidden">
+              <Card key={record.id} className="border-border bg-card overflow-hidden shadow-xl/30">
                 <CardContent className="p-4">
                   <div className="flex justify-between items-start mb-3">
                     <h4 className="text-sm font-bold text-foreground uppercase tracking-widest">{record.style}</h4>

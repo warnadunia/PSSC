@@ -106,14 +106,14 @@ export default function PrestasiPage() {
 
       <div className="px-4">
         <Tabs defaultValue="program" className="w-full">
-          <TabsList className="w-full grid grid-cols-3 mb-4 bg-[#161622] border border-[#2a293d] p-1 rounded-xl">
-            <TabsTrigger value="program" className="rounded-lg text-[11px] font-bold data-[state=active]:bg-[#1f1e2e] data-[state=active]:text-blue-600 data-[state=active]:shadow-lg">
+          <TabsList className="w-full grid grid-cols-3 mb-4 bg-slate-50 dark:bg-[#161622] border border-slate-200 dark:border-[#2a293d] p-1 rounded-xl">
+            <TabsTrigger value="program" className="rounded-lg text-[11px] font-bold data-[state=active]:bg-white dark:bg-[#1f1e2e] data-[state=active]:text-blue-600 data-[state=active]: shadow-xl/30">
               Program
             </TabsTrigger>
-            <TabsTrigger value="time-trial" className="rounded-lg text-[11px] font-bold data-[state=active]:bg-[#1f1e2e] data-[state=active]:text-blue-600 data-[state=active]:shadow-lg">
+            <TabsTrigger value="time-trial" className="rounded-lg text-[11px] font-bold data-[state=active]:bg-white dark:bg-[#1f1e2e] data-[state=active]:text-blue-600 data-[state=active]: shadow-xl/30">
               Time Trial
             </TabsTrigger>
-            <TabsTrigger value="kejuaraan" className="rounded-lg text-[11px] font-bold data-[state=active]:bg-[#1f1e2e] data-[state=active]:text-blue-600 data-[state=active]:shadow-lg">
+            <TabsTrigger value="kejuaraan" className="rounded-lg text-[11px] font-bold data-[state=active]:bg-white dark:bg-[#1f1e2e] data-[state=active]:text-blue-600 data-[state=active]: shadow-xl/30">
               Kejuaraan
             </TabsTrigger>
           </TabsList>
@@ -121,9 +121,9 @@ export default function PrestasiPage() {
           {/* TAB: PROGRAM LATIHAN */}
           <TabsContent value="program" className="space-y-6 outline-none">
             {/* 1. RADAR CHART */}
-            <Card className="shadow-lg border-none bg-[#1f1e2e]">
+            <Card className="border-none bg-white dark:bg-[#1f1e2e] shadow-xl/30">
               <CardHeader className="p-4 pb-0">
-                <CardTitle className="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-widest">
+                <CardTitle className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2 uppercase tracking-widest">
                   <Target className="h-4 w-4 text-[#ff4b4b]" /> Atribut Kemampuan Atlet
                 </CardTitle>
               </CardHeader>
@@ -144,7 +144,7 @@ export default function PrestasiPage() {
             {/* 2. SKORING TEKNIK (TABS MODE) */}
             <section className="space-y-3">
               <div className="flex items-center justify-between">
-                <h3 className="font-bold text-sm text-white flex items-center gap-2 uppercase tracking-widest">
+                <h3 className="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2 uppercase tracking-widest">
                   <Activity className="h-4 w-4 text-[#ff4b4b]" /> Analisis Teknik per Gaya
                 </h3>
               </div>
@@ -157,12 +157,12 @@ export default function PrestasiPage() {
 
               <Tabs defaultValue={styleBreakdown[0].short} className="w-full">
                 <ScrollArea className="w-full whitespace-nowrap mb-3">
-                  <TabsList className="w-max flex bg-[#161622] border border-[#2a293d] p-1 rounded-xl">
+                  <TabsList className="w-max flex bg-slate-50 dark:bg-[#161622] border border-slate-200 dark:border-[#2a293d] p-1 rounded-xl">
                     {styleBreakdown.map((style, idx) => (
                       <TabsTrigger 
                         key={idx} 
                         value={style.short}
-                        className="text-[11px] py-1.5 px-4 data-[state=active]:bg-[#1f1e2e] data-[state=active]:text-[#ff4b4b] data-[state=active]:shadow-lg font-bold transition-all"
+                        className="text-[11px] py-1.5 px-4 data-[state=active]:bg-white dark:bg-[#1f1e2e] data-[state=active]:text-[#ff4b4b] data-[state=active]: font-bold transition-all shadow-xl/30"
                       >
                         {style.short}
                       </TabsTrigger>
@@ -172,15 +172,15 @@ export default function PrestasiPage() {
                 </ScrollArea>
 
                 {styleBreakdown.map((style, idx) => (
-                  <TabsContent key={idx} value={style.short} className="bg-[#1f1e2e] p-4 rounded-xl shadow-lg border border-[#2a293d] mt-0 space-y-3">
-                    <h4 className="font-bold text-xs text-white mb-2 border-b border-[#2a293d] pb-2">{style.name}</h4>
+                  <TabsContent key={idx} value={style.short} className="bg-white dark:bg-[#1f1e2e] p-4 rounded-xl border border-slate-200 dark:border-[#2a293d] mt-0 space-y-3 shadow-xl/30">
+                    <h4 className="font-bold text-xs text-slate-900 dark:text-white mb-2 border-b border-slate-200 dark:border-[#2a293d] pb-2">{style.name}</h4>
                     {style.metrics.map((metric, mIdx) => (
                       <div key={mIdx} className="space-y-1.5">
                         <div className="flex justify-between items-center text-[10px] font-bold">
-                          <span className="text-slate-400">{metric.label}</span>
-                          <span className={metric.value >= 90 ? 'text-[#ff4b4b]' : 'text-white'}>{metric.value}%</span>
+                          <span className="text-slate-500 dark:text-slate-400">{metric.label}</span>
+                          <span className={metric.value >= 90 ? 'text-[#ff4b4b]' : 'text-slate-900 dark:text-white'}>{metric.value}%</span>
                         </div>
-                        <div className="h-1.5 w-full bg-[#2a293d] rounded-full overflow-hidden">
+                        <div className="h-1.5 w-full bg-slate-100 dark:bg-[#2a293d] rounded-full overflow-hidden">
                           <div 
                             className={`h-full transition-all duration-700 ${metric.value >= 90 ? 'bg-[#ff4b4b]' : 'bg-slate-400'}`}
                             style={{ width: `${metric.value}%` }} 
@@ -194,8 +194,8 @@ export default function PrestasiPage() {
             </section>
 
             {/* 3. DAFTAR PROGRAM LATIHAN */}
-            <section className="space-y-4 pt-4 border-t border-[#2a293d]">
-              <h3 className="font-bold text-sm text-white flex items-center gap-2 uppercase tracking-widest">
+            <section className="space-y-4 pt-4 border-t border-slate-200 dark:border-[#2a293d]">
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2 uppercase tracking-widest">
                 <Activity className="h-4 w-4 text-blue-600" /> Histori Program Latihan
               </h3>
               {historyProgramDetailed.map((session) => {
@@ -211,30 +211,30 @@ export default function PrestasiPage() {
                 const isTuntas = completionRate === 100;
 
                 return (
-                  <Card key={session.id} className="border border-[#2a293d] shadow-lg bg-[#1f1e2e] overflow-hidden relative">
+                  <Card key={session.id} className="border border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] overflow-hidden relative shadow-xl/30">
                     <div className={`absolute left-0 top-0 w-1.5 h-full ${isTuntas ? 'bg-emerald-500' : 'bg-[#ff4b4b]'}`} />
                     <CardContent className="p-0">
                       <div className="p-4 pl-5">
-                        <p className="text-[10px] font-bold text-slate-400 mb-1">Latihan : {session.timeAgo}</p>
-                        <h3 className="text-lg font-black text-white leading-tight mb-3">{session.session}</h3>
+                        <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1">Latihan : {session.timeAgo}</p>
+                        <h3 className="text-lg font-black text-slate-900 dark:text-white leading-tight mb-3">{session.session}</h3>
                         
                         <div className="flex gap-6 mb-4">
                           <div className="flex items-center gap-2">
-                            <MapPin className="h-4 w-4 text-slate-400" />
-                            <span className="text-xs font-bold text-slate-300">{session.distance}</span>
+                            <MapPin className="h-4 w-4 text-slate-500 dark:text-slate-400" />
+                            <span className="text-xs font-bold text-slate-600 dark:text-slate-300">{session.distance}</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <Clock className="h-4 w-4 text-slate-400" />
-                            <span className="text-xs font-bold text-slate-300">{session.duration}</span>
+                            <Clock className="h-4 w-4 text-slate-500 dark:text-slate-400" />
+                            <span className="text-xs font-bold text-slate-600 dark:text-slate-300">{session.duration}</span>
                           </div>
                         </div>
 
-                        <div className="bg-[#161622] p-3 rounded-xl border border-[#2a293d]">
+                        <div className="bg-slate-50 dark:bg-[#161622] p-3 rounded-xl border border-slate-200 dark:border-[#2a293d]">
                           <div className="flex justify-between items-center mb-1.5">
-                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                            <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                               Status: {isTuntas ? <span className="text-emerald-600">Tuntas</span> : <span className="text-[#ff4b4b]">Belum Tuntas</span>}
                             </span>
-                            <span className={`text-[10px] font-black ${isTuntas ? 'text-emerald-600' : 'text-slate-300'}`}>
+                            <span className={`text-[10px] font-black ${isTuntas ? 'text-emerald-600' : 'text-slate-600 dark:text-slate-300'}`}>
                               {completionRate}%
                             </span>
                           </div>
@@ -249,7 +249,7 @@ export default function PrestasiPage() {
 
                       <div 
                         onClick={() => router.push(`/athlete/training/${session.id}?type=program`)}
-                        className="bg-[#161622] border-t border-[#2a293d] p-3 flex justify-center items-center cursor-pointer hover:bg-[#2a293d] transition-colors group"
+                        className="bg-slate-50 dark:bg-[#161622] border-t border-slate-200 dark:border-[#2a293d] p-3 flex justify-center items-center cursor-pointer hover:bg-slate-100 dark:bg-[#2a293d] transition-colors group"
                       >
                         <span className="text-xs font-bold text-blue-600 group-hover:text-[#ff4b4b]/80 flex items-center">
                           Lihat Detail <ChevronRight className="h-3.5 w-3.5 ml-1" />
@@ -272,7 +272,7 @@ export default function PrestasiPage() {
                     <Button 
                       key={gaya}
                       variant={selectedStroke === gaya ? "default" : "outline"}
-                      className={`rounded-full h-8 px-4 text-[11px] font-bold ${selectedStroke === gaya ? 'bg-[#ff4b4b] text-white shadow-[0_0_8px_#ff4b4b]' : 'bg-[#1f1e2e] text-slate-400 border-[#2a293d]'}`}
+                      className={`rounded-full h-8 px-4 text-[11px] font-bold ${selectedStroke === gaya ? 'bg-[#ff4b4b] text-slate-900 dark:text-white shadow-[0_0_8px_#ff4b4b]' : 'bg-white dark:bg-[#1f1e2e] text-slate-500 dark:text-slate-400 border-slate-200 dark:border-[#2a293d]'}`}
                       onClick={() => setSelectedStroke(gaya)}
                     >
                       Gaya {gaya}
@@ -284,13 +284,13 @@ export default function PrestasiPage() {
             </div>
 
             {/* Chart */}
-            <div className="bg-[#1f1e2e] p-4 rounded-2xl shadow-lg border border-[#2a293d]">
+            <div className="bg-white dark:bg-[#1f1e2e] p-4 rounded-2xl border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xs font-bold text-white">Tren Waktu Time Trial (Detik)</h3>
+                <h3 className="text-xs font-bold text-slate-900 dark:text-white">Tren Waktu Time Trial (Detik)</h3>
                 <select 
                   value={selectedYear} 
                   onChange={(e) => setSelectedYear(e.target.value)}
-                  className="bg-[#161622] border border-[#2a293d] rounded-lg text-[10px] py-1 px-2 text-slate-300 font-bold focus:outline-none focus:ring-1 focus:ring-blue-500 shadow-lg"
+                  className="bg-slate-50 dark:bg-[#161622] border border-slate-200 dark:border-[#2a293d] rounded-lg text-[10px] py-1 px-2 text-slate-600 dark:text-slate-300 font-bold focus:outline-none focus:ring-1 focus:ring-blue-500 shadow-xl/30"
                 >
                   <option value="2026">2026</option>
                   <option value="2025">2025</option>
@@ -312,35 +312,35 @@ export default function PrestasiPage() {
             </div>
 
             {/* Tabel Hasil Time Trial */}
-            <div className="bg-[#1f1e2e] rounded-2xl shadow-lg border border-[#2a293d] overflow-hidden">
-              <div className="p-3 bg-[#161622] border-b border-[#2a293d]">
-                <h3 className="text-xs font-bold text-white">Semua Hasil Time Trial</h3>
+            <div className="bg-white dark:bg-[#1f1e2e] rounded-2xl border border-slate-200 dark:border-[#2a293d] overflow-hidden shadow-xl/30">
+              <div className="p-3 bg-slate-50 dark:bg-[#161622] border-b border-slate-200 dark:border-[#2a293d]">
+                <h3 className="text-xs font-bold text-slate-900 dark:text-white">Semua Hasil Time Trial</h3>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-[#1f1e2e] border-b border-[#2a293d]">
+                  <thead className="bg-white dark:bg-[#1f1e2e] border-b border-slate-200 dark:border-[#2a293d]">
                     <tr>
-                      <th className="px-3 py-2.5 font-bold text-slate-400">Nomor Jarak</th>
-                      <th className="px-3 py-2.5 font-bold text-slate-400 text-center">Time Record</th>
-                      <th className="px-3 py-2.5 font-bold text-slate-400">Nama Event</th>
+                      <th className="px-3 py-2.5 font-bold text-slate-500 dark:text-slate-400">Nomor Jarak</th>
+                      <th className="px-3 py-2.5 font-bold text-slate-500 dark:text-slate-400 text-center">Time Record</th>
+                      <th className="px-3 py-2.5 font-bold text-slate-500 dark:text-slate-400">Nama Event</th>
                     </tr>
                   </thead>
                   <tbody>
                     {filteredResults.length > 0 ? (
                       filteredResults.map((record) => (
-                        <tr key={record.id} className="border-b border-[#2a293d] hover:bg-[#161622]/50">
-                          <td className="px-3 py-3 font-semibold text-white">{record.distance} {record.stroke}</td>
+                        <tr key={record.id} className="border-b border-slate-200 dark:border-[#2a293d] hover:bg-slate-50 dark:bg-[#161622]/50">
+                          <td className="px-3 py-3 font-semibold text-slate-900 dark:text-white">{record.distance} {record.stroke}</td>
                           <td className="px-3 py-3 text-center">
                             <span className="font-bold text-blue-600 bg-[#ff4b4b]/10 px-2 py-1 rounded border border-[#ff4b4b]/30">
                               {record.time}
                             </span>
                           </td>
-                          <td className="px-3 py-3 text-slate-400">Time Trial Rutin</td>
+                          <td className="px-3 py-3 text-slate-500 dark:text-slate-400">Time Trial Rutin</td>
                         </tr>
                       ))
                     ) : (
                       <tr>
-                        <td colSpan={3} className="px-3 py-6 text-center text-slate-400 font-medium">
+                        <td colSpan={3} className="px-3 py-6 text-center text-slate-500 dark:text-slate-400 font-medium">
                           Tidak ada data untuk filter ini.
                         </td>
                       </tr>
@@ -355,7 +355,7 @@ export default function PrestasiPage() {
           <TabsContent value="kejuaraan" className="space-y-4 outline-none">
             
             {/* Input Manual Button */}
-            <Button onClick={() => router.push('/athlete/prestasi/input')} className="w-full bg-[#ff4b4b] hover:bg-[#ff4b4b]/90 text-white rounded-xl h-12 shadow-lg font-bold shadow-[0_0_15px_rgba(255,75,75,0.4)]">
+            <Button onClick={() => router.push('/athlete/prestasi/input')} className="w-full bg-[#ff4b4b] hover:bg-[#ff4b4b]/90 text-slate-900 dark:text-white rounded-xl h-12 font-bold shadow-[0_0_15px_rgba(255,75,75,0.4)]">
               <Plus className="h-5 w-5 mr-2" />
               Input Manual Kejuaraan
             </Button>
@@ -368,7 +368,7 @@ export default function PrestasiPage() {
                     <Button 
                       key={gaya}
                       variant={selectedStroke === gaya ? "default" : "outline"}
-                      className={`rounded-full h-8 px-4 text-[11px] font-bold ${selectedStroke === gaya ? 'bg-[#ff4b4b] text-white shadow-[0_0_8px_#ff4b4b]' : 'bg-[#1f1e2e] text-slate-400 border-[#2a293d]'}`}
+                      className={`rounded-full h-8 px-4 text-[11px] font-bold ${selectedStroke === gaya ? 'bg-[#ff4b4b] text-slate-900 dark:text-white shadow-[0_0_8px_#ff4b4b]' : 'bg-white dark:bg-[#1f1e2e] text-slate-500 dark:text-slate-400 border-slate-200 dark:border-[#2a293d]'}`}
                       onClick={() => setSelectedStroke(gaya)}
                     >
                       Gaya {gaya}
@@ -380,13 +380,13 @@ export default function PrestasiPage() {
             </div>
 
             {/* Chart */}
-            <div className="bg-[#1f1e2e] p-4 rounded-2xl shadow-lg border border-[#2a293d]">
+            <div className="bg-white dark:bg-[#1f1e2e] p-4 rounded-2xl border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xs font-bold text-white">Tren Waktu (Detik)</h3>
+                <h3 className="text-xs font-bold text-slate-900 dark:text-white">Tren Waktu (Detik)</h3>
                 <select 
                   value={selectedYear} 
                   onChange={(e) => setSelectedYear(e.target.value)}
-                  className="bg-[#161622] border border-[#2a293d] rounded-lg text-[10px] py-1 px-2 text-slate-300 font-bold focus:outline-none focus:ring-1 focus:ring-indigo-500 shadow-lg"
+                  className="bg-slate-50 dark:bg-[#161622] border border-slate-200 dark:border-[#2a293d] rounded-lg text-[10px] py-1 px-2 text-slate-600 dark:text-slate-300 font-bold focus:outline-none focus:ring-1 focus:ring-indigo-500 shadow-xl/30"
                 >
                   <option value="2026">2026</option>
                   <option value="2025">2025</option>
@@ -408,35 +408,35 @@ export default function PrestasiPage() {
             </div>
 
             {/* Tabel Hasil Perlombaan */}
-            <div className="bg-[#1f1e2e] rounded-2xl shadow-lg border border-[#2a293d] overflow-hidden">
-              <div className="p-3 bg-[#161622] border-b border-[#2a293d]">
-                <h3 className="text-xs font-bold text-white">Semua Hasil Perlombaan</h3>
+            <div className="bg-white dark:bg-[#1f1e2e] rounded-2xl border border-slate-200 dark:border-[#2a293d] overflow-hidden shadow-xl/30">
+              <div className="p-3 bg-slate-50 dark:bg-[#161622] border-b border-slate-200 dark:border-[#2a293d]">
+                <h3 className="text-xs font-bold text-slate-900 dark:text-white">Semua Hasil Perlombaan</h3>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-[#1f1e2e] border-b border-[#2a293d]">
+                  <thead className="bg-white dark:bg-[#1f1e2e] border-b border-slate-200 dark:border-[#2a293d]">
                     <tr>
-                      <th className="px-3 py-2.5 font-bold text-slate-400">Nomor Kejuaraan</th>
-                      <th className="px-3 py-2.5 font-bold text-slate-400 text-center">Time Record</th>
-                      <th className="px-3 py-2.5 font-bold text-slate-400">Nama Event</th>
+                      <th className="px-3 py-2.5 font-bold text-slate-500 dark:text-slate-400">Nomor Kejuaraan</th>
+                      <th className="px-3 py-2.5 font-bold text-slate-500 dark:text-slate-400 text-center">Time Record</th>
+                      <th className="px-3 py-2.5 font-bold text-slate-500 dark:text-slate-400">Nama Event</th>
                     </tr>
                   </thead>
                   <tbody>
                     {filteredResults.length > 0 ? (
                       filteredResults.map((record) => (
-                        <tr key={record.id} className="border-b border-[#2a293d] hover:bg-[#161622]/50">
-                          <td className="px-3 py-3 font-semibold text-white">{record.distance} {record.stroke}</td>
+                        <tr key={record.id} className="border-b border-slate-200 dark:border-[#2a293d] hover:bg-slate-50 dark:bg-[#161622]/50">
+                          <td className="px-3 py-3 font-semibold text-slate-900 dark:text-white">{record.distance} {record.stroke}</td>
                           <td className="px-3 py-3 text-center">
                             <span className="font-bold text-[#ff4b4b] bg-[#ff4b4b]/10 px-2 py-1 rounded border border-[#ff4b4b]/30">
                               {record.time}
                             </span>
                           </td>
-                          <td className="px-3 py-3 text-slate-400">{record.event}</td>
+                          <td className="px-3 py-3 text-slate-500 dark:text-slate-400">{record.event}</td>
                         </tr>
                       ))
                     ) : (
                       <tr>
-                        <td colSpan={3} className="px-3 py-6 text-center text-slate-400 font-medium">
+                        <td colSpan={3} className="px-3 py-6 text-center text-slate-500 dark:text-slate-400 font-medium">
                           Tidak ada data untuk filter ini.
                         </td>
                       </tr>

@@ -85,7 +85,7 @@ export default function ScheduleDetailPage({ params }: { params: Promise<{ id: s
     <div className="flex flex-col h-[100dvh] w-full" suppressHydrationWarning>
       
       {/* Header */}
-      <div className="h-14 px-4 flex items-center bg-[#1f1e2e] border-b border-[#2a293d] sticky top-0 z-50 shrink-0 shadow-lg">
+      <div className="h-14 px-4 flex items-center bg-[#1f1e2e] border-b border-[#2a293d] sticky top-0 z-50 shrink-0 shadow-xl/30">
         <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-[#2a293d]">
           <ChevronLeft className="h-5 w-5 text-slate-300" />
         </Button>
@@ -93,7 +93,7 @@ export default function ScheduleDetailPage({ params }: { params: Promise<{ id: s
       </div>
 
       <main className="flex-1 overflow-y-auto w-full p-4 pb-12">
-        <div className="bg-[#1f1e2e] rounded-3xl p-6 shadow-lg border border-[#2a293d] mb-6 relative overflow-hidden">
+        <div className="bg-[#1f1e2e] rounded-3xl p-6 border border-[#2a293d] mb-6 relative overflow-hidden shadow-xl/30">
           
           <div className={`absolute top-0 left-0 w-1.5 h-full ${config.color.split(" ")[0]}`}></div>
 

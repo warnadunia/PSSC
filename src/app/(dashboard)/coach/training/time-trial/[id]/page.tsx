@@ -70,7 +70,7 @@ function TimeTrialContent() {
       <main className="flex-1 w-full pb-40">
         
         {/* Detail Gaya & Jarak */}
-        <div className="bg-card p-5 border-b border-border flex justify-between items-center">
+        <div className="bg-card p-5 border-b border-border flex justify-between items-center shadow-xl/30">
           <div>
             <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Kategori Lomba</p>
             <h2 className="text-xl font-black text-foreground uppercase tracking-widest">{jarak} Gaya {gaya}</h2>
@@ -81,7 +81,7 @@ function TimeTrialContent() {
         </div>
 
         {/* Big Timer */}
-        <div className="p-6 flex flex-col items-center bg-card shadow-sm mb-4 border-b border-border">
+        <div className="p-6 flex flex-col items-center bg-card mb-4 border-b border-border shadow-xl/30">
           <div className="text-7xl font-mono font-black text-foreground tracking-tighter mb-6">
             {formatTime(timeMs)}
           </div>
@@ -97,7 +97,7 @@ function TimeTrialContent() {
             <Button 
               onClick={recordSplit} 
               disabled={!isRunning}
-              className="flex-1 h-14 rounded-2xl font-bold text-sm bg-muted hover:bg-muted/80 text-foreground shadow-lg disabled:opacity-50 uppercase tracking-widest"
+              className="flex-1 h-14 rounded-2xl font-bold text-sm bg-muted hover:bg-muted/80 text-foreground disabled:opacity-50 uppercase tracking-widest shadow-xl/30"
             >
               <Timer className="h-5 w-5 mr-2" /> Catat Waktu
             </Button>
@@ -110,12 +110,12 @@ function TimeTrialContent() {
           
           <div className="space-y-3">
             {splits.length === 0 ? (
-              <div className="p-8 text-center bg-card rounded-2xl border-dashed border-2 border-border">
+              <div className="p-8 text-center bg-card rounded-2xl border-dashed border-2 border-border shadow-xl/30">
                 <p className="text-xs font-medium text-muted-foreground">Belum ada waktu yang tercatat.</p>
               </div>
             ) : (
               splits.map((split, idx) => (
-                <div key={split.id} className="bg-card p-3 rounded-2xl border border-border shadow-sm flex items-center justify-between gap-4">
+                <div key={split.id} className="bg-card p-3 rounded-2xl border border-border flex items-center justify-between gap-4 shadow-xl/30">
                   <div className="flex items-center gap-3">
                     <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground">
                       #{idx + 1}
@@ -146,9 +146,9 @@ function TimeTrialContent() {
       </main>
 
       {/* FOOTER ACTION */}
-      <div className="fixed bottom-16 left-0 right-0 p-4 bg-card border-t border-border shadow-[0_-4px_10px_rgba(0,0,0,0.2)] z-30">
+      <div className="fixed bottom-16 left-0 right-0 p-4 bg-card border-t border-border -[0_-4px_10px_rgba(0,0,0,0.2)] z-30 shadow-xl/30">
         <Button 
-          className="w-full bg-primary hover:bg-primary/90 h-14 font-bold shadow-md rounded-xl text-base uppercase tracking-widest text-primary-foreground"
+          className="w-full bg-primary hover:bg-primary/90 h-14 font-bold rounded-xl text-base uppercase tracking-widest text-primary-foreground shadow-xl/30"
           disabled={splits.length === 0 || splits.some(s => !s.athleteId)}
           onClick={() => {
             alert(`Berhasil! ${splits.length} rekam waktu atlet telah disimpan.`);

@@ -61,61 +61,61 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
     <div className="flex flex-col h-[100dvh] w-full" suppressHydrationWarning>
       
       {/* Header */}
-      <div className="h-14 px-4 flex items-center bg-[#1f1e2e] border-b border-[#2a293d] sticky top-0 z-50 shrink-0">
-        <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-[#2a293d]">
-          <ChevronLeft className="h-5 w-5 text-slate-300" />
+      <div className="h-14 px-4 flex items-center bg-white dark:bg-[#1f1e2e] border-b border-slate-200 dark:border-[#2a293d] sticky top-0 z-50 shrink-0">
+        <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-slate-100 dark:bg-[#2a293d]">
+          <ChevronLeft className="h-5 w-5 text-slate-600 dark:text-slate-300" />
         </Button>
-        <h1 className="text-lg font-bold text-white tracking-tight flex-1">{movementInfo.title}</h1>
+        <h1 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight flex-1">{movementInfo.title}</h1>
       </div>
 
       <main className="flex-1 overflow-y-auto w-full">
         {/* Info Area */}
-        <div className="bg-[#1f1e2e] px-5 py-6 mb-2 border-b border-[#2a293d] shadow-lg">
-          <h3 className="text-sm font-black text-white mb-2 uppercase tracking-wide">How to</h3>
-          <p className="text-sm text-slate-400 leading-relaxed mb-5">
+        <div className="bg-white dark:bg-[#1f1e2e] px-5 py-6 mb-2 border-b border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <h3 className="text-sm font-black text-slate-900 dark:text-white mb-2 uppercase tracking-wide">How to</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5">
             Lakukan gerakan dengan posisi tubuh lurus, mulai dari kepala hingga tumit. Turunkan tubuh hingga dada hampir menyentuh lantai, lalu dorong kembali ke posisi awal.
           </p>
 
-          <h3 className="text-sm font-black text-white mb-2 uppercase tracking-wide">Fungsi Latihan</h3>
-          <p className="text-sm text-slate-400 leading-relaxed">
+          <h3 className="text-sm font-black text-slate-900 dark:text-white mb-2 uppercase tracking-wide">Fungsi Latihan</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
             Meningkatkan kekuatan otot dada, bahu, dan trisep, serta memperkuat otot inti (core). Sangat penting untuk stabilitas gerakan tangan di dalam air.
           </p>
         </div>
 
         {/* Media Area */}
-        <div className="bg-[#1f1e2e] p-5 mb-2 border-y border-[#2a293d] shadow-lg text-center">
-          <h3 className="text-[11px] font-bold text-slate-400 mb-3 uppercase tracking-widest">Video / Photo Tutorial</h3>
-          <div className="w-full aspect-video bg-slate-800 rounded-xl overflow-hidden relative shadow-inner">
+        <div className="bg-white dark:bg-[#1f1e2e] p-5 mb-2 border-y border-slate-200 dark:border-[#2a293d] text-center shadow-xl/30">
+          <h3 className="text-[11px] font-bold text-slate-500 dark:text-slate-400 mb-3 uppercase tracking-widest">Video / Photo Tutorial</h3>
+          <div className="w-full aspect-video bg-slate-800 rounded-xl overflow-hidden relative shadow-xl/30">
             <img 
               src="https://images.unsplash.com/photo-1598971639058-fab3c3109a00?q=80&w=800&auto=format&fit=crop" 
               alt="Push up tutorial" 
               className="w-full h-full object-cover opacity-60"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="h-14 w-14 bg-[#1f1e2e]/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30">
-                <Play className="h-6 w-6 text-white fill-white ml-1" />
+              <div className="h-14 w-14 bg-white dark:bg-[#1f1e2e]/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30">
+                <Play className="h-6 w-6 text-slate-900 dark:text-white fill-white ml-1" />
               </div>
             </div>
           </div>
         </div>
 
         {/* Target & Stopwatch Area */}
-        <div className="bg-[#1f1e2e] p-6 border-t border-[#2a293d] shadow-lg flex flex-col items-center flex-1 pb-32">
+        <div className="bg-white dark:bg-[#1f1e2e] p-6 border-t border-slate-200 dark:border-[#2a293d] flex flex-col items-center flex-1 pb-32 shadow-xl/30">
           
-          <div className="flex items-center justify-center gap-4 bg-[#161622] px-6 py-3 rounded-2xl border border-[#2a293d] mb-8 w-full max-w-sm">
+          <div className="flex items-center justify-center gap-4 bg-slate-50 dark:bg-[#161622] px-6 py-3 rounded-2xl border border-slate-200 dark:border-[#2a293d] mb-8 w-full max-w-sm">
             <div className="text-center">
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Target</p>
-              <p className="text-lg font-black text-white">{movementInfo.target}</p>
+              <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1">Target</p>
+              <p className="text-lg font-black text-slate-900 dark:text-white">{movementInfo.target}</p>
             </div>
             <div className="h-8 w-px bg-slate-200 mx-2"></div>
             <div className="text-center">
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Time</p>
-              <p className="text-lg font-black text-white">{movementInfo.timeTarget}</p>
+              <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1">Time</p>
+              <p className="text-lg font-black text-slate-900 dark:text-white">{movementInfo.timeTarget}</p>
             </div>
           </div>
 
           <div className="text-center w-full max-w-sm">
-            <div className="text-7xl font-mono font-black text-white tracking-tighter mb-8 drop-shadow-lg">
+            <div className="text-7xl font-mono font-black text-slate-900 dark:text-white tracking-tighter mb-8 drop-shadow-md">
               {formatTime(timeMs)}
             </div>
 
@@ -123,8 +123,8 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
               onClick={toggleTimer} 
               className={`w-full h-16 rounded-2xl font-black text-lg shadow-lg transition-all duration-300 mb-4 ${
                 isRunning 
-                  ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-amber-500/25' 
-                  : 'bg-[#ff4b4b] hover:bg-red-700 text-white shadow-red-600/25'
+                  ? 'bg-amber-500 hover:bg-amber-600 text-slate-900 dark:text-white shadow-amber-500/25' 
+                  : 'bg-[#ff4b4b] hover:bg-red-700 text-slate-900 dark:text-white shadow-red-600/25'
               }`}
             >
               {isRunning ? (
@@ -142,7 +142,7 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
                 setTimeMs(0);
                 router.back();
               }}
-              className="w-full h-14 rounded-2xl font-bold text-slate-300 border-2 border-[#2a293d] hover:bg-[#161622] hover:text-emerald-600 hover:border-emerald-200 transition-colors"
+              className="w-full h-14 rounded-2xl font-bold text-slate-600 dark:text-slate-300 border-2 border-slate-200 dark:border-[#2a293d] hover:bg-slate-50 dark:bg-[#161622] hover:text-emerald-600 hover:border-emerald-200 transition-colors"
             >
               <Save className="h-5 w-5 mr-2" />
               SIMPAN Waktu

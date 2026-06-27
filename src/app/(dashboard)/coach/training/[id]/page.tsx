@@ -133,7 +133,7 @@ function TrainingDetailContent() {
       <main className={`flex-1 w-full ${type === 'personal' ? 'pb-32' : 'pb-10'}`}>
         
         {/* Info Grid */}
-        <div className="px-5 pt-2 pb-6 border-b border-border bg-card">
+        <div className="px-5 pt-2 pb-6 border-b border-border bg-card shadow-xl/30">
           <h1 className="text-2xl font-bold text-foreground tracking-widest uppercase">The Blue Mile 🐟</h1>
           <p className="text-xs font-medium text-muted-foreground mt-1 mb-5">3 minutes ago</p>
 
@@ -157,7 +157,7 @@ function TrainingDetailContent() {
             <div key={gIdx} className="mb-4">
               
               {/* Header Kolom */}
-              <div className="grid grid-cols-[10fr_4fr_5fr] bg-muted/50 px-4 py-2 border-y border-border sticky top-0 z-10 shadow-sm">
+              <div className="grid grid-cols-[10fr_4fr_5fr] bg-muted/50 px-4 py-2 border-y border-border sticky top-0 z-10 shadow-xl/30">
                 <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{group.groupName}</span>
                 <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest text-center">Target</span>
                 <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest text-center pr-2">Waktu / Status</span>
@@ -165,7 +165,7 @@ function TrainingDetailContent() {
               
               {/* Baris Latihan */}
               {group.items.map((item, iIdx) => {
-                const isChecked = checkedItems[item.id]
+                const isChecked = checkedItems[item.id] || false
                 return (
                   <div key={iIdx} className={`grid grid-cols-[10fr_4fr_5fr] items-center py-4 pl-4 pr-3 border-b border-border relative transition-colors ${isChecked ? 'bg-muted/30' : 'bg-card'}`}>
                     <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${item.color}`}></div>
@@ -195,7 +195,7 @@ function TrainingDetailContent() {
                         onClick={() => setActiveTrialItem(item)}
                         variant="outline" 
                         size="icon" 
-                        className="h-8 w-8 rounded-full border-primary/20 text-primary hover:bg-primary/10 shadow-sm disabled:opacity-50"
+                        className="h-8 w-8 rounded-full border-primary/20 text-primary hover:bg-primary/10 disabled:opacity-50 shadow-xl/30"
                         disabled={isChecked} // Disable stopwatch jika sudah diceklis manual
                       >
                         <Timer className="h-4 w-4" />
@@ -249,7 +249,7 @@ function TrainingDetailContent() {
                   <Button 
                     onClick={recordTrialSplit} 
                     disabled={!isTrialRunning}
-                    className="h-12 w-40 rounded-full font-bold text-sm bg-muted hover:bg-muted/80 text-foreground shadow-lg disabled:opacity-50 uppercase tracking-widest"
+                    className="h-12 w-40 rounded-full font-bold text-sm bg-muted hover:bg-muted/80 text-foreground disabled:opacity-50 uppercase tracking-widest shadow-xl/30"
                   >
                     <Timer className="h-4 w-4 mr-2" /> Catat Waktu
                   </Button>
@@ -259,7 +259,7 @@ function TrainingDetailContent() {
 
             {/* Jika type program, tampilkan lap splits. Jika personal, kosongkan saja karena waktu akhir sudah diwakili oleh timer. */}
             {type === 'program' && (
-              <ScrollArea className="h-[250px] bg-card rounded-2xl border border-border p-3 shadow-inner">
+              <ScrollArea className="h-[250px] bg-card rounded-2xl border border-border p-3 shadow-xl/30">
                 <div className="space-y-3">
                   {splits.length === 0 ? (
                     <div className="py-10 text-center">
@@ -267,7 +267,7 @@ function TrainingDetailContent() {
                     </div>
                   ) : (
                     splits.map((split, idx) => (
-                      <div key={split.id} className="bg-background p-3 rounded-2xl border border-border shadow-sm flex items-center justify-between gap-3">
+                      <div key={split.id} className="bg-background p-3 rounded-2xl border border-border flex items-center justify-between gap-3 shadow-xl/30">
                         <div className="flex items-center gap-2">
                           <div className="h-7 w-7 rounded-full bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground shrink-0">
                             #{idx + 1}
@@ -297,9 +297,9 @@ function TrainingDetailContent() {
             )}
           </div>
           {/* TOMBOL SIMPAN */}
-          <div className="p-4 bg-card border-t border-border">
+          <div className="p-4 bg-card border-t border-border shadow-xl/30">
             <Button 
-              className="w-full bg-primary hover:bg-primary/90 h-12 font-bold shadow-md uppercase tracking-widest text-primary-foreground rounded-xl"
+              className="w-full bg-primary hover:bg-primary/90 h-12 font-bold uppercase tracking-widest text-primary-foreground rounded-xl shadow-xl/30"
               disabled={type === 'program' ? (splits.length === 0 || splits.some(s => !s.athleteId)) : (trialTimeMs === 0)}
               onClick={() => {
                 if (type === 'program') {

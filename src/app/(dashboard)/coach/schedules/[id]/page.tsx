@@ -89,7 +89,7 @@ export default function ScheduleDetailPage({ params }: { params: Promise<{ id: s
       <GlobalHeader variant="subpage" title="Detail Agenda" />
 
       <main className="flex-1 overflow-y-auto w-full p-4 pb-12">
-        <div className="bg-card rounded-3xl p-6 shadow-sm border border-border mb-6 relative overflow-hidden">
+        <div className="bg-card rounded-3xl p-6 border border-border mb-6 relative overflow-hidden shadow-xl/30">
           
           <div className={`absolute top-0 left-0 w-1.5 h-full ${config.color.split(" ")[0]}`}></div>
 

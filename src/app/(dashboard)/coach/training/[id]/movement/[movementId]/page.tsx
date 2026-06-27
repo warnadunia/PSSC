@@ -61,7 +61,7 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
     <div className="flex flex-col h-[100dvh] w-full" suppressHydrationWarning>
       
       {/* Header */}
-      <div className="h-14 px-4 flex items-center bg-card border-b border-border sticky top-0 z-50 shrink-0">
+      <div className="h-14 px-4 flex items-center bg-card border-b border-border sticky top-0 z-50 shrink-0 shadow-xl/30">
         <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-muted text-foreground">
           <ChevronLeft className="h-5 w-5 text-muted-foreground" />
         </Button>
@@ -70,7 +70,7 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
 
       <main className="flex-1 overflow-y-auto w-full">
         {/* Info Area */}
-        <div className="bg-card px-5 py-6 mb-2 border-b border-border shadow-sm">
+        <div className="bg-card px-5 py-6 mb-2 border-b border-border shadow-xl/30">
           <h3 className="text-sm font-black text-foreground mb-2 uppercase tracking-widest">How to</h3>
           <p className="text-sm text-muted-foreground leading-relaxed mb-5">
             Lakukan gerakan dengan posisi tubuh lurus, mulai dari kepala hingga tumit. Turunkan tubuh hingga dada hampir menyentuh lantai, lalu dorong kembali ke posisi awal.
@@ -83,9 +83,9 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
         </div>
 
         {/* Media Area */}
-        <div className="bg-card p-5 mb-2 border-y border-border shadow-sm text-center">
+        <div className="bg-card p-5 mb-2 border-y border-border text-center shadow-xl/30">
           <h3 className="text-[11px] font-bold text-muted-foreground mb-3 uppercase tracking-widest">Video / Photo Tutorial</h3>
-          <div className="w-full aspect-video bg-muted rounded-xl overflow-hidden relative shadow-inner">
+          <div className="w-full aspect-video bg-muted rounded-xl overflow-hidden relative shadow-xl/30">
             <img 
               src="https://images.unsplash.com/photo-1598971639058-fab3c3109a00?q=80&w=800&auto=format&fit=crop" 
               alt="Push up tutorial" 
@@ -100,7 +100,7 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
         </div>
 
         {/* Target & Stopwatch Area */}
-        <div className="bg-card p-6 border-t border-border shadow-sm flex flex-col items-center flex-1 pb-32">
+        <div className="bg-card p-6 border-t border-border flex flex-col items-center flex-1 pb-32 shadow-xl/30">
           
           <div className="flex items-center justify-center gap-4 bg-background px-6 py-3 rounded-2xl border border-border mb-8 w-full max-w-sm">
             <div className="text-center">
@@ -115,7 +115,7 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
           </div>
 
           <div className="text-center w-full max-w-sm">
-            <div className="text-7xl font-mono font-black text-foreground tracking-tighter mb-8 drop-shadow-sm">
+            <div className="text-7xl font-mono font-black text-foreground tracking-tighter mb-8 drop-shadow-md">
               {formatTime(timeMs)}
             </div>
 

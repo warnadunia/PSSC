@@ -79,7 +79,7 @@ export default function AthleteSchedules() {
       <main className="flex-1 px-4 md:px-6 lg:px-8 space-y-5 pt-5 w-full pb-32">
         
         {/* SLIDER BULAN TAHUN */}
-        <div className="flex items-center justify-between bg-card p-3 rounded-2xl shadow-sm border border-border">
+        <div className="flex items-center justify-between bg-card p-3 rounded-2xl border border-border shadow-xl/30">
           <Button variant="ghost" size="icon" onClick={handlePrevMonth} className="h-8 w-8 hover:bg-muted">
             <ChevronLeft className="h-5 w-5 text-muted-foreground" />
           </Button>
@@ -97,7 +97,7 @@ export default function AthleteSchedules() {
         {/* SECTION KALENDER & LEGENDA */}
         <div className="space-y-3">
           {/* CARD KALENDER CUSTOM (GRID) */}
-          <Card className="shadow-sm border-border overflow-hidden bg-card p-4 rounded-3xl">
+          <Card className="border-border overflow-hidden bg-card p-4 rounded-3xl shadow-xl/30">
             <CardContent className="p-0">
               {/* LEGENDA BADGE (Di atas kalender) */}
               <div className="flex flex-wrap gap-x-4 gap-y-3 items-center justify-center pb-6 border-b border-border/50 mb-4">
@@ -207,7 +207,7 @@ export default function AthleteSchedules() {
               )
             })
           ) : (
-            <div className="bg-card rounded-3xl border border-border border-dashed p-6 text-center">
+            <div className="bg-card rounded-3xl border border-border border-dashed p-6 text-center shadow-xl/30">
               <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest">Tidak ada agenda pada tanggal ini.</p>
             </div>
           )}

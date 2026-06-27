@@ -55,7 +55,7 @@ export default function AthleteSettingsPage() {
         <div className="p-4 md:p-6 lg:p-8 space-y-6">
           
           {/* USER CARD COMPACT */}
-          <div className="bg-[#1f1e2e] p-4 rounded-2xl shadow-lg border border-[#2a293d] flex items-center gap-4">
+          <div className="bg-[#1f1e2e] p-4 rounded-2xl border border-[#2a293d] flex items-center gap-4 shadow-xl/30">
             <div className="w-14 h-14 bg-[#2a293d] rounded-full flex items-center justify-center shrink-0 border-2 border-[#ff4b4b]">
               <User className="h-6 w-6 text-slate-300" />
             </div>
@@ -75,7 +75,7 @@ export default function AthleteSettingsPage() {
                 <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest px-2">
                   {group.title}
                 </h3>
-                <div className="bg-[#1f1e2e] rounded-2xl shadow-lg border border-[#2a293d] overflow-hidden">
+                <div className="bg-[#1f1e2e] rounded-2xl border border-[#2a293d] overflow-hidden shadow-xl/30">
                   {group.items.map((item: any, iIdx: number) => {
                     const Icon = item.icon
                     const isLast = iIdx === group.items.length - 1

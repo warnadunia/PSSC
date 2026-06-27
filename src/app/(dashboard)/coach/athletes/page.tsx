@@ -95,7 +95,7 @@ export default function AthletesPage() {
           <h2 className="text-sm font-bold text-foreground uppercase tracking-widest">Statistik Binaan Parisakti</h2>
           
           <div className="grid grid-cols-2 gap-3">
-            <Card className="bg-primary text-primary-foreground border-none shadow-md">
+            <Card className="bg-primary text-primary-foreground border-none shadow-xl/30">
               <CardContent className="p-4 flex flex-col justify-center">
                 <div className="flex items-center gap-2 mb-1">
                   <Users className="h-4 w-4 text-primary-foreground/80" />
@@ -105,7 +105,7 @@ export default function AthletesPage() {
               </CardContent>
             </Card>
 
-            <Card className="border-border shadow-sm bg-card">
+            <Card className="border-border bg-card shadow-xl/30">
               <CardContent className="p-4 space-y-3">
                 {/* Custom Progress Bar Laki-laki */}
                 <div>
@@ -143,11 +143,11 @@ export default function AthletesPage() {
             </h2>
           </div>
           
-          <ScrollArea className="w-full whitespace-nowrap pb-4">
+          <ScrollArea className="w-full whitespace-nowrap pb-8 pt-4 -mt-4">
             <div className="flex w-max space-x-4">
               
               {/* Grafik Tingkat Kehadiran */}
-              <Card className="w-[300px] shadow-sm border-border bg-card shrink-0">
+              <Card className="w-[300px] border-border bg-card shrink-0 shadow-xl/30">
                 <CardHeader className="p-4 pb-0">
                   <CardTitle className="text-xs font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
                     <ChartIcon className="h-3.5 w-3.5 text-blue-500" />
@@ -173,7 +173,7 @@ export default function AthletesPage() {
               </Card>
 
               {/* Grafik Jenis Gaya */}
-              <Card className="w-[280px] shadow-sm border-border bg-card shrink-0">
+              <Card className="w-[280px] border-border bg-card shrink-0 shadow-xl/30">
                 <CardHeader className="p-4 pb-0">
                   <CardTitle className="text-xs font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
                     <PieChartIcon className="h-3.5 w-3.5 text-purple-500" />
@@ -212,7 +212,7 @@ export default function AthletesPage() {
               </Card>
 
               {/* Rekomendasi Promosi */}
-              <Card className="w-[300px] shadow-sm border-border bg-card shrink-0">
+              <Card className="w-[300px] border-border bg-card shrink-0 shadow-xl/30">
                 <CardHeader className="p-4 pb-2">
                   <CardTitle className="text-xs font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
                     <Sparkles className="h-3.5 w-3.5 text-amber-500" />
@@ -230,7 +230,7 @@ export default function AthletesPage() {
                           <span className="text-[9px] font-bold text-amber-600">{rec.targetLevel}</span>
                         </div>
                       </div>
-                      <Badge className="bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 border-amber-500/30 shadow-none text-[10px]">
+                      <Badge className="bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 border-amber-500/30 text-[10px] shadow-xl/30">
                         Review
                       </Badge>
                     </div>
@@ -265,7 +265,7 @@ export default function AthletesPage() {
                     variant="outline"
                     className={`cursor-pointer px-4 py-1.5 text-[11px] font-semibold transition-all border-none ${
                       activeFilter === lvl 
-                      ? "bg-primary text-primary-foreground shadow-md hover:bg-primary/90" 
+                      ? "bg-primary text-primary-foreground hover:bg-primary/90" 
                       : "bg-card text-muted-foreground border border-border hover:bg-accent"
                     }`}
                     onClick={() => setActiveFilter(lvl)}
@@ -292,7 +292,7 @@ export default function AthletesPage() {
                 <div 
                   key={ath.id}
                   onClick={() => router.push(`/coach/athletes/${ath.id}`)}
-                  className="flex items-center gap-3 p-3 bg-card border border-border rounded-2xl shadow-sm hover:shadow-md hover:border-primary/50 transition-all cursor-pointer group"
+                  className="flex items-center gap-3 p-3 bg-card border border-border rounded-2xl hover: hover:border-primary/50 transition-all cursor-pointer group shadow-xl/30"
                 >
                   <Avatar className="h-12 w-12 ring-2 ring-background group-hover:ring-primary/20 transition-all">
                     <AvatarFallback className={`font-bold text-sm ${ath.gender === 'L' ? 'bg-blue-500/20 text-blue-400' : 'bg-pink-500/20 text-pink-400'}`}>
@@ -337,4 +337,4 @@ export default function AthletesPage() {
       </main>
     </div>
   )
-}
+}

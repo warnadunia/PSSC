@@ -57,7 +57,7 @@ Tetap semangat dalam mencetak juara!`
       <GlobalHeader variant="subpage" title="Detail Pengumuman" />
 
       <main className="flex-1 overflow-y-auto w-full p-4 pb-12">
-        <div className="bg-card rounded-3xl p-6 shadow-sm border border-border mb-6">
+        <div className="bg-card rounded-3xl p-6 border border-border mb-6 shadow-xl/30">
           <div className="flex items-center gap-2 mb-4">
             <span className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-md ${announcement.tagColor}`}>
               {announcement.tag}
