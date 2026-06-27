@@ -134,23 +134,16 @@ export default function AthleteProgramDetailPage({ params }: { params: Promise<{
                       {drill.target}
                     </div>
                     
-                    {/* Kolom 3: Aksi (Stopwatch & Checkbox) */}
+                    {/* Kolom 3: Aksi (READ-ONLY) */}
                     <div className="flex justify-end items-center gap-3">
-                      <Button 
-                        variant="outline" 
-                        size="icon" 
-                        className="h-8 w-8 rounded-full border-red-200 text-red-600 hover:bg-red-50 shadow-sm disabled:opacity-50"
-                        disabled={isChecked} 
-                      >
-                        <Timer className="h-4 w-4" />
-                      </Button>
-                      
-                      <div className="bg-slate-100 p-1.5 rounded-lg">
-                        <Checkbox 
-                          checked={isChecked}
-                          onCheckedChange={(c) => setCheckedItems(prev => ({...prev, [drill.id]: !!c}))}
-                          className="h-5 w-5 data-[state=checked]:bg-emerald-500 data-[state=checked]:border-emerald-500" 
-                        />
+                      <div className="text-[11px] font-bold uppercase tracking-wide">
+                        {drill.isDone ? (
+                          <span className="text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-200">Done</span>
+                        ) : drill.label.includes("104") ? (
+                          <span className="text-slate-400 bg-slate-50 px-2 py-1 rounded border border-slate-200">Skip</span>
+                        ) : (
+                          <span className="text-emerald-600 bg-emerald-50 px-2 py-1 rounded border border-emerald-200">01:45</span>
+                        )}
                       </div>
                     </div>
                   </div>

@@ -33,6 +33,11 @@ const personals = [
   { id: "pers-2", title: "Hypoxic Stretching", desc: "Latihan kapasitas paru di darat.", type: "personal" }
 ]
 
+const timeTrials = [
+  { id: "tt-1", title: "50M Gaya Bebas", date: "Hari ini", participants: 12 },
+  { id: "tt-2", title: "100M Gaya Kupu", date: "Kemarin", participants: 8 },
+]
+
 // ==========================================
 // DUMMY DATA ANALYTICS
 // ==========================================
@@ -70,6 +75,17 @@ export default function TrainingPage() {
   const [tempAssign, setTempAssign] = useState<string[]>([])
   const [activeAssignProg, setActiveAssignProg] = useState<string | null>(null)
   const [isAssignSheetOpen, setIsAssignSheetOpen] = useState(false)
+
+  // State untuk form Buat Time Trial
+  const [isTimeTrialSheetOpen, setIsTimeTrialSheetOpen] = useState(false)
+  const [ttGaya, setTtGaya] = useState("Bebas")
+  const [ttJarak, setTtJarak] = useState("50M")
+
+  const handleCreateTimeTrial = () => {
+    setIsTimeTrialSheetOpen(false)
+    // Rute ke halaman active time trial (new)
+    router.push(`/coach/training/time-trial/new?gaya=${ttGaya}&jarak=${ttJarak}`)
+  }
 
   const toggleClass = (c: string) => {
     setSelectedClasses(prev => prev.includes(c) ? prev.filter(item => item !== c) : [...prev, c])
@@ -200,11 +216,14 @@ export default function TrainingPage() {
         </section>
 
         <Tabs defaultValue="program" className="w-full">
-          <TabsList className="w-full grid grid-cols-2 bg-slate-200/50 p-1 rounded-xl mb-4">
-            <TabsTrigger value="program" className="text-xs py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+          <TabsList className="w-full grid grid-cols-3 bg-slate-200/50 p-1 rounded-xl mb-4">
+            <TabsTrigger value="program" className="text-[11px] py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
               Program
             </TabsTrigger>
-            <TabsTrigger value="personal" className="text-xs py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+            <TabsTrigger value="time-trial" className="text-[11px] py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+              Time Trial
+            </TabsTrigger>
+            <TabsTrigger value="personal" className="text-[11px] py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
               Personal
             </TabsTrigger>
           </TabsList>
@@ -257,6 +276,39 @@ export default function TrainingPage() {
                   <p className="text-xs font-medium text-slate-400">Silakan pilih kelas pada filter.</p>
                 </div>
               )}
+            </div>
+          </TabsContent>
+
+          {/* TAB 2: TIME TRIAL */}
+          <TabsContent value="time-trial" className="space-y-4">
+            <Button 
+              onClick={() => setIsTimeTrialSheetOpen(true)}
+              className="w-full bg-red-600 hover:bg-red-700 h-12 text-sm font-bold shadow-md rounded-xl"
+            >
+              + Buat Time Trial Baru
+            </Button>
+
+            <div className="space-y-3">
+              <h3 className="font-bold text-sm text-slate-800 mt-2 mb-1">Riwayat Time Trial</h3>
+              {timeTrials.map(tt => (
+                <Card key={tt.id} onClick={() => router.push(`/coach/training/time-trial/${tt.id}`)} className="border-none shadow-sm cursor-pointer hover:ring-2 hover:ring-red-100 bg-white">
+                  <CardHeader className="p-4 pb-2 flex flex-row items-center justify-between">
+                    <div>
+                      <CardTitle className="text-sm font-bold text-slate-800">{tt.title}</CardTitle>
+                      <p className="text-[10px] text-slate-500 font-medium mt-1">{tt.date}</p>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-slate-400" />
+                  </CardHeader>
+                  <CardContent className="p-4 pt-0">
+                    <div className="flex items-center gap-2 bg-slate-50 p-2 rounded-lg mt-2">
+                      <Users className="h-4 w-4 text-slate-400" />
+                      <p className="text-[10px] font-semibold text-slate-600">
+                        Total Partisipan: <span className="text-red-600 font-bold">{tt.participants} Atlet</span>
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </TabsContent>
 
@@ -332,6 +384,52 @@ export default function TrainingPage() {
           <div className="pt-4 border-t shrink-0">
             <Button onClick={handleSaveAssign} className="w-full bg-red-600 hover:bg-red-700 h-12 text-sm font-bold shadow-md">
               <Save className="mr-2 h-4 w-4" /> Simpan Tugas ({tempAssign.length} Atlet)
+            </Button>
+          </div>
+        </SheetContent>
+      </Sheet>
+
+      {/* SHEET BUAT TIME TRIAL */}
+      <Sheet open={isTimeTrialSheetOpen} onOpenChange={setIsTimeTrialSheetOpen}>
+        <SheetContent side="bottom" className="rounded-t-3xl px-4 pb-6 pt-4 h-auto flex flex-col bg-white">
+          <SheetHeader className="border-b pb-4 text-left shrink-0">
+            <SheetTitle className="text-lg font-bold text-slate-900">Buat Time Trial</SheetTitle>
+            <p className="text-xs text-slate-500">Pilih gaya dan jarak untuk sesi time trial ini.</p>
+          </SheetHeader>
+          <div className="py-4 space-y-4">
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-slate-700">Gaya Renang</label>
+              <div className="grid grid-cols-2 gap-2">
+                {["Bebas", "Dada", "Punggung", "Kupu"].map(gaya => (
+                  <div 
+                    key={gaya}
+                    onClick={() => setTtGaya(gaya)}
+                    className={`p-3 text-center rounded-xl border text-sm font-bold cursor-pointer transition-colors ${ttGaya === gaya ? 'bg-red-50 border-red-200 text-red-600' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                  >
+                    {gaya}
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-slate-700">Jarak (Meter)</label>
+              <div className="grid grid-cols-4 gap-2">
+                {["25M", "50M", "100M", "200M"].map(jarak => (
+                  <div 
+                    key={jarak}
+                    onClick={() => setTtJarak(jarak)}
+                    className={`p-2 text-center rounded-lg border text-xs font-bold cursor-pointer transition-colors ${ttJarak === jarak ? 'bg-red-50 border-red-200 text-red-600' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                  >
+                    {jarak}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="pt-4 border-t mt-4 shrink-0">
+            <Button onClick={handleCreateTimeTrial} className="w-full bg-red-600 hover:bg-red-700 h-12 text-sm font-bold shadow-md">
+              <Play className="mr-2 h-4 w-4 fill-white" /> Mulai Time Trial
             </Button>
           </div>
         </SheetContent>

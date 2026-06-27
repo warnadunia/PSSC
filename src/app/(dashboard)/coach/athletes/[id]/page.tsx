@@ -1,6 +1,6 @@
 "use client"
 
-import { use } from "react"
+import { use, useState } from "react"
 import { useRouter } from "next/navigation"
 import { GlobalHeader } from "@/components/GlobalHeader"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Trophy, Clock, Target, UserCircle, Activity, Medal, Settings2, CheckCircle2, ChevronRight, MapPin, Check, Timer } from "lucide-react"
-import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar, PolarRadiusAxis } from "recharts"
+import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar, PolarRadiusAxis, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend } from "recharts"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 // ==========================================
@@ -81,22 +81,20 @@ const styleBreakdown = [
     ]
   }
 ]
+const chartData = [
+  { month: 'Jan', lastYear: 35.1, thisYear: 32.4 }, { month: 'Feb', lastYear: 34.8, thisYear: 31.9 }, { month: 'Mar', lastYear: 34.5, thisYear: 31.5 },
+  { month: 'Apr', lastYear: 34.2, thisYear: 30.8 }, { month: 'Mei', lastYear: 34.0, thisYear: 30.2 }, { month: 'Jun', lastYear: 33.5, thisYear: 29.8 },
+  { month: 'Jul', lastYear: 33.2, thisYear: null }, { month: 'Agt', lastYear: 33.0, thisYear: null }, { month: 'Sep', lastYear: 32.9, thisYear: null },
+  { month: 'Okt', lastYear: 32.6, thisYear: null }, { month: 'Nov', lastYear: 32.5, thisYear: null }, { month: 'Des', lastYear: 32.2, thisYear: null },
+]
 
-const historyKejuaraan = [
-  { 
-    id: 1, 
-    event: "Kejurda Jateng 2026", 
-    date: "25 Juni 2026", 
-    totalEvents: 3,
-    medals: { emas: 1, perak: 1, perunggu: 0 } 
-  },
-  { 
-    id: 2, 
-    event: "O2SN Nasional", 
-    date: "10 Agustus 2025", 
-    totalEvents: 2,
-    medals: { emas: 0, perak: 1, perunggu: 1 } 
-  },
+const allChampionshipResults = [
+  { id: 1, event: "KRAPSSI 2026", date: "15 Jun 2026", stroke: "Bebas", distance: "25 M", time: "00:12:34" },
+  { id: 2, event: "O2SN Provinsi 2026", date: "10 Mei 2026", stroke: "Bebas", distance: "50 M", time: "00:30:12" },
+  { id: 3, event: "Kejurda Jabar 2026", date: "02 Mar 2026", stroke: "Dada", distance: "50 M", time: "00:45:20" },
+  { id: 4, event: "Indonesia Open 2026", date: "12 Feb 2026", stroke: "Punggung", distance: "100 M", time: "01:15:30" },
+  { id: 5, event: "KRAPSSI 2025", date: "15 Jun 2025", stroke: "Bebas", distance: "50 M", time: "00:33:10" },
+  { id: 6, event: "KRAPSSI 2026", date: "16 Jun 2026", stroke: "Kupu", distance: "50 M", time: "00:35:10" },
 ]
 
 const historyProgramDetailed = [
@@ -143,6 +141,13 @@ const historyProgramDetailed = [
 export default function AthleteDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter()
   const resolvedParams = use(params)
+  
+  const [selectedYear, setSelectedYear] = useState("2026")
+  const [selectedStroke, setSelectedStroke] = useState("Bebas")
+
+  const filteredResults = allChampionshipResults.filter(
+    (r) => r.stroke === selectedStroke && r.date.includes(selectedYear)
+  )
 
   return (
     <div className="flex flex-col h-full bg-slate-50 w-full" suppressHydrationWarning>
@@ -179,9 +184,28 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
         </section>
 
         {/* ==========================================
-            2. RADAR CHART (OVERALL FM STYLE)
+            TABS: SLIDER PROGRAM & KEJUARAAN
             ========================================== */}
-        <Card className="shadow-sm border-none bg-white">
+        <Tabs defaultValue="program" className="w-full">
+          <TabsList className="w-full grid grid-cols-3 bg-slate-200/50 p-1 rounded-xl mb-2">
+            <TabsTrigger value="program" className="text-[11px] py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+              Program
+            </TabsTrigger>
+            <TabsTrigger value="time-trial" className="text-[11px] py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+              Time Trial
+            </TabsTrigger>
+            <TabsTrigger value="kejuaraan" className="text-[11px] py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
+              Kejuaraan
+            </TabsTrigger>
+          </TabsList>
+
+          {/* ==========================================
+              TAB PROGRAM LATIHAN
+              ========================================== */}
+          <TabsContent value="program" className="space-y-6 outline-none">
+            
+            {/* 2. RADAR CHART (OVERALL FM STYLE) */}
+            <Card className="shadow-sm border-none bg-white">
           <CardHeader className="p-4 pb-0">
             <CardTitle className="text-sm font-bold text-slate-800 flex items-center gap-2">
               <Target className="h-4 w-4 text-red-600" /> Atribut Kemampuan Atlet
@@ -257,22 +281,12 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
           </Tabs>
         </section>
 
-        {/* ==========================================
-            4. TABS: SLIDER PROGRAM & KEJUARAAN
-            ========================================== */}
-        <section className="pt-2">
-          <Tabs defaultValue="program" className="w-full">
-            <TabsList className="w-full grid grid-cols-2 bg-slate-200/50 p-1 rounded-xl mb-4">
-              <TabsTrigger value="program" className="text-xs py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
-                Program
-              </TabsTrigger>
-              <TabsTrigger value="kejuaraan" className="text-xs py-2 data-[state=active]:bg-white data-[state=active]:text-red-600 data-[state=active]:shadow-sm font-bold">
-                Kejuaraan
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="program" className="space-y-4">
-              {historyProgramDetailed.map((session) => {
+          {/* 4. DAFTAR PROGRAM LATIHAN */}
+          <section className="space-y-4 pt-4 border-t border-slate-100">
+            <h3 className="font-bold text-sm text-slate-800 flex items-center gap-2">
+              <Activity className="h-4 w-4 text-blue-600" /> Histori Program Latihan
+            </h3>
+            {historyProgramDetailed.map((session) => {
                 // Hitung Completion Rate
                 let totalDrills = 0;
                 let completedDrills = 0;
@@ -338,47 +352,186 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
                   </Card>
                 )
               })}
-            </TabsContent>
+            </section>
+          </TabsContent>
 
-            <TabsContent value="kejuaraan" className="space-y-3">
-              {historyKejuaraan.map((lomba) => (
-                <Card 
-                  key={lomba.id} 
-                  onClick={() => router.push(`/coach/athletes/${resolvedParams.id}/kejuaraan/${lomba.id}`)}
-                  className="border border-slate-100 shadow-sm bg-white cursor-pointer hover:shadow-md transition-shadow"
-                >
-                  <CardContent className="p-3">
-                    <div className="flex justify-between items-center mb-2">
-                      <div className="flex items-center gap-1.5">
-                        <Trophy className="h-4 w-4 text-amber-500" />
-                        <h4 className="text-xs font-bold text-slate-800">{lomba.event}</h4>
-                      </div>
-                      <ChevronRight className="h-4 w-4 text-slate-400" />
-                    </div>
-                    <p className="text-[10px] font-semibold text-slate-500 mb-3">{lomba.date} • {lomba.totalEvents} Nomor Lomba</p>
-                    <div className="flex items-center gap-3">
-                      {lomba.medals.emas > 0 && (
-                        <Badge variant="outline" className="text-[9px] border-amber-200 text-amber-700 bg-amber-50 px-1.5 py-0">
-                          {lomba.medals.emas} Emas
-                        </Badge>
+          <TabsContent value="time-trial" className="space-y-4 outline-none">
+              {/* Filter Gaya: Tabbed */}
+              <div className="mb-3">
+                <ScrollArea className="w-full whitespace-nowrap">
+                  <div className="flex gap-2 p-1">
+                    {["Bebas", "Dada", "Punggung", "Kupu"].map(gaya => (
+                      <Button 
+                        key={gaya}
+                        variant={selectedStroke === gaya ? "default" : "outline"}
+                        className={`rounded-full h-8 px-4 text-[11px] font-bold ${selectedStroke === gaya ? 'bg-red-600 text-white' : 'bg-white text-slate-500 border-slate-200'}`}
+                        onClick={() => setSelectedStroke(gaya)}
+                      >
+                        Gaya {gaya}
+                      </Button>
+                    ))}
+                  </div>
+                  <ScrollBar orientation="horizontal" className="hidden" />
+                </ScrollArea>
+              </div>
+
+              {/* Chart */}
+              <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-xs font-bold text-slate-800">Tren Waktu Time Trial (Detik)</h3>
+                  <select 
+                    value={selectedYear} 
+                    onChange={(e) => setSelectedYear(e.target.value)}
+                    className="bg-slate-50 border border-slate-200 rounded-lg text-[10px] py-1 px-2 text-slate-700 font-bold focus:outline-none focus:ring-1 focus:ring-red-500 shadow-sm"
+                  >
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                  </select>
+                </div>
+                <div className="h-48 w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={chartData} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                      <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#94a3b8' }} />
+                      <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#94a3b8' }} domain={['auto', 'auto']} />
+                      <RechartsTooltip contentStyle={{ fontSize: '10px', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                      <Legend iconType="circle" wrapperStyle={{ fontSize: '10px', paddingTop: '10px' }} />
+                      <Line type="monotone" name="Tahun Berjalan" dataKey="thisYear" stroke="#dc2626" strokeWidth={3} dot={{ r: 3, fill: "#dc2626", strokeWidth: 0 }} activeDot={{ r: 5 }} />
+                      <Line type="monotone" name="Tahun Lalu" dataKey="lastYear" stroke="#cbd5e1" strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+
+              {/* Tabel Hasil Time Trial */}
+              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div className="p-3 bg-slate-50 border-b border-slate-100">
+                  <h3 className="text-xs font-bold text-slate-800">Semua Hasil Time Trial</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs">
+                    <thead className="bg-white border-b border-slate-100">
+                      <tr>
+                        <th className="px-3 py-2.5 font-bold text-slate-600">Nomor Jarak</th>
+                        <th className="px-3 py-2.5 font-bold text-slate-600 text-center">Time Record</th>
+                        <th className="px-3 py-2.5 font-bold text-slate-600">Nama Event</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredResults.length > 0 ? (
+                        filteredResults.map((record) => (
+                          <tr key={record.id} className="border-b border-slate-50 hover:bg-slate-50/50">
+                            <td className="px-3 py-3 font-semibold text-slate-800">{record.distance} {record.stroke}</td>
+                            <td className="px-3 py-3 text-center">
+                              <span className="font-bold text-red-600 bg-red-50 px-2 py-1 rounded border border-red-100">
+                                {record.time}
+                              </span>
+                            </td>
+                            <td className="px-3 py-3 text-slate-600">Time Trial Rutin</td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan={3} className="px-3 py-6 text-center text-slate-400 font-medium">
+                            Tidak ada data untuk filter ini.
+                          </td>
+                        </tr>
                       )}
-                      {lomba.medals.perak > 0 && (
-                        <Badge variant="outline" className="text-[9px] border-slate-300 text-slate-700 bg-slate-100 px-1.5 py-0">
-                          {lomba.medals.perak} Perak
-                        </Badge>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </TabsContent>
+
+          <TabsContent value="kejuaraan" className="space-y-4 outline-none">
+              
+              {/* Filter Gaya: Tabbed */}
+              <div className="mb-3">
+                <ScrollArea className="w-full whitespace-nowrap">
+                  <div className="flex gap-2 p-1">
+                    {["Bebas", "Dada", "Punggung", "Kupu"].map(gaya => (
+                      <Button 
+                        key={gaya}
+                        variant={selectedStroke === gaya ? "default" : "outline"}
+                        className={`rounded-full h-8 px-4 text-[11px] font-bold ${selectedStroke === gaya ? 'bg-indigo-600 text-white' : 'bg-white text-slate-500 border-slate-200'}`}
+                        onClick={() => setSelectedStroke(gaya)}
+                      >
+                        Gaya {gaya}
+                      </Button>
+                    ))}
+                  </div>
+                  <ScrollBar orientation="horizontal" className="hidden" />
+                </ScrollArea>
+              </div>
+
+              {/* Chart */}
+              <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-xs font-bold text-slate-800">Tren Waktu (Detik)</h3>
+                  <select 
+                    value={selectedYear} 
+                    onChange={(e) => setSelectedYear(e.target.value)}
+                    className="bg-slate-50 border border-slate-200 rounded-lg text-[10px] py-1 px-2 text-slate-700 font-bold focus:outline-none focus:ring-1 focus:ring-indigo-500 shadow-sm"
+                  >
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                  </select>
+                </div>
+                <div className="h-48 w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={chartData} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                      <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#94a3b8' }} />
+                      <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#94a3b8' }} domain={['auto', 'auto']} />
+                      <RechartsTooltip contentStyle={{ fontSize: '10px', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                      <Legend iconType="circle" wrapperStyle={{ fontSize: '10px', paddingTop: '10px' }} />
+                      <Line type="monotone" name="Tahun Berjalan" dataKey="thisYear" stroke="#4f46e5" strokeWidth={3} dot={{ r: 3, fill: "#4f46e5", strokeWidth: 0 }} activeDot={{ r: 5 }} />
+                      <Line type="monotone" name="Tahun Lalu" dataKey="lastYear" stroke="#cbd5e1" strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+
+              {/* Tabel Hasil Perlombaan */}
+              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div className="p-3 bg-slate-50 border-b border-slate-100">
+                  <h3 className="text-xs font-bold text-slate-800">Semua Hasil Perlombaan</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs">
+                    <thead className="bg-white border-b border-slate-100">
+                      <tr>
+                        <th className="px-3 py-2.5 font-bold text-slate-600">Nomor Kejuaraan</th>
+                        <th className="px-3 py-2.5 font-bold text-slate-600 text-center">Time Record</th>
+                        <th className="px-3 py-2.5 font-bold text-slate-600">Nama Event</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredResults.length > 0 ? (
+                        filteredResults.map((record) => (
+                          <tr key={record.id} className="border-b border-slate-50 hover:bg-slate-50/50">
+                            <td className="px-3 py-3 font-semibold text-slate-800">{record.distance} {record.stroke}</td>
+                            <td className="px-3 py-3 text-center">
+                              <span className="font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded border border-indigo-100">
+                                {record.time}
+                              </span>
+                            </td>
+                            <td className="px-3 py-3 text-slate-600">{record.event}</td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan={3} className="px-3 py-6 text-center text-slate-400 font-medium">
+                            Tidak ada data untuk filter ini.
+                          </td>
+                        </tr>
                       )}
-                      {lomba.medals.perunggu > 0 && (
-                        <Badge variant="outline" className="text-[9px] border-orange-200 text-orange-700 bg-orange-50 px-1.5 py-0">
-                          {lomba.medals.perunggu} Perunggu
-                        </Badge>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </TabsContent>
           </Tabs>
-        </section>
 
       </main>
     </div>

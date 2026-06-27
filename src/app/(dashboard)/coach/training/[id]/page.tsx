@@ -79,9 +79,7 @@ function TrainingDetailContent() {
   const [isTrialRunning, setIsTrialRunning] = useState(false)
   const trialTimerRef = useRef<NodeJS.Timeout | null>(null)
   
-  // Data rekam waktu: { "ath-1": 15000, "ath-2": 16500 }
-  const [recordedTimes, setRecordedTimes] = useState<Record<string, number>>({})
-  const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({})
+  const [splits, setSplits] = useState<{ id: number, time: number, athleteId: string }[]>([])
 
   const toggleTrialTimer = () => {
     if (isTrialRunning) {
@@ -94,17 +92,21 @@ function TrainingDetailContent() {
     }
   }
 
-  const handleRecordTime = (athId: string) => {
-    if (!recordedTimes[athId] && isTrialRunning) {
-      setRecordedTimes(prev => ({ ...prev, [athId]: trialTimeMs }))
+  const recordTrialSplit = () => {
+    if (isTrialRunning) {
+      setSplits(prev => [...prev, { id: Date.now(), time: trialTimeMs, athleteId: "" }])
     }
+  }
+
+  const handleAssignTrialAthlete = (splitId: number, athleteId: string) => {
+    setSplits(prev => prev.map(s => s.id === splitId ? { ...s, athleteId } : s))
   }
 
   const closeTrialModal = () => {
     if (trialTimerRef.current) clearInterval(trialTimerRef.current)
     setIsTrialRunning(false)
     setTrialTimeMs(0)
-    setRecordedTimes({})
+    setSplits([])
     setActiveTrialItem(null)
   }
 
@@ -118,7 +120,8 @@ function TrainingDetailContent() {
   const formatTime = (ms: number) => {
     const mins = Math.floor(ms / 60000).toString().padStart(2, "0")
     const secs = Math.floor((ms % 60000) / 1000).toString().padStart(2, "0")
-    return `${mins}:${secs}`
+    const millis = Math.floor((ms % 1000) / 10).toString().padStart(2, "0")
+    return `${mins}:${secs}.${millis}`
   }
 
   return (
@@ -243,40 +246,57 @@ function TrainingDetailContent() {
               <div className="text-6xl font-mono font-black text-slate-900 tracking-tighter">
                 {formatTime(trialTimeMs)}
               </div>
-              <Button 
-                onClick={toggleTrialTimer} 
-                className={`mt-4 h-12 w-40 rounded-full font-bold text-sm shadow-lg ${isTrialRunning ? 'bg-amber-500 hover:bg-amber-600' : 'bg-red-600 hover:bg-red-700'}`}
-              >
-                {isTrialRunning ? <><Square className="h-4 w-4 mr-2 fill-white" /> Pause Timer</> : <><Play className="h-4 w-4 mr-2 fill-white" /> Start Timer</>}
-              </Button>
+              <div className="flex gap-3 mt-4 justify-center">
+                <Button 
+                  onClick={toggleTrialTimer} 
+                  className={`h-12 w-32 rounded-full font-bold text-sm shadow-lg ${isTrialRunning ? 'bg-amber-500 hover:bg-amber-600' : 'bg-red-600 hover:bg-red-700'}`}
+                >
+                  {isTrialRunning ? <><Square className="h-4 w-4 mr-2 fill-white" /> Pause</> : <><Play className="h-4 w-4 mr-2 fill-white" /> Start</>}
+                </Button>
+                <Button 
+                  onClick={recordTrialSplit} 
+                  disabled={!isTrialRunning}
+                  className="h-12 w-40 rounded-full font-bold text-sm bg-slate-900 hover:bg-slate-800 text-white shadow-lg disabled:opacity-50"
+                >
+                  <Timer className="h-4 w-4 mr-2" /> Catat Waktu
+                </Button>
+              </div>
             </div>
 
-            {/* List Atlet & Tombol Finish Individu */}
-            <ScrollArea className="h-[250px] bg-white rounded-2xl border border-slate-200 p-2 shadow-inner">
-              <div className="space-y-2">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-2 py-1">Ketuk untuk merekam waktu atlet:</p>
-                {dummyAthletes.map(ath => {
-                  const hasFinished = recordedTimes[ath.id] !== undefined
-                  return (
-                    <div key={ath.id} className={`flex items-center justify-between p-3 rounded-xl border ${hasFinished ? 'bg-emerald-50 border-emerald-200' : 'bg-white border-slate-100 hover:border-slate-300'}`}>
-                      <span className="text-sm font-bold text-slate-800">{ath.name}</span>
-                      
-                      {hasFinished ? (
-                        <span className="font-mono text-emerald-700 font-bold text-sm bg-emerald-100 px-3 py-1 rounded-lg">
-                          {formatTime(recordedTimes[ath.id])}
+            {/* List Hasil Splis */}
+            <ScrollArea className="h-[250px] bg-slate-50 rounded-2xl border border-slate-200 p-3 shadow-inner">
+              <div className="space-y-3">
+                {splits.length === 0 ? (
+                  <div className="py-10 text-center">
+                    <p className="text-xs font-medium text-slate-400">Belum ada waktu yang tercatat.</p>
+                  </div>
+                ) : (
+                  splits.map((split, idx) => (
+                    <div key={split.id} className="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2">
+                        <div className="h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500 shrink-0">
+                          #{idx + 1}
+                        </div>
+                        <span className="font-mono text-emerald-700 font-bold text-sm bg-emerald-50 px-2 py-1 rounded border border-emerald-100">
+                          {formatTime(split.time)}
                         </span>
-                      ) : (
-                        <Button 
-                          disabled={!isTrialRunning}
-                          onClick={() => handleRecordTime(ath.id)}
-                          className="h-8 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-lg px-4"
-                        >
-                          Finish
-                        </Button>
-                      )}
+                      </div>
+                      
+                      <select 
+                        value={split.athleteId}
+                        onChange={(e) => handleAssignTrialAthlete(split.id, e.target.value)}
+                        className="flex-1 min-w-0 bg-slate-50 border border-slate-200 rounded-lg text-[11px] p-2 text-slate-700 font-bold focus:outline-none focus:ring-1 focus:ring-red-500"
+                      >
+                        <option value="" disabled>Pilih Atlet...</option>
+                        {dummyAthletes.map(ath => (
+                          <option key={ath.id} value={ath.id} disabled={splits.some(s => s.athleteId === ath.id && s.id !== split.id)}>
+                            {ath.name}
+                          </option>
+                        ))}
+                      </select>
                     </div>
-                  )
-                })}
+                  ))
+                )}
               </div>
             </ScrollArea>
           </div>
@@ -284,9 +304,9 @@ function TrainingDetailContent() {
     <div className="p-4 bg-white border-t border-slate-100">
       <Button 
         className="w-full bg-red-600 hover:bg-red-700 h-12 font-bold shadow-md"
-        disabled={Object.keys(recordedTimes).length === 0}
+        disabled={splits.length === 0 || splits.some(s => !s.athleteId)}
         onClick={() => {
-          alert(`Berhasil! ${Object.keys(recordedTimes).length} rekam waktu atlet telah disimpan.`);
+          alert(`Berhasil! ${splits.length} rekam waktu atlet telah disimpan.`);
           closeTrialModal();
         }}
       >
