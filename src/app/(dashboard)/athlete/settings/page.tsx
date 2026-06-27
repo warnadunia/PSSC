@@ -20,24 +20,24 @@ export default function AthleteSettingsPage() {
     {
       title: "Akun & Profil",
       items: [
-        { icon: User, label: "Edit Profil & Info Pribadi", href: "#", color: "text-blue-400" },
-        { icon: Shield, label: "Keamanan & Kata Sandi", href: "#", color: "text-emerald-400" },
+        { icon: User, label: "Profil & Info Pribadi", href: "/athlete/settings/profile", color: "text-blue-500" },
+        { icon: Shield, label: "Keamanan & Kata Sandi", href: "/athlete/settings/security", color: "text-emerald-500" },
       ]
     },
     {
       title: "Preferensi Aplikasi",
       items: [
-        { icon: Bell, label: "Notifikasi Push", isToggle: true, state: pushNotif, setter: setPushNotif, color: "text-amber-400" },
-        { icon: Bell, label: "Notifikasi Email", isToggle: true, state: emailNotif, setter: setEmailNotif, color: "text-amber-400" },
-        { icon: Fingerprint, label: "Login Biometrik / Face ID", isToggle: true, state: biometricLogin, setter: setBiometricLogin, color: "text-purple-400" },
+        { icon: Bell, label: "Notifikasi Push", isToggle: true, state: pushNotif, setter: setPushNotif, color: "text-amber-500" },
+        { icon: Bell, label: "Notifikasi Email", isToggle: true, state: emailNotif, setter: setEmailNotif, color: "text-amber-500" },
+        { icon: Fingerprint, label: "Login Biometrik / Face ID", isToggle: true, state: biometricLogin, setter: setBiometricLogin, color: "text-purple-500" },
         { icon: Moon, label: "Tema Gelap (Default)", isToggle: false, color: "text-slate-500 dark:text-slate-400", href: "#" },
       ]
     },
     {
       title: "Bantuan & Lainnya",
       items: [
-        { icon: HelpCircle, label: "Pusat Bantuan & FAQ", href: "#", color: "text-[#ff4b4b]" },
-        { icon: Smartphone, label: "Tentang PSSC App", href: "#", color: "text-slate-500 dark:text-slate-400" },
+        { icon: HelpCircle, label: "Pusat Bantuan & FAQ", href: "/athlete/settings/help", color: "text-[#ff4b4b]" },
+        { icon: Smartphone, label: "Tentang PSSC App", href: "/athlete/settings/about", color: "text-slate-500 dark:text-slate-400" },
       ]
     }
   ]
