@@ -48,6 +48,7 @@ const drylandSets = [
 function TrainingDetailContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const params = useParams()
   const type = searchParams.get("type") || "program" // 'program' is pool, 'personal' is dryland
 
   // ==============================
