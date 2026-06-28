@@ -49,7 +49,7 @@ function TrainingDetailContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const type = searchParams.get("type") || "program" // 'program' is pool, 'personal' is dryland
-  
+
   // ==============================
   // STATE FLOATING TIMER
   // ==============================
@@ -64,7 +64,7 @@ function TrainingDetailContent() {
   const [trialTimeMs, setTrialTimeMs] = useState(0)
   const [isTrialRunning, setIsTrialRunning] = useState(false)
   const trialTimerRef = useRef<NodeJS.Timeout | null>(null)
-  
+
   const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({})
 
   // ==============================
@@ -108,15 +108,15 @@ function TrainingDetailContent() {
   const submitWhyGap = () => {
     if (whyGapItem) {
       // Mark as skipped/failed with reason (just visual simulation)
-      setCheckedItems(prev => ({...prev, [whyGapItem.id]: true}))
+      setCheckedItems(prev => ({ ...prev, [whyGapItem.id]: true }))
     }
     setWhyGapModalOpen(false)
   }
 
   useEffect(() => {
-    return () => { 
-      if (timerRef.current) clearInterval(timerRef.current) 
-      if (trialTimerRef.current) clearInterval(trialTimerRef.current) 
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+      if (trialTimerRef.current) clearInterval(trialTimerRef.current)
     }
   }, [])
 
@@ -146,7 +146,7 @@ function TrainingDetailContent() {
       <GlobalHeader variant="subpage" title="Interactive Training" />
 
       <main className="flex-1 overflow-y-auto w-full pb-32">
-        
+
         {/* Info Grid */}
         <div className="px-5 pt-4 pb-6 border-b border-slate-200 dark:border-[#2a293d]">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight uppercase font-heading tracking-wider">The Blue Mile 🐟</h1>
@@ -188,33 +188,33 @@ function TrainingDetailContent() {
         <div className="w-full px-4 space-y-6">
           {(type === 'personal' ? drylandSets : trainingSets).map((group, gIdx) => (
             <div key={gIdx} className="bg-white dark:bg-card border border-slate-200 dark:border-border rounded-2xl overflow-hidden shadow-sm">
-              
+
               {/* Header Kolom */}
               <div className="grid grid-cols-[10fr_4fr_5fr] bg-slate-100 dark:bg-secondary/50 px-4 py-3 border-b border-slate-200 dark:border-border">
                 <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">{group.groupName}</span>
                 <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Target</span>
                 <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest text-right">Aksi</span>
               </div>
-              
+
               {/* Baris Latihan */}
               {group.items.map((item, iIdx) => {
                 const isChecked = !!checkedItems[item.id]
                 return (
                   <div key={iIdx} className={`grid grid-cols-[10fr_4fr_5fr] items-center py-4 pl-4 pr-3 border-b last:border-b-0 border-slate-100 dark:border-border relative transition-colors ${isChecked ? 'bg-slate-50 dark:bg-secondary/20 opacity-60' : 'bg-white dark:bg-card'}`}>
                     <div className={`absolute left-0 top-0 bottom-0 w-1 ${item.color}`}></div>
-                    
+
                     {/* Kolom 1: Nama Set */}
                     <div className="flex items-center pl-2">
                       <span className={`text-sm font-bold ${isChecked ? 'text-slate-400 line-through' : 'text-slate-900 dark:text-white'}`}>
                         {item.label}
                       </span>
                     </div>
-                    
+
                     {/* Kolom 2: Target */}
                     <div className="text-center text-[12px] font-bold text-slate-500">
                       {item.target}
                     </div>
-                    
+
                     {/* Kolom 3: Aksi */}
                     <div className="flex justify-end items-center gap-2">
                       {type === 'program' ? (
@@ -229,9 +229,9 @@ function TrainingDetailContent() {
                         </div>
                       ) : (
                         <>
-                          <Button 
+                          <Button
                             onClick={() => openWhyGap(item)}
-                            variant="ghost" 
+                            variant="ghost"
                             size="icon"
                             className="h-8 w-8 rounded-full text-slate-400 hover:text-amber-500 hover:bg-amber-50"
                             title="Skip / Gagal"
@@ -239,20 +239,20 @@ function TrainingDetailContent() {
                             <FileWarning className="h-4 w-4" />
                           </Button>
 
-                          <Button 
+                          <Button
                             onClick={() => setActiveTrialItem(item)}
-                            variant="outline" 
-                            size="icon" 
+                            variant="outline"
+                            size="icon"
                             className="h-8 w-8 rounded-full border-red-200 text-[#ff4b4b] hover:bg-red-50 shadow-sm"
                           >
                             <Timer className="h-4 w-4" />
                           </Button>
-                          
+
                           <div className="bg-slate-100 dark:bg-secondary p-1 rounded-md ml-1">
-                            <Checkbox 
+                            <Checkbox
                               checked={isChecked}
-                              onCheckedChange={(c) => setCheckedItems(prev => ({...prev, [item.id]: !!c}))}
-                              className="h-5 w-5 data-[state=checked]:bg-emerald-500 data-[state=checked]:border-emerald-500" 
+                              onCheckedChange={(c) => setCheckedItems(prev => ({ ...prev, [item.id]: !!c }))}
+                              className="h-5 w-5 data-[state=checked]:bg-emerald-500 data-[state=checked]:border-emerald-500"
                             />
                           </div>
                         </>
@@ -265,13 +265,6 @@ function TrainingDetailContent() {
           ))}
         </div>
       </main>
-
-      {/* FIXED BOTTOM ACTION (FINISH TRAINING) */}
-      <div className="fixed bottom-0 w-full bg-white dark:bg-card border-t border-slate-200 dark:border-border p-4 z-40 shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
-        <Button onClick={() => setRpeModalOpen(true)} className="w-full h-14 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-bold text-sm tracking-widest uppercase rounded-xl shadow-xl/30">
-          <Check className="mr-2 h-4 w-4" /> Finish Training
-        </Button>
-      </div>
 
 
       {/* ==========================================
@@ -307,7 +300,7 @@ function TrainingDetailContent() {
                   <div className="h-full bg-slate-600 transition-all duration-300" style={{ width: `${isTrialRunning ? ghostProgress + 10 : 0}%` }}></div>
                 </div>
               </div>
-              
+
               <div>
                 <div className="flex justify-between text-[10px] font-bold text-indigo-400 uppercase tracking-widest mb-1.5">
                   <span>You (Actual)</span>
@@ -319,15 +312,15 @@ function TrainingDetailContent() {
               </div>
             </div>
 
-            <Button 
-              onClick={toggleTrialTimer} 
+            <Button
+              onClick={toggleTrialTimer}
               className={`w-full h-14 rounded-2xl font-black text-lg tracking-widest uppercase transition-all shadow-xl/50 ${isTrialRunning ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-emerald-500 hover:bg-emerald-600 text-emerald-950'}`}
             >
               {isTrialRunning ? 'Pause' : 'Start Trial'}
             </Button>
           </div>
           <div className="p-4 bg-slate-900 border-t border-slate-800">
-            <Button 
+            <Button
               className="w-full bg-[#ff4b4b] hover:bg-red-600 text-white h-12 font-bold uppercase tracking-widest"
               disabled={trialTimeMs === 0}
               onClick={() => {
@@ -358,7 +351,7 @@ function TrainingDetailContent() {
             </p>
             <div className="space-y-2">
               {['Kelelahan Fisik Ekstrem', 'Cidera Ringan / Sakit', 'Fokus Hilang (Mental Fatigue)', 'Kendala Teknis (Kram, Kacamata Air)'].map((reason) => (
-                <div 
+                <div
                   key={reason}
                   onClick={() => setWhyGapReason(reason)}
                   className={`p-3 rounded-xl border text-sm font-bold cursor-pointer transition-colors ${whyGapReason === reason ? 'border-[#ff4b4b] bg-red-50 text-[#ff4b4b] dark:bg-[#ff4b4b]/10' : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-secondary/50'}`}
@@ -393,15 +386,15 @@ function TrainingDetailContent() {
             <p className="text-xs font-medium text-center text-slate-600 dark:text-slate-300">
               Seberapa berat sesi latihan hari ini menurut fisik Anda?
             </p>
-            
+
             <div className="flex flex-col items-center gap-4">
               <div className="text-6xl font-black text-indigo-600 dark:text-indigo-400">
                 {rpeValue}
               </div>
-              <input 
-                type="range" 
-                min="1" max="10" 
-                value={rpeValue} 
+              <input
+                type="range"
+                min="1" max="10"
+                value={rpeValue}
                 onChange={(e) => setRpeValue(Number(e.target.value))}
                 className="w-full accent-indigo-600"
               />
@@ -424,7 +417,7 @@ function TrainingDetailContent() {
                 <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Optimal</Badge>
               )}
             </div>
-            
+
             {rpeValue < coachTargetRPE - 2 && (
               <p className="text-[10px] text-amber-600 dark:text-amber-400 text-center font-medium bg-amber-50 dark:bg-amber-900/10 p-2 rounded-lg">
                 Sepertinya latihan ini terlalu ringan untuk Anda. Hubungi pelatih untuk penyesuaian program.
