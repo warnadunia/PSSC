@@ -105,7 +105,7 @@ export default function ProfileEditPage() {
         <form onSubmit={handleSubmit} className="p-4 md:p-6 lg:p-8 space-y-6">
           
           {/* FOTO PROFIL */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-6 border border-slate-200 dark:border-[#2a293d] shadow-xl/30 flex flex-col items-center relative">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-6 border border-slate-200 dark:border-[#2a293d] shadow-lg/30 flex flex-col items-center relative">
             <div className="relative mb-4">
               <div className="w-24 h-24 rounded-full bg-slate-100 dark:bg-[#2a293d] border-[3px] border-slate-200 dark:border-slate-600 overflow-hidden">
                 <img src="https://i.pravatar.cc/150?img=62" alt="Profile" className="w-full h-full object-cover" />
@@ -113,14 +113,14 @@ export default function ProfileEditPage() {
               <button 
                 type="button"
                 onClick={() => setShowPhotoOptions(!showPhotoOptions)}
-                className="absolute bottom-0 right-0 p-2 bg-[#ff4b4b] text-white rounded-full border-[3px] border-white dark:border-[#1f1e2e] shadow-xl hover:bg-red-600 transition-colors"
+                className="absolute bottom-0 right-0 p-2 bg-[#ff4b4b] text-white rounded-full border-[3px] border-white dark:border-[#1f1e2e] shadow-lg hover:bg-red-600 transition-colors"
               >
                 <Camera className="h-4 w-4" />
               </button>
             </div>
             
             {showPhotoOptions && (
-              <div className="absolute top-32 z-10 bg-white dark:bg-[#2a293d] rounded-xl shadow-xl border border-slate-200 dark:border-[#161622] p-2 flex flex-col gap-1 min-w-[160px] animate-in fade-in zoom-in duration-200">
+              <div className="absolute top-32 z-10 bg-white dark:bg-[#2a293d] rounded-xl shadow-lg border border-slate-200 dark:border-[#161622] p-2 flex flex-col gap-1 min-w-[160px] animate-in fade-in zoom-in duration-200">
                 <button type="button" className="flex items-center gap-3 px-3 py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#1f1e2e] rounded-lg transition-colors text-left" onClick={() => { alert('Membuka Kamera...'); setShowPhotoOptions(false) }}>
                   <Camera className="h-4 w-4 text-blue-500" /> Ambil Foto
                 </button>
@@ -134,7 +134,7 @@ export default function ProfileEditPage() {
           </section>
 
           {/* BAGIAN 1: PROFIL DASAR */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white tracking-wide mb-5 flex items-center gap-2">
               <UserIcon className="h-4 w-4 text-blue-500" /> Profil Dasar
             </h2>
@@ -156,7 +156,7 @@ export default function ProfileEditPage() {
           </section>
 
           {/* BAGIAN 2: DATA KESISWAAN */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white tracking-wide mb-5 flex items-center gap-2">
               <GraduationCap className="h-4 w-4 text-amber-500" /> Data Kesiswaan
             </h2>
@@ -168,7 +168,7 @@ export default function ProfileEditPage() {
           </section>
 
           {/* BAGIAN 3: INFO KONTAK & KELUARGA */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white tracking-wide mb-5 flex items-center gap-2">
               <Users className="h-4 w-4 text-emerald-500" /> Kontak & Keluarga
             </h2>
@@ -192,7 +192,7 @@ export default function ProfileEditPage() {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm tracking-widest uppercase rounded-xl shadow-xl/30 transition-all mt-4"
+            className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm tracking-widest uppercase rounded-xl shadow-lg/30 transition-all mt-4"
           >
             {isSubmitting ? (
               <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

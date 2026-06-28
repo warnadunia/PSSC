@@ -70,7 +70,7 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
 
       <main className="flex-1 overflow-y-auto w-full">
         {/* Info Area */}
-        <div className="bg-white dark:bg-[#1f1e2e] px-5 py-6 mb-2 border-b border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+        <div className="bg-white dark:bg-[#1f1e2e] px-5 py-6 mb-2 border-b border-slate-200 dark:border-[#2a293d] shadow-lg/30">
           <h3 className="text-sm font-black text-slate-900 dark:text-white mb-2 uppercase tracking-wide">How to</h3>
           <p className="text-sm text-slate-50t-slate-400 leading-relaxed mb-5">
             Lakukan gerakan dengan posisi tubuh lurus, mulai dari kepala hingga tumit. Turunkan tubuh hingga dada hampir menyentuh lantai, lalu dorong kembali ke posisi awal.
@@ -83,9 +83,9 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
         </div>
 
         {/* Media Area */}
-        <div className="bg-white dark:bg-[#1f1e2e] p-5 mb-2 border-y border-slate-200 dark:border-[#2a293d] text-center shadow-xl/30">
+        <div className="bg-white dark:bg-[#1f1e2e] p-5 mb-2 border-y border-slate-200 dark:border-[#2a293d] text-center shadow-lg/30">
           <h3 className="text-[11px] font-bold text-slate-500 dark:text-slate-400 mb-3 uppercase tracking-widest">Video / Photo Tutorial</h3>
-          <div className="w-full aspect-video bg-slate-800 rounded-xl overflow-hidden relative shadow-xl/30">
+          <div className="w-full aspect-video bg-slate-800 rounded-xl overflow-hidden relative shadow-lg/30">
             <img
               src="https://images.unsplash.com/photo-1598971639058-fab3c3109a00?q=80&w=800&auto=format&fit=crop"
               alt="Push up tutorial"
@@ -100,7 +100,7 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
         </div>
 
         {/* Target & Stopwatch Area */}
-        <div className="bg-white dark:bg-[#1f1e2e] p-6 border-t border-slate-200 dark:border-[#2a293d] flex flex-col items-center flex-1 pb-32 shadow-xl/30">
+        <div className="bg-white dark:bg-[#1f1e2e] p-6 border-t border-slate-200 dark:border-[#2a293d] flex flex-col items-center flex-1 pb-32 shadow-lg/30">
 
           <div className="flex items-center justify-center gap-4 bg-slate-50 dark:bg-[#161622] px-6 py-3 rounded-2xl border border-slate-200 dark:border-[#2a293d] mb-8 w-full max-w-sm">
             <div className="text-center">
@@ -121,7 +121,7 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
 
             <Button
               onClick={toggleTimer}
-              className={`w-full h-16 rounded-2xl font-black text-lg shadow-xl transition-all duration-300 mb-4 ${isRunning
+              className={`w-full h-16 rounded-2xl font-black text-lg shadow-lg transition-all duration-300 mb-4 ${isRunning
                   ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-amber-500/25'
                   : 'bg-[#ff4b4b] hover:bg-red-700 text-white shadow-red-600/25'
                 }`}

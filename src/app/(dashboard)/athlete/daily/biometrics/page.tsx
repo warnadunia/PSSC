@@ -32,7 +32,7 @@ export default function BiometricsPage() {
           <p className="text-xs text-slate-500 dark:text-muted-foreground font-medium mt-1 leading-relaxed">Input data biometrik pagi Anda sebelum sarapan untuk kalibrasi algoritma performa.</p>
         </div>
 
-        <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-xl/30 rounded-3xl overflow-hidden">
+        <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-lg/30 rounded-3xl overflow-hidden">
           <div className="bg-slate-100 dark:bg-secondary/50 p-4 border-b border-slate-200 dark:border-border">
             <h2 className="font-heading font-bold text-xs uppercase tracking-widest text-slate-900 dark:text-white flex items-center gap-2">
               <Activity className="h-4 w-4 text-[#ff4b4b]" /> Vital Stats
@@ -104,7 +104,7 @@ export default function BiometricsPage() {
       </main>
 
       <div className="fixed bottom-16 w-full bg-white dark:bg-card border-t border-slate-200 dark:border-border p-4 z-50">
-        <Button onClick={handleSave} className="w-full h-14 bg-[#ff4b4b] hover:bg-red-600 text-white font-bold text-sm tracking-widest uppercase rounded-xl shadow-xl/30">
+        <Button onClick={handleSave} className="w-full h-14 bg-[#ff4b4b] hover:bg-red-600 text-white font-bold text-sm tracking-widest uppercase rounded-xl shadow-lg/30">
           <CheckCircle2 className="mr-2 h-4 w-4" /> Sync Data & Update Readiness
         </Button>
       </div>

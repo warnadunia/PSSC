@@ -53,7 +53,7 @@ Tetap semangat dalam mencetak juara!`
     <div className="flex flex-col h-[100dvh] w-full" suppressHydrationWarning>
       
       {/* Header */}
-      <div className="h-14 px-4 flex items-center bg-white dark:bg-[#1f1e2e] border-b border-slate-200 dark:border-[#2a293d] sticky top-0 z-50 shrink-0 shadow-xl/30">
+      <div className="h-14 px-4 flex items-center bg-white dark:bg-[#1f1e2e] border-b border-slate-200 dark:border-[#2a293d] sticky top-0 z-50 shrink-0 shadow-lg/30">
         <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-slate-100 dark:hover:bg-[#2a293d]">
           <ChevronLeft className="h-5 w-5 text-slate-600 dark:text-slate-300" />
         </Button>
@@ -61,7 +61,7 @@ Tetap semangat dalam mencetak juara!`
       </div>
 
       <main className="flex-1 overflow-y-auto w-full p-4 pb-12">
-        <div className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-6 border border-slate-200 dark:border-[#2a293d] mb-6 shadow-xl/30">
+        <div className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-6 border border-slate-200 dark:border-[#2a293d] mb-6 shadow-lg/30">
           <div className="flex items-center gap-2 mb-4">
             <span className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-md ${announcement.tagColor}`}>
               {announcement.tag}

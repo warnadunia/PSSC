@@ -69,7 +69,7 @@ export default function SecurityPage() {
         <div className="p-4 md:p-6 lg:p-8 space-y-6">
           
           {/* UBAH KATA SANDI REGULER */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white tracking-wide mb-5 flex items-center gap-2">
               <Key className="h-4 w-4 text-emerald-500" /> Ubah Kata Sandi
             </h2>
@@ -114,7 +114,7 @@ export default function SecurityPage() {
               <Button
                 type="submit"
                 disabled={isSubmittingPassword || !currentPassword || !newPassword || !confirmPassword}
-                className="w-full h-12 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs tracking-widest uppercase rounded-xl shadow-xl mt-2 transition-all"
+                className="w-full h-12 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs tracking-widest uppercase rounded-xl shadow-lg mt-2 transition-all"
               >
                 {isSubmittingPassword ? (
                   <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -128,7 +128,7 @@ export default function SecurityPage() {
           </section>
 
           {/* LUPA KATA SANDI (OTP VERIFICATION) */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white tracking-wide mb-1 flex items-center gap-2">
               <Shield className="h-4 w-4 text-[#ff4b4b]" /> Lupa Kata Sandi?
             </h2>
@@ -155,7 +155,7 @@ export default function SecurityPage() {
                 <Button
                   onClick={handleSendOtp}
                   disabled={isSubmittingOtp || !email}
-                  className="w-full h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-bold text-xs tracking-widest uppercase rounded-xl shadow-xl transition-all"
+                  className="w-full h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-bold text-xs tracking-widest uppercase rounded-xl shadow-lg transition-all"
                 >
                   {isSubmittingOtp ? (
                     <div className="h-4 w-4 border-2 border-slate-500/30 border-t-current rounded-full animate-spin" />
@@ -197,7 +197,7 @@ export default function SecurityPage() {
                 <Button
                   onClick={handleVerifyOtp}
                   disabled={isSubmittingOtp || otpCode.length < 4}
-                  className="w-full h-12 bg-[#ff4b4b] hover:bg-red-700 text-white font-bold text-xs tracking-widest uppercase rounded-xl shadow-xl transition-all"
+                  className="w-full h-12 bg-[#ff4b4b] hover:bg-red-700 text-white font-bold text-xs tracking-widest uppercase rounded-xl shadow-lg transition-all"
                 >
                   {isSubmittingOtp ? (
                     <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

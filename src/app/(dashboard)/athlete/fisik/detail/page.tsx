@@ -29,7 +29,7 @@ export default function FisikDetailPage() {
         </div>
 
         {/* CHART SECTION */}
-        <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-xl/30 overflow-hidden rounded-3xl">
+        <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-lg/30 overflow-hidden rounded-3xl">
           <div className="bg-slate-100 dark:bg-secondary/50 p-4 border-b border-slate-200 dark:border-border flex justify-between items-center">
             <h2 className="font-heading font-bold text-xs uppercase tracking-widest text-slate-900 dark:text-white flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-indigo-500" /> Kurva Pertumbuhan
@@ -76,7 +76,7 @@ export default function FisikDetailPage() {
           
           <div className="space-y-3">
             {[...historyData].reverse().map((data, index) => (
-              <div key={index} className="bg-white dark:bg-card border border-slate-200 dark:border-border p-4 rounded-2xl flex items-center justify-between shadow-xl">
+              <div key={index} className="bg-white dark:bg-card border border-slate-200 dark:border-border p-4 rounded-2xl flex items-center justify-between shadow-lg">
                 <div className="flex items-center gap-4">
                   <div className="bg-slate-100 dark:bg-[#161622] text-slate-500 h-10 w-10 rounded-xl flex items-center justify-center font-bold text-xs uppercase tracking-widest">
                     {data.month}

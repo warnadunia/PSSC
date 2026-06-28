@@ -76,7 +76,7 @@ export default function CoachMyPage() {
             ========================================== */}
         <section>
           {/* THEME UPDATE: Card absensi menggunakan warna card gelap (#1f1e2e) */}
-          <Card className="bg-white dark:bg-[#1f1e2e] text-slate-900 dark:text-white -black/40 border border-slate-200 dark:border-[#2a293d] overflow-hidden relative rounded-3xl shadow-xl/30">
+          <Card className="bg-white dark:bg-[#1f1e2e] text-slate-900 dark:text-white -black/40 border border-slate-200 dark:border-[#2a293d] overflow-hidden relative rounded-3xl shadow-lg/30">
             <CardContent className="p-5 pb-4">
               <div className="flex justify-between items-start mb-6">
                 <div>
@@ -108,9 +108,9 @@ export default function CoachMyPage() {
                 {/* THEME UPDATE: Style tombol disesuaikan untuk dark mode */}
                 <div
                   onClick={() => router?.push(isCheckedIn ? '/coach/mypage/attendance?type=out' : '/coach/mypage/attendance?type=in')}
-                  className="cursor-pointer bg-slate-50 dark:bg-[#2a293d] rounded-2xl p-2 border border-slate-200 dark:border-[#34334a] transition-all hover:bg-slate-100 dark:hover:bg-[#34334a] shadow-xl/30"
+                  className="cursor-pointer bg-slate-50 dark:bg-[#2a293d] rounded-2xl p-2 border border-slate-200 dark:border-[#34334a] transition-all hover:bg-slate-100 dark:hover:bg-[#34334a] shadow-lg/30"
                 >
-                  <div className={`flex flex-col items-center justify-center w-20 h-20 rounded-xl shadow-xl ${isCheckedIn ? 'bg-gradient-to-br from-[#ff4b4b] to-red-700' : 'bg-gradient-to-br from-emerald-500 to-emerald-700'}`}>
+                  <div className={`flex flex-col items-center justify-center w-20 h-20 rounded-xl shadow-lg ${isCheckedIn ? 'bg-gradient-to-br from-[#ff4b4b] to-red-700' : 'bg-gradient-to-br from-emerald-500 to-emerald-700'}`}>
                     <Power className="h-8 w-8 text-white mb-1 drop-shadow-md" strokeWidth={2.5} />
                     <span className="text-[10px] font-bold text-white tracking-widest uppercase">
                       {isCheckedIn ? 'Pulang' : 'Masuk'}
@@ -146,7 +146,7 @@ export default function CoachMyPage() {
                 {/* THEME UPDATE: Card pengumuman menggunakan dark navy */}
                 <div
                   onClick={() => router?.push('/coach/mypage/announcement/1')}
-                  className="bg-white dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] rounded-xl p-4 h-full hover:border-[#ff4b4b]/50 transition-colors cursor-pointer shadow-xl/30"
+                  className="bg-white dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] rounded-xl p-4 h-full hover:border-[#ff4b4b]/50 transition-colors cursor-pointer shadow-lg/30"
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <span className="flex h-2 w-2 rounded-full bg-[#ff4b4b] shadow-[0_0_8px_#ff4b4b]"></span>
@@ -159,7 +159,7 @@ export default function CoachMyPage() {
               <CarouselItem className="pl-2 basis-[85%] md:basis-[60%] lg:basis-[40%]">
                 <div
                   onClick={() => router?.push('/coach/mypage/announcement/2')}
-                  className="bg-white dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] rounded-xl p-4 h-full hover:border-blue-500/50 transition-colors cursor-pointer shadow-xl/30"
+                  className="bg-white dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] rounded-xl p-4 h-full hover:border-blue-500/50 transition-colors cursor-pointer shadow-lg/30"
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <span className="flex h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
@@ -182,26 +182,26 @@ export default function CoachMyPage() {
             <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
               {/* THEME UPDATE: Icon Box disesuaikan warnanya */}
               <div className="flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 group-hover:bg-blue-500/20 transition-colors shadow-xl/30">
+                <div className="h-12 w-12 rounded-2xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 group-hover:bg-blue-500/20 transition-colors shadow-lg/30">
                   <Activity className="h-5 w-5 text-blue-500 dark:text-blue-400" />
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-center group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Input TT</span>
               </div>
               <div className="flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-colors shadow-xl/30">
+                <div className="h-12 w-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-colors shadow-lg/30">
                   <FileText className="h-5 w-5 text-emerald-500 dark:text-emerald-400" />
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-center group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Beri Latihan</span>
               </div>
               <div className="flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 group-hover:bg-purple-500/20 transition-colors shadow-xl/30">
+                <div className="h-12 w-12 rounded-2xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 group-hover:bg-purple-500/20 transition-colors shadow-lg/30">
                   <Users className="h-5 w-5 text-purple-500 dark:text-purple-400" />
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-center group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Daftar Atlet</span>
               </div>
 
               <CollapsibleTrigger className="md:hidden flex flex-col items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 w-full group">
-                <div className="h-12 w-12 rounded-2xl bg-slate-100 dark:bg-[#2a293d] flex items-center justify-center border border-slate-200 dark:border-[#34334a] group-hover:bg-slate-200 dark:group-hover:bg-[#34334a] transition-colors shadow-xl/30">
+                <div className="h-12 w-12 rounded-2xl bg-slate-100 dark:bg-[#2a293d] flex items-center justify-center border border-slate-200 dark:border-[#34334a] group-hover:bg-slate-200 dark:group-hover:bg-[#34334a] transition-colors shadow-lg/30">
                   {isMenuOpen ? <ChevronUp className="h-5 w-5 text-slate-500 dark:text-slate-300" /> : <ChevronDown className="h-5 w-5 text-slate-500 dark:text-slate-300" />}
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-center group-hover:text-slate-900 dark:group-hover:text-white transition-colors">{isMenuOpen ? "Tutup" : "Lainnya"}</span>
@@ -209,13 +209,13 @@ export default function CoachMyPage() {
 
               {/* Menu ekstra yang selalu tampil di tablet/desktop */}
               <div className="hidden md:flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 group-hover:bg-amber-500/20 transition-colors shadow-xl/30">
+                <div className="h-12 w-12 rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 group-hover:bg-amber-500/20 transition-colors shadow-lg/30">
                   <Trophy className="h-5 w-5 text-amber-500 dark:text-amber-400" />
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-center group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Papan Skor</span>
               </div>
               <div className="hidden md:flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-rose-500/10 flex items-center justify-center border border-rose-500/20 group-hover:bg-rose-500/20 transition-colors shadow-xl/30">
+                <div className="h-12 w-12 rounded-2xl bg-rose-500/10 flex items-center justify-center border border-rose-500/20 group-hover:bg-rose-500/20 transition-colors shadow-lg/30">
                   <Calendar className="h-5 w-5 text-rose-500 dark:text-rose-400" />
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-center group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Kalender</span>
@@ -224,13 +224,13 @@ export default function CoachMyPage() {
 
             <CollapsibleContent className="grid grid-cols-4 gap-3 pt-1 pb-2 md:hidden">
               <div className="flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 group-hover:bg-amber-500/20 transition-colors shadow-xl/30">
+                <div className="h-12 w-12 rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 group-hover:bg-amber-500/20 transition-colors shadow-lg/30">
                   <Trophy className="h-5 w-5 text-amber-500 dark:text-amber-400" />
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-center group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Papan Skor</span>
               </div>
               <div className="flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className="h-12 w-12 rounded-2xl bg-rose-500/10 flex items-center justify-center border border-rose-500/20 group-hover:bg-rose-500/20 transition-colors shadow-xl/30">
+                <div className="h-12 w-12 rounded-2xl bg-rose-500/10 flex items-center justify-center border border-rose-500/20 group-hover:bg-rose-500/20 transition-colors shadow-lg/30">
                   <Calendar className="h-5 w-5 text-rose-500 dark:text-rose-400" />
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-center group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Kalender</span>
@@ -244,7 +244,7 @@ export default function CoachMyPage() {
             ========================================== */}
         <section>
           {/* THEME UPDATE: Card stats */}
-          <Card className="bg-white dark:bg-[#1f1e2e] border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <Card className="bg-white dark:bg-[#1f1e2e] border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <CardHeader className="p-4 pb-2 border-b border-slate-200 dark:border-[#2a293d]">
               <CardTitle className="text-sm font-heading font-bold text-slate-800 dark:text-white uppercase tracking-widest flex items-center gap-2">
                 <Clock className="h-4 w-4 text-[#ff4b4b]" />
@@ -254,7 +254,7 @@ export default function CoachMyPage() {
             <CardContent className="p-4 pt-3">
               {/* Highlight Stats */}
               <div className="grid grid-cols-3 gap-3 mb-5">
-                <div className="col-span-2 rounded-xl p-3 border border-slate-200 dark:border-[#2a293d] bg-slate-50 dark:bg-transparent shadow-xl/30">
+                <div className="col-span-2 rounded-xl p-3 border border-slate-200 dark:border-[#2a293d] bg-slate-50 dark:bg-transparent shadow-lg/30">
                   <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Total Jam Aktif</p>
                   <p className="text-3xl font-heading font-bold text-slate-900 dark:text-white mt-1">32 <span className="text-xs font-sans font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Jam / Minggu</span></p>
                 </div>

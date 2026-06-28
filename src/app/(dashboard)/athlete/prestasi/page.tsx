@@ -126,7 +126,7 @@ export default function PrestasiPage() {
           STAGNATION & HOME TREATMENT ALERT
           ========================================== */}
       <div className="px-4 mt-4 mb-4">
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex gap-3 shadow-xl relative overflow-hidden backdrop-blur-sm">
+        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex gap-3 shadow-lg relative overflow-hidden backdrop-blur-sm">
           <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-amber-500/10 to-transparent pointer-events-none"></div>
           <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" />
           <div>
@@ -137,7 +137,7 @@ export default function PrestasiPage() {
             <p className="text-[11px] text-amber-800/80 dark:text-amber-500/80 leading-relaxed font-medium mb-3">
               Analisis: Penurunan atribut <b>Stamina (70%)</b>. Tingkat penyelesaian Main Set bulan ini hanya 72% akibat tingginya rasio <i>Kelelahan Fisik Ekstrem</i>.
             </p>
-            <Button onClick={() => router.push('/athlete/training?tab=personal')} className="h-8 bg-amber-500 hover:bg-amber-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 rounded-lg shadow-amber-500/20 shadow-xl">
+            <Button onClick={() => router.push('/athlete/training?tab=personal')} className="h-8 bg-amber-500 hover:bg-amber-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 rounded-lg shadow-amber-500/20 shadow-lg">
               Mulai Home Treatment
             </Button>
           </div>
@@ -147,13 +147,13 @@ export default function PrestasiPage() {
       <div className="px-4">
         <Tabs defaultValue="program" className="w-full">
           <TabsList className="w-full grid grid-cols-3 mb-4 bg-slate-50 dark:bg-secondary/40 border border-slate-200 dark:border-border/50 p-1 rounded-xl">
-            <TabsTrigger value="program" className="rounded-lg text-[11px] font-bold data-[state=active]:bg-white dark:bg-card/60 backdrop-blur-md data-[state=active]:text-[#ff4b4b] shadow-xl/30">
+            <TabsTrigger value="program" className="rounded-lg text-[11px] font-bold data-[state=active]:bg-white dark:bg-card/60 backdrop-blur-md data-[state=active]:text-[#ff4b4b] shadow-lg/30">
               Program
             </TabsTrigger>
-            <TabsTrigger value="time-trial" className="rounded-lg text-[11px] font-bold data-[state=active]:bg-white dark:bg-card/60 backdrop-blur-md data-[state=active]:text-[#ff4b4b] shadow-xl/30">
+            <TabsTrigger value="time-trial" className="rounded-lg text-[11px] font-bold data-[state=active]:bg-white dark:bg-card/60 backdrop-blur-md data-[state=active]:text-[#ff4b4b] shadow-lg/30">
               Time Trial
             </TabsTrigger>
-            <TabsTrigger value="kejuaraan" className="rounded-lg text-[11px] font-bold data-[state=active]:bg-white dark:bg-card/60 backdrop-blur-md data-[state=active]:text-[#ff4b4b] shadow-xl/30">
+            <TabsTrigger value="kejuaraan" className="rounded-lg text-[11px] font-bold data-[state=active]:bg-white dark:bg-card/60 backdrop-blur-md data-[state=active]:text-[#ff4b4b] shadow-lg/30">
               Kejuaraan
             </TabsTrigger>
           </TabsList>
@@ -161,7 +161,7 @@ export default function PrestasiPage() {
           {/* TAB: PROGRAM LATIHAN */}
           <TabsContent value="program" className="space-y-6 outline-none">
             {/* 1. RADAR CHART (INTERACTIVE) */}
-            <Card className="border border-slate-200 dark:border-border/50 bg-white dark:bg-card/40 backdrop-blur-md shadow-xl/30">
+            <Card className="border border-slate-200 dark:border-border/50 bg-white dark:bg-card/40 backdrop-blur-md shadow-lg/30">
               <CardHeader className="p-4 pb-0">
                 <CardTitle className="text-sm font-bold text-slate-900 dark:text-white flex items-center justify-between uppercase tracking-widest">
                   <span className="flex items-center gap-2">
@@ -215,7 +215,7 @@ export default function PrestasiPage() {
                       <TabsTrigger 
                         key={idx} 
                         value={style.short}
-                        className="text-[11px] py-1.5 px-4 data-[state=active]:bg-white dark:bg-card/60 backdrop-blur-md data-[state=active]:text-[#ff4b4b] data-[state=active]: font-bold transition-all shadow-xl/30"
+                        className="text-[11px] py-1.5 px-4 data-[state=active]:bg-white dark:bg-card/60 backdrop-blur-md data-[state=active]:text-[#ff4b4b] data-[state=active]: font-bold transition-all shadow-lg/30"
                       >
                         {style.short}
                       </TabsTrigger>
@@ -225,7 +225,7 @@ export default function PrestasiPage() {
                 </ScrollArea>
 
                 {styleBreakdown.map((style, idx) => (
-                  <TabsContent key={idx} value={style.short} className="bg-white dark:bg-card/40 backdrop-blur-md p-4 rounded-xl border border-slate-200 dark:border-border/50 mt-0 space-y-3 shadow-xl/30">
+                  <TabsContent key={idx} value={style.short} className="bg-white dark:bg-card/40 backdrop-blur-md p-4 rounded-xl border border-slate-200 dark:border-border/50 mt-0 space-y-3 shadow-lg/30">
                     <h4 className="font-bold text-xs text-slate-900 dark:text-white mb-2 border-b border-slate-200 dark:border-border/50 pb-2">{style.name}</h4>
                     {style.metrics.map((metric, mIdx) => (
                       <div key={mIdx} className="space-y-1.5">
@@ -264,7 +264,7 @@ export default function PrestasiPage() {
                 const isTuntas = completionRate === 100;
 
                 return (
-                  <Card key={session.id} className="border border-slate-200 dark:border-border/50 bg-white dark:bg-card/60 backdrop-blur-md overflow-hidden relative shadow-xl/30">
+                  <Card key={session.id} className="border border-slate-200 dark:border-border/50 bg-white dark:bg-card/60 backdrop-blur-md overflow-hidden relative shadow-lg/30">
                     <div className={`absolute left-0 top-0 w-1.5 h-full ${isTuntas ? 'bg-emerald-500' : 'bg-[#ff4b4b]'}`} />
                     <CardContent className="p-0">
                       <div className="p-4 pl-5">
@@ -346,7 +346,7 @@ export default function PrestasiPage() {
               </div>
 
               {/* Chart dengan Limit KU */}
-              <div className="bg-white dark:bg-card/40 backdrop-blur-md p-4 rounded-2xl border border-slate-200 dark:border-border/50 shadow-xl/30">
+              <div className="bg-white dark:bg-card/40 backdrop-blur-md p-4 rounded-2xl border border-slate-200 dark:border-border/50 shadow-lg/30">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest">
                     Tren Waktu (Detik)
@@ -354,7 +354,7 @@ export default function PrestasiPage() {
                   <select 
                     value={selectedYear} 
                     onChange={(e) => setSelectedYear(e.target.value)}
-                    className="bg-slate-50 dark:bg-secondary/40 border border-slate-200 dark:border-border/50 rounded-lg text-[10px] py-1 px-2 text-slate-600 dark:text-slate-300 font-bold focus:outline-none focus:ring-1 focus:ring-[#ff4b4b] shadow-xl/30"
+                    className="bg-slate-50 dark:bg-secondary/40 border border-slate-200 dark:border-border/50 rounded-lg text-[10px] py-1 px-2 text-slate-600 dark:text-slate-300 font-bold focus:outline-none focus:ring-1 focus:ring-[#ff4b4b] shadow-lg/30"
                   >
                     <option value="2026">2026</option>
                     <option value="2025">2025</option>
@@ -386,7 +386,7 @@ export default function PrestasiPage() {
               </div>
 
               {/* Tabel Hasil */}
-              <div className="bg-white dark:bg-card/40 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-border/50 overflow-hidden shadow-xl/30">
+              <div className="bg-white dark:bg-card/40 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-border/50 overflow-hidden shadow-lg/30">
                 <div className="p-3 bg-slate-50 dark:bg-secondary/40 border-b border-slate-200 dark:border-border/50 flex justify-between items-center">
                   <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest">
                     Hasil {tabType === 'kejuaraan' ? 'Perlombaan' : 'Time Trial'}
@@ -480,7 +480,7 @@ export default function PrestasiPage() {
                   </p>
                   <Button 
                     onClick={() => router.push('/athlete/training?tab=personal')} 
-                    className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold tracking-widest text-[10px] uppercase h-10 shadow-emerald-500/25 shadow-xl"
+                    className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold tracking-widest text-[10px] uppercase h-10 shadow-emerald-500/25 shadow-lg"
                   >
                     Buka Menu Home Treatment
                   </Button>

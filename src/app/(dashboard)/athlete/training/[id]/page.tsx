@@ -170,7 +170,7 @@ function TrainingDetailContent() {
             ========================================== */}
         {type === 'personal' && (
           <div className="px-4 py-4">
-            <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800/50 rounded-2xl p-4 flex gap-3 shadow-xl relative overflow-hidden">
+            <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800/50 rounded-2xl p-4 flex gap-3 shadow-lg relative overflow-hidden">
               <Lightbulb className="h-5 w-5 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
               <div>
                 <h3 className="text-xs font-bold text-indigo-900 dark:text-indigo-400 uppercase tracking-widest mb-1 flex items-center gap-2">
@@ -190,7 +190,7 @@ function TrainingDetailContent() {
             ========================================== */}
         <div className="w-full px-4 space-y-6">
           {(type === 'personal' ? drylandSets : trainingSets).map((group, gIdx) => (
-            <div key={gIdx} className="bg-white dark:bg-card border border-slate-200 dark:border-border rounded-2xl overflow-hidden shadow-xl">
+            <div key={gIdx} className="bg-white dark:bg-card border border-slate-200 dark:border-border rounded-2xl overflow-hidden shadow-lg">
 
               {/* Header Kolom */}
               <div className="grid grid-cols-[10fr_4fr_5fr] bg-slate-100 dark:bg-secondary/50 px-4 py-3 border-b border-slate-200 dark:border-border">
@@ -211,7 +211,7 @@ function TrainingDetailContent() {
                       <Button 
                         variant="ghost" 
                         size="icon" 
-                        className="h-6 w-6 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 hover:bg-blue-200 dark:hover:bg-blue-800/60 shadow-xl shrink-0"
+                        className="h-6 w-6 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 hover:bg-blue-200 dark:hover:bg-blue-800/60 shadow-lg shrink-0"
                         onClick={() => router.push(`/athlete/training/${params.id}/movement/${item.id}`)}
                         title="Buka Detail Gerakan"
                       >
@@ -255,7 +255,7 @@ function TrainingDetailContent() {
                             onClick={() => setActiveTrialItem(item)}
                             variant="outline"
                             size="icon"
-                            className="h-8 w-8 rounded-full border-red-200 text-[#ff4b4b] hover:bg-red-50 shadow-xl"
+                            className="h-8 w-8 rounded-full border-red-200 text-[#ff4b4b] hover:bg-red-50 shadow-lg"
                           >
                             <Timer className="h-4 w-4" />
                           </Button>
@@ -328,7 +328,7 @@ function TrainingDetailContent() {
 
             <Button
               onClick={toggleTrialTimer}
-              className={`w-full h-14 rounded-2xl font-black text-lg tracking-widest uppercase transition-all shadow-xl/50 ${isTrialRunning ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-emerald-500 hover:bg-emerald-600 text-emerald-950'}`}
+              className={`w-full h-14 rounded-2xl font-black text-lg tracking-widest uppercase transition-all shadow-lg/50 ${isTrialRunning ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-emerald-500 hover:bg-emerald-600 text-emerald-950'}`}
             >
               {isTrialRunning ? 'Pause' : 'Start Trial'}
             </Button>
@@ -418,7 +418,7 @@ function TrainingDetailContent() {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-card p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl flex items-center justify-between">
+            <div className="bg-white dark:bg-card p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-lg flex items-center justify-between">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Target Pelatih</p>
                 <p className="text-lg font-black text-slate-900 dark:text-white">Level {coachTargetRPE}</p>

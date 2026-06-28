@@ -25,7 +25,7 @@ function AttendanceContent() {
   return (
     <div className="flex flex-col h-[100dvh] w-full" suppressHydrationWarning>
       {/* Header */}
-      <div className="h-14 px-4 flex items-center bg-card border-b border-border sticky top-0 z-50 shrink-0 shadow-xl/30">
+      <div className="h-14 px-4 flex items-center bg-card border-b border-border sticky top-0 z-50 shrink-0 shadow-lg/30">
         <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-muted text-foreground">
           <ChevronLeft className="h-5 w-5 text-muted-foreground" />
         </Button>
@@ -40,7 +40,7 @@ function AttendanceContent() {
         </div>
 
         {/* Selfie Module */}
-        <div className="bg-card rounded-3xl p-5 border border-border mb-4 shadow-xl/30">
+        <div className="bg-card rounded-3xl p-5 border border-border mb-4 shadow-lg/30">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-bold text-foreground uppercase tracking-widest flex items-center">
               <Camera className="h-4 w-4 mr-2 text-primary" /> Foto Selfie
@@ -53,7 +53,7 @@ function AttendanceContent() {
               onClick={() => setHasSelfie(true)}
               className="w-full aspect-[3/4] bg-muted/50 rounded-2xl border-2 border-dashed border-border flex flex-col items-center justify-center cursor-pointer hover:bg-muted transition-colors"
             >
-              <div className="h-16 w-16 bg-background rounded-full flex items-center justify-center mb-3 shadow-xl/30">
+              <div className="h-16 w-16 bg-background rounded-full flex items-center justify-center mb-3 shadow-lg/30">
                 <Camera className="h-8 w-8 text-muted-foreground" />
               </div>
               <p className="text-sm font-semibold text-foreground uppercase tracking-widest">Ambil Foto</p>
@@ -79,7 +79,7 @@ function AttendanceContent() {
         </div>
 
         {/* GPS Location Module */}
-        <div className="bg-card rounded-3xl p-5 border border-border mb-4 shadow-xl/30">
+        <div className="bg-card rounded-3xl p-5 border border-border mb-4 shadow-lg/30">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-bold text-foreground uppercase tracking-widest flex items-center">
               <MapPin className="h-4 w-4 mr-2 text-primary" /> Lokasi GPS
@@ -109,7 +109,7 @@ function AttendanceContent() {
                   <div className="h-3 w-3 bg-primary rounded-full shadow-[0_0_0_2px_#1f1e2e]"></div>
                 </div>
               </div>
-              <div className="p-3 bg-card shadow-xl/30">
+              <div className="p-3 bg-card shadow-lg/30">
                 <p className="text-[11px] font-bold text-foreground truncate uppercase tracking-widest">Kolam Renang Depok Sport Center</p>
                 <p className="text-[9px] text-muted-foreground truncate mt-0.5">Jl. Seturan Raya, Caturtunggal, Depok, Sleman</p>
                 <div className="flex gap-2 mt-2">
@@ -122,14 +122,14 @@ function AttendanceContent() {
       </main>
 
       {/* Footer Fixed Button */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 pb-20 bg-card border-t border-border z-50 shadow-xl/30">
+      <div className="fixed bottom-0 left-0 right-0 p-4 pb-20 bg-card border-t border-border z-50 shadow-lg/30">
         <Button 
           onClick={handleSubmit}
           disabled={!hasSelfie || !hasLocation || isSubmitting}
           className={`w-full h-14 rounded-2xl font-bold text-lg transition-all uppercase tracking-widest ${
             (!hasSelfie || !hasLocation) 
               ? 'bg-muted text-muted-foreground' 
-              : 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-primary/25 shadow-xl dark:shadow-xl'
+              : 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-primary/25 shadow-lg dark:shadow-lg'
           }`}
         >
           {isSubmitting ? (

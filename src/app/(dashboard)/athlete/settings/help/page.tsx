@@ -44,7 +44,7 @@ export default function HelpCenterPage() {
         <div className="p-4 md:p-6 lg:p-8 space-y-6">
           
           {/* BANNER */}
-          <div className="bg-gradient-to-br from-[#ff4b4b] to-rose-600 rounded-3xl p-6 text-white shadow-xl/30 relative overflow-hidden">
+          <div className="bg-gradient-to-br from-[#ff4b4b] to-rose-600 rounded-3xl p-6 text-white shadow-lg/30 relative overflow-hidden">
             <HelpCircle className="absolute -right-4 -bottom-4 w-32 h-32 text-white/10" />
             <h2 className="text-xl font-black mb-2 relative z-10">Halo, ada yang bisa kami bantu?</h2>
             <p className="text-xs font-medium text-white/80 relative z-10 max-w-[80%]">
@@ -53,7 +53,7 @@ export default function HelpCenterPage() {
           </div>
 
           {/* FAQ SECTION */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl overflow-hidden border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl overflow-hidden border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <div className="bg-slate-100 dark:bg-[#2a293d]/50 px-5 py-3 border-b border-slate-200 dark:border-[#2a293d]">
               <h3 className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2">
                 <FileText className="h-4 w-4 text-blue-500" /> Pertanyaan Umum (FAQ)
@@ -85,7 +85,7 @@ export default function HelpCenterPage() {
           </section>
 
           {/* CONTACT ADMIN */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-xl/30 flex flex-col items-center text-center">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 border border-slate-200 dark:border-[#2a293d] shadow-lg/30 flex flex-col items-center text-center">
             <div className="w-12 h-12 bg-blue-100 dark:bg-blue-500/20 rounded-full flex items-center justify-center mb-3">
               <MessageCircle className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>

@@ -30,7 +30,7 @@ export default function AboutPage() {
           </div>
 
           {/* DESCRIPTION CARD */}
-          <section className="w-full bg-white dark:bg-[#1f1e2e] rounded-3xl p-6 border border-slate-200 dark:border-[#2a293d] shadow-xl/30 text-center">
+          <section className="w-full bg-white dark:bg-[#1f1e2e] rounded-3xl p-6 border border-slate-200 dark:border-[#2a293d] shadow-lg/30 text-center">
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               PSSC App adalah sistem manajemen olahraga terpadu yang dirancang khusus untuk <strong className="text-slate-900 dark:text-white">Progo Swimming Club Yogyakarta</strong>. 
               Aplikasi ini memfasilitasi komunikasi antara pelatih, pengurus, atlet, dan wali untuk menciptakan ekosistem pembinaan renang yang profesional, terstruktur, dan berbasis data.
@@ -38,7 +38,7 @@ export default function AboutPage() {
           </section>
 
           {/* SYSTEM INFO */}
-          <section className="w-full bg-white dark:bg-[#1f1e2e] rounded-3xl overflow-hidden border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="w-full bg-white dark:bg-[#1f1e2e] rounded-3xl overflow-hidden border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <div className="divide-y divide-slate-100 dark:divide-[#2a293d]">
               <div className="p-4 flex items-center justify-between">
                 <div className="flex items-center text-slate-600 dark:text-slate-300">

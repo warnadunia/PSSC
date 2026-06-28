@@ -83,7 +83,7 @@ export default function AthleteMyPage() {
             ========================================== */}
         <section className="flex items-center gap-4 mb-5">
           <div className="relative shrink-0">
-            <div className="h-[72px] w-[72px] rounded-full bg-secondary border-[1.5px] border-border overflow-hidden shadow-xl">
+            <div className="h-[72px] w-[72px] rounded-full bg-secondary border-[1.5px] border-border overflow-hidden shadow-lg">
               <img src="https://i.pravatar.cc/150?img=62" alt="Profile" className="h-full w-full object-cover" />
             </div>
             <div className="absolute bottom-0 right-1 h-[18px] w-[18px] bg-emerald-500 rounded-full border-[2.5px] border-background"></div>
@@ -101,7 +101,7 @@ export default function AthleteMyPage() {
             1. HIGHLIGHT: NEXT COMPETITION & RECENT BEST (HEX COLOR CLEARED)
             ========================================== */}
         <section className="grid grid-cols-2 gap-3">
-          <div className="bg-card border border-border rounded-2xl p-4 flex flex-col justify-between shadow-xl relative overflow-hidden">
+          <div className="bg-card border border-border rounded-2xl p-4 flex flex-col justify-between shadow-lg relative overflow-hidden">
             <div className="absolute top-0 right-0 p-2 opacity-10">
               <Trophy className="h-12 w-12 text-primary" />
             </div>
@@ -115,7 +115,7 @@ export default function AthleteMyPage() {
             </div>
           </div>
 
-          <div className="bg-card border border-border rounded-2xl p-4 flex flex-col justify-between shadow-xl relative overflow-hidden">
+          <div className="bg-card border border-border rounded-2xl p-4 flex flex-col justify-between shadow-lg relative overflow-hidden">
             <div>
               <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Recent Best Time</p>
               <h3 className="font-heading font-bold text-sm text-foreground uppercase leading-tight line-clamp-1 mb-3">50m Freestyle</h3>
@@ -136,7 +136,7 @@ export default function AthleteMyPage() {
             2. MISSION OF THE DAY (Fokus Latihan)
             ========================================== */}
         <section>
-          <Card className="bg-card border-border shadow-xl overflow-hidden relative rounded-3xl">
+          <Card className="bg-card border-border shadow-lg overflow-hidden relative rounded-3xl">
             <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-primary"></div>
             <CardContent className="p-5">
               <div className="flex items-center gap-2 mb-2">
@@ -187,7 +187,7 @@ export default function AthleteMyPage() {
             ))}
           </div>
 
-          <Card className="bg-card border-border shadow-xl p-4">
+          <Card className="bg-card border-border shadow-lg p-4">
             <div className="h-40 w-full relative">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={strokeProgressData[selectedProgressStroke]} margin={{ top: 5, right: 10, left: -25, bottom: 0 }}>
@@ -238,7 +238,7 @@ export default function AthleteMyPage() {
             4. KARTU STATISTIK ABSENSI (Log Kehadiran)
             ========================================== */}
         <section>
-          <Card className="bg-card border-border shadow-xl">
+          <Card className="bg-card border-border shadow-lg">
             <CardHeader className="p-4 pb-2 border-b border-border flex flex-row items-center justify-between">
               <CardTitle className="text-sm font-heading font-bold text-card-foreground uppercase tracking-widest flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-500" />

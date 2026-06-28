@@ -145,7 +145,7 @@ export default function ProgressGayaPage() {
         </p>
 
         {/* Tabel Perbandingan Time Records */}
-        <div className="bg-card/60 backdrop-blur-md rounded-2xl border border-border overflow-hidden shadow-xl/30">
+        <div className="bg-card/60 backdrop-blur-md rounded-2xl border border-border overflow-hidden shadow-lg/30">
           <div className="p-3 bg-secondary/40 border-b border-border flex items-center gap-2">
             <Timer className="h-4 w-4 text-[#ff4b4b]" />
             <h3 className="text-xs font-bold text-foreground uppercase tracking-widest">
@@ -219,7 +219,7 @@ export default function ProgressGayaPage() {
         </div>
 
         {/* Visual Mini Chart */}
-        <Card className="bg-card/40 backdrop-blur-md border-border shadow-xl/30">
+        <Card className="bg-card/40 backdrop-blur-md border-border shadow-lg/30">
           <CardContent className="p-4">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-xs font-bold text-foreground uppercase tracking-widest flex items-center gap-2">

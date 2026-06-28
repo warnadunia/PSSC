@@ -159,8 +159,8 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
         {/* ==========================================
             1. HEADER PROFIL & BIODATA LINK
             ========================================== */}
-        <section className="flex items-center gap-4 bg-card p-4 rounded-2xl border border-border shadow-xl/30">
-          <Avatar className="h-20 w-20 ring-4 ring-primary/20 shadow-xl/30">
+        <section className="flex items-center gap-4 bg-card p-4 rounded-2xl border border-border shadow-lg/30">
+          <Avatar className="h-20 w-20 ring-4 ring-primary/20 shadow-lg/30">
             <AvatarImage src={athlete.photo} alt={athlete.name} className="object-cover" />
             <AvatarFallback className="bg-primary text-primary-foreground font-black text-2xl">
               {athlete.name.charAt(0)}
@@ -188,13 +188,13 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
             ========================================== */}
         <Tabs defaultValue="program" className="w-full">
           <TabsList className="w-full grid grid-cols-3 bg-primary p-1 rounded-full mb-2">
-            <TabsTrigger value="program" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]: font-bold transition-all rounded-full text-primary-foreground shadow-xl/30">
+            <TabsTrigger value="program" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]: font-bold transition-all rounded-full text-primary-foreground shadow-lg/30">
               Program
             </TabsTrigger>
-            <TabsTrigger value="time-trial" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]: font-bold transition-all rounded-full text-primary-foreground shadow-xl/30">
+            <TabsTrigger value="time-trial" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]: font-bold transition-all rounded-full text-primary-foreground shadow-lg/30">
               Time Trial
             </TabsTrigger>
-            <TabsTrigger value="kejuaraan" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]: font-bold transition-all rounded-full text-primary-foreground shadow-xl/30">
+            <TabsTrigger value="kejuaraan" className="text-[11px] py-2 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]: font-bold transition-all rounded-full text-primary-foreground shadow-lg/30">
               Kejuaraan
             </TabsTrigger>
           </TabsList>
@@ -205,7 +205,7 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
           <TabsContent value="program" className="space-y-6 outline-none">
             
             {/* 2. RADAR CHART (OVERALL FM STYLE) */}
-            <Card className="border-border bg-card shadow-xl/30">
+            <Card className="border-border bg-card shadow-lg/30">
           <CardHeader className="p-4 pb-0">
             <CardTitle className="text-sm font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
               <Target className="h-4 w-4 text-primary" /> Atribut Kemampuan Atlet
@@ -249,7 +249,7 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
                   <TabsTrigger 
                     key={idx} 
                     value={style.short}
-                    className="text-[11px] py-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]: font-bold transition-all rounded-full w-full text-muted-foreground shadow-xl/30"
+                    className="text-[11px] py-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]: font-bold transition-all rounded-full w-full text-muted-foreground shadow-lg/30"
                   >
                     {style.short}
                   </TabsTrigger>
@@ -259,7 +259,7 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
             </ScrollArea>
 
             {styleBreakdown.map((style, idx) => (
-              <TabsContent key={idx} value={style.short} className="bg-card p-4 rounded-xl border border-border mt-0 space-y-3 shadow-xl/30">
+              <TabsContent key={idx} value={style.short} className="bg-card p-4 rounded-xl border border-border mt-0 space-y-3 shadow-lg/30">
                 <h4 className="font-bold text-xs text-foreground uppercase tracking-widest mb-2 border-b border-border pb-2">{style.name}</h4>
                 {style.metrics.map((metric, mIdx) => (
                   <div key={mIdx} className="space-y-1.5">
@@ -300,7 +300,7 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
                 const isTuntas = completionRate === 100;
 
                 return (
-                  <Card key={session.id} className="border border-border bg-card overflow-hidden relative shadow-xl/30">
+                  <Card key={session.id} className="border border-border bg-card overflow-hidden relative shadow-lg/30">
                     <div className={`absolute left-0 top-0 w-1.5 h-full ${isTuntas ? 'bg-emerald-500' : 'bg-red-500'}`} />
                     <CardContent className="p-0">
                       
@@ -364,7 +364,7 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
                       <Button 
                         key={gaya}
                         variant="ghost"
-                        className={`rounded-full h-8 w-full text-[11px] font-bold transition-all ${selectedStroke === gaya ? 'bg-primary text-primary-foreground shadow-xl hover:bg-primary/90' : 'text-muted-foreground hover:bg-muted/50'}`}
+                        className={`rounded-full h-8 w-full text-[11px] font-bold transition-all ${selectedStroke === gaya ? 'bg-primary text-primary-foreground shadow-lg hover:bg-primary/90' : 'text-muted-foreground hover:bg-muted/50'}`}
                         onClick={() => setSelectedStroke(gaya)}
                       >
                         {gaya}
@@ -376,13 +376,13 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
               </div>
 
               {/* Chart */}
-              <div className="bg-card p-4 rounded-2xl border border-border shadow-xl/30">
+              <div className="bg-card p-4 rounded-2xl border border-border shadow-lg/30">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-xs font-bold text-foreground uppercase tracking-widest">Tren Waktu Time Trial (Detik)</h3>
                   <select 
                     value={selectedYear} 
                     onChange={(e) => setSelectedYear(e.target.value)}
-                    className="bg-muted/30 border border-border rounded-lg text-[10px] py-1 px-2 text-foreground font-bold focus:outline-none focus:ring-1 focus:ring-primary shadow-xl/30"
+                    className="bg-muted/30 border border-border rounded-lg text-[10px] py-1 px-2 text-foreground font-bold focus:outline-none focus:ring-1 focus:ring-primary shadow-lg/30"
                   >
                     <option value="2026">2026</option>
                     <option value="2025">2025</option>
@@ -404,7 +404,7 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
               </div>
 
               {/* Tabel Hasil Time Trial */}
-              <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-xl/30">
+              <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-lg/30">
                 <div className="p-3 bg-muted/30 border-b border-border">
                   <h3 className="text-xs font-bold text-foreground uppercase tracking-widest">Semua Hasil Time Trial</h3>
                 </div>
@@ -453,7 +453,7 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
                       <Button 
                         key={gaya}
                         variant="ghost"
-                        className={`rounded-full h-8 w-full text-[11px] font-bold transition-all ${selectedStroke === gaya ? 'bg-primary text-primary-foreground shadow-xl hover:bg-primary/90' : 'text-muted-foreground hover:bg-muted/50'}`}
+                        className={`rounded-full h-8 w-full text-[11px] font-bold transition-all ${selectedStroke === gaya ? 'bg-primary text-primary-foreground shadow-lg hover:bg-primary/90' : 'text-muted-foreground hover:bg-muted/50'}`}
                         onClick={() => setSelectedStroke(gaya)}
                       >
                         {gaya}
@@ -465,13 +465,13 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
               </div>
 
               {/* Chart */}
-              <div className="bg-card p-4 rounded-2xl border border-border shadow-xl/30">
+              <div className="bg-card p-4 rounded-2xl border border-border shadow-lg/30">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-xs font-bold text-foreground uppercase tracking-widest">Tren Waktu (Detik)</h3>
                   <select 
                     value={selectedYear} 
                     onChange={(e) => setSelectedYear(e.target.value)}
-                    className="bg-muted/30 border border-border rounded-lg text-[10px] py-1 px-2 text-foreground font-bold focus:outline-none focus:ring-1 focus:ring-primary shadow-xl/30"
+                    className="bg-muted/30 border border-border rounded-lg text-[10px] py-1 px-2 text-foreground font-bold focus:outline-none focus:ring-1 focus:ring-primary shadow-lg/30"
                   >
                     <option value="2026">2026</option>
                     <option value="2025">2025</option>
@@ -493,7 +493,7 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
               </div>
 
               {/* Tabel Hasil Perlombaan */}
-              <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-xl/30">
+              <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-lg/30">
                 <div className="p-3 bg-muted/30 border-b border-border">
                   <h3 className="text-xs font-bold text-foreground uppercase tracking-widest">Semua Hasil Perlombaan</h3>
                 </div>

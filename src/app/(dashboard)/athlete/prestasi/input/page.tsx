@@ -111,7 +111,7 @@ export default function InputKejuaraanPage() {
         <div className="p-4 space-y-6">
 
           {/* Form Informasi Event */}
-          <div className="bg-white dark:bg-[#1f1e2e] p-5 rounded-2xl border border-slate-200 dark:border-[#2a293d] space-y-4 shadow-xl/30">
+          <div className="bg-white dark:bg-[#1f1e2e] p-5 rounded-2xl border border-slate-200 dark:border-[#2a293d] space-y-4 shadow-lg/30">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-[#2a293d] pb-2 mb-3">Informasi Umum</h2>
 
             <div className="space-y-1.5">
@@ -151,7 +151,7 @@ export default function InputKejuaraanPage() {
           </div>
 
           {/* Tabel Nomor Kejuaraan */}
-          <div className="bg-white dark:bg-[#1f1e2e] rounded-2xl border border-slate-200 dark:border-[#2a293d] overflow-hidden shadow-xl/30">
+          <div className="bg-white dark:bg-[#1f1e2e] rounded-2xl border border-slate-200 dark:border-[#2a293d] overflow-hidden shadow-lg/30">
             <div className="p-4 bg-slate-100 dark:bg-[#2a293d]/50 border-b border-slate-200 dark:border-[#2a293d] flex justify-between items-center">
               <div>
                 <h2 className="text-sm font-bold text-slate-900 dark:text-white">Tabel Nomor Kejuaraan</h2>
@@ -245,7 +245,7 @@ export default function InputKejuaraanPage() {
         <Button onClick={() => {
           alert('Data Kejuaraan berhasil disimpan!');
           router.back();
-        }} className="w-full h-12 bg-[#ff4b4b] hover:bg-red-600 text-white font-bold text-sm rounded-xl shadow-xl/30">
+        }} className="w-full h-12 bg-[#ff4b4b] hover:bg-red-600 text-white font-bold text-sm rounded-xl shadow-lg/30">
           <Save className="mr-2 h-4 w-4" /> Simpan Semua Data
         </Button>
       </div>
@@ -305,14 +305,14 @@ export default function InputKejuaraanPage() {
           </div>
 
           <div className="p-6 text-center">
-            <div className="text-6xl font-mono font-black text-slate-900 dark:text-white tracking-tighter mb-8 shadow-xl/30">
+            <div className="text-6xl font-mono font-black text-slate-900 dark:text-white tracking-tighter mb-8 shadow-lg/30">
               {formatTime(timeMs)}
             </div>
 
             <div className="flex gap-3 justify-center">
               <Button
                 onClick={toggleStopwatch}
-                className={`flex-1 h-12 rounded-xl font-bold shadow-xl ${isRunning ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-indigo-500 hover:bg-indigo-600 text-slate-900 dark:text-white'}`}
+                className={`flex-1 h-12 rounded-xl font-bold shadow-lg ${isRunning ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-indigo-500 hover:bg-indigo-600 text-slate-900 dark:text-white'}`}
               >
                 {isRunning ? <><Square className="h-4 w-4 mr-2" /> Pause</> : <><Play className="h-4 w-4 mr-2" /> Start</>}
               </Button>

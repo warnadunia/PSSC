@@ -31,7 +31,7 @@ export default function CoachLayout({ children }: { children: ReactNode }) {
       </main>
 
       {/* BOTTOM NAVIGATION BAR */}
-      {/* THEME UPDATE: bg-white jadi Navy solid, border digelapin, shadow-xl dibikin lebih dramatis */}
+      {/* THEME UPDATE: bg-white jadi Navy solid, border digelapin, shadow-lg dibikin lebih dramatis */}
       <nav className="absolute bottom-0 w-full flex h-16 items-center justify-between px-2 border-t border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] pb-safe z-40 -[0_-10px_30px_rgba(0,0,0,0.1)] shadow-[0_-10px_30px_rgba(0,0,0,0.3)]">
         {navItems.map((item) => {
           const isActive = pathname.includes(item.href)
@@ -64,7 +64,7 @@ export default function CoachLayout({ children }: { children: ReactNode }) {
             </SheetHeader>
             <div className="grid grid-cols-4 gap-4 md:grid-cols-6 lg:grid-cols-8">
               <div className="flex flex-col items-center gap-2 cursor-pointer group">
-                <div className="h-12 w-12 bg-slate-100 dark:bg-[#2a293d] rounded-2xl group-hover:bg-[#ff4b4b] dark:group-hover:bg-[#ff4b4b] transition-colors flex items-center justify-center font-bold text-white group-hover:text-white shadow-xl/30">A</div>
+                <div className="h-12 w-12 bg-slate-100 dark:bg-[#2a293d] rounded-2xl group-hover:bg-[#ff4b4b] dark:group-hover:bg-[#ff4b4b] transition-colors flex items-center justify-center font-bold text-white group-hover:text-white shadow-lg/30">A</div>
                 <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Page A</span>
               </div>
             </div>

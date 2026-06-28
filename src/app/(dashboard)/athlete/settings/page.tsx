@@ -55,7 +55,7 @@ export default function AthleteSettingsPage() {
         <div className="p-4 md:p-6 lg:p-8 space-y-6">
           
           {/* USER CARD COMPACT */}
-          <div className="bg-white dark:bg-[#1f1e2e] p-4 rounded-2xl border border-slate-200 dark:border-[#2a293d] flex items-center gap-4 shadow-xl/30">
+          <div className="bg-white dark:bg-[#1f1e2e] p-4 rounded-2xl border border-slate-200 dark:border-[#2a293d] flex items-center gap-4 shadow-lg/30">
             <div className="w-14 h-14 bg-slate-100 dark:bg-[#2a293d] rounded-full flex items-center justify-center shrink-0 border-2 border-[#ff4b4b]">
               <User className="h-6 w-6 text-slate-600 dark:text-slate-300" />
             </div>
@@ -75,7 +75,7 @@ export default function AthleteSettingsPage() {
                 <h3 className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest px-2">
                   {group.title}
                 </h3>
-                <div className="bg-white dark:bg-[#1f1e2e] rounded-2xl border border-slate-200 dark:border-[#2a293d] overflow-hidden shadow-xl/30">
+                <div className="bg-white dark:bg-[#1f1e2e] rounded-2xl border border-slate-200 dark:border-[#2a293d] overflow-hidden shadow-lg/30">
                   {group.items.map((item: any, iIdx: number) => {
                     const Icon = item.icon
                     const isLast = iIdx === group.items.length - 1
@@ -104,7 +104,7 @@ export default function AthleteSettingsPage() {
                             }}
                             className={`w-11 h-6 rounded-full flex items-center p-1 cursor-pointer transition-colors ${item.state ? 'bg-[#ff4b4b]' : 'bg-slate-300 dark:bg-[#2a293d]'}`}
                           >
-                            <div className={`bg-white w-4 h-4 rounded-full shadow-xl transform transition-transform ${item.state ? 'translate-x-5' : 'translate-x-0'}`} />
+                            <div className={`bg-white w-4 h-4 rounded-full shadow-lg transform transition-transform ${item.state ? 'translate-x-5' : 'translate-x-0'}`} />
                           </div>
                         ) : (
                           <ChevronRight className="h-4 w-4 text-slate-500" />

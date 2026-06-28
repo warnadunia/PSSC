@@ -75,7 +75,7 @@ export default function TrainingPage() {
         {/* ==========================================
             READINESS GAP ALERT
             ========================================== */}
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex gap-3 shadow-xl relative overflow-hidden">
+        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex gap-3 shadow-lg relative overflow-hidden">
           <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-amber-500/10 to-transparent pointer-events-none"></div>
           <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" />
           <div>
@@ -103,7 +103,7 @@ export default function TrainingPage() {
             <div className="flex w-max space-x-4">
 
               {/* Grafik Penyelesaian Latihan */}
-              <Card className="w-[280px] border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shrink-0 shadow-xl/30">
+              <Card className="w-[280px] border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shrink-0 shadow-lg/30">
                 <CardHeader className="p-4 pb-0">
                   <CardTitle className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-2 uppercase tracking-widest">
                     <CheckSquare className="h-3.5 w-3.5 text-emerald-500" />
@@ -147,7 +147,7 @@ export default function TrainingPage() {
               </Card>
 
               {/* Grafik Batas Promosi */}
-              <Card className="w-[300px] border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shrink-0 shadow-xl/30">
+              <Card className="w-[300px] border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shrink-0 shadow-lg/30">
                 <CardHeader className="p-4 pb-0">
                   <CardTitle className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-2 uppercase tracking-widest">
                     <TrendingUp className="h-3.5 w-3.5 text-blue-500" />
@@ -167,7 +167,7 @@ export default function TrainingPage() {
               </Card>
 
               {/* Grafik Performa Kelas */}
-              <Card className="w-[280px] border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shrink-0 shadow-xl/30">
+              <Card className="w-[280px] border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shrink-0 shadow-lg/30">
                 <CardHeader className="p-4 pb-0">
                   <CardTitle className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-2 uppercase tracking-widest">
                     <Target className="h-3.5 w-3.5 text-purple-500" />
@@ -194,10 +194,10 @@ export default function TrainingPage() {
 
         <Tabs defaultValue="program" className="w-full">
           <TabsList className="w-full grid grid-cols-2 bg-slate-50 dark:bg-[#161622] p-1 rounded-xl mb-4 border border-slate-200 dark:border-[#2a293d]">
-            <TabsTrigger value="program" className="text-xs py-2 data-[state=active]:bg-white dark:bg-[#1f1e2e] text-slate-500 dark:text-slate-400 data-[state=active]:text-[#ff4b4b] data-[state=active]: font-bold uppercase tracking-widest shadow-xl/30">
+            <TabsTrigger value="program" className="text-xs py-2 data-[state=active]:bg-white dark:bg-[#1f1e2e] text-slate-500 dark:text-slate-400 data-[state=active]:text-[#ff4b4b] data-[state=active]: font-bold uppercase tracking-widest shadow-lg/30">
               Program
             </TabsTrigger>
-            <TabsTrigger value="personal" className="text-xs py-2 data-[state=active]:bg-white dark:bg-[#1f1e2e] text-slate-500 dark:text-slate-400 data-[state=active]:text-[#ff4b4b] data-[state=active]: font-bold uppercase tracking-widest shadow-xl/30">
+            <TabsTrigger value="personal" className="text-xs py-2 data-[state=active]:bg-white dark:bg-[#1f1e2e] text-slate-500 dark:text-slate-400 data-[state=active]:text-[#ff4b4b] data-[state=active]: font-bold uppercase tracking-widest shadow-lg/30">
               Personal
             </TabsTrigger>
           </TabsList>
@@ -205,7 +205,7 @@ export default function TrainingPage() {
           {/* TAB 1: PROGRAM (Tetap sama) */}
           <TabsContent value="program" className="space-y-4">
             <Sheet>
-              <SheetTrigger className="inline-flex items-center justify-center rounded-lg text-xs font-bold transition-colors w-full bg-white dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] text-slate-900 dark:text-white h-10 px-4 hover:bg-slate-100 dark:bg-[#2a293d] uppercase tracking-widest shadow-xl/30">
+              <SheetTrigger className="inline-flex items-center justify-center rounded-lg text-xs font-bold transition-colors w-full bg-white dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] text-slate-900 dark:text-white h-10 px-4 hover:bg-slate-100 dark:bg-[#2a293d] uppercase tracking-widest shadow-lg/30">
                 <Filter className="mr-2 h-4 w-4 text-[#ff4b4b]" /> Filter Kelas ({selectedClasses.length === 0 ? 'Semua' : selectedClasses.length})
               </SheetTrigger>
               <SheetContent side="bottom" className="rounded-t-2xl px-4 pb-8 pt-4 bg-white dark:bg-[#1f1e2e] border-t border-slate-200 dark:border-[#2a293d]">
@@ -225,7 +225,7 @@ export default function TrainingPage() {
 
             <div className="space-y-3">
               {filteredPrograms.length > 0 ? filteredPrograms.map((prog) => (
-                <Card key={prog.id} onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)} className="bg-white dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] cursor-pointer hover:ring-2 hover:ring-[#ff4b4b]/50 transition-all shadow-xl/30">
+                <Card key={prog.id} onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)} className="bg-white dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] cursor-pointer hover:ring-2 hover:ring-[#ff4b4b]/50 transition-all shadow-lg/30">
                   <CardHeader className="p-4 pb-2">
                     <div className="flex justify-between items-start mb-2">
                       <Badge variant="outline" className="text-[10px] bg-[#ff4b4b]/10 text-[#ff4b4b] border-[#ff4b4b]/30 uppercase tracking-widest">{prog.class} • {prog.time}</Badge>
@@ -258,7 +258,7 @@ export default function TrainingPage() {
             <div className="space-y-4">
               {personals.map(prog => {
                 return (
-                  <Card key={prog.id} className="border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shadow-xl/30">
+                  <Card key={prog.id} className="border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shadow-lg/30">
                     <CardContent className="p-4">
                       {/* Klik Header = Buka SubPage */}
                       <div className="cursor-pointer group mb-3" onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)}>
@@ -273,7 +273,7 @@ export default function TrainingPage() {
                       <div className="pt-3 border-t border-slate-200 dark:border-[#2a293d]">
                         <Button
                           onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)}
-                          className="w-full bg-[#ff4b4b] hover:bg-[#ff4b4b]/90 text-slate-900 dark:text-white text-xs font-bold h-9 uppercase tracking-widest shadow-xl/30"
+                          className="w-full bg-[#ff4b4b] hover:bg-[#ff4b4b]/90 text-slate-900 dark:text-white text-xs font-bold h-9 uppercase tracking-widest shadow-lg/30"
                         >
                           <Play className="mr-2 h-4 w-4 fill-white" /> Latihan Sekarang
                         </Button>

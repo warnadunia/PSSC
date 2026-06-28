@@ -42,7 +42,7 @@ export default function BiodataPage({ params }: { params: Promise<{ id: string }
     <div className="flex flex-col h-[100dvh] w-full" suppressHydrationWarning>
       
       {/* Header */}
-      <div className="h-14 px-4 flex items-center bg-card border-b border-border sticky top-0 z-50 shrink-0 shadow-xl/30">
+      <div className="h-14 px-4 flex items-center bg-card border-b border-border sticky top-0 z-50 shrink-0 shadow-lg/30">
         <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 mr-3 rounded-full hover:bg-muted text-muted-foreground hover:text-foreground">
           <ChevronLeft className="h-5 w-5" />
         </Button>
@@ -52,10 +52,10 @@ export default function BiodataPage({ params }: { params: Promise<{ id: string }
       <main className="flex-1 overflow-y-auto w-full p-4 pb-12">
         
         {/* Profile Card */}
-        <div className="bg-card rounded-3xl p-6 border border-border mb-4 flex flex-col items-center text-center relative overflow-hidden shadow-xl/30">
+        <div className="bg-card rounded-3xl p-6 border border-border mb-4 flex flex-col items-center text-center relative overflow-hidden shadow-lg/30">
           <div className="absolute top-0 left-0 w-full h-24 bg-primary/20"></div>
           
-          <Avatar className="h-24 w-24 ring-4 ring-card mb-4 relative z-10 shadow-xl/30">
+          <Avatar className="h-24 w-24 ring-4 ring-card mb-4 relative z-10 shadow-lg/30">
             <AvatarImage src={biodata.photo} alt={biodata.name} className="object-cover" />
             <AvatarFallback className="bg-primary text-primary-foreground font-black text-3xl">
               {biodata.name.charAt(0)}
@@ -77,17 +77,17 @@ export default function BiodataPage({ params }: { params: Promise<{ id: string }
 
         {/* Physical Stats */}
         <div className="grid grid-cols-3 gap-3 mb-4">
-          <div className="bg-card p-3 rounded-2xl border border-border flex flex-col items-center justify-center text-center shadow-xl/30">
+          <div className="bg-card p-3 rounded-2xl border border-border flex flex-col items-center justify-center text-center shadow-lg/30">
             <Activity className="h-5 w-5 text-blue-500 mb-1" />
             <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest mb-0.5">Tinggi</p>
             <p className="text-sm font-black text-foreground">{biodata.height}</p>
           </div>
-          <div className="bg-card p-3 rounded-2xl border border-border flex flex-col items-center justify-center text-center shadow-xl/30">
+          <div className="bg-card p-3 rounded-2xl border border-border flex flex-col items-center justify-center text-center shadow-lg/30">
             <Activity className="h-5 w-5 text-emerald-500 mb-1" />
             <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest mb-0.5">Berat</p>
             <p className="text-sm font-black text-foreground">{biodata.weight}</p>
           </div>
-          <div className="bg-card p-3 rounded-2xl border border-border flex flex-col items-center justify-center text-center shadow-xl/30">
+          <div className="bg-card p-3 rounded-2xl border border-border flex flex-col items-center justify-center text-center shadow-lg/30">
             <Droplet className="h-5 w-5 text-red-500 mb-1 fill-red-500/20" />
             <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest mb-0.5">Gol. Darah</p>
             <p className="text-sm font-black text-foreground">{biodata.bloodType}</p>
@@ -95,7 +95,7 @@ export default function BiodataPage({ params }: { params: Promise<{ id: string }
         </div>
 
         {/* Detailed Info */}
-        <div className="bg-card rounded-3xl p-5 border border-border space-y-4 shadow-xl/30">
+        <div className="bg-card rounded-3xl p-5 border border-border space-y-4 shadow-lg/30">
           
           <div>
             <h3 className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest mb-3 flex items-center">

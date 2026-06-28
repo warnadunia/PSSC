@@ -40,7 +40,7 @@ export default function PermissionPage() {
               Statistik Ketidakhadiran
             </h2>
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white dark:bg-[#1f1e2e] p-4 rounded-2xl border border-slate-200 dark:border-[#2a293d] shadow-xl/30 flex flex-col justify-between relative overflow-hidden">
+              <div className="bg-white dark:bg-[#1f1e2e] p-4 rounded-2xl border border-slate-200 dark:border-[#2a293d] shadow-lg/30 flex flex-col justify-between relative overflow-hidden">
                 <div className="absolute -right-4 -bottom-4 opacity-5">
                   <Clock className="w-24 h-24 text-amber-500" />
                 </div>
@@ -56,7 +56,7 @@ export default function PermissionPage() {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-[#1f1e2e] p-4 rounded-2xl border border-slate-200 dark:border-[#2a293d] shadow-xl/30 flex flex-col justify-between relative overflow-hidden">
+              <div className="bg-white dark:bg-[#1f1e2e] p-4 rounded-2xl border border-slate-200 dark:border-[#2a293d] shadow-lg/30 flex flex-col justify-between relative overflow-hidden">
                 <div className="absolute -right-4 -bottom-4 opacity-5">
                   <XCircle className="w-24 h-24 text-[#ff4b4b]" />
                 </div>
@@ -75,7 +75,7 @@ export default function PermissionPage() {
           </section>
 
           {/* FORM PENGAJUAN */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 md:p-6 border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl p-5 md:p-6 border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white tracking-wide mb-6 flex items-center gap-2">
               <FileText className="h-5 w-5 text-[#ff4b4b]" />
               Formulir Ijin
@@ -98,7 +98,7 @@ export default function PermissionPage() {
                       key={item.id}
                       type="button"
                       onClick={() => setType(item.id as any)}
-                      className={`flex flex-col items-center justify-center p-3 rounded-2xl border-2 transition-all duration-200 shadow-xl ${
+                      className={`flex flex-col items-center justify-center p-3 rounded-2xl border-2 transition-all duration-200 shadow-lg ${
                         type === item.id 
                           ? 'border-[#ff4b4b] bg-red-50 dark:bg-[#ff4b4b]/10 text-[#ff4b4b]' 
                           : 'border-slate-200 dark:border-[#2a293d] bg-slate-50 dark:bg-[#161622] text-slate-500 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-100 dark:hover:bg-[#2a293d]/50'
@@ -148,7 +148,7 @@ export default function PermissionPage() {
               <Button
                 type="submit"
                 disabled={!type || !reason || !date || isSubmitting}
-                className="w-full h-14 bg-[#ff4b4b] hover:bg-red-700 text-white font-bold text-sm tracking-widest uppercase rounded-xl shadow-xl/30 transition-all"
+                className="w-full h-14 bg-[#ff4b4b] hover:bg-red-700 text-white font-bold text-sm tracking-widest uppercase rounded-xl shadow-lg/30 transition-all"
               >
                 {isSubmitting ? (
                   <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

@@ -35,12 +35,12 @@ export default function ProfileReadPage() {
         <div className="p-4 md:p-6 lg:p-8 space-y-6">
           
           {/* PHOTO SECTION */}
-          <section className="flex flex-col items-center justify-center bg-white dark:bg-[#1f1e2e] p-6 rounded-3xl border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="flex flex-col items-center justify-center bg-white dark:bg-[#1f1e2e] p-6 rounded-3xl border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <div className="relative mb-4">
               <div className="w-24 h-24 rounded-full bg-slate-100 dark:bg-[#2a293d] border-[3px] border-slate-200 dark:border-slate-600 overflow-hidden">
                 <img src="https://i.pravatar.cc/150?img=62" alt="Profile" className="w-full h-full object-cover" />
               </div>
-              <button className="absolute bottom-0 right-0 p-2 bg-[#ff4b4b] text-white rounded-full border-[3px] border-white dark:border-[#1f1e2e] shadow-xl hover:bg-red-600 transition-colors">
+              <button className="absolute bottom-0 right-0 p-2 bg-[#ff4b4b] text-white rounded-full border-[3px] border-white dark:border-[#1f1e2e] shadow-lg hover:bg-red-600 transition-colors">
                 <Camera className="h-4 w-4" />
               </button>
             </div>
@@ -49,7 +49,7 @@ export default function ProfileReadPage() {
           </section>
 
           {/* BASIC INFO */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl overflow-hidden border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl overflow-hidden border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <div className="bg-slate-100 dark:bg-[#2a293d]/50 px-5 py-3 border-b border-slate-200 dark:border-[#2a293d]">
               <h3 className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2">
                 <UserIcon className="h-4 w-4 text-blue-500" /> Data Diri
@@ -88,7 +88,7 @@ export default function ProfileReadPage() {
           </section>
 
           {/* SCHOOL INFO */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl overflow-hidden border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl overflow-hidden border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <div className="bg-slate-100 dark:bg-[#2a293d]/50 px-5 py-3 border-b border-slate-200 dark:border-[#2a293d]">
               <h3 className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2">
                 <GraduationCap className="h-4 w-4 text-amber-500" /> Data Kesiswaan
@@ -109,7 +109,7 @@ export default function ProfileReadPage() {
           </section>
 
           {/* CONTACT INFO */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl overflow-hidden border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl overflow-hidden border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <div className="bg-slate-100 dark:bg-[#2a293d]/50 px-5 py-3 border-b border-slate-200 dark:border-[#2a293d]">
               <h3 className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2">
                 <Phone className="h-4 w-4 text-emerald-500" /> Kontak & Domisili
@@ -128,7 +128,7 @@ export default function ProfileReadPage() {
           </section>
 
           {/* PARENT INFO */}
-          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl overflow-hidden border border-slate-200 dark:border-[#2a293d] shadow-xl/30">
+          <section className="bg-white dark:bg-[#1f1e2e] rounded-3xl overflow-hidden border border-slate-200 dark:border-[#2a293d] shadow-lg/30">
             <div className="bg-slate-100 dark:bg-[#2a293d]/50 px-5 py-3 border-b border-slate-200 dark:border-[#2a293d]">
               <h3 className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2">
                 <Users className="h-4 w-4 text-purple-500" /> Data Wali Darurat
@@ -155,7 +155,7 @@ export default function ProfileReadPage() {
           {/* ACTION BUTTON */}
           <Button 
             onClick={() => router.push('/athlete/settings/profile/edit')}
-            className="w-full h-14 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-bold text-sm tracking-widest uppercase rounded-xl shadow-xl/30 transition-all mt-4"
+            className="w-full h-14 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-bold text-sm tracking-widest uppercase rounded-xl shadow-lg/30 transition-all mt-4"
           >
             <Edit className="h-4 w-4 mr-2" />
             Edit Data Profil
