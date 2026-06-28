@@ -240,6 +240,63 @@ export default function CoachMyPage() {
         </section>
 
         {/* ==========================================
+            3.5 LINTASAN & MONITORING TIM (Alert & Diagnosis)
+            ========================================== */}
+        <section className="space-y-4">
+          <h3 className="font-heading font-bold tracking-widest uppercase text-sm text-slate-800 dark:text-white">Lintasan & Monitoring Tim</h3>
+          
+          {/* ALERT KESEHATAN ATLET */}
+          <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 shadow-sm relative overflow-hidden">
+            <div className="flex gap-3">
+              <div className="mt-0.5 animate-pulse">
+                <span className="flex h-3 w-3 rounded-full bg-amber-500 shadow-[0_0_8px_#f59e0b]"></span>
+              </div>
+              <div>
+                <h4 className="text-xs font-bold text-amber-900 dark:text-amber-500 uppercase tracking-widest mb-1 flex items-center gap-2">
+                  ⚠️ Alert Cedera Atlet
+                </h4>
+                <p className="text-[11px] text-amber-800/80 dark:text-amber-500/80 leading-relaxed font-medium mb-2">
+                  <span className="font-bold">Sakti Mahesa</span> melaporkan <i>Nyeri Bahu Kanan</i> saat melakukan set 4x100m Bebas kemarin.
+                </p>
+                <div className="bg-white/50 dark:bg-black/20 p-2 rounded-lg border border-amber-500/20">
+                  <p className="text-[10px] font-bold text-amber-700 dark:text-amber-400">Saran Sistem:</p>
+                  <p className="text-[10px] text-amber-900 dark:text-amber-500/80 mt-0.5">Kurangi volume latihan gaya dada/bebas Sakti hari ini, fokus pada kick atau recovery.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* EVALUASI SESI KEMARIN */}
+          <Card className="bg-white dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] shadow-lg rounded-2xl overflow-hidden">
+            <div className="bg-slate-50 dark:bg-[#161622] p-3 border-b border-slate-200 dark:border-[#2a293d] flex justify-between items-center">
+              <h4 className="text-[11px] font-bold text-slate-800 dark:text-white uppercase tracking-widest flex items-center gap-2">
+                📊 Diagnosis Sesi Kemarin <span className="text-slate-400 font-normal">(Elite Class)</span>
+              </h4>
+              <Badge className="bg-emerald-500/10 text-emerald-500 border-none text-[9px] uppercase">Selesai</Badge>
+            </div>
+            <CardContent className="p-4 space-y-3">
+              <div className="flex justify-between items-center border-b border-slate-100 dark:border-[#2a293d] pb-2">
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400">Rata-rata Penyelesaian</span>
+                <span className="text-xs font-bold text-emerald-500">88% Tuntas</span>
+              </div>
+              <div>
+                <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest block mb-1">Catatan Kegagalan Utama</span>
+                <div className="bg-[#ff4b4b]/5 border border-[#ff4b4b]/10 rounded-lg p-2.5 flex items-start gap-2">
+                  <Activity className="h-3.5 w-3.5 text-[#ff4b4b] mt-0.5" />
+                  <div>
+                    <p className="text-xs font-bold text-slate-700 dark:text-slate-300">Kelelahan Ekstrem</p>
+                    <p className="text-[10px] text-slate-500 mt-0.5">2 atlet (Bima Arya & Rara Kirana) skip set utama pada 30 menit terakhir.</p>
+                  </div>
+                </div>
+              </div>
+              <Button variant="outline" className="w-full text-[10px] font-bold uppercase h-8 mt-1 border-slate-200 dark:border-[#34334a] text-slate-600 dark:text-slate-300">
+                Lihat Detail Laporan
+              </Button>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* ==========================================
             4. KARTU STATISTIK ABSENSI & TABEL MINGGUAN
             ========================================== */}
         <section>
