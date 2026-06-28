@@ -179,7 +179,7 @@ export default function MonitoringProgressPage() {
                           {/* Tombol Detail/Review */}
                           {ath.status === "layak" && ath.recommendationId && (
                             <Button 
-                              onClick={() => router.push(`/coach/athletes/promosi?id=${ath.recommendationId}`)}
+                              onClick={() => router.push(`/coach/monitoring/promosi?id=${ath.recommendationId}`)}
                               className="h-8 bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold uppercase tracking-widest rounded-lg px-3 shadow-md"
                             >
                               <Award className="h-3.5 w-3.5 mr-1" /> Promosi
@@ -187,7 +187,7 @@ export default function MonitoringProgressPage() {
                           )}
                           {ath.status === "review" && ath.recommendationId && (
                             <Button 
-                              onClick={() => router.push(`/coach/athletes/promosi?id=${ath.recommendationId}`)}
+                              onClick={() => router.push(`/coach/monitoring/promosi?id=${ath.recommendationId}`)}
                               variant="outline"
                               className="h-8 border-amber-500/30 hover:bg-amber-50 text-amber-600 dark:text-amber-400 text-[10px] font-bold uppercase tracking-widest rounded-lg px-3"
                             >
