@@ -130,7 +130,7 @@ export default function AthleteMyPage() {
         <section>
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-heading font-bold tracking-widest uppercase text-sm text-foreground">Progress Gaya Utama</h3>
-            <span className="text-[10px] font-bold text-primary uppercase tracking-widest hover:underline cursor-pointer">Lihat Detail</span>
+            <span onClick={() => router.push('/athlete/mypage/progress-gaya')} className="text-[10px] font-bold text-primary uppercase tracking-widest hover:underline cursor-pointer">Lihat Detail</span>
           </div>
           <Card className="bg-card border-border shadow-sm p-4">
             <div className="h-32 w-full bg-secondary rounded-xl flex items-end justify-between p-2 gap-2 relative border border-border/50">
