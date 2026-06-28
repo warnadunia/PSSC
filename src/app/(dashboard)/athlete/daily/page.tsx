@@ -1,14 +1,16 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { GlobalHeader } from "@/components/GlobalHeader"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { BatteryCharging, HeartPulse, Moon, Zap, Flame, Droplets, Utensils, ShoppingBag, Info, AlertTriangle, ChevronRight, Activity } from "lucide-react"
+import { BatteryCharging, HeartPulse, Moon, Zap, Flame, Droplets, Utensils, ShoppingBag, Info, AlertTriangle, ChevronRight, Activity, Edit3 } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
 
 export default function DailyPage() {
+  const router = useRouter()
   const [readinessScore] = useState(88) // Example score
   const [sleepTime] = useState("7h 45m")
   const [restingHr] = useState("52 bpm")
@@ -36,9 +38,15 @@ export default function DailyPage() {
               <BatteryCharging className="h-4 w-4 text-[#ff4b4b]" /> Daily Readiness
             </h2>
           </div>
-          <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-xl/30 overflow-hidden rounded-3xl relative">
+          <Card 
+            onClick={() => router.push('/athlete/daily/sleep')}
+            className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-xl/30 overflow-hidden rounded-3xl relative cursor-pointer hover:bg-slate-50 dark:hover:bg-secondary/30 transition-colors"
+          >
             {/* Background accent */}
             <div className="absolute -right-6 -top-6 h-24 w-24 bg-emerald-500/10 rounded-full blur-2xl"></div>
+            <div className="absolute top-4 right-4 bg-slate-100 dark:bg-secondary p-1.5 rounded-full text-slate-400">
+              <Moon className="h-4 w-4" />
+            </div>
             
             <CardContent className="p-5">
               <div className="flex items-center gap-4 mb-5">
@@ -74,7 +82,7 @@ export default function DailyPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-3 pt-4 border-t border-slate-100 dark:border-border">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 cursor-pointer hover:opacity-70" onClick={(e) => { e.stopPropagation(); router.push('/athlete/daily/sleep'); }}>
                   <div className="bg-indigo-50 dark:bg-indigo-500/10 p-2 rounded-xl text-indigo-600 dark:text-indigo-400">
                     <Moon className="h-4 w-4" />
                   </div>
@@ -83,7 +91,7 @@ export default function DailyPage() {
                     <p className="text-sm font-bold text-slate-900 dark:text-white">{sleepTime}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 cursor-pointer hover:opacity-70" onClick={(e) => { e.stopPropagation(); router.push('/athlete/daily/biometrics'); }}>
                   <div className="bg-[#ff4b4b]/10 p-2 rounded-xl text-[#ff4b4b]">
                     <HeartPulse className="h-4 w-4" />
                   </div>
@@ -95,6 +103,15 @@ export default function DailyPage() {
               </div>
             </CardContent>
           </Card>
+          <div className="mt-3">
+            <Button 
+              variant="outline" 
+              onClick={() => router.push('/athlete/daily/biometrics')}
+              className="w-full text-xs font-bold uppercase tracking-widest border-slate-200 dark:border-border text-slate-600 dark:text-slate-300"
+            >
+              <Edit3 className="mr-2 h-3.5 w-3.5" /> Sync Biometrics
+            </Button>
+          </div>
         </section>
 
         {/* 2. THE INTELLIGENT SUGGESTION ENGINE */}
@@ -143,6 +160,9 @@ export default function DailyPage() {
             <h2 className="font-heading font-bold text-sm uppercase tracking-widest text-slate-900 dark:text-white flex items-center gap-2">
               <Utensils className="h-4 w-4 text-[#ff4b4b]" /> Nutrition Blueprint
             </h2>
+            <Button size="sm" variant="ghost" onClick={() => router.push('/athlete/daily/nutrition')} className="h-7 text-[10px] font-bold uppercase tracking-widest text-[#ff4b4b] hover:bg-[#ff4b4b]/10">
+              Update Log
+            </Button>
           </div>
           
           <div className="grid grid-cols-2 gap-3">
