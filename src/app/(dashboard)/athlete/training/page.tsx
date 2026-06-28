@@ -71,7 +71,7 @@ export default function TrainingPage() {
       <GlobalHeader variant="pages" title="Training Center" />
 
       <main className="flex-1 overflow-y-auto px-4 md:px-6 pt-4 pb-28 space-y-5 w-full">
-        
+
         {/* ==========================================
             READINESS GAP ALERT
             ========================================== */}
@@ -98,10 +98,10 @@ export default function TrainingPage() {
               <Activity className="h-4 w-4 text-[#ff4b4b]" /> Analytics Training
             </h2>
           </div>
-          
+
           <ScrollArea className="w-full whitespace-nowrap pb-4">
             <div className="flex w-max space-x-4">
-              
+
               {/* Grafik Penyelesaian Latihan */}
               <Card className="w-[280px] border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] shrink-0 shadow-xl/30">
                 <CardHeader className="p-4 pb-0">
@@ -268,10 +268,10 @@ export default function TrainingPage() {
                         </div>
                         <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{prog.desc}</p>
                       </div>
-                      
+
                       {/* Tombol Latihan Sekarang */}
                       <div className="pt-3 border-t border-slate-200 dark:border-[#2a293d]">
-                        <Button 
+                        <Button
                           onClick={() => router.push(`/athlete/training/${prog.id}?type=${prog.type}`)}
                           className="w-full bg-[#ff4b4b] hover:bg-[#ff4b4b]/90 text-slate-900 dark:text-white text-xs font-bold h-9 uppercase tracking-widest shadow-xl/30"
                         >
