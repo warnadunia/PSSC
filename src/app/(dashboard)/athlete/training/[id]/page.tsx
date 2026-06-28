@@ -1,8 +1,8 @@
 "use client"
 
 import { Suspense, useState, useEffect, useRef } from "react"
-import { useSearchParams, useRouter } from "next/navigation"
-import { MapPin, Clock, Flame, Waves, Play, Square, Timer, Check, X, Save, AlertTriangle, Lightbulb, Target, Brain, Frown, FileWarning } from "lucide-react"
+import { useParams, useSearchParams, useRouter } from "next/navigation"
+import { MapPin, Clock, Flame, Waves, Play, Square, Timer, Check, X, Save, AlertTriangle, Lightbulb, Target, Brain, Frown, FileWarning, ChevronRight } from "lucide-react"
 
 import { GlobalHeader } from "@/components/GlobalHeader"
 import { Button } from "@/components/ui/button"
@@ -48,6 +48,7 @@ const drylandSets = [
 function TrainingDetailContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const params = useParams()
   const type = searchParams.get("type") || "program" // 'program' is pool, 'personal' is dryland
 
   // ==============================
@@ -204,9 +205,13 @@ function TrainingDetailContent() {
                     <div className={`absolute left-0 top-0 bottom-0 w-1 ${item.color}`}></div>
 
                     {/* Kolom 1: Nama Set */}
-                    <div className="flex items-center pl-2">
-                      <span className={`text-sm font-bold ${isChecked ? 'text-slate-400 line-through' : 'text-slate-900 dark:text-white'}`}>
+                    <div 
+                      className="flex items-center pl-2 cursor-pointer group"
+                      onClick={() => router.push(`/athlete/training/${params.id}/movement/${item.id}`)}
+                    >
+                      <span className={`text-sm font-bold flex items-center gap-1.5 ${isChecked ? 'text-slate-400 line-through' : 'text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400'}`}>
                         {item.label}
+                        <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity text-blue-500" />
                       </span>
                     </div>
 
