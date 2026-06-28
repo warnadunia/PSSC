@@ -157,7 +157,7 @@ export default function InputKejuaraanPage() {
                 <h2 className="text-sm font-bold text-slate-900 dark:text-white">Tabel Nomor Kejuaraan</h2>
                 <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Daftar nomor lomba standar Aquatic Indonesia.</p>
               </div>
-              <Button onClick={addEventRow} size="sm" className="h-8 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 text-[10px] font-bold">
+              <Button onClick={addEventRow} size="sm" className="h-8 bg-[#ff4b4b] hover:bg-red-600 text-white text-[10px] font-bold">
                 + Tambah Nomor
               </Button>
             </div>
@@ -177,7 +177,7 @@ export default function InputKejuaraanPage() {
                     <tr key={ev.id} className="border-b border-slate-200 dark:border-[#2a293d] hover:bg-slate-50 dark:bg-[#161622]/50">
                       <td className="p-3">
                         <select 
-                          className="w-full bg-transparent border border-slate-200 dark:border-[#2a293d] rounded-md text-xs font-semibold text-slate-900 dark:text-white p-1.5 focus:ring-0"
+                          className="w-full bg-transparent border border-slate-200 dark:border-[#2a293d] rounded-md text-xs font-semibold text-slate-900 dark:text-white p-1.5 focus:ring-0 dark:[color-scheme:dark]"
                           value={ev.name}
                           onChange={(e) => setEvents(events.map(item => item.id === ev.id ? {...item, name: e.target.value} : item))}
                         >
@@ -190,7 +190,7 @@ export default function InputKejuaraanPage() {
                       <td className="p-3">
                         <div className="flex items-center justify-center">
                         {ev.timeRecord ? (
-                          <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10 px-2 py-1 rounded-md border border-blue-100 dark:border-blue-500/20">
+                          <span className="font-mono text-xs font-bold text-[#ff4b4b] bg-[#ff4b4b]/10 px-2 py-1 rounded-md border border-[#ff4b4b]/20">
                             {ev.timeRecord}
                           </span>
                         ) : (
@@ -200,7 +200,7 @@ export default function InputKejuaraanPage() {
                           variant="outline" 
                           size="icon" 
                           onClick={() => openStopwatchModal(ev)}
-                          className="h-7 w-7 rounded-full text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-500/30 hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-blue-500/20 dark:hover:text-blue-300 ml-2"
+                          className="h-7 w-7 rounded-full text-[#ff4b4b] border-[#ff4b4b]/30 hover:bg-[#ff4b4b]/10 ml-2"
                           title="Start Stopwatch"
                         >
                           <Timer className="h-3.5 w-3.5" />
@@ -241,11 +241,11 @@ export default function InputKejuaraanPage() {
       </main>
 
       {/* Footer Save Button */}
-      <div className="fixed bottom-16 w-full bg-white dark:bg-[#1f1e2e] border-t p-4 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+      <div className="fixed bottom-16 w-full bg-white dark:bg-[#1f1e2e] border-t dark:border-[#2a293d] p-4 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
         <Button onClick={() => {
             alert('Data Kejuaraan berhasil disimpan!');
             router.back();
-        }} className="w-full h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-bold text-sm rounded-xl shadow-xl/30">
+        }} className="w-full h-12 bg-[#ff4b4b] hover:bg-red-600 text-white font-bold text-sm rounded-xl shadow-xl/30">
           <Save className="mr-2 h-4 w-4" /> Simpan Semua Data
         </Button>
       </div>
