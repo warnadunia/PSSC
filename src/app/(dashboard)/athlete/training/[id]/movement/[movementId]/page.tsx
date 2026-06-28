@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, use } from "react"
 import { useRouter } from "next/navigation"
-import { ChevronLeft, Play, Squ, Checkare, Save, Timer } from "lucide-react"
+import { ChevronLeft, Play, Square, Save, Timer } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
@@ -35,11 +35,11 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
 
   const toggleTimer = () => {
     if (isRunning) {
-      i(timerRef.current) clearInterval(timerRef.current)
+      if (timerRef.current) clearInterval(timerRef.current)
       setIsRunning(false)
     } else {
       setIsRunning(true)
-      const sttTime = Date.now() - timeMs
+      const startTime = Date.now() - timeMs
       timerRef.current = setInterval(() => setTimeMs(Date.now() - startTime), 10)
     }
   }
@@ -129,7 +129,7 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
               {isRunning ? (
                 <><Square className="h-5 w-5 mr-3 fill-white" /> PAUSE TIMER</>
               ) : (
-                <><Play className="h5 w-5 mr-3 fill-white" /> LAKUKAN SEKARAG</>
+                <><Play className="h-5 w-5 mr-3 fill-white" /> LAKUKAN SEKARANG</>
               )}
             </Button>
 
@@ -141,7 +141,7 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
                 setTimeMs(0);
                 router.back();
               }}
-              className="w-full h-14 rounded-2xl fontbold text-slate-600 dark:text-slate-300 border-2 border-slate-200 dark:border-[#2a293d] hover:bg-slate-50 dark:bg-[#161622] hover:text-emerald-600 hover:border-emerald-200 transition-colors"
+              className="w-full h-14 rounded-2xl font-bold text-slate-600 dark:text-slate-300 border-2 border-slate-200 dark:border-[#2a293d] hover:bg-slate-50 dark:bg-[#161622] hover:text-emerald-600 hover:border-emerald-200 transition-colors"
             >
               <Save className="h-5 w-5 mr-2" />
               SIMPAN Waktu

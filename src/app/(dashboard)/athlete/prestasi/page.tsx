@@ -176,7 +176,7 @@ export default function PrestasiPage() {
                     <RadarChart 
                       cx="50%" cy="50%" outerRadius="75%" data={radarData}
                       onClick={(e) => {
-                        if (e && e.activeLabel) setSelectedAttribute(e.activeLabel)
+                        if (e && e.activeLabel) setSelectedAttribute(String(e.activeLabel))
                       }}
                       className="cursor-pointer"
                     >
