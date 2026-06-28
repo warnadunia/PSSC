@@ -108,6 +108,17 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
                 <SheetClose render={
                   <Button 
                     variant="ghost" 
+                    onClick={() => router.push('/athlete/mypage/progress-gaya')} 
+                    className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
+                  >
+                    <Activity className="mr-3 h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                    <span className="font-bold text-sm tracking-wide">Progress Gaya</span>
+                  </Button>
+                } />
+
+                <SheetClose render={
+                  <Button 
+                    variant="ghost" 
                     onClick={() => router.push('/athlete/settings')} 
                     className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
                   >
