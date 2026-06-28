@@ -399,7 +399,7 @@ export default function PrestasiPage() {
                         <th className="px-3 py-2.5 font-bold text-slate-500 dark:text-slate-400">Jarak</th>
                         <th className="px-3 py-2.5 font-bold text-slate-500 dark:text-slate-400 text-center">Rekor Waktu</th>
                         <th className="px-3 py-2.5 font-bold text-slate-500 dark:text-slate-400 text-center">Status KU</th>
-                        <th className="px-3 py-2.5 font-bold text-slate-500 dark:text-slate-400">Event</th>
+                        <th className="px-3 py-2.5 font-bold text-slate-500 dark:text-slate-400">{tabType === 'kejuaraan' ? 'Event' : 'Tanggal'}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -428,7 +428,7 @@ export default function PrestasiPage() {
                                   </Badge>
                                 )}
                               </td>
-                              <td className="px-3 py-3 text-slate-500 dark:text-slate-400 font-medium">{record.event}</td>
+                              <td className="px-3 py-3 text-slate-500 dark:text-slate-400 font-medium">{tabType === 'kejuaraan' ? record.event : record.date}</td>
                             </tr>
                           )
                         })
