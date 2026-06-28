@@ -14,11 +14,48 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from "recharts"
+
+const strokeProgressData: Record<string, any[]> = {
+  "Bebas": [
+    { month: 'Jan', rekornas: 22.5, bestTime: 25.1 },
+    { month: 'Feb', rekornas: 22.5, bestTime: 24.8 },
+    { month: 'Mar', rekornas: 22.5, bestTime: 24.5 },
+    { month: 'Apr', rekornas: 22.5, bestTime: 24.2 },
+    { month: 'Mei', rekornas: 22.5, bestTime: 23.9 },
+    { month: 'Jun', rekornas: 22.5, bestTime: 23.6 },
+  ],
+  "Kupu-kupu": [
+    { month: 'Jan', rekornas: 24.0, bestTime: 26.5 },
+    { month: 'Feb', rekornas: 24.0, bestTime: 26.2 },
+    { month: 'Mar', rekornas: 24.0, bestTime: 25.9 },
+    { month: 'Apr', rekornas: 24.0, bestTime: 25.5 },
+    { month: 'Mei', rekornas: 24.0, bestTime: 25.2 },
+    { month: 'Jun', rekornas: 24.0, bestTime: 24.9 },
+  ],
+  "Punggung": [
+    { month: 'Jan', rekornas: 25.1, bestTime: 28.1 },
+    { month: 'Feb', rekornas: 25.1, bestTime: 27.5 },
+    { month: 'Mar', rekornas: 25.1, bestTime: 27.2 },
+    { month: 'Apr', rekornas: 25.1, bestTime: 26.9 },
+    { month: 'Mei', rekornas: 25.1, bestTime: 26.6 },
+    { month: 'Jun', rekornas: 25.1, bestTime: 26.3 },
+  ],
+  "Dada": [
+    { month: 'Jan', rekornas: 27.5, bestTime: 31.0 },
+    { month: 'Feb', rekornas: 27.5, bestTime: 30.5 },
+    { month: 'Mar', rekornas: 27.5, bestTime: 30.0 },
+    { month: 'Apr', rekornas: 27.5, bestTime: 29.5 },
+    { month: 'Mei', rekornas: 27.5, bestTime: 29.2 },
+    { month: 'Jun', rekornas: 27.5, bestTime: 28.8 },
+  ]
+}
 
 export default function AthleteMyPage() {
 
   // Fake state to simulate checked-in or not 
   const [isCheckedIn, setIsCheckedIn] = useState(false)
+  const [selectedProgressStroke, setSelectedProgressStroke] = useState("Bebas")
   const router = typeof window !== 'undefined' ? require('next/navigation').useRouter() : null;
 
   // Dummy Data Rekap Absensi
@@ -129,25 +166,70 @@ export default function AthleteMyPage() {
             ========================================== */}
         <section>
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-heading font-bold tracking-widest uppercase text-sm text-foreground">Progress Gaya Utama</h3>
+            <h3 className="font-heading font-bold tracking-widest uppercase text-sm text-foreground">PROGRES GAYA</h3>
             <span onClick={() => router.push('/athlete/mypage/progress-gaya')} className="text-[10px] font-bold text-primary uppercase tracking-widest hover:underline cursor-pointer">Lihat Detail</span>
           </div>
+          
+          <div className="flex gap-2 mb-3 overflow-x-auto pb-1 scrollbar-none">
+            {["Bebas", "Kupu-kupu", "Punggung", "Dada"].map(stroke => (
+              <Button
+                key={stroke}
+                variant={selectedProgressStroke === stroke ? "default" : "outline"}
+                className={`rounded-full h-8 px-4 text-[10px] font-bold uppercase tracking-widest transition-all whitespace-nowrap ${
+                  selectedProgressStroke === stroke 
+                    ? 'bg-[#ff4b4b] hover:bg-[#ff4b4b]/90 text-white shadow-[0_0_10px_#ff4b4b] border-none' 
+                    : 'bg-card text-muted-foreground border-border hover:bg-secondary'
+                }`}
+                onClick={() => setSelectedProgressStroke(stroke)}
+              >
+                {stroke}
+              </Button>
+            ))}
+          </div>
+
           <Card className="bg-card border-border shadow-sm p-4">
-            <div className="h-32 w-full bg-secondary rounded-xl flex items-end justify-between p-2 gap-2 relative border border-border/50">
-              <div className="absolute top-2 left-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest">100m Freestyle</div>
-              {/* Dummy Bars dengan warna dinamis (bukan slate lagi) */}
-              <div className="w-1/6 bg-muted-foreground/30 rounded-t-sm h-[60%] transition-all hover:bg-primary"></div>
-              <div className="w-1/6 bg-muted-foreground/30 rounded-t-sm h-[65%] transition-all hover:bg-primary"></div>
-              <div className="w-1/6 bg-muted-foreground/30 rounded-t-sm h-[50%] transition-all hover:bg-primary"></div>
-              <div className="w-1/6 bg-muted-foreground/30 rounded-t-sm h-[70%] transition-all hover:bg-primary"></div>
-              <div className="w-1/6 bg-primary rounded-t-sm h-[85%] transition-all shadow-[0_0_10px_var(--color-primary)]"></div>
+            <div className="h-40 w-full relative">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={strokeProgressData[selectedProgressStroke]} margin={{ top: 5, right: 10, left: -25, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
+                  <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 9, fill: 'hsl(var(--muted-foreground))' }} />
+                  <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 9, fill: 'hsl(var(--muted-foreground))' }} domain={['auto', 'auto']} reversed />
+                  <RechartsTooltip 
+                    contentStyle={{ fontSize: '10px', borderRadius: '8px', border: '1px solid hsl(var(--border))', backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--foreground))' }} 
+                    itemStyle={{ color: '#ff4b4b', fontWeight: 'bold' }}
+                    formatter={(value: any) => [`${value}s`, 'Waktu']}
+                  />
+                  <Line 
+                    type="monotone" 
+                    name="Best Time" 
+                    dataKey="bestTime" 
+                    stroke="#ff4b4b" 
+                    strokeWidth={2} 
+                    dot={{ r: 3, fill: "#ff4b4b", strokeWidth: 0 }} 
+                    activeDot={{ r: 5, fill: "#ff4b4b" }} 
+                  />
+                  <Line 
+                    type="stepAfter" 
+                    name="Rekornas" 
+                    dataKey="rekornas" 
+                    stroke="#3b82f6" 
+                    strokeDasharray="4 4"
+                    strokeWidth={2} 
+                    dot={false}
+                    activeDot={false} 
+                  />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
-            <div className="flex justify-between mt-2 px-1">
-              <span className="text-[8px] font-bold text-muted-foreground uppercase">Feb</span>
-              <span className="text-[8px] font-bold text-muted-foreground uppercase">Mar</span>
-              <span className="text-[8px] font-bold text-muted-foreground uppercase">Apr</span>
-              <span className="text-[8px] font-bold text-muted-foreground uppercase">Mei</span>
-              <span className="text-[8px] font-bold text-primary uppercase">Jun</span>
+            <div className="flex items-center justify-center gap-4 mt-2">
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-0.5 bg-[#ff4b4b]"></div>
+                <span className="text-[9px] font-bold text-muted-foreground">Best Time</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-0.5 bg-[#3b82f6] border-dashed border-b-2 border-transparent"></div>
+                <span className="text-[9px] font-bold text-muted-foreground">Rekornas</span>
+              </div>
             </div>
           </Card>
         </section>
