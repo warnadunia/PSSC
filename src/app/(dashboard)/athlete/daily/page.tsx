@@ -103,13 +103,19 @@ export default function DailyPage() {
               </div>
             </CardContent>
           </Card>
-          <div className="mt-3">
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <Button 
+              onClick={() => router.push('/athlete/daily/sleep')}
+              className="w-full h-12 bg-indigo-500 hover:bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-widest shadow-xl/30 rounded-xl"
+            >
+              <Moon className="mr-2 h-4 w-4" /> Sleep & Recover
+            </Button>
             <Button 
               variant="outline" 
               onClick={() => router.push('/athlete/daily/biometrics')}
-              className="w-full text-xs font-bold uppercase tracking-widest border-slate-200 dark:border-border text-slate-600 dark:text-slate-300"
+              className="w-full h-12 text-[10px] font-bold uppercase tracking-widest border-slate-200 dark:border-border text-slate-600 dark:text-slate-300 rounded-xl bg-white dark:bg-card hover:bg-slate-50 dark:hover:bg-secondary"
             >
-              <Edit3 className="mr-2 h-3.5 w-3.5" /> Sync Biometrics
+              <HeartPulse className="mr-2 h-4 w-4 text-[#ff4b4b]" /> Biometrics
             </Button>
           </div>
         </section>

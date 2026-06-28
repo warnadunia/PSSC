@@ -26,7 +26,7 @@ export default function BiometricsPage() {
       <GlobalHeader variant="subpage" title="Biometric Sync" />
 
       <main className="flex-1 overflow-y-auto w-full pb-32 px-4 md:px-6 pt-6 space-y-6">
-        
+
         <div className="mb-2">
           <h1 className="font-heading font-black text-2xl uppercase tracking-wider text-slate-900 dark:text-white">Morning <span className="text-[#ff4b4b]">Check-in</span></h1>
           <p className="text-xs text-slate-500 dark:text-muted-foreground font-medium mt-1 leading-relaxed">Input data biometrik pagi Anda sebelum sarapan untuk kalibrasi algoritma performa.</p>
@@ -39,13 +39,13 @@ export default function BiometricsPage() {
             </h2>
           </div>
           <CardContent className="p-5 space-y-5">
-            
+
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-widest text-slate-500 flex items-center gap-2">
                 <HeartPulse className="h-3.5 w-3.5 text-[#ff4b4b]" /> Resting Heart Rate (RHR)
               </label>
               <div className="relative">
-                <Input 
+                <Input
                   type="number"
                   placeholder="Contoh: 52"
                   value={restingHr}
@@ -62,7 +62,7 @@ export default function BiometricsPage() {
                 <Scale className="h-3.5 w-3.5 text-blue-500" /> Berat Badan (Fasted)
               </label>
               <div className="relative">
-                <Input 
+                <Input
                   type="number"
                   placeholder="Contoh: 65.5"
                   value={weight}
@@ -83,11 +83,10 @@ export default function BiometricsPage() {
                   <button
                     key={level}
                     onClick={() => setMuscleSoreness(level)}
-                    className={`flex-1 h-12 rounded-xl font-black text-lg transition-all ${
-                      muscleSoreness === level 
-                        ? 'bg-[#ff4b4b] text-white shadow-[0_0_15px_rgba(255,75,75,0.4)]' 
+                    className={`flex-1 h-12 rounded-xl font-black text-lg transition-all ${muscleSoreness === level
+                        ? 'bg-[#ff4b4b] text-white shadow-[0_0_15px_rgba(255,75,75,0.4)]'
                         : 'bg-slate-100 dark:bg-[#161622] text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800'
-                    }`}
+                      }`}
                   >
                     {level}
                   </button>
@@ -103,8 +102,8 @@ export default function BiometricsPage() {
         </Card>
 
       </main>
-      
-      <div className="fixed bottom-0 w-full bg-white dark:bg-card border-t border-slate-200 dark:border-border p-4 z-50">
+
+      <div className="fixed bottom-16 w-full bg-white dark:bg-card border-t border-slate-200 dark:border-border p-4 z-50">
         <Button onClick={handleSave} className="w-full h-14 bg-[#ff4b4b] hover:bg-red-600 text-white font-bold text-sm tracking-widest uppercase rounded-xl shadow-xl/30">
           <CheckCircle2 className="mr-2 h-4 w-4" /> Sync Data & Update Readiness
         </Button>
