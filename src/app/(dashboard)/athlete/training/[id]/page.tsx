@@ -1,7 +1,7 @@
 "use client"
 
 import { Suspense, useState, useEffect, useRef } from "react"
-import { useSearchParams, useRouter } from "next/navigation"
+import { useParams, useSearchParams, useRouter } from "next/navigation"
 import { MapPin, Clock, Flame, Waves, Play, Square, Timer, Check, X, Save, AlertTriangle, Lightbulb, Target, Brain, Frown, FileWarning } from "lucide-react"
 
 import { GlobalHeader } from "@/components/GlobalHeader"
