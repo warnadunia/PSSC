@@ -1,13 +1,15 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { GlobalHeader } from "@/components/GlobalHeader"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Ruler, Scale, Activity, TrendingUp, AlertTriangle, HeartPulse, Dna, Info, Edit3, ArrowUpRight } from "lucide-react"
+import { Ruler, Scale, Activity, TrendingUp, AlertTriangle, HeartPulse, Dna, Info, Edit3, ArrowUpRight, History } from "lucide-react"
 
 export default function FisikPage() {
+  const router = useRouter()
   // Dummy Data
   const [biometrics] = useState({
     height: 168, // cm
@@ -122,9 +124,12 @@ export default function FisikPage() {
             <h2 className="font-heading font-bold text-sm uppercase tracking-widest text-slate-900 dark:text-white flex items-center gap-2">
               <Scale className="h-4 w-4 text-[#ff4b4b]" /> Growth & Composition
             </h2>
+            <Button size="sm" variant="ghost" onClick={() => router.push('/athlete/fisik/detail')} className="h-7 text-[10px] font-bold uppercase tracking-widest text-[#ff4b4b] hover:bg-[#ff4b4b]/10">
+              <History className="h-3 w-3 mr-1" /> History
+            </Button>
           </div>
           
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 cursor-pointer" onClick={() => router.push('/athlete/fisik/detail')}>
             <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-sm rounded-2xl">
               <CardContent className="p-4 flex flex-col items-center text-center">
                 <div className="h-8 w-8 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-500 flex items-center justify-center mb-2">
@@ -203,7 +208,7 @@ export default function FisikPage() {
 
       {/* PARENT-COACH SYNC BUTTON */}
       <div className="fixed bottom-16 w-full bg-white dark:bg-card border-t border-slate-200 dark:border-border p-4 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
-        <Button className="w-full h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-bold text-sm tracking-widest uppercase rounded-xl shadow-xl/30">
+        <Button onClick={() => router.push('/athlete/fisik/input')} className="w-full h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-bold text-sm tracking-widest uppercase rounded-xl shadow-xl/30">
           <Edit3 className="mr-2 h-4 w-4" /> Input Data Biometrik Baru
         </Button>
         <p className="text-[9px] text-center font-medium text-slate-400 mt-2">Sinkronisasi terakhir oleh Orang Tua: 2 Hari yang lalu</p>
