@@ -73,6 +73,23 @@ export default function TrainingPage() {
       <main className="flex-1 overflow-y-auto px-4 md:px-6 pt-4 pb-28 space-y-5 w-full">
         
         {/* ==========================================
+            READINESS GAP ALERT
+            ========================================== */}
+        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex gap-3 shadow-sm relative overflow-hidden">
+          <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-amber-500/10 to-transparent pointer-events-none"></div>
+          <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" />
+          <div>
+            <h3 className="text-xs font-bold text-amber-900 dark:text-amber-500 uppercase tracking-widest mb-1 flex items-center gap-2">
+              Kondisi Fisik: 68%
+              <Badge className="bg-amber-500 text-white border-none text-[8px] h-4 py-0 px-1">Alert</Badge>
+            </h3>
+            <p className="text-[11px] text-amber-800/80 dark:text-amber-500/80 leading-relaxed font-medium">
+              Daily Readiness Score Anda di bawah optimal. Sesuaikan intensitas latihan atau komunikasikan dengan pelatih untuk mencegah cedera.
+            </p>
+          </div>
+        </div>
+
+        {/* ==========================================
             ANALYTICS CAROUSEL
             ========================================== */}
         <section className="mb-6">
