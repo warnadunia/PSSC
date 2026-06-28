@@ -289,7 +289,11 @@ export default function CoachMyPage() {
                   </div>
                 </div>
               </div>
-              <Button variant="outline" className="w-full text-[10px] font-bold uppercase h-8 mt-1 border-slate-200 dark:border-[#34334a] text-slate-600 dark:text-slate-300">
+              <Button 
+                variant="outline" 
+                onClick={() => router.push('/coach/mypage/diagnosis')}
+                className="w-full text-[10px] font-bold uppercase h-8 mt-1 border-slate-200 dark:border-[#34334a] text-slate-600 dark:text-slate-300"
+              >
                 Lihat Detail Laporan
               </Button>
             </CardContent>

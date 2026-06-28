@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 import { useState, useEffect, useRef } from "react"
 import { useTheme } from "next-themes"
 import { Menu, MessageSquare, Bell, ArrowLeft, X, Search, Shield, CalendarClock, LayoutDashboard, Users, Activity, Sun, Moon, LogOut, CalendarDays, Settings } from "lucide-react"
@@ -16,10 +16,13 @@ interface GlobalHeaderProps {
 
 export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
   const router = useRouter()
+  const pathname = usePathname()
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const observerTarget = useRef<HTMLDivElement>(null)
+  
+  const isCoach = pathname?.includes('/coach')
 
   useEffect(() => {
     setMounted(true)
@@ -81,51 +84,76 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
 
               {/* MAIN MENU ITEMS */}
               <div className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
-                <SheetClose render={
-                  <Button
-                    variant="ghost"
-                    onClick={() => {
-                      router.push('/athlete/permission')
-                    }}
-                    className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
-                  >
-                    <CalendarClock className="mr-3 h-5 w-5 text-[#ff4b4b]" />
-                    <span className="font-bold text-sm tracking-wide">Ijin / Cuti</span>
-                  </Button>
-                } />
+                {isCoach ? (
+                  <>
+                    <SheetClose render={
+                      <Button
+                        variant="ghost"
+                        onClick={() => router.push('/coach/mypage/diagnosis')}
+                        className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
+                      >
+                        <Activity className="mr-3 h-5 w-5 text-emerald-500" />
+                        <span className="font-bold text-sm tracking-wide">Diagnosis Latihan</span>
+                      </Button>
+                    } />
+                    <SheetClose render={
+                      <Button 
+                        variant="ghost" 
+                        onClick={() => router.push('/coach/schedules')} 
+                        className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
+                      >
+                        <CalendarDays className="mr-3 h-5 w-5 text-blue-500 dark:text-blue-400" />
+                        <span className="font-bold text-sm tracking-wide">Agenda & Jadwal</span>
+                      </Button>
+                    } />
+                  </>
+                ) : (
+                  <>
+                    <SheetClose render={
+                      <Button
+                        variant="ghost"
+                        onClick={() => router.push('/athlete/permission')}
+                        className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
+                      >
+                        <CalendarClock className="mr-3 h-5 w-5 text-[#ff4b4b]" />
+                        <span className="font-bold text-sm tracking-wide">Ijin / Cuti</span>
+                      </Button>
+                    } />
 
-                <SheetClose render={
-                  <Button 
-                    variant="ghost" 
-                    onClick={() => router.push('/athlete/schedules')} 
-                    className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
-                  >
-                    <CalendarDays className="mr-3 h-5 w-5 text-blue-500 dark:text-blue-400" />
-                    <span className="font-bold text-sm tracking-wide">Agenda & Jadwal</span>
-                  </Button>
-                } />
+                    <SheetClose render={
+                      <Button 
+                        variant="ghost" 
+                        onClick={() => router.push('/athlete/schedules')} 
+                        className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
+                      >
+                        <CalendarDays className="mr-3 h-5 w-5 text-blue-500 dark:text-blue-400" />
+                        <span className="font-bold text-sm tracking-wide">Agenda & Jadwal</span>
+                      </Button>
+                    } />
 
-                <SheetClose render={
-                  <Button 
-                    variant="ghost" 
-                    onClick={() => router.push('/athlete/mypage/progress-gaya')} 
-                    className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
-                  >
-                    <Activity className="mr-3 h-5 w-5 text-indigo-500 dark:text-indigo-400" />
-                    <span className="font-bold text-sm tracking-wide">Progress Gaya</span>
-                  </Button>
-                } />
+                    <SheetClose render={
+                      <Button 
+                        variant="ghost" 
+                        onClick={() => router.push('/athlete/mypage/progress-gaya')} 
+                        className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
+                      >
+                        <Activity className="mr-3 h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                        <span className="font-bold text-sm tracking-wide">Progress Gaya</span>
+                      </Button>
+                    } />
 
-                <SheetClose render={
-                  <Button 
-                    variant="ghost" 
-                    onClick={() => router.push('/athlete/settings')} 
-                    className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
-                  >
-                    <Settings className="mr-3 h-5 w-5 text-emerald-500 dark:text-emerald-400" />
-                    <span className="font-bold text-sm tracking-wide">Pengaturan</span>
-                  </Button>
-                } />
+                    <SheetClose render={
+                      <Button 
+                        variant="ghost" 
+                        onClick={() => router.push('/athlete/settings')} 
+                        className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
+                      >
+                        <Settings className="mr-3 h-5 w-5 text-emerald-500 dark:text-emerald-400" />
+                        <span className="font-bold text-sm tracking-wide">Pengaturan</span>
+                      </Button>
+                    } />
+                  </>
+                )}
               </div>
 
               {/* BOTTOM SECTION */}
