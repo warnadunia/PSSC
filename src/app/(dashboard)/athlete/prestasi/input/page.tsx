@@ -157,7 +157,7 @@ export default function InputKejuaraanPage() {
                 <h2 className="text-sm font-bold text-slate-900 dark:text-white">Tabel Nomor Kejuaraan</h2>
                 <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Daftar nomor lomba standar Aquatic Indonesia.</p>
               </div>
-              <Button onClick={addEventRow} size="sm" className="h-8 bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold">
+              <Button onClick={addEventRow} size="sm" className="h-8 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 text-[10px] font-bold">
                 + Tambah Nomor
               </Button>
             </div>
@@ -245,7 +245,7 @@ export default function InputKejuaraanPage() {
         <Button onClick={() => {
             alert('Data Kejuaraan berhasil disimpan!');
             router.back();
-        }} className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-xl shadow-xl/30">
+        }} className="w-full h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-bold text-sm rounded-xl shadow-xl/30">
           <Save className="mr-2 h-4 w-4" /> Simpan Semua Data
         </Button>
       </div>
