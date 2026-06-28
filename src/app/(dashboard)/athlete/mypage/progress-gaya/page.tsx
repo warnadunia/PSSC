@@ -235,7 +235,7 @@ export default function ProgressGayaPage() {
                   <RechartsTooltip 
                     contentStyle={{ fontSize: '10px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', backgroundColor: 'rgba(31, 30, 46, 0.9)', color: '#fff' }} 
                     itemStyle={{ color: '#ff4b4b', fontWeight: 'bold' }}
-                    formatter={(value: number) => [`${value}s`, 'Waktu']}
+                    formatter={(value: any) => [`${value}s`, 'Waktu']}
                   />
                   <Line 
                     type="monotone" 
