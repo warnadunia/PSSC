@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Users, ChevronRight, Search, Filter, LineChart as ChartIcon, Sparkles, PieChart as PieChartIcon } from "lucide-react"
+import { Users, ChevronRight, Search, Filter, LineChart as ChartIcon, Sparkles, PieChart as PieChartIcon, AlertCircle, TrendingUp, Flame } from "lucide-react"
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip as RechartsTooltip, PieChart, Pie, Cell } from "recharts"
 
 import { GlobalHeader } from "@/components/GlobalHeader"
@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 
 // ==========================================
 // DUMMY DATA ATLET PARISAKTI
@@ -27,16 +28,18 @@ interface Athlete {
   level: Level
   specialty: string
   status: "Aktif" | "Cuti"
+  trainingDuration: string
+  gap: string
 }
 
 const psscAthletes: Athlete[] = [
-  { id: "ath-1", name: "Bima Arya Wibowo", gender: "L", age: 17, ku: "KU 1", level: "Elite", specialty: "Sprint Free", status: "Aktif" },
-  { id: "ath-2", name: "Rara Kirana", gender: "P", age: 15, ku: "KU 2", level: "Elite", specialty: "Butterfly", status: "Aktif" },
-  { id: "ath-3", name: "Sakti Mahesa", gender: "L", age: 13, ku: "KU 3", level: "LTHS", specialty: "IM", status: "Aktif" },
-  { id: "ath-4", name: "Dinda Aulia", gender: "P", age: 10, ku: "KU 4", level: "Basic 2", specialty: "Backstroke", status: "Aktif" },
-  { id: "ath-5", name: "Kevin Sanjaya", gender: "L", age: 9, ku: "KU 5", level: "Basic 1", specialty: "Freestyle", status: "Aktif" },
-  { id: "ath-6", name: "Rizky Pratama", gender: "L", age: 16, ku: "KU 1", level: "RJ", specialty: "Breaststroke", status: "Cuti" },
-  { id: "ath-7", name: "Nadia Putri", gender: "P", age: 14, ku: "KU 2", level: "RS", specialty: "Freestyle", status: "Aktif" },
+  { id: "ath-1", name: "Bima Arya Wibowo", gender: "L", age: 17, ku: "KU 1", level: "Elite", specialty: "Sprint Free", status: "Aktif", trainingDuration: "4 Thn 2 Bln", gap: "-0.40s" },
+  { id: "ath-2", name: "Rara Kirana", gender: "P", age: 15, ku: "KU 2", level: "Elite", specialty: "Butterfly", status: "Aktif", trainingDuration: "3 Thn", gap: "+0.15s" },
+  { id: "ath-3", name: "Sakti Mahesa", gender: "L", age: 13, ku: "KU 3", level: "LTHS", specialty: "IM", status: "Aktif", trainingDuration: "2 Thn 5 Bln", gap: "+1.20s" },
+  { id: "ath-4", name: "Dinda Aulia", gender: "P", age: 10, ku: "KU 4", level: "Basic 2", specialty: "Backstroke", status: "Aktif", trainingDuration: "1 Thn", gap: "+2.50s" },
+  { id: "ath-5", name: "Kevin Sanjaya", gender: "L", age: 9, ku: "KU 5", level: "Basic 1", specialty: "Freestyle", status: "Aktif", trainingDuration: "8 Bln", gap: "+4.10s" },
+  { id: "ath-6", name: "Rizky Pratama", gender: "L", age: 16, ku: "KU 1", level: "RJ", specialty: "Breaststroke", status: "Cuti", trainingDuration: "2 Thn 1 Bln", gap: "+0.80s" },
+  { id: "ath-7", name: "Nadia Putri", gender: "P", age: 14, ku: "KU 2", level: "RS", specialty: "Freestyle", status: "Aktif", trainingDuration: "1 Thn 5 Bln", gap: "+1.80s" },
 ]
 
 const filterLevels = ["ALL", "LTHS", "Basic 1", "Basic 2", "Elite", "RJ", "RS"]
@@ -230,7 +233,10 @@ export default function AthletesPage() {
                           <span className="text-[9px] font-bold text-amber-600">{rec.targetLevel}</span>
                         </div>
                       </div>
-                      <Badge className="bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 border-amber-500/30 text-[10px] shadow-lg/30">
+                      <Badge 
+                        onClick={() => router.push(`/coach/athletes/promosi?id=${rec.id}`)}
+                        className="bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 border-amber-500/30 text-[10px] shadow-xl/30 cursor-pointer"
+                      >
                         Review
                       </Badge>
                     </div>
@@ -279,6 +285,50 @@ export default function AthletesPage() {
           </div>
         </section>
 
+        {/* ==========================================
+            WATCHLIST: BREAKTHROUGH & STAGNANT
+            ========================================== */}
+        <section className="grid grid-cols-2 gap-3">
+          {/* Hampir Pecah Telur */}
+          <Card className="bg-gradient-to-br from-amber-500 to-orange-600 border-none shadow-lg text-white rounded-2xl overflow-hidden relative">
+            <div className="absolute top-0 right-0 p-2 opacity-20">
+              <Flame className="h-12 w-12" />
+            </div>
+            <CardContent className="p-4 relative z-10 flex flex-col justify-between h-full">
+              <div>
+                <h3 className="text-[10px] font-bold uppercase tracking-widest text-amber-100 mb-0.5">Hampir Pecah Telur</h3>
+                <p className="text-xs font-bold leading-tight mb-3">Limit Nasional <br/> dalam jangkauan</p>
+              </div>
+              <div className="bg-black/20 rounded-xl p-2 cursor-pointer hover:bg-black/30 transition-colors" onClick={() => router.push('/coach/athletes/ath-1')}>
+                <p className="text-[10px] font-bold">Bima Arya Wibowo</p>
+                <div className="flex items-center gap-1 mt-1">
+                  <TrendingUp className="h-3 w-3 text-emerald-300" />
+                  <span className="text-[9px] font-mono text-emerald-300 font-bold">-0.40s to Target</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Stagnan Kritis */}
+          <Card className="bg-slate-100 dark:bg-[#1f1e2e] border border-slate-200 dark:border-[#2a293d] shadow-lg rounded-2xl overflow-hidden">
+            <CardContent className="p-4 flex flex-col justify-between h-full">
+              <div>
+                <h3 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-0.5 flex items-center gap-1.5">
+                  <AlertCircle className="h-3 w-3 text-[#ff4b4b]" /> Stagnan Kritis
+                </h3>
+                <p className="text-xs font-bold text-slate-900 dark:text-white leading-tight mb-3">Grafik flat &gt; 2 tahun</p>
+              </div>
+              <div className="bg-white dark:bg-[#161622] rounded-xl p-2 border border-slate-200 dark:border-[#34334a] cursor-pointer hover:border-[#ff4b4b]/50 transition-colors" onClick={() => router.push('/coach/athletes/ath-3')}>
+                <p className="text-[10px] font-bold text-slate-900 dark:text-white">Sakti Mahesa</p>
+                <div className="flex justify-between items-center mt-1">
+                  <span className="text-[9px] font-medium text-slate-500">Masa Latihan</span>
+                  <span className="text-[9px] font-bold text-[#ff4b4b]">2 Thn 5 Bln</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
         {/* LISTING ATLET (CLICKABLE) */}
         <section className="space-y-3">
           <div className="flex items-center justify-between">
@@ -314,6 +364,20 @@ export default function AthletesPage() {
                       <span className="text-foreground font-bold">{ath.ku}</span>
                       <span className="h-1 w-1 rounded-full bg-muted-foreground/30"></span>
                       <span>{ath.gender}</span>
+                    </div>
+
+                    {/* Masa Latihan & Gap */}
+                    <div className="flex gap-3 mt-2">
+                      <div className="bg-slate-50 dark:bg-[#161622] px-2 py-1 rounded-md flex flex-col justify-center">
+                        <span className="text-[8px] uppercase tracking-widest text-slate-400 mb-0.5">Latihan</span>
+                        <span className="text-[10px] font-bold text-slate-700 dark:text-slate-300 leading-none">{ath.trainingDuration}</span>
+                      </div>
+                      <div className="bg-slate-50 dark:bg-[#161622] px-2 py-1 rounded-md flex flex-col justify-center">
+                        <span className="text-[8px] uppercase tracking-widest text-slate-400 mb-0.5">Gap Limit</span>
+                        <span className={`text-[10px] font-bold font-mono leading-none ${ath.gap.startsWith('-') ? 'text-emerald-500' : 'text-[#ff4b4b]'}`}>
+                          {ath.gap}
+                        </span>
+                      </div>
                     </div>
                   </div>
 

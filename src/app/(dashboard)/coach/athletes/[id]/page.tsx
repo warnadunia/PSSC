@@ -8,8 +8,8 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import { Trophy, Clock, Target, UserCircle, Activity, Medal, Settings2, CheckCircle2, ChevronRight, MapPin, Check, Timer } from "lucide-react"
-import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar, PolarRadiusAxis, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend } from "recharts"
+import { Trophy, Clock, Target, UserCircle, Activity, Medal, Settings2, CheckCircle2, ChevronRight, MapPin, Check, Timer, Stethoscope } from "lucide-react"
+import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar, PolarRadiusAxis, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ReferenceLine } from "recharts"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 // ==========================================
@@ -172,14 +172,23 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
               <Badge className="bg-primary hover:bg-primary/90 text-primary-foreground">{athlete.level}</Badge>
               <Badge variant="outline" className="border-border text-muted-foreground">{athlete.ku}</Badge>
             </div>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="h-7 text-[10px] w-full border-primary/20 text-primary hover:bg-primary/10 hover:text-primary"
-              onClick={() => router.push(`/coach/athletes/${resolvedParams.id}/biodata`)}
-            >
-              <UserCircle className="mr-1.5 h-3.5 w-3.5" /> Lihat Biodata Lengkap
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="h-8 text-[10px] flex-1 border-primary/20 text-primary hover:bg-primary/10 hover:text-primary"
+                onClick={() => router.push(`/coach/athletes/${resolvedParams.id}/biodata`)}
+              >
+                <UserCircle className="mr-1.5 h-3.5 w-3.5" /> Biodata Lengkap
+              </Button>
+              <Button 
+                size="sm" 
+                className="h-8 text-[10px] flex-1 bg-gradient-to-r from-[#ff4b4b] to-orange-500 hover:opacity-90 text-white shadow-lg/30"
+                onClick={() => router.push(`/coach/athletes/${resolvedParams.id}/treatment`)}
+              >
+                <Stethoscope className="mr-1.5 h-3.5 w-3.5" /> Beri Home Treatment
+              </Button>
+            </div>
           </div>
         </section>
 
@@ -388,14 +397,24 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
                     <option value="2025">2025</option>
                   </select>
                 </div>
-                <div className="h-48 w-full">
+                <div className="h-48 w-full relative">
                   <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={chartData} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
+                    <LineChart data={chartData} margin={{ top: 15, right: 10, left: -20, bottom: 0 }}>
                       <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#2a293b" />
                       <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#a1a1aa' }} />
                       <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#a1a1aa' }} domain={['auto', 'auto']} />
                       <RechartsTooltip contentStyle={{ backgroundColor: '#1f1e2e', color: '#fff', fontSize: '10px', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                       <Legend iconType="circle" wrapperStyle={{ fontSize: '10px', paddingTop: '10px' }} />
+                      
+                      {/* KU Limit Line / Garis Emas */}
+                      <ReferenceLine 
+                        y={30.0} 
+                        stroke="#f59e0b" 
+                        strokeDasharray="4 4" 
+                        strokeWidth={2}
+                        label={{ position: 'insideTopLeft', value: 'Limit Nasional (30.0s)', fill: '#f59e0b', fontSize: 10, fontWeight: 'bold' }} 
+                      />
+
                       <Line type="monotone" name="Tahun Berjalan" dataKey="thisYear" stroke="#ff4b4b" strokeWidth={3} dot={{ r: 3, fill: "#ff4b4b", strokeWidth: 0 }} activeDot={{ r: 5 }} />
                       <Line type="monotone" name="Tahun Lalu" dataKey="lastYear" stroke="#a1a1aa" strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
                     </LineChart>
