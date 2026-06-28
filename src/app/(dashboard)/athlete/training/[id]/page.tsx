@@ -165,22 +165,24 @@ function TrainingDetailContent() {
         </div>
 
         {/* ==========================================
-            TECHNIQUE ALERT (IMMEDIATE FEEDBACK)
+            TECHNIQUE ALERT (IMMEDIATE FEEDBACK) - PERSONAL ONLY
             ========================================== */}
-        <div className="px-4 py-4">
-          <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800/50 rounded-2xl p-4 flex gap-3 shadow-sm relative overflow-hidden">
-            <Lightbulb className="h-5 w-5 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
-            <div>
-              <h3 className="text-xs font-bold text-indigo-900 dark:text-indigo-400 uppercase tracking-widest mb-1 flex items-center gap-2">
-                Technique Insight
-                <Badge className="bg-indigo-600 text-white border-none text-[8px] h-4 py-0 px-1">AI</Badge>
-              </h3>
-              <p className="text-[11px] text-indigo-800/80 dark:text-indigo-300/80 leading-relaxed font-medium">
-                Skor *Stroke* Anda saat ini 88%. Hari ini latihannya berfokus pada daya tahan (*endurance*), tapi pastikan Anda tetap menjaga posisi *High Elbow Catch* saat fase tarikan!
-              </p>
+        {type === 'personal' && (
+          <div className="px-4 py-4">
+            <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800/50 rounded-2xl p-4 flex gap-3 shadow-sm relative overflow-hidden">
+              <Lightbulb className="h-5 w-5 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-xs font-bold text-indigo-900 dark:text-indigo-400 uppercase tracking-widest mb-1 flex items-center gap-2">
+                  Technique Insight
+                  <Badge className="bg-indigo-600 text-white border-none text-[8px] h-4 py-0 px-1">AI</Badge>
+                </h3>
+                <p className="text-[11px] text-indigo-800/80 dark:text-indigo-300/80 leading-relaxed font-medium">
+                  Skor *Stroke* Anda saat ini 88%. Hari ini latihannya berfokus pada daya tahan (*endurance*), tapi pastikan Anda tetap menjaga posisi *High Elbow Catch* saat fase tarikan!
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* ==========================================
             STRUKTUR TABEL (GROUP NAME | TARGET | TIME)
