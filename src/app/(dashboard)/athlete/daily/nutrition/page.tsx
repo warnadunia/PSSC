@@ -6,7 +6,7 @@ import { GlobalHeader } from "@/components/GlobalHeader"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Utensils, Flame, Droplets, Leaf, CheckCircle2 } from "lucide-react"
+import { Utensils, Flame, Droplets, Leaf, CheckCircle2, Activity } from "lucide-react"
 
 export default function NutritionPage() {
   const router = useRouter()
