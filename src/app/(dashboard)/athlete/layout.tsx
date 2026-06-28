@@ -1,27 +1,29 @@
+// app/(dashboard)/athlete/layout.tsx
 "use client"
 
-import { ReactNode, useState } from "react"
+import { ReactNode } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, CalendarDays, Trophy, Activity, Settings } from "lucide-react"
+import { Home, Activity, Trophy, CheckSquare, Ruler } from "lucide-react"
 
 export default function AthleteLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
 
+  // 5 PILAR MENU ATLET
   const navItems = [
     { name: "MyPage", href: "/athlete/mypage", icon: Home },
-    { name: "Schedules", href: "/athlete/schedules", icon: CalendarDays },
-    { name: "Prestasi", href: "/athlete/prestasi", icon: Trophy },
     { name: "Training", href: "/athlete/training", icon: Activity },
-    { name: "Settings", href: "/athlete/settings", icon: Settings },
+    { name: "Prestasi", href: "/athlete/prestasi", icon: Trophy },
+    { name: "Daily", href: "/athlete/daily", icon: CheckSquare },
+    { name: "Fisik", href: "/athlete/fisik", icon: Ruler },
   ]
 
   return (
-    // THEME UPDATE: Background utama jadi Dark Navy dengan Gradien Marun di Atas (hanya dark mode)
-    <div className="flex h-[100dvh] w-full flex-col bg-transparent dark:bg-[#161622] text-slate-900 dark:text-white font-sans relative overflow-hidden z-0">
-      
+    <div className="flex h-[100dvh] w-full flex-col bg-[#fff5f5] dark:bg-background text-slate-900 dark:text-foreground font-sans relative overflow-hidden z-0">
+
       {/* GLOBAL FIXED BACKGROUND GRADIENT */}
-      <div className="hidden dark:block absolute top-0 left-0 right-0 h-[50vh] bg-gradient-to-b from-[#602727] via-[#331c1c] to-transparent -z-10 pointer-events-none"></div>
+      {/* Light Mode: Semburat merah muda halus | Dark Mode: Gradien Maroon */}
+      <div className="absolute top-0 left-0 right-0 h-[40vh] bg-gradient-to-b from-rose-100 via-[#fff5f5] to-[#fff5f5] dark:from-[#602727] dark:via-[#331c1c] dark:to-transparent -z-10 pointer-events-none"></div>
 
       {/* KONTEN HALAMAN */}
       <main className="flex-1 overflow-y-auto pb-16 w-full">
@@ -29,21 +31,21 @@ export default function AthleteLayout({ children }: { children: ReactNode }) {
       </main>
 
       {/* BOTTOM NAVIGATION BAR */}
-      {/* THEME UPDATE: bg-white jadi Navy solid, border digelapin, shadow dibikin lebih dramatis */}
-      <nav className="absolute bottom-0 w-full flex h-16 items-center justify-between px-2 border-t border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] pb-safe z-40 -[0_-10px_30px_rgba(0,0,0,0.1)] shadow-[0_-10px_30px_rgba(0,0,0,0.3)]">
+      <nav className="absolute bottom-0 w-full flex h-16 items-center justify-between px-1 border-t border-slate-200 dark:border-border bg-white dark:bg-card pb-safe z-40 shadow-[0_-10px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_-10px_30px_rgba(0,0,0,0.3)]">
         {navItems.map((item) => {
           const isActive = pathname.includes(item.href)
           const Icon = item.icon
           return (
-            <Link 
-              key={item.name} 
-              href={item.href} 
-              // THEME UPDATE: Warna aktif merah Coral, non-aktif abu-abu redup
-              className={`flex flex-col items-center justify-center w-[20%] gap-1 transition-colors ${
-                isActive ? "text-[#ff4b4b]" : "text-slate-500 hover:text-slate-900 dark:hover:text-slate-300"
-              }`}
+            <Link
+              key={item.name}
+              href={item.href}
+              // Lebar w-[20%] agar 5 menu sejajar rata
+              className={`flex flex-col items-center justify-center w-[20%] gap-1 transition-colors ${isActive ? "text-[#ff4b4b]" : "text-slate-400 dark:text-muted-foreground hover:text-slate-600 dark:hover:text-foreground"
+                }`}
             >
-              <Icon className={`h-5 w-5 ${isActive ? "fill-[#ff4b4b]/20" : ""}`} />
+              <div className={`p-1 rounded-xl transition-all ${isActive ? "bg-rose-50 dark:bg-[#ff4b4b]/10" : ""}`}>
+                <Icon className={`h-5 w-5 ${isActive ? "fill-[#ff4b4b]/20" : ""}`} />
+              </div>
               <span className="text-[9px] font-bold uppercase tracking-widest">{item.name}</span>
             </Link>
           )

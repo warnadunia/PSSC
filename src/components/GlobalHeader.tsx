@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation"
 import { useState, useEffect, useRef } from "react"
 import { useTheme } from "next-themes"
-import { Menu, MessageSquare, Bell, ArrowLeft, X, Search, Shield, CalendarClock, LayoutDashboard, Users, Activity, Sun, Moon, LogOut } from "lucide-react"
+import { Menu, MessageSquare, Bell, ArrowLeft, X, Search, Shield, CalendarClock, LayoutDashboard, Users, Activity, Sun, Moon, LogOut, CalendarDays, Settings } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "@/components/ui/sheet"
 import { Badge } from "@/components/ui/badge"
@@ -82,8 +82,8 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
               {/* MAIN MENU ITEMS */}
               <div className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
                 <SheetClose render={
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     onClick={() => {
                       router.push('/athlete/permission')
                     }}
@@ -94,20 +94,27 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
                   </Button>
                 } />
 
-                <Button variant="ghost" className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all">
-                  <LayoutDashboard className="mr-3 h-5 w-5 text-blue-500 dark:text-blue-400" />
-                  <span className="font-bold text-sm tracking-wide">Menu A</span>
-                </Button>
+                <SheetClose render={
+                  <Button 
+                    variant="ghost" 
+                    onClick={() => router.push('/athlete/schedules')} 
+                    className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
+                  >
+                    <CalendarDays className="mr-3 h-5 w-5 text-blue-500 dark:text-blue-400" />
+                    <span className="font-bold text-sm tracking-wide">Agenda & Jadwal</span>
+                  </Button>
+                } />
 
-                <Button variant="ghost" className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all">
-                  <Users className="mr-3 h-5 w-5 text-emerald-500 dark:text-emerald-400" />
-                  <span className="font-bold text-sm tracking-wide">Menu B</span>
-                </Button>
-
-                <Button variant="ghost" className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all">
-                  <Activity className="mr-3 h-5 w-5 text-amber-500 dark:text-amber-400" />
-                  <span className="font-bold text-sm tracking-wide">Menu C</span>
-                </Button>
+                <SheetClose render={
+                  <Button 
+                    variant="ghost" 
+                    onClick={() => router.push('/athlete/settings')} 
+                    className="w-full justify-start text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#2a293d] h-11 px-3 rounded-xl transition-all"
+                  >
+                    <Settings className="mr-3 h-5 w-5 text-emerald-500 dark:text-emerald-400" />
+                    <span className="font-bold text-sm tracking-wide">Pengaturan</span>
+                  </Button>
+                } />
               </div>
 
               {/* BOTTOM SECTION */}
@@ -144,9 +151,9 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate tracking-wide">John Doe</p>
                     <p className="text-[10px] text-slate-500 dark:text-slate-400 font-medium truncate">Head Coach</p>
                   </div>
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
+                  <Button
+                    variant="ghost"
+                    size="icon"
                     className="h-8 w-8 text-slate-500 dark:text-slate-400 hover:text-[#ff4b4b] hover:bg-rose-50 dark:hover:bg-[#ff4b4b]/10 rounded-lg shrink-0 transition-colors"
                     onClick={() => router.push("/")}
                   >

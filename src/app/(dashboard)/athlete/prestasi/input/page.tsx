@@ -21,7 +21,7 @@ const availableEvents = [
 
 export default function InputKejuaraanPage() {
   const router = useRouter()
-  
+
   // Data Master
   const [events, setEvents] = useState<any[]>([])
 
@@ -38,7 +38,7 @@ export default function InputKejuaraanPage() {
   // Stopwatch Modal State
   const [isStopwatchModalOpen, setIsStopwatchModalOpen] = useState(false)
   const [activeTimerItem, setActiveTimerItem] = useState<any>(null)
-  
+
   const [timeMs, setTimeMs] = useState(0)
   const [isRunning, setIsRunning] = useState(false)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
@@ -103,17 +103,17 @@ export default function InputKejuaraanPage() {
 
   return (
     <div className="flex flex-col h-[100dvh] w-full relative">
-      
+
       {/* Header Khusus agar bisa Back */}
       <GlobalHeader variant="subpage" title="Input Data Kejuaraan" />
 
       <main className="flex-1 overflow-y-auto w-full pb-40">
         <div className="p-4 space-y-6">
-          
+
           {/* Form Informasi Event */}
           <div className="bg-white dark:bg-[#1f1e2e] p-5 rounded-2xl border border-slate-200 dark:border-[#2a293d] space-y-4 shadow-xl/30">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-[#2a293d] pb-2 mb-3">Informasi Umum</h2>
-            
+
             <div className="space-y-1.5">
               <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 block">Nama Event</label>
               <Input placeholder="Contoh: KRAPSI 2026" className="bg-slate-50 dark:bg-[#161622] border-slate-200 dark:border-[#2a293d]" />
@@ -161,7 +161,7 @@ export default function InputKejuaraanPage() {
                 + Tambah Nomor
               </Button>
             </div>
-            
+
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse min-w-[500px]">
                 <thead>
@@ -176,35 +176,35 @@ export default function InputKejuaraanPage() {
                   {events.map((ev) => (
                     <tr key={ev.id} className="border-b border-slate-200 dark:border-[#2a293d] hover:bg-slate-50 dark:bg-[#161622]/50">
                       <td className="p-3">
-                        <select 
-                          className="w-full bg-transparent border border-slate-200 dark:border-[#2a293d] rounded-md text-xs font-semibold text-slate-900 dark:text-white p-1.5 focus:ring-0 dark:[color-scheme:dark]"
+                        <select
+                          className="w-full bg-transparent border border-slate-200 dark:border-[#2a293d] rounded-md text-xs font-semibold bg-slate-50 dark:bg-[#161622] border border-slate-200 dark:border-[#2a293d]"
                           value={ev.name}
-                          onChange={(e) => setEvents(events.map(item => item.id === ev.id ? {...item, name: e.target.value} : item))}
+                          onChange={(e) => setEvents(events.map(item => item.id === ev.id ? { ...item, name: e.target.value } : item))}
                         >
                           <option value="" disabled>Pilih Nomor</option>
                           {availableEvents.map(evt => (
-                             <option key={evt} value={evt}>{evt}</option>
+                            <option key={evt} value={evt}>{evt}</option>
                           ))}
                         </select>
                       </td>
                       <td className="p-3">
                         <div className="flex items-center justify-center">
-                        {ev.timeRecord ? (
-                          <span className="font-mono text-xs font-bold text-[#ff4b4b] bg-[#ff4b4b]/10 px-2 py-1 rounded-md border border-[#ff4b4b]/20">
-                            {ev.timeRecord}
-                          </span>
-                        ) : (
-                          <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium italic">- Kosong -</span>
-                        )}
-                        <Button 
-                          variant="outline" 
-                          size="icon" 
-                          onClick={() => openStopwatchModal(ev)}
-                          className="h-7 w-7 rounded-full text-[#ff4b4b] border-[#ff4b4b]/30 hover:bg-[#ff4b4b]/10 ml-2"
-                          title="Start Stopwatch"
-                        >
-                          <Timer className="h-3.5 w-3.5" />
-                        </Button>
+                          {ev.timeRecord ? (
+                            <span className="font-mono text-xs font-bold text-[#ff4b4b] bg-[#ff4b4b]/10 px-2 py-1 rounded-md border border-[#ff4b4b]/20">
+                              {ev.timeRecord}
+                            </span>
+                          ) : (
+                            <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium italic">- Kosong -</span>
+                          )}
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => openStopwatchModal(ev)}
+                            className="h-7 w-7 rounded-full text-[#ff4b4b] border-[#ff4b4b]/30 hover:bg-[#ff4b4b]/10 ml-2"
+                            title="Start Stopwatch"
+                          >
+                            <Timer className="h-3.5 w-3.5" />
+                          </Button>
                         </div>
                       </td>
                       <td className="p-3 text-center">
@@ -219,9 +219,9 @@ export default function InputKejuaraanPage() {
                       <td className="p-3">
                         <div className="flex items-center justify-center gap-2">
                           {/* Edit Button */}
-                          <Button 
-                            variant="outline" 
-                            size="icon" 
+                          <Button
+                            variant="outline"
+                            size="icon"
                             onClick={() => openEditModal(ev)}
                             className="h-7 w-7 rounded-full text-slate-500 dark:text-slate-400 border-slate-200 dark:border-[#2a293d] hover:bg-slate-100 dark:bg-[#2a293d]"
                             title="Input Manual / Edit"
@@ -243,8 +243,8 @@ export default function InputKejuaraanPage() {
       {/* Footer Save Button */}
       <div className="fixed bottom-16 w-full bg-white dark:bg-[#1f1e2e] border-t dark:border-[#2a293d] p-4 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
         <Button onClick={() => {
-            alert('Data Kejuaraan berhasil disimpan!');
-            router.back();
+          alert('Data Kejuaraan berhasil disimpan!');
+          router.back();
         }} className="w-full h-12 bg-[#ff4b4b] hover:bg-red-600 text-white font-bold text-sm rounded-xl shadow-xl/30">
           <Save className="mr-2 h-4 w-4" /> Simpan Semua Data
         </Button>
@@ -264,21 +264,21 @@ export default function InputKejuaraanPage() {
           <div className="p-4 space-y-4">
             <div className="space-y-1.5">
               <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 block">Time Record</label>
-              <Input 
-                value={tempTime} 
-                onChange={(e) => setTempTime(e.target.value)} 
-                placeholder="Contoh: 01:22.45" 
+              <Input
+                value={tempTime}
+                onChange={(e) => setTempTime(e.target.value)}
+                placeholder="Contoh: 01:22.45"
                 className="font-mono text-sm bg-slate-50 dark:bg-[#161622]"
               />
               <p className="text-[10px] text-slate-500 dark:text-slate-400">Format yang disarankan: MM:SS.ms (01:22.45)</p>
             </div>
             <div className="space-y-1.5">
               <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 block">Rangking Lomba</label>
-              <Input 
+              <Input
                 type="number"
-                value={tempRank} 
-                onChange={(e) => setTempRank(e.target.value)} 
-                placeholder="Contoh: 17" 
+                value={tempRank}
+                onChange={(e) => setTempRank(e.target.value)}
+                placeholder="Contoh: 17"
                 className="bg-slate-50 dark:bg-[#161622]"
               />
             </div>
@@ -303,21 +303,21 @@ export default function InputKejuaraanPage() {
               <X className="h-4 w-4" />
             </Button>
           </div>
-          
+
           <div className="p-6 text-center">
             <div className="text-6xl font-mono font-black text-slate-900 dark:text-white tracking-tighter mb-8 shadow-xl/30">
               {formatTime(timeMs)}
             </div>
-            
+
             <div className="flex gap-3 justify-center">
-              <Button 
-                onClick={toggleStopwatch} 
+              <Button
+                onClick={toggleStopwatch}
                 className={`flex-1 h-12 rounded-xl font-bold shadow-lg ${isRunning ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-indigo-500 hover:bg-indigo-600 text-slate-900 dark:text-white'}`}
               >
                 {isRunning ? <><Square className="h-4 w-4 mr-2" /> Pause</> : <><Play className="h-4 w-4 mr-2" /> Start</>}
               </Button>
-              <Button 
-                onClick={saveStopwatch} 
+              <Button
+                onClick={saveStopwatch}
                 disabled={timeMs === 0 || isRunning}
                 className="flex-1 h-12 bg-emerald-500 hover:bg-emerald-600 text-slate-900 dark:text-white rounded-xl font-bold disabled:opacity-50"
               >
