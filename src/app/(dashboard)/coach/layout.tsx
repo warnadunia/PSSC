@@ -4,7 +4,7 @@
 import { ReactNode, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, CalendarDays, Users, Activity, MoreHorizontal } from "lucide-react"
+import { Home, CalendarDays, Users, Activity, MoreHorizontal, Award } from "lucide-react"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 
 export default function CoachLayout({ children }: { children: ReactNode }) {
@@ -13,7 +13,7 @@ export default function CoachLayout({ children }: { children: ReactNode }) {
 
   const navItems = [
     { name: "MyPage", href: "/coach/mypage", icon: Home },
-    { name: "Schedules", href: "/coach/schedules", icon: CalendarDays },
+    { name: "Monitoring", href: "/coach/monitoring", icon: Award },
     { name: "Athletes", href: "/coach/athletes", icon: Users },
     { name: "Training", href: "/coach/training", icon: Activity },
   ]

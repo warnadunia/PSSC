@@ -234,7 +234,7 @@ export default function AthletesPage() {
                         </div>
                       </div>
                       <Badge 
-                        onClick={() => router.push(`/coach/athletes/promosi?id=${rec.id}`)}
+                        onClick={() => router.push('/coach/monitoring')}
                         className="bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 border-amber-500/30 text-[10px] shadow-xl/30 cursor-pointer"
                       >
                         Review
