@@ -1,6 +1,6 @@
 "use client"
 
-import { Info, Github, Globe, Smartphone, Heart } from "lucide-react"
+import { Globe, Smartphone, Heart } from "lucide-react"
 
 import { GlobalHeader } from "@/components/GlobalHeader"
 
