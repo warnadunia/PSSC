@@ -198,7 +198,7 @@ function TrainingDetailContent() {
               
               {/* Baris Latihan */}
               {group.items.map((item, iIdx) => {
-                const isChecked = checkedItems[item.id]
+                const isChecked = !!checkedItems[item.id]
                 return (
                   <div key={iIdx} className={`grid grid-cols-[10fr_4fr_5fr] items-center py-4 pl-4 pr-3 border-b last:border-b-0 border-slate-100 dark:border-border relative transition-colors ${isChecked ? 'bg-slate-50 dark:bg-secondary/20 opacity-60' : 'bg-white dark:bg-card'}`}>
                     <div className={`absolute left-0 top-0 bottom-0 w-1 ${item.color}`}></div>
