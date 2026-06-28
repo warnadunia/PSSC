@@ -75,7 +75,7 @@ export default function TrainingPage() {
         {/* ==========================================
             READINESS GAP ALERT
             ========================================== */}
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex gap-3 shadow-sm relative overflow-hidden">
+        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex gap-3 shadow-xl relative overflow-hidden">
           <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-amber-500/10 to-transparent pointer-events-none"></div>
           <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" />
           <div>

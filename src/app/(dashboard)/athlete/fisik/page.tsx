@@ -41,7 +41,7 @@ export default function FisikPage() {
 
         {/* 1. SMART ACTIONABLE INSIGHTS (CORRELATION ENGINE) */}
         <section>
-          <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800/50 rounded-2xl p-4 relative overflow-hidden shadow-sm">
+          <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800/50 rounded-2xl p-4 relative overflow-hidden shadow-xl">
             <div className="absolute -right-4 -top-4 opacity-10">
               <Dna className="h-16 w-16 text-indigo-600 dark:text-indigo-400" />
             </div>
@@ -130,7 +130,7 @@ export default function FisikPage() {
           </div>
           
           <div className="grid grid-cols-2 gap-3 cursor-pointer" onClick={() => router.push('/athlete/fisik/detail')}>
-            <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-sm rounded-2xl">
+            <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-xl rounded-2xl">
               <CardContent className="p-4 flex flex-col items-center text-center">
                 <div className="h-8 w-8 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-500 flex items-center justify-center mb-2">
                   <Scale className="h-4 w-4" />
@@ -146,7 +146,7 @@ export default function FisikPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-sm rounded-2xl">
+            <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-xl rounded-2xl">
               <CardContent className="p-4 flex flex-col items-center text-center">
                 <div className="h-8 w-8 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-500 flex items-center justify-center mb-2">
                   <Activity className="h-4 w-4" />
@@ -171,7 +171,7 @@ export default function FisikPage() {
             </h2>
           </div>
 
-          <div className="bg-white dark:bg-card border border-slate-200 dark:border-border rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-white dark:bg-card border border-slate-200 dark:border-border rounded-2xl shadow-xl overflow-hidden">
             <div className="flex items-center justify-between p-4 border-b border-slate-100 dark:border-border">
               <div className="flex items-center gap-3">
                 <div className="bg-red-50 dark:bg-[#ff4b4b]/10 p-2 rounded-lg text-[#ff4b4b]">

@@ -89,7 +89,7 @@ function TimeTrialContent() {
           <div className="flex gap-4 w-full max-w-sm">
             <Button 
               onClick={toggleTimer} 
-              className={`flex-1 h-14 rounded-2xl font-bold text-sm shadow-lg uppercase tracking-widest ${isRunning ? 'bg-amber-500 hover:bg-amber-600 text-white' : 'bg-primary hover:bg-primary/90 text-primary-foreground'}`}
+              className={`flex-1 h-14 rounded-2xl font-bold text-sm shadow-xl uppercase tracking-widest ${isRunning ? 'bg-amber-500 hover:bg-amber-600 text-white' : 'bg-primary hover:bg-primary/90 text-primary-foreground'}`}
             >
               {isRunning ? <><Square className="h-5 w-5 mr-2 fill-white" /> Pause</> : <><Play className="h-5 w-5 mr-2 fill-white" /> Start</>}
             </Button>

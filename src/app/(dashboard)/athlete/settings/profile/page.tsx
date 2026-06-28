@@ -40,7 +40,7 @@ export default function ProfileReadPage() {
               <div className="w-24 h-24 rounded-full bg-slate-100 dark:bg-[#2a293d] border-[3px] border-slate-200 dark:border-slate-600 overflow-hidden">
                 <img src="https://i.pravatar.cc/150?img=62" alt="Profile" className="w-full h-full object-cover" />
               </div>
-              <button className="absolute bottom-0 right-0 p-2 bg-[#ff4b4b] text-white rounded-full border-[3px] border-white dark:border-[#1f1e2e] shadow-lg hover:bg-red-600 transition-colors">
+              <button className="absolute bottom-0 right-0 p-2 bg-[#ff4b4b] text-white rounded-full border-[3px] border-white dark:border-[#1f1e2e] shadow-xl hover:bg-red-600 transition-colors">
                 <Camera className="h-4 w-4" />
               </button>
             </div>

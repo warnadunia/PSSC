@@ -104,7 +104,7 @@ export default function AthleteSettingsPage() {
                             }}
                             className={`w-11 h-6 rounded-full flex items-center p-1 cursor-pointer transition-colors ${item.state ? 'bg-[#ff4b4b]' : 'bg-slate-300 dark:bg-[#2a293d]'}`}
                           >
-                            <div className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform ${item.state ? 'translate-x-5' : 'translate-x-0'}`} />
+                            <div className={`bg-white w-4 h-4 rounded-full shadow-xl transform transition-transform ${item.state ? 'translate-x-5' : 'translate-x-0'}`} />
                           </div>
                         ) : (
                           <ChevronRight className="h-4 w-4 text-slate-500" />

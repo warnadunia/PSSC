@@ -76,7 +76,7 @@ export default function FisikDetailPage() {
           
           <div className="space-y-3">
             {[...historyData].reverse().map((data, index) => (
-              <div key={index} className="bg-white dark:bg-card border border-slate-200 dark:border-border p-4 rounded-2xl flex items-center justify-between shadow-sm">
+              <div key={index} className="bg-white dark:bg-card border border-slate-200 dark:border-border p-4 rounded-2xl flex items-center justify-between shadow-xl">
                 <div className="flex items-center gap-4">
                   <div className="bg-slate-100 dark:bg-[#161622] text-slate-500 h-10 w-10 rounded-xl flex items-center justify-center font-bold text-xs uppercase tracking-widest">
                     {data.month}

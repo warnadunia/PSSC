@@ -110,7 +110,7 @@ export default function CoachMyPage() {
                   onClick={() => router?.push(isCheckedIn ? '/coach/mypage/attendance?type=out' : '/coach/mypage/attendance?type=in')}
                   className="cursor-pointer bg-slate-50 dark:bg-[#2a293d] rounded-2xl p-2 border border-slate-200 dark:border-[#34334a] transition-all hover:bg-slate-100 dark:hover:bg-[#34334a] shadow-xl/30"
                 >
-                  <div className={`flex flex-col items-center justify-center w-20 h-20 rounded-xl shadow-lg ${isCheckedIn ? 'bg-gradient-to-br from-[#ff4b4b] to-red-700' : 'bg-gradient-to-br from-emerald-500 to-emerald-700'}`}>
+                  <div className={`flex flex-col items-center justify-center w-20 h-20 rounded-xl shadow-xl ${isCheckedIn ? 'bg-gradient-to-br from-[#ff4b4b] to-red-700' : 'bg-gradient-to-br from-emerald-500 to-emerald-700'}`}>
                     <Power className="h-8 w-8 text-white mb-1 drop-shadow-md" strokeWidth={2.5} />
                     <span className="text-[10px] font-bold text-white tracking-widest uppercase">
                       {isCheckedIn ? 'Pulang' : 'Masuk'}

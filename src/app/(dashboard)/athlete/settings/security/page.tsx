@@ -114,7 +114,7 @@ export default function SecurityPage() {
               <Button
                 type="submit"
                 disabled={isSubmittingPassword || !currentPassword || !newPassword || !confirmPassword}
-                className="w-full h-12 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs tracking-widest uppercase rounded-xl shadow-lg mt-2 transition-all"
+                className="w-full h-12 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs tracking-widest uppercase rounded-xl shadow-xl mt-2 transition-all"
               >
                 {isSubmittingPassword ? (
                   <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -155,7 +155,7 @@ export default function SecurityPage() {
                 <Button
                   onClick={handleSendOtp}
                   disabled={isSubmittingOtp || !email}
-                  className="w-full h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-bold text-xs tracking-widest uppercase rounded-xl shadow-lg transition-all"
+                  className="w-full h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-bold text-xs tracking-widest uppercase rounded-xl shadow-xl transition-all"
                 >
                   {isSubmittingOtp ? (
                     <div className="h-4 w-4 border-2 border-slate-500/30 border-t-current rounded-full animate-spin" />
@@ -197,7 +197,7 @@ export default function SecurityPage() {
                 <Button
                   onClick={handleVerifyOtp}
                   disabled={isSubmittingOtp || otpCode.length < 4}
-                  className="w-full h-12 bg-[#ff4b4b] hover:bg-red-700 text-white font-bold text-xs tracking-widest uppercase rounded-xl shadow-lg transition-all"
+                  className="w-full h-12 bg-[#ff4b4b] hover:bg-red-700 text-white font-bold text-xs tracking-widest uppercase rounded-xl shadow-xl transition-all"
                 >
                   {isSubmittingOtp ? (
                     <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

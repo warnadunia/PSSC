@@ -121,7 +121,7 @@ export default function MovementDetailPage({ params }: { params: Promise<{ id: s
 
             <Button
               onClick={toggleTimer}
-              className={`w-full h-16 rounded-2xl font-black text-lg shadow-lg transition-all duration-300 mb-4 ${isRunning
+              className={`w-full h-16 rounded-2xl font-black text-lg shadow-xl transition-all duration-300 mb-4 ${isRunning
                   ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-amber-500/25'
                   : 'bg-[#ff4b4b] hover:bg-red-700 text-white shadow-red-600/25'
                 }`}

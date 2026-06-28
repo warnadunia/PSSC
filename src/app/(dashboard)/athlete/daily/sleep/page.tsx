@@ -93,7 +93,7 @@ export default function SleepTrackerPage() {
 
           {isSleeping && (
             <div className="mt-8">
-              <p className="font-mono text-5xl font-black text-white tracking-tighter shadow-lg">{elapsedTime}</p>
+              <p className="font-mono text-5xl font-black text-white tracking-tighter shadow-xl">{elapsedTime}</p>
               <p className="text-xs font-bold uppercase tracking-widest text-indigo-300 mt-2">Time Elapsed</p>
             </div>
           )}
@@ -101,7 +101,7 @@ export default function SleepTrackerPage() {
 
         <div className="w-full max-w-sm space-y-4 relative z-10">
           {!isSleeping && (
-            <div className="bg-white dark:bg-card border border-slate-200 dark:border-border p-4 rounded-2xl shadow-sm mb-8 text-left">
+            <div className="bg-white dark:bg-card border border-slate-200 dark:border-border p-4 rounded-2xl shadow-xl mb-8 text-left">
               <h3 className="text-xs font-bold uppercase tracking-widest flex items-center gap-2 mb-2">
                 <Activity className="h-4 w-4 text-emerald-500" /> Target Malam Ini
               </h3>

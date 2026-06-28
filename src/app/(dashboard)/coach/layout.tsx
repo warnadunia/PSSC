@@ -31,7 +31,7 @@ export default function CoachLayout({ children }: { children: ReactNode }) {
       </main>
 
       {/* BOTTOM NAVIGATION BAR */}
-      {/* THEME UPDATE: bg-white jadi Navy solid, border digelapin, shadow dibikin lebih dramatis */}
+      {/* THEME UPDATE: bg-white jadi Navy solid, border digelapin, shadow-xl dibikin lebih dramatis */}
       <nav className="absolute bottom-0 w-full flex h-16 items-center justify-between px-2 border-t border-slate-200 dark:border-[#2a293d] bg-white dark:bg-[#1f1e2e] pb-safe z-40 -[0_-10px_30px_rgba(0,0,0,0.1)] shadow-[0_-10px_30px_rgba(0,0,0,0.3)]">
         {navItems.map((item) => {
           const isActive = pathname.includes(item.href)

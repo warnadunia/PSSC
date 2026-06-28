@@ -98,7 +98,7 @@ export default function PermissionPage() {
                       key={item.id}
                       type="button"
                       onClick={() => setType(item.id as any)}
-                      className={`flex flex-col items-center justify-center p-3 rounded-2xl border-2 transition-all duration-200 shadow-sm ${
+                      className={`flex flex-col items-center justify-center p-3 rounded-2xl border-2 transition-all duration-200 shadow-xl ${
                         type === item.id 
                           ? 'border-[#ff4b4b] bg-red-50 dark:bg-[#ff4b4b]/10 text-[#ff4b4b]' 
                           : 'border-slate-200 dark:border-[#2a293d] bg-slate-50 dark:bg-[#161622] text-slate-500 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-100 dark:hover:bg-[#2a293d]/50'

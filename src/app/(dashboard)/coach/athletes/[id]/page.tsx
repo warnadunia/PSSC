@@ -364,7 +364,7 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
                       <Button 
                         key={gaya}
                         variant="ghost"
-                        className={`rounded-full h-8 w-full text-[11px] font-bold transition-all ${selectedStroke === gaya ? 'bg-primary text-primary-foreground shadow-sm hover:bg-primary/90' : 'text-muted-foreground hover:bg-muted/50'}`}
+                        className={`rounded-full h-8 w-full text-[11px] font-bold transition-all ${selectedStroke === gaya ? 'bg-primary text-primary-foreground shadow-xl hover:bg-primary/90' : 'text-muted-foreground hover:bg-muted/50'}`}
                         onClick={() => setSelectedStroke(gaya)}
                       >
                         {gaya}
@@ -453,7 +453,7 @@ export default function AthleteDetailPage({ params }: { params: Promise<{ id: st
                       <Button 
                         key={gaya}
                         variant="ghost"
-                        className={`rounded-full h-8 w-full text-[11px] font-bold transition-all ${selectedStroke === gaya ? 'bg-primary text-primary-foreground shadow-sm hover:bg-primary/90' : 'text-muted-foreground hover:bg-muted/50'}`}
+                        className={`rounded-full h-8 w-full text-[11px] font-bold transition-all ${selectedStroke === gaya ? 'bg-primary text-primary-foreground shadow-xl hover:bg-primary/90' : 'text-muted-foreground hover:bg-muted/50'}`}
                         onClick={() => setSelectedStroke(gaya)}
                       >
                         {gaya}

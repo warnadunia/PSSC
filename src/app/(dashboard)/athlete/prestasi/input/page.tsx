@@ -312,7 +312,7 @@ export default function InputKejuaraanPage() {
             <div className="flex gap-3 justify-center">
               <Button
                 onClick={toggleStopwatch}
-                className={`flex-1 h-12 rounded-xl font-bold shadow-lg ${isRunning ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-indigo-500 hover:bg-indigo-600 text-slate-900 dark:text-white'}`}
+                className={`flex-1 h-12 rounded-xl font-bold shadow-xl ${isRunning ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-indigo-500 hover:bg-indigo-600 text-slate-900 dark:text-white'}`}
               >
                 {isRunning ? <><Square className="h-4 w-4 mr-2" /> Pause</> : <><Play className="h-4 w-4 mr-2" /> Start</>}
               </Button>

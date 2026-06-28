@@ -39,7 +39,7 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
     return (
       <>
         <div ref={observerTarget} className="absolute top-0 left-0 w-full h-1" />
-        <header className={`sticky top-0 z-40 w-full flex h-14 items-center gap-3 px-4 transition-all duration-300 ${isScrolled ? "bg-white dark:bg-[#602727] shadow-md dark:shadow-lg border-b border-slate-200 dark:border-[#ff4b4b]/20" : "bg-transparent"
+        <header className={`sticky top-0 z-40 w-full flex h-14 items-center gap-3 px-4 transition-all duration-300 ${isScrolled ? "bg-white dark:bg-[#602727] shadow-xl dark:shadow-xl border-b border-slate-200 dark:border-[#ff4b4b]/20" : "bg-transparent"
           }`}>
           <Button variant="ghost" size="icon" className="text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 -ml-2 shrink-0 transition-colors" onClick={() => router.back()}>
             <ArrowLeft className="h-5 w-5" />
@@ -54,7 +54,7 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
   return (
     <>
       <div ref={observerTarget} className="absolute top-0 left-0 w-full h-1" />
-      <header className={`sticky top-0 z-40 w-full flex h-14 items-center justify-between px-4 transition-all duration-300 ${isScrolled ? "bg-white dark:bg-[#602727] shadow-md dark:shadow-lg border-b border-slate-200 dark:border-[#ff4b4b]/20" : "bg-transparent"
+      <header className={`sticky top-0 z-40 w-full flex h-14 items-center justify-between px-4 transition-all duration-300 ${isScrolled ? "bg-white dark:bg-[#602727] shadow-xl dark:shadow-xl border-b border-slate-200 dark:border-[#ff4b4b]/20" : "bg-transparent"
         }`}>
         <div className="flex items-center gap-3 overflow-hidden">
           <Sheet>
@@ -138,14 +138,14 @@ export function GlobalHeader({ variant, title, onClose }: GlobalHeaderProps) {
                       <Button
                         variant="ghost"
                         onClick={() => setTheme('light')}
-                        className={`flex-1 h-8 rounded-lg font-bold text-xs transition-colors ${theme === 'light' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-transparent'}`}
+                        className={`flex-1 h-8 rounded-lg font-bold text-xs transition-colors ${theme === 'light' ? 'bg-white shadow-xl text-slate-900' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-transparent'}`}
                       >
                         <Sun className={`h-4 w-4 mr-2 ${theme === 'light' ? 'text-amber-500' : ''}`} /> Light
                       </Button>
                       <Button
                         variant="ghost"
                         onClick={() => setTheme('dark')}
-                        className={`flex-1 h-8 rounded-lg font-bold text-xs transition-colors ${theme === 'dark' ? 'bg-[#2a293d] shadow-sm text-white' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-transparent'}`}
+                        className={`flex-1 h-8 rounded-lg font-bold text-xs transition-colors ${theme === 'dark' ? 'bg-[#2a293d] shadow-xl text-white' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-transparent'}`}
                       >
                         <Moon className={`h-4 w-4 mr-2 ${theme === 'dark' ? 'text-blue-400' : ''}`} /> Dark
                       </Button>

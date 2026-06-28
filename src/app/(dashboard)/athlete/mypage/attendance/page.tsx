@@ -129,7 +129,7 @@ function AttendanceContent() {
           className={`w-full h-14 rounded-2xl font-bold text-lg transition-all uppercase tracking-widest ${
             (!hasSelfie || !hasLocation) 
               ? 'bg-muted text-muted-foreground' 
-              : 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-primary/25 shadow-md dark:shadow-lg'
+              : 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-primary/25 shadow-xl dark:shadow-xl'
           }`}
         >
           {isSubmitting ? (

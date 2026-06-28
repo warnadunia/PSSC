@@ -139,7 +139,7 @@ export default function DailyPage() {
             </div>
 
             {/* Post-Training Window */}
-            <div className="bg-gradient-to-r from-slate-900 to-slate-800 dark:from-[#2a293d] dark:to-[#1f1e2e] rounded-2xl p-4 text-white shadow-lg">
+            <div className="bg-gradient-to-r from-slate-900 to-slate-800 dark:from-[#2a293d] dark:to-[#1f1e2e] rounded-2xl p-4 text-white shadow-xl">
               <div className="flex items-center gap-2 mb-2">
                 <span className="flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse"></span>
                 <h3 className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Post-Training Window</h3>
@@ -167,7 +167,7 @@ export default function DailyPage() {
           
           <div className="grid grid-cols-2 gap-3">
             {/* Protein */}
-            <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-sm rounded-2xl">
+            <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-xl rounded-2xl">
               <CardContent className="p-4">
                 <div className="bg-blue-50 dark:bg-blue-500/10 w-8 h-8 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 mb-3">
                   <Activity className="h-4 w-4" />
@@ -185,7 +185,7 @@ export default function DailyPage() {
             </Card>
 
             {/* Carbs */}
-            <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-sm rounded-2xl">
+            <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-xl rounded-2xl">
               <CardContent className="p-4">
                 <div className="bg-amber-50 dark:bg-amber-500/10 w-8 h-8 rounded-lg flex items-center justify-center text-amber-600 dark:text-amber-400 mb-3">
                   <Flame className="h-4 w-4" />
@@ -203,7 +203,7 @@ export default function DailyPage() {
             </Card>
 
             {/* Hydration */}
-            <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-sm rounded-2xl">
+            <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-xl rounded-2xl">
               <CardContent className="p-4">
                 <div className="bg-cyan-50 dark:bg-cyan-500/10 w-8 h-8 rounded-lg flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-3">
                   <Droplets className="h-4 w-4" />
@@ -221,7 +221,7 @@ export default function DailyPage() {
             </Card>
 
             {/* Micronutrients */}
-            <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-sm rounded-2xl">
+            <Card className="bg-white dark:bg-card border-slate-200 dark:border-border shadow-xl rounded-2xl">
               <CardContent className="p-4">
                 <div className="bg-emerald-50 dark:bg-emerald-500/10 w-8 h-8 rounded-lg flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-3">
                   <Zap className="h-4 w-4" />
@@ -247,7 +247,7 @@ export default function DailyPage() {
               <h2 className="font-heading font-bold text-xs uppercase tracking-widest text-slate-900 dark:text-white flex items-center gap-2">
                 <ShoppingBag className="h-4 w-4 text-emerald-500" /> Home Coach
               </h2>
-              <Badge className="bg-white dark:bg-[#161622] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-[#2a293d] shadow-sm uppercase tracking-widest text-[9px]">Untuk Orang Tua</Badge>
+              <Badge className="bg-white dark:bg-[#161622] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-[#2a293d] shadow-xl uppercase tracking-widest text-[9px]">Untuk Orang Tua</Badge>
             </div>
             <CardContent className="p-5">
               <div className="flex gap-3 mb-4">

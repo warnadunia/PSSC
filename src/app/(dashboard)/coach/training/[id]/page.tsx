@@ -241,7 +241,7 @@ function TrainingDetailContent() {
               <div className="flex gap-3 mt-4 justify-center">
                 <Button 
                   onClick={toggleTrialTimer} 
-                  className={`h-12 w-32 rounded-full font-bold text-sm shadow-lg uppercase tracking-widest ${isTrialRunning ? 'bg-amber-500 hover:bg-amber-600 text-white' : 'bg-primary hover:bg-primary/90 text-primary-foreground'}`}
+                  className={`h-12 w-32 rounded-full font-bold text-sm shadow-xl uppercase tracking-widest ${isTrialRunning ? 'bg-amber-500 hover:bg-amber-600 text-white' : 'bg-primary hover:bg-primary/90 text-primary-foreground'}`}
                 >
                   {isTrialRunning ? <><Square className="h-4 w-4 mr-2 fill-white" /> Pause</> : <><Play className="h-4 w-4 mr-2 fill-white" /> Start</>}
                 </Button>

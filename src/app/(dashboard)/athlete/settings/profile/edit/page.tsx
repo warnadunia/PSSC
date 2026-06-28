@@ -113,14 +113,14 @@ export default function ProfileEditPage() {
               <button 
                 type="button"
                 onClick={() => setShowPhotoOptions(!showPhotoOptions)}
-                className="absolute bottom-0 right-0 p-2 bg-[#ff4b4b] text-white rounded-full border-[3px] border-white dark:border-[#1f1e2e] shadow-lg hover:bg-red-600 transition-colors"
+                className="absolute bottom-0 right-0 p-2 bg-[#ff4b4b] text-white rounded-full border-[3px] border-white dark:border-[#1f1e2e] shadow-xl hover:bg-red-600 transition-colors"
               >
                 <Camera className="h-4 w-4" />
               </button>
             </div>
             
             {showPhotoOptions && (
-              <div className="absolute top-32 z-10 bg-white dark:bg-[#2a293d] rounded-xl shadow-2xl border border-slate-200 dark:border-[#161622] p-2 flex flex-col gap-1 min-w-[160px] animate-in fade-in zoom-in duration-200">
+              <div className="absolute top-32 z-10 bg-white dark:bg-[#2a293d] rounded-xl shadow-xl border border-slate-200 dark:border-[#161622] p-2 flex flex-col gap-1 min-w-[160px] animate-in fade-in zoom-in duration-200">
                 <button type="button" className="flex items-center gap-3 px-3 py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#1f1e2e] rounded-lg transition-colors text-left" onClick={() => { alert('Membuka Kamera...'); setShowPhotoOptions(false) }}>
                   <Camera className="h-4 w-4 text-blue-500" /> Ambil Foto
                 </button>

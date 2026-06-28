@@ -126,7 +126,7 @@ export default function PrestasiPage() {
           STAGNATION & HOME TREATMENT ALERT
           ========================================== */}
       <div className="px-4 mt-4 mb-4">
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex gap-3 shadow-sm relative overflow-hidden backdrop-blur-sm">
+        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex gap-3 shadow-xl relative overflow-hidden backdrop-blur-sm">
           <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-amber-500/10 to-transparent pointer-events-none"></div>
           <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" />
           <div>
@@ -137,7 +137,7 @@ export default function PrestasiPage() {
             <p className="text-[11px] text-amber-800/80 dark:text-amber-500/80 leading-relaxed font-medium mb-3">
               Analisis: Penurunan atribut <b>Stamina (70%)</b>. Tingkat penyelesaian Main Set bulan ini hanya 72% akibat tingginya rasio <i>Kelelahan Fisik Ekstrem</i>.
             </p>
-            <Button onClick={() => router.push('/athlete/training?tab=personal')} className="h-8 bg-amber-500 hover:bg-amber-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 rounded-lg shadow-amber-500/20 shadow-lg">
+            <Button onClick={() => router.push('/athlete/training?tab=personal')} className="h-8 bg-amber-500 hover:bg-amber-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 rounded-lg shadow-amber-500/20 shadow-xl">
               Mulai Home Treatment
             </Button>
           </div>
@@ -480,7 +480,7 @@ export default function PrestasiPage() {
                   </p>
                   <Button 
                     onClick={() => router.push('/athlete/training?tab=personal')} 
-                    className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold tracking-widest text-[10px] uppercase h-10 shadow-emerald-500/25 shadow-lg"
+                    className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold tracking-widest text-[10px] uppercase h-10 shadow-emerald-500/25 shadow-xl"
                   >
                     Buka Menu Home Treatment
                   </Button>

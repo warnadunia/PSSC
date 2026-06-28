@@ -135,7 +135,7 @@ export default function CoachSchedules() {
                       {day.dayNumber && (
                         <div className={`
                           w-10 h-10 flex flex-col items-center justify-center rounded-2xl transition-all
-                          ${isSelected ? 'bg-primary shadow-lg shadow-primary/20' : ''}
+                          ${isSelected ? 'bg-primary shadow-xl shadow-primary/20' : ''}
                           ${!isSelected && isToday ? 'border-2 border-primary bg-primary/5' : ''}
                           ${!day.isCurrentMonth ? 'opacity-30' : ''}
                         `}>
