@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Play, Square, Flag, CheckSquare, Dumbbell, Save, Filter, ChevronRight, Users, TrendingUp, Target, Activity } from "lucide-react"
+import { Play, Square, Flag, CheckSquare, Dumbbell, Save, Filter, ChevronRight, Users, TrendingUp, Target, Activity, AlertTriangle } from "lucide-react"
 import { ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts"
 
 import { GlobalHeader } from "@/components/GlobalHeader"
