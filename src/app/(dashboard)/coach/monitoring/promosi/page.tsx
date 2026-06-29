@@ -93,7 +93,7 @@ function PromosiDetailContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const id = searchParams.get("id") || "1"
-  
+
   const detail = promotionDetails[id] || promotionDetails["1"]
   const [coachNote, setCoachNote] = useState("")
 
@@ -109,17 +109,17 @@ function PromosiDetailContent() {
 
   return (
     <div className="flex flex-col min-h-[100dvh] w-full pb-28 relative bg-[#fff5f5] dark:bg-background text-foreground font-sans z-0" suppressHydrationWarning>
-      
+
       {/* Background Gradient */}
-      <div className="absolute top-0 left-0 right-0 h-[40vh] bg-gradient-to-b from-amber-100 via-[#fff5f5] to-[#fff5f5] dark:from-[#3a2f1b] dark:via-[#09090b] dark:to-transparent -z-10 pointer-events-none"></div>
+      <div className="absolute top-16 left-0 right-0 h-[40vh] bg-gradient-to-b from-amber-100 via-[#fff5f5] to-[#fff5f5] dark:from-[#3a2f1b] dark:via-[#09090b] dark:to-transparent -z-10 pointer-events-none"></div>
 
       <GlobalHeader variant="subpage" title="Evaluasi Kenaikan Kelas" />
 
       <main className="flex-1 w-full px-4 md:px-6 pt-5 space-y-5">
-        
+
         {/* Back Link */}
-        <button 
-          onClick={() => router.push("/coach/athletes")} 
+        <button
+          onClick={() => router.push("/coach/monitoring")}
           className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider mb-2"
         >
           <ArrowLeft className="h-4 w-4" /> Kembali ke Daftar Atlet
@@ -157,7 +157,7 @@ function PromosiDetailContent() {
           <h2 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-amber-500" /> Kriteria Kelulusan Promosi
           </h2>
-          
+
           <div className="grid gap-3">
             {detail.requirements.map((req, index) => (
               <Card key={index} className="border-slate-200 dark:border-border bg-white dark:bg-card shadow-sm rounded-2xl overflow-hidden relative">
@@ -215,7 +215,7 @@ function PromosiDetailContent() {
           <h2 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-2">
             Catatan Evaluasi Coach
           </h2>
-          <textarea 
+          <textarea
             placeholder="Tuliskan evaluasi teknik, sikap mental, atau saran perbaikan latihan rumah untuk atlet ini..."
             value={coachNote}
             onChange={(e) => setCoachNote(e.target.value)}
@@ -228,17 +228,17 @@ function PromosiDetailContent() {
       {/* ==========================================
           FIXED BOTTOM PANEL FOR ACTIONS
           ========================================== */}
-      <div className="fixed bottom-0 w-full bg-white dark:bg-card border-t border-slate-200 dark:border-border p-4 z-40 shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
+      <div className="fixed bottom-16 w-full bg-white dark:bg-card border-t border-slate-200 dark:border-border p-4 z-40 shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
         <div className="grid grid-cols-2 gap-3 max-w-md mx-auto">
-          <Button 
-            onClick={handleHold} 
-            variant="outline" 
+          <Button
+            onClick={handleHold}
+            variant="outline"
             className="h-12 text-xs font-bold uppercase tracking-widest border-slate-200 text-slate-600 dark:text-white hover:bg-slate-50 dark:hover:bg-secondary rounded-xl"
           >
             <Ban className="h-4 w-4 mr-2" /> Tunda Promosi
           </Button>
-          <Button 
-            onClick={handleApprove} 
+          <Button
+            onClick={handleApprove}
             className="h-12 text-xs font-bold uppercase tracking-widest bg-amber-500 hover:bg-amber-600 text-white rounded-xl shadow-lg shadow-amber-500/20"
           >
             <Award className="h-4 w-4 mr-2" /> Promosikan
